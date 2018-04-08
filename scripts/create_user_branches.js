@@ -16,6 +16,7 @@ const students = [
   'marsov',
   'nikitin',
   'noschenko',
+  'pervushin',
   'pogorelyi',
   'polukarpov',
   'polyansky',
@@ -27,17 +28,16 @@ const students = [
 ];
 
 async function main() {
-  await execPromise('git checkout master');
   for (let student of students) {
-    await createBranch(3, student);
+    await createHomeworkBranch(3, student);
   }
 }
 
-async function createBranch(homeworkNum, student) {
+async function createHomeworkBranch(homeworkNum, student) {
   let homeworkName = `${student}/homework_${homeworkNum}`;
+  await execPromise('git checkout master');
   await execPromise(`git checkout -b ${homeworkName}`);
   await execPromise(`git push --set-upstream origin ${homeworkName}`);
-  await execPromise('git checkout master');
 }
 
 main()
