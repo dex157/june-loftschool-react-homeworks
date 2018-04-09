@@ -30,8 +30,9 @@ const students = [
 
 async function main() {
   for (let student of students) {
-    await createHomeworkBranch(3, student);
+    await createHomeworkBranch(4, student);
   }
+  await execPromise('git checkout master');
 }
 
 async function createHomeworkBranch(homeworkNum, student) {
