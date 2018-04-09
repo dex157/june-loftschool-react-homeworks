@@ -22,6 +22,7 @@ const students = [
   'polyansky',
   'ragulin',
   'reshetnev',
+  'samsonova',
   'suleimanov',
   'teterin',
   'uriev',
