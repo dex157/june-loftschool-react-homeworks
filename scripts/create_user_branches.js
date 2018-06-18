@@ -3,21 +3,44 @@ const exec = require('child_process').exec;
 
 const execPromise = command =>
   new Promise((resolve, reject) => {
-    exec(command, (err, stdout, stderr) => (err ? reject(err) : resolve(stdout, stderr)));
+    exec(
+      command,
+      (err, stdout, stderr) => (err ? reject(err) : resolve(stdout, stderr))
+    );
   });
 
-const students = [];
+const students = [
+  'dmitrymarokhonov',
+  'reyzele',
+  'dapetrov0',
+  'rchesnokov',
+  'makhataibar',
+  'sen4az',
+  'YanaShingel',
+  'mihailKuzmintsev',
+  'AlekseyVasilenko',
+  'aftaboy',
+  'b-gulnur-r',
+  'Dmitriy-8-Kireev',
+  'Drillibit',
+  'KustovAA',
+  'bu-ra-to',
+  'erven1985',
+  'Vostenzuk',
+  'OlBol',
+  'golah30'
+];
 
 async function main() {
   for (let student of students) {
-    await createHomeworkBranch(7, student);
+    await createHomeworkBranch(1, student);
   }
-  await execPromise('git checkout master');
+  await execPromise('git checkout june_master');
 }
 
-async function createHomeworkBranch(homeworkNum, student) {
-  let homeworkName = `${student}/homework_${homeworkNum}`;
-  await execPromise(`git checkout homework_${homeworkName}`);
+async function createHomeworkBranch(homeworkNumber, student) {
+  let homeworkName = `${student}/homework_${homeworkNumber}`;
+  await execPromise(`git checkout homework_${homeworkNumber}`);
   await execPromise(`git checkout -b ${homeworkName}`);
   await execPromise(`git push --set-upstream origin ${homeworkName}`);
 }
