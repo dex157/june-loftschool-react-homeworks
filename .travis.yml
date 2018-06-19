@@ -15,7 +15,7 @@ before_script:
   - yarn start -- --silent &
 
 script:
-  - yarn build
+  # - yarn build
   - yarn check-prettier
-  - yarn run cypress:run
-  - yarn test
+  # - yarn run cypress:run
+  # - yarn test
