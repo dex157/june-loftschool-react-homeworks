@@ -12,6 +12,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "check-prettier": "prettier --config ./.prettierrc --list-different src/**/*",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
