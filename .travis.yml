@@ -16,5 +16,6 @@ before_script:
 
 script:
   - yarn build
+  - yarn prettier-check
   - yarn run cypress:run
   - yarn test
