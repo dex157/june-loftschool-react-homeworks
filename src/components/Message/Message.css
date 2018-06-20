@@ -1,0 +1,16 @@
+.message {
+  margin: 5px 0;
+  align-self: left;
+  background-color: #5b5bff;
+  border-radius: 16px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px 15px;
+}
+
+.message__like {
+  width: auto;
+  height: 16px;
+  padding-left: 10px;
+  cursor: pointer;
+}
