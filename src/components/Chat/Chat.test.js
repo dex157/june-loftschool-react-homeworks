@@ -1,6 +1,6 @@
 import React from 'react';
-import Chat from '../Chat';
-import Message from '../Message';
+import Chat from 'components/Chat';
+import Message from 'components/Message';
 import { shallow } from 'enzyme';
 
 describe('Компонента Chat', () => {
