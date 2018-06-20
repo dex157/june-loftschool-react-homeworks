@@ -13,21 +13,11 @@ export default class Chat extends Component {
 
     sendMessageOnEnter = e => {
         if (e.key === 'Enter' && String(this.state.messageInput).length > 0) {
-            // 1
-            // const tmp = [...this.state.messages, {text: this.state.messageInput}];
-            // this.setState({messages: tmp});
-
-            // 2
-            this.state.messages.push({text: this.state.messageInput});
-
-            // 3
-            // this.setState(prevState => {
-            //     return {messages: [...prevState.messages, {text: this.state.messageInput}]}
-            // })
-
+            this.setState(prevState => {
+                return {messages: [...prevState.messages, {text: this.state.messageInput}]}
+            })
             this.setState({messageInput: ''});
         }
-        // console.log(this.state.messages);
     }
 
     render() {
