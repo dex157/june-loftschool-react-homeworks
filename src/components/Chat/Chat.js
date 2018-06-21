@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Message from '../Message/Message';
 import './Chat.css';
 
-class Chat extends Component {
+export default class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,5 +45,3 @@ class Chat extends Component {
     );
   }
 }
-
-export default Chat;
