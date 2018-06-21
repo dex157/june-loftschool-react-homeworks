@@ -20,16 +20,12 @@ class Chat extends Component {
 
     sendMessageOnEnter = e => {
         if (e.key === 'Enter') {
-            const node = document.body.querySelector('.message-list');
-            
             this.setState(state => {
                 return {
                     messages: [...state.messages, {text: state.messageInput}], 
                     messageInput: ''
                 }
             });
-            node.scrollTop = node.scrollHeight;
-            
         }
     }
 
