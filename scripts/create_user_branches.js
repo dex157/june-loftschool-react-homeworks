@@ -28,12 +28,25 @@ const students = [
   'erven1985',
   'Vostenzuk',
   'OlBol',
-  'golah30'
+  'golah30',
+  'necrolyss',
+  'flightik',
+  'NikitaSmithTheOne',
+  'IvanOpanasiuk',
+  'notherkappa',
+  'maxim1989',
+  'Ivan3008',
+  'IrinaKondrateva',
+  'dkrasheninnikov',
+  'AntonLantukh',
+  'anton-yakovlev',
+  'eugenedan',
+  'evgeniyandrusenko'
 ];
 
 async function main() {
   for (let student of students) {
-    await createHomeworkBranch(1, student);
+    await createHomeworkBranch(2, student);
   }
   await execPromise('git checkout june_master');
 }
