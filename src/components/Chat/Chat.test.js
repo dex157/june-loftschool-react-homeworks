@@ -1,5 +1,5 @@
 import React from 'react';
-import Chat from '../Chat';
+import Chat from '../Chat/Chat';
 import Message from '../Message';
 import { shallow } from 'enzyme';
 
