@@ -40,7 +40,8 @@ const students = [
   'dkrasheninnikov',
   'AntonLantukh',
   'anton-yakovlev',
-  'eugenedan'
+  'eugenedan',
+  'evgeniyandrusenko'
 ];
 
 async function main() {
