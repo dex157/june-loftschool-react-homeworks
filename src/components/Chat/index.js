@@ -2,7 +2,7 @@ import React from 'react';
 import Message from '../Message';
 class Chat extends React.Component {
   state = {
-    messageInput: ''
+    messageInput: []
   }
   eventChange = (event) => {
     this.setState(state => (
