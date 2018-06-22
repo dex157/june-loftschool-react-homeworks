@@ -1,0 +1,29 @@
+.container {
+  width: 600px;
+  margin: 20px auto 0;
+}
+
+.tab-panel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-content {
+  padding: 0 20px;
+}
+
+.button-panel {
+  padding: 10px 20px;
+  display: flex;
+}
+
+.button-next {
+  margin-left: auto;
+  background-color: blue;
+  color: white;
+}
+
+.button-next:disabled {
+  background-color: #eee;
+  color: black;
+}
