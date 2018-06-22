@@ -8,16 +8,13 @@ class Chat extends React.Component {
 		messageInput: ''
 	}
 	eventChange = (event) => {
-		this.setState(state => (
-			{messageInput: event.target.value}
-		))
+		this.setState({messageInput: event.target.value})
 	}
 
 	eventKeyPress = (event) => {
 		if (event.key === 'Enter') {
-			this.setState(state => (
-				{messages: state.messageInput}
-			))
+			this.setState({messages: [...this.state.messages, this.state.messageInput]})
+			this.setState({messageInput: ''})
 		}
 	}
 
@@ -25,7 +22,7 @@ class Chat extends React.Component {
 		return  (
 			<div className='chatMain'>
 				{this.state.messages.map(item => <Message text={item} /> )}
-				<input value={this.state.messageInput} onChange={this.eventChange()} onKeyPress={this.eventKeyPress()}/>
+				<input value={this.state.messageInput} onChange={this.eventChange} onKeyPress={this.eventKeyPress}/>
 			</div>  
 		)
 	} 
