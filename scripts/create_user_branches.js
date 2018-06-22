@@ -46,7 +46,7 @@ const students = [
 
 async function main() {
   for (let student of students) {
-    await createHomeworkBranch(2, student);
+    await createHomeworkBranch(3, student);
   }
   await execPromise('git checkout june_master');
 }
