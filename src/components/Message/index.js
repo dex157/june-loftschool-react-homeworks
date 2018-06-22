@@ -2,7 +2,7 @@ import React from 'react';
 
 function Message (props) {
   return(
-    <span>{props.text}</span>
+    <span className='message'>{props.text}</span>
   )
 }
 
