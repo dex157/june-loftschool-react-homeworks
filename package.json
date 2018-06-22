@@ -12,6 +12,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "prettier-fix": "yarn prettier --config ./.prettierrc --write src/**/*.js",
     "check-prettier": "prettier --config ./.prettierrc --list-different src/**/*.js",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
