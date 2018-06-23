@@ -22,7 +22,6 @@
 
 .input-message {
   margin: 5px;
-  display: flex;
   border-radius: 20px;
   border: 1px solid #eee;
   font-size: 16px;
