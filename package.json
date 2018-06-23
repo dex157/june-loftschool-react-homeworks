@@ -12,7 +12,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "check-prettier": "prettier --config ./.prettierrc --list-different src/**/*.js",
+    "check-prettier":
+      "prettier --config ./.prettierrc --list-different src/**/*.js",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
