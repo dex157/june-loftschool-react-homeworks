@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "eslint": "^4.19.1",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-scripts": "1.1.4"
@@ -19,6 +20,17 @@
     "cypress": "^3.0.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint-plugin-cypress": "^2.0.1"
-  }
+    "eslint-plugin-cypress": "^2.0.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier": "1.13.5"
+  },
+  "description": "Создайте в папке `src/components/App` компоненту `App.js`.",
+  "main": "index.js",
+  "repository": "git+https://github.com/bu-ra-to/june-loftschool-react-homeworks.git",
+  "author": "Ivan Zagrebelnyy <ivanzagrebelnyy@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bu-ra-to/june-loftschool-react-homeworks/issues"
+  },
+  "homepage": "https://github.com/bu-ra-to/june-loftschool-react-homeworks#readme"
 }
