@@ -12,7 +12,6 @@ class Chat extends Component {
 
   sendMessageOnEnter = event => {
     if (event.charCode === 13) {
-
       let self = this;
 
       this.setState(prevState => ({
@@ -26,7 +25,6 @@ class Chat extends Component {
 
       event.target.value = '';
     }
-
   };
 
   render() {
