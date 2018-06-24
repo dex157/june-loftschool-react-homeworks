@@ -1,29 +1,27 @@
-import React, { Component } from "react";
-import Message from "./Message/Message";
-import "./Chat/Chat.css";
+import React, { Component } from 'react';
+import Message from './Message/Message';
+import './Chat/Chat.css';
 
 class Chat extends Component {
+  state = { messageInput: '', messages: [] };
 
-  state = { messageInput: "", messages: [] };
-
-  handleKeyPress = (event) => {
+  handleKeyPress = event => {
     if (event.charCode === 13) {
       this.sendMessageOnEnter();
-      event.target.value = "";
+      event.target.value = '';
     }
   };
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.changeInputMessage(event.target.value);
   };
 
   sendMessageOnEnter() {
-
-    var self = this;
+    let self = this;
 
     this.setState(prevState => ({
       messages: [...prevState.messages, { text: prevState.messageInput }],
-      messageInput: ""
+      messageInput: ''
     }));
 
     setTimeout(function() {
@@ -38,12 +36,17 @@ class Chat extends Component {
   render() {
     return (
       <div className="chat">
-        <input className="input-message"
-               onKeyPress={this.handleKeyPress}
-               onChange={this.handleChange}/>
-        <br/><br/>
+        <input
+          className="input-message"
+          onKeyPress={this.handleKeyPress}
+          onChange={this.handleChange}
+        />
+        <br />
+        <br />
         {this.state.messages.map((message, index) => {
-          return <Message key={message + "_" + index} text={message.text}/>;
+          return (
+            <Message key={message.text + '_' + index} text={message.text} />
+          );
         })}
       </div>
     );
