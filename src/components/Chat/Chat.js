@@ -11,18 +11,11 @@ class Chat extends Component {
   };
 
   sendMessageOnEnter = event => {
-    if (event.charCode === 13) {
-      let self = this;
-
+    if (event.key === 'Enter') {
       this.setState(prevState => ({
         messages: [...prevState.messages, { text: prevState.messageInput }],
         messageInput: ''
       }));
-
-      setTimeout(function() {
-        console.log(self.state);
-      }, 250);
-
       event.target.value = '';
     }
   };
