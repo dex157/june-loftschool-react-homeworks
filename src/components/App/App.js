@@ -91,8 +91,7 @@ class App extends Component {
                 children={tabName}
                 key={tabName}
                 onClick={this.handleTabClick}
-              >
-              </Step>
+              />
             );
           })}
         </div>
