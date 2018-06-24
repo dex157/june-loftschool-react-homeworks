@@ -9,52 +9,84 @@ class PersonalForm extends Component {
       firstName: false,
       lastName: false,
       eMail: false
-    }
+    },
+    profileDataValid: false
   };
 
-  handleTextInput = e => {
+  handleProfileInput = e => {
     const { name, value } = e.target;
+    if (name === 'eMail') {
+      if (value.toString().indexOf('@') >= 0) {
+        this.setState(state => ({
+          valid: {
+            ...state.valid,
+            [name]: true
+          }
+        }));
+      } else {
+        this.setState(state => ({
+          valid: {
+            ...state.valid,
+            [name]: false
+          }
+        }));
+      }
+    } else {
+      if (value.length < 20 && 0 < value.length) {
+        this.setState(state => ({
+          valid: {
+            ...state.valid,
+            [name]: true
+          }
+        }));
+      } else {
+        this.setState(state => ({
+          valid: {
+            ...state.valid,
+            [name]: false
+          }
+        }));
+      }
+    }
 
-    if (value.length < 20 && 0 < value.length) {
-      this.setState(state => ({
-        valid: {
-          ...state.valid,
-          [name]: true
-        }
+    if (
+      this.state.valid.firstName === true &&
+      this.state.valid.lastName === true &&
+      this.state.valid.eMail === true
+    ) {
+      this.setState(() => ({
+        profileDataValid: true
       }));
     } else {
-      this.setState(state => ({
-        valid: {
-          ...state.valid,
-          [name]: false
-        }
+      this.setState(() => ({
+        profileDataValid: false
       }));
     }
+
+    // if (this.allTrue(this.state.valid)) {
+    //   this.setState(() => ({
+    //     profileDataValid: true
+    //   }));
+    // } else {
+    //   this.setState(() => ({
+    //     profileDataValid: false
+    //   }));
+    // }
+
+    this.props.updateProfileValidation(this.state.profileDataValid);
   };
 
-  handleMailInput = e => {
-    const { name, value } = e.target;
-    if (name === 'eMail' && value.toString().indexOf('@') >= 0) {
-      this.setState(state => ({
-        valid: {
-          ...state.valid,
-          [name]: true
-        }
-      }));
-    } else {
-      this.setState(state => ({
-        valid: {
-          ...state.valid,
-          [name]: false
-        }
-      }));
-    }
-  };
+  allTrue(obj) {
+    for (var o in obj) if (!obj[o]) return false;
+
+    return true;
+  }
 
   componentDidUpdate(prevProps) {
     console.log(this.state.valid.firstName);
     console.log(this.state.valid.lastName);
     console.log(this.state.valid.eMail);
+    console.log(this.state.profileDataValid);
     console.log(this.state);
   }
 
@@ -67,17 +99,17 @@ class PersonalForm extends Component {
             <input
               name="firstName"
               placeholder="First name"
-              onChange={this.handleTextInput}
+              onChange={this.handleProfileInput}
             />
             <input
               name="lastName"
               placeholder="Last name"
-              onChange={this.handleTextInput}
+              onChange={this.handleProfileInput}
             />
             <input
               name="eMail"
               placeholder="E-mail"
-              onChange={this.handleMailInput}
+              onChange={this.handleProfileInput}
             />
           </div>
         </div>
