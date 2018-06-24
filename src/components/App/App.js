@@ -10,33 +10,21 @@ export default class App extends Component {
     firstName: '',
     lastName: '',
     email: '',
-    cardNumber: '',
-    goToNextTab: false
+    cardNumber: ''
   };
 
   handleClickNextForm = () => {
-    if (this.state.step < 3 && this.isFormCommitable()) {
-      this.setState(
-        state => {
-          return { step: state.step + 1 };
-        },
-        () => {
-          this.setState({ goToNextTab: this.isFormCommitable() });
-        }
-      );
-    }
+    this.setState(state => {
+      return { step: state.step + 1 };
+    });
   };
 
   handleTabClick = number => {
-    this.setState({ step: number }, () => {
-      this.setState({ goToNextTab: this.isFormCommitable() });
-    });
+    this.setState({ step: number });
   };
 
   handleChangeForm = (key, value) => {
-    this.setState({ [key]: value }, () => {
-      this.setState({ goToNextTab: this.isFormCommitable() });
-    });
+    this.setState({ [key]: value });
   };
 
   isFormCommitable = () => {
@@ -82,7 +70,6 @@ export default class App extends Component {
 
   render() {
     const formContent = this.renderForm(),
-      btnIsNotDisabled = this.state.goToNextTab,
       tab = ['Personal information', 'Card information', 'Finish'];
 
     return (
@@ -106,11 +93,7 @@ export default class App extends Component {
         </div>
         <div className="form-content">{formContent}</div>
         <div className="button-panel">
-          <button
-            className="button-next"
-            onClick={this.handleClickNextForm}
-            disabled={!btnIsNotDisabled}
-          >
+          <button className="button-next" onClick={this.handleClickNextForm}>
             Next
           </button>
         </div>
