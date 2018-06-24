@@ -93,7 +93,11 @@ export default class App extends Component {
         </div>
         <div className="form-content">{formContent}</div>
         <div className="button-panel">
-          <button className="button-next" onClick={this.handleClickNextForm}>
+          <button
+            className="button-next"
+            onClick={this.handleClickNextForm}
+            disabled={!this.isFormCommitable()}
+          >
             Next
           </button>
         </div>
