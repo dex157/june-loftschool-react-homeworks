@@ -16,7 +16,6 @@ class Chat extends Component {
         messages: [...prevState.messages, { text: prevState.messageInput }],
         messageInput: ''
       }));
-      event.target.value = '';
     }
   };
 
@@ -27,6 +26,7 @@ class Chat extends Component {
           className="input-message"
           onKeyPress={this.sendMessageOnEnter}
           onChange={this.changeInputMessage}
+          value={this.state.messageInput}
         />
         <br />
         <br />
