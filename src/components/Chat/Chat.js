@@ -18,12 +18,10 @@ class Chat extends Component {
   }
 
   sendMessageOnEnter() {
-    this.setState(
-      {
-        messages: this.state.messages.concat({ text: this.state.messageInput }),
-        messageInput: ''
-      }
-    );
+    this.setState({
+      messages: this.state.messages.concat({ text: this.state.messageInput }),
+      messageInput: ''
+    });
   }
 
   render() {
@@ -33,8 +31,10 @@ class Chat extends Component {
           type="text"
           className="input-message"
           value={this.state.messageInput}
-          onKeyPress={ e => {
-            return e.key !== 'Enter' ? null : this.sendMessageOnEnter();
+          onKeyPress={e => {
+            if (e.key !== 'Enter') {
+              this.sendMessageOnEnter();
+            }
           }}
           onChange={e => {
             this.changeInputMessage(e);
