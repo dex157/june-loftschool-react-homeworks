@@ -3,22 +3,27 @@ import React, { Component } from 'react';
 import './Step.css';
 
 class Step extends Component {
-  state = {};
+  handleClick = () => {
+    const { isClickable, number } = this.props;
+
+    if (!isClickable) {
+      return;
+    }
+
+    this.props.onClick(number);
+  };
+
   render() {
+    const { number, children, isClickable, isSelected } = this.props;
     return (
-      <div className="tab-panel">
-        <div className="step step-selected">
-          <p className="step__number">1</p>
-          <p className="step__title">Personal Information</p>
-        </div>
-        <div className="step">
-          <p className="step__number">2</p>
-          <p className="step__title">Card Information</p>
-        </div>
-        <div className="step">
-          <p className="step__number">3</p>
-          <p className="step__title">Finish</p>
-        </div>
+      <div
+        className={`step 
+          ${isClickable && 'step-clickable'} 
+          ${isSelected && 'step-selected'}`}
+        onClick={this.handleClick}
+      >
+        <span className="step__number">{number}</span>
+        <span className="step__title">{children}</span>
       </div>
     );
   }
