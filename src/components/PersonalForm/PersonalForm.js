@@ -4,11 +4,9 @@ import './PersonalForm.css';
 class PersonalForm extends Component {
 
   handleChangeForm = event => {
-    let simulateFn = this.props.onChangeForm;
-    if (simulateFn) {
-      simulateFn(event.target.name, event.target.value);
-    } else {
-      this.setState(() => (event.target.name = event.target.value));
+    const {onChangeForm} = this.props;
+    if (onChangeForm) {
+      onChangeForm(event.target.name, event.target.value);
     }
   };
 

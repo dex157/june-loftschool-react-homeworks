@@ -3,29 +3,30 @@ import './Step.css';
 
 class Step extends Component {
   handleClick = () => {
-    if (this.props.isClickable) {
-      let simulateFn = this.props.onClick;
-      if (simulateFn) {
-        simulateFn(this.props.number);
+    const {isClickable, number, onClick} = this.props;
+    if (isClickable) {
+      if (onClick) {
+        onClick(number);
       }
     }
   };
 
   render() {
+    const {isSelected, isClickable, number, children} = this.props
     return (
       <div
         className={
           'step' +
-          (this.props.isSelected
+          (isSelected
             ? ' step-selected'
-            : this.props.isClickable
+            : isClickable
               ? ' step-clickable'
               : '')
         }
         onClick={this.handleClick}
       >
-        <div className="step__number">{this.props.number}</div>
-        <div className="step__title">{this.props.children}</div>
+        <div className="step__number">{number}</div>
+        <div className="step__title">{children}</div>
       </div>
     );
   }
