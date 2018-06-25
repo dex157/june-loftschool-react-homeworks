@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Step from 'components/Step';
 import CardForm from 'components/CardForm';
