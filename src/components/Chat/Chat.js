@@ -33,8 +33,8 @@ class Chat extends Component {
           type="text"
           className="input-message"
           value={this.state.messageInput}
-          onKeyPress={e => {
-            e.key !== 'Enter' ? null : this.sendMessageOnEnter();
+          onKeyPress={ e => {
+            return e.key !== 'Enter' ? null : this.sendMessageOnEnter();
           }}
           onChange={e => {
             this.changeInputMessage(e);
