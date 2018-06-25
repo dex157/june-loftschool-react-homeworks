@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./Step.css";
+import React, { Component } from 'react';
+import './Step.css';
 
 export default class Step extends Component {
   handleClick = () => {
@@ -16,8 +16,15 @@ export default class Step extends Component {
 
     return (
       <div
-        className={isSelected ? "step step-selected" : "step" && isClickable ? "step step-clickable" : "step"}
-        onClick={this.handleClick}>
+        className={
+          isSelected
+            ? 'step step-selected'
+            : 'step' && isClickable
+              ? 'step step-clickable'
+              : 'step'
+        }
+        onClick={this.handleClick}
+      >
         <p className="step__number">{this.props.number}</p>
         <p className="step__title">{this.props.children}</p>
       </div>

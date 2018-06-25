@@ -1,36 +1,28 @@
-import React, { Component } from "react";
-import "./App.css";
-import PersonalForm from "../PersonalForm";
-import CardForm from "../CardForm";
-import Step from "../Step";
+import React, { Component } from 'react';
+import './App.css';
+import PersonalForm from '../PersonalForm';
+import CardForm from '../CardForm';
+import Step from '../Step';
 
 export default class App extends Component {
   state = {
     step: 1,
-    firstName: "",
-    lastName: "",
-    email: "",
-    cardNumber: "",
-    stepName: ["Personal information", "Card information", "Finish"]
+    firstName: '',
+    lastName: '',
+    email: '',
+    cardNumber: '',
+    stepName: ['Personal information', 'Card information', 'Finish']
   };
 
   handleClickNextForm = () => {
     let step = this.state.step;
 
-    if (this.isFormCommitable()) {
-      this.setState({
-        step: step + 1
-      });
-    } else {
-      if (step === 1) {
-        document.querySelector("[name=\"email\"]").focus();
-      } else if (step === 2) {
-        document.querySelector("[name=\"cardNumber\"]").focus();
-      }
-    }
+    this.setState({
+      step: step + 1
+    });
   };
 
-  handleTabClick = (step) => {
+  handleTabClick = step => {
     this.setState({
       step: step
     });
@@ -50,7 +42,12 @@ export default class App extends Component {
     let cardNumber = this.state.cardNumber;
 
     if (step === 1) {
-      return firstName !== "" && lastName !== "" && email !== "" && email.includes("@");
+      return (
+        firstName !== '' &&
+        lastName !== '' &&
+        email !== '' &&
+        email.includes('@')
+      );
     } else if (step === 2) {
       return cardNumber.length === 16;
     }
@@ -61,18 +58,23 @@ export default class App extends Component {
 
     if (step === 1) {
       return (
-        <PersonalForm firstName={this.state.firstName} lastName={this.state.lastName} email={this.state.email}
-                      onChangeForm={this.handleChangeForm}/>
+        <PersonalForm
+          firstName={this.state.firstName}
+          lastName={this.state.lastName}
+          email={this.state.email}
+          onChangeForm={this.handleChangeForm}
+        />
       );
     } else if (step === 2) {
       return (
-        <CardForm cardNumber={this.state.cardNumber} onChangeForm={this.handleChangeForm}
-                  onChangeTimeOver={this.handleChangeTimeOver}/>
+        <CardForm
+          cardNumber={this.state.cardNumber}
+          onChangeForm={this.handleChangeForm}
+          onChangeTimeOver={this.handleChangeTimeOver}
+        />
       );
     } else if (step === 3) {
-      return (
-        <p data-test="congratulations">Поздравляем!</p>
-      );
+      return <p data-test="congratulations">Поздравляем!</p>;
     }
   };
 
@@ -80,22 +82,21 @@ export default class App extends Component {
     let step = this.state.step;
 
     if (step === 1) {
-      return "Персональная информация";
+      return 'Персональная информация';
     } else if (step === 2) {
-      return "Номер карты";
+      return 'Номер карты';
     } else if (step === 3) {
-      return "";
+      return '';
     }
-
   };
 
   render() {
     let stepName = this.state.stepName;
     let step = this.state.step;
-    let isSelected = (arg) => {
+    let isSelected = arg => {
       return step === +arg + 1;
     };
-    let isClickable = (arg) => {
+    let isClickable = arg => {
       return step > +arg + 1;
     };
 
@@ -115,12 +116,8 @@ export default class App extends Component {
           ))}
         </div>
         <div className="form-content">
-          <div data-test="personal-form">
-            <h1 className="title">
-              {this.title()}
-            </h1>
-            {this.renderForm()}
-          </div>
+          <h1 className="title">{this.title()}</h1>
+          {this.renderForm()}
         </div>
         <div className="button-panel">
           <button
