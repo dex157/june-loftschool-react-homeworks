@@ -28,7 +28,19 @@ const students = [
   'erven1985',
   'Vostenzuk',
   'OlBol',
-  'golah30'
+  'golah30',
+  'necrolyss',
+  'flightik',
+  'NikitaSmithTheOne',
+  'IvanOpanasiuk',
+  'notherkappa',
+  'maxim1989',
+  'Ivan3008',
+  'IrinaKondrateva',
+  'dkrasheninnikov',
+  'AntonLantukh',
+  'anton-yakovlev',
+  'eugenedan'
 ];
 
 async function main() {
