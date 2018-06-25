@@ -6,6 +6,7 @@ class PersonalForm extends React.Component {
 	state={
 
 	}
+
 	render(){
 		return(
 			<div className='personal-form'>
