@@ -1,5 +1,5 @@
 import React from 'react';
-import CardForm from './CardForm';
+import CardForm from 'components/CardForm';
 import { shallow, mount } from 'enzyme';
 
 describe('Компонент CardForm', () => {

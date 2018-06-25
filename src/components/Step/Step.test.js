@@ -1,5 +1,5 @@
 import React from 'react';
-import Step from './Step';
+import Step from 'components/Step';
 import { shallow } from 'enzyme';
 
 describe('Компонент Step', () => {
