@@ -1,6 +1,10 @@
 .container {
   width: 600px;
   margin: 20px auto 0;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #eee;
+  font-family: Arial, sans-serif, serif;
 }
 
 .tab-panel {
@@ -19,11 +23,19 @@
 
 .button-next {
   margin-left: auto;
-  background-color: blue;
+  background-color: green;
   color: white;
+  font-size: 18px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  min-width: 100px;
+  cursor: pointer;
+  box-shadow: none;
 }
 
 .button-next:disabled {
   background-color: #eee;
   color: black;
+  opacity: 0.5;
+  cursor: auto;
 }
