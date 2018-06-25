@@ -1,0 +1,13 @@
+.video-player {
+  background: url('./bg.jpg');
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.video-player__source {
+  width: 600px;
+  height: 300px;
+}

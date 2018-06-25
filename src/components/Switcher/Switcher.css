@@ -1,0 +1,20 @@
+.switcher {
+  height: 100%;
+}
+
+.component-list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.component-list__name {
+  margin-right: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.component-wrapper {
+  height: 100%;
+}
