@@ -15,7 +15,7 @@ class Chat extends React.Component {
           <div className="message-list">
             <div className="messages">
               {this.state.messages.map((message, key) => (
-                <Message text={message} key={key} />
+                <Message text={message.text} key={key} />
               ))}
             </div>
           </div>
@@ -37,7 +37,7 @@ class Chat extends React.Component {
   sendMessageOnEnter = event => {
     if (event.key === 'Enter') {
       this.setState(() => ({
-        messages: [...this.state.messages, this.state.messageInput],
+        messages: [...this.state.messages, { text: this.state.messageInput }],
         messageInput: ''
       }));
     }
