@@ -21,7 +21,6 @@ class Chat extends Component {
   render() {
     const messages = this.state.messages;
 
-    //{this.state.messages && <Message text={this.state.messages} />}
     return (
       <div className="chat">
         <div className="message-list">
