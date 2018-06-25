@@ -5,6 +5,10 @@ import './Switcher.css';
 // а так же работать с child.type.name и child.type.displayName
 
 class Switcher extends Component {
+  state = {
+    selectedChild: 0
+  }
+
   render() {
     return null;
   }
