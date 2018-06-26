@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class CardNumberInput extends Component {
-  
-
   constructor(props) {
     super(props);
     this.state = {
@@ -10,7 +8,7 @@ class CardNumberInput extends Component {
     };
   }
 
-  format = (number) => {
+  format = number => {
     if (!number) return '';
 
     const numberString = String(number);
@@ -18,27 +16,25 @@ class CardNumberInput extends Component {
     let newNumber = '';
 
     for (let i = 1; i <= numberString.length; i++) {
-      newNumber += numberString[i-1];
+      newNumber += numberString[i - 1];
       if (i % 4 === 0) {
         newNumber += ' ';
       }
     }
 
     return newNumber;
-  }
+  };
 
-  normalize = (number) => {
+  normalize = number => {
     return number.split(' ').join('');
-  }
+  };
 
-  componentWillReceiveProps = (nextProps) => {
-    this.setState({number: this.format(nextProps.cardNumber)});
-  }
+  componentWillReceiveProps = nextProps => {
+    this.setState({ number: this.format(nextProps.cardNumber) });
+  };
 
   render() {
-    return (
-      <input type="text"/>
-    );
+    return <input type="text" />;
   }
 }
 
