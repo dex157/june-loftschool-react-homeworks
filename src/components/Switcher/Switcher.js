@@ -10,9 +10,26 @@ class Switcher extends Component {
   };
 
   render() {
+    const { selectedChild } = this.state,
+      { children } = this.props;
+
     return (
+      <Fragment>
         <ul className="component-list">
+          {React.Children.map(children, (item, idx) => {
+            const name = item.type.displayName || item.type.name;
+
+            return (
+              <li className="component-list__name" data-id={idx} key={name}>
+                {name}
+              </li>
+            );
+          })}
         </ul>
+        {React.Children.map(children, (item, idx) => {
+          if (selectedChild === idx) return item;
+        })}
+      </Fragment>
     );
   }
 }

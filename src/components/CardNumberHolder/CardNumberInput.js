@@ -4,7 +4,7 @@ class CardNumberInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      number: this.format(props.cardNumber)
+      number: this.format(this.props.cardNumber)
     };
   }
 
