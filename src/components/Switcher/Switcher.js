@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './Switcher.css';
 
 // Для работы этой компоненты нужно использовать методы React.Children.toArray
@@ -7,10 +7,13 @@ import './Switcher.css';
 class Switcher extends Component {
   state = {
     selectedChild: 0
-  }
+  };
 
   render() {
-    return null;
+    return (
+        <ul className="component-list">
+        </ul>
+    );
   }
 }
 
