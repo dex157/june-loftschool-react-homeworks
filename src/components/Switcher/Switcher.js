@@ -32,7 +32,7 @@ class Switcher extends Component {
         <hr />
         <div className="component-wrapper">
           {React.Children.map(children, (child, id) => {
-            if (this.state.selectedChild != id) return;
+            if (String(this.state.selectedChild) !== String(id)) return;
             return child;
           })}
         </div>
