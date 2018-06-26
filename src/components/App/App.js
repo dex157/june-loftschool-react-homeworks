@@ -18,20 +18,24 @@ class App extends Component {
 
   handleClickNextForm = () => {
     this.setState(state => ({
+      ...state,
       step: ++state.step
     }));
   };
 
   handleTabClick = value => {
     this.setState(state => ({
+      ...state,
       step: value
     }));
   };
 
   handleChangeForm = (firtstArg, secondArg) => {
     this.setState(state => ({
+      ...state,
       [firtstArg]: secondArg
     }));
+    console.log(this.state);
   };
 
   isFormCommitable = () => {
@@ -73,6 +77,8 @@ class App extends Component {
       );
     } else if (this.state.step === 3) {
       return <p data-test="congratulations">Поздравляем!</p>;
+    } else {
+      return false;
     }
   };
 

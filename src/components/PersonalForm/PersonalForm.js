@@ -4,11 +4,6 @@ import './PersonalForm.css';
 
 class PersonalForm extends Component {
   state = {
-    inputs: {
-      firstName: '',
-      lastName: '',
-      email: ''
-    },
     correspondance: {
       firstName: 'First name',
       lastName: 'Last name',
@@ -23,13 +18,13 @@ class PersonalForm extends Component {
 
   render() {
     return (
-      <div className="personal-form">
+      <div className="personal-form" data-test="personal-form">
         <Title>Персональная информация</Title>
-        {Object.keys(this.state.inputs).map(fieldname => (
+        {Object.keys(this.state.correspondance).map(fieldname => (
           <input
             key={fieldname}
             name={fieldname}
-            value={this.state[fieldname]}
+            value={this.props[fieldname]}
             placeholder={this.state.correspondance[fieldname]}
             onChange={this.handleChangeForm}
           />

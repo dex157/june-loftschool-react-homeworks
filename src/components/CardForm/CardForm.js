@@ -13,10 +13,11 @@ class CardForm extends Component {
 
   render() {
     return (
-      <div className="card-form">
+      <div className="card-form" data-test="card-form">
         <Title>Номер карты</Title>
         <input
           name="cardNumber"
+          value={this.props.cardNumber}
           placeholder="0000000000000000"
           onChange={this.handleChangeForm}
         />
