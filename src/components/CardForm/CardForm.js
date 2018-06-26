@@ -16,7 +16,7 @@ class CardForm extends Component {
   render() {
     const { cardNumber } = this.props;
     return (
-      <div className="card-form">
+      <div className="card-form" data-test="card-form">
         <input
           type="text"
           name="cardNumber"

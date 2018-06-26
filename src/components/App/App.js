@@ -106,7 +106,7 @@ class App extends Component {
           {stepsList.map((step, i) => stepsComponent(step, i + 1))}
         </div>
 
-        <div className="form-content">
+        <div className="form-content title">
           <Title />
           {this.renderForm()}
         </div>
