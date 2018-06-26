@@ -1,5 +1,7 @@
 .message {
   margin: 5px 0;
+  word-wrap: break-word;
+  width: 100%;
   align-self: left;
   background-color: #5b5bff;
   border-radius: 16px;
