@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default class Message extends React.Component {
-    render() {
-        return (
-            <span className="message">
-                {this.props.text}
-                {this.props.disc}
-            </span>
-        )
-    }
+export default class Message extends Component {
+  render() {
+    const {text} = this.props;
+    return (
+      <span className="message">
+        {text}<br/>
+      </span>
+    );
+  }
 }
