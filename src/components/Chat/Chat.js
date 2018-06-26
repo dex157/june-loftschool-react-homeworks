@@ -40,7 +40,7 @@ export default class Chat extends Component {
     }
 
     this.setState({
-      messages: [...this.state.messages, {"text": this.state.messageInput}],
+      messages: [...this.state.messages, { "text": this.state.messageInput }],
       messageInput: ""
     });
   };
