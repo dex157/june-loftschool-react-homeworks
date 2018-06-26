@@ -29,11 +29,9 @@ class App extends React.Component {
 		]
 	}
 
-	handleSwitch = () => {
+	handleSwitch = (step = 1) => {
 
-		let a = this.state.Steps[0].Step;
-
-		switch(a) {
+		switch(step) {
 			case 1: 
 				return <PersonalForm />;
 			case 2: 
@@ -46,11 +44,11 @@ class App extends React.Component {
 		}
 	}
 
-	handleCLick = () => {
-		this.setState({Step: 1 + this.state.Step})
-	}
+	// handleCLick = () => {
+	// 	// this.setState({Step: 1 + this.state.Step})
+	// }
 
-	// clickStep = (item) => {
+	// clickStep = (step) => {
 	// 	this.setState({Step: item.Step})
 	// }
 
