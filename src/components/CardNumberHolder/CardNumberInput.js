@@ -17,7 +17,7 @@ class CardNumberInput extends Component {
 
     for (let i = 1; i <= numberString.length; i++) {
       newNumber += numberString[i - 1];
-      if (i % 4 === 0) {
+      if (i % 4 === 0 && i < numberString.length) {
         newNumber += ' ';
       }
     }
@@ -30,11 +30,18 @@ class CardNumberInput extends Component {
   };
 
   componentWillReceiveProps = nextProps => {
-    this.setState({ number: this.format(nextProps.cardNumber) });
+    const number = this.normalize(nextProps.cardNumber);
+
+    this.setState({ number: this.format(number) });
   };
 
   render() {
-    return <input type="text" />;
+    const { number } = this.state,
+      { onChange } = this.props;
+
+    return (
+      <input type="text" onChange={onChange} value={number} />
+    );
   }
 }
 

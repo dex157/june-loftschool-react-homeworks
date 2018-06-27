@@ -9,6 +9,10 @@ class Switcher extends Component {
     selectedChild: 0
   };
 
+  handleChangeChild = e => {
+    this.setState({ selectedChild: Number(e.target.dataset.id) });
+  };
+
   render() {
     const { selectedChild } = this.state,
       { children } = this.props;
@@ -20,12 +24,18 @@ class Switcher extends Component {
             const name = item.type.displayName || item.type.name;
 
             return (
-              <li className="component-list__name" data-id={idx} key={name}>
+              <li
+                className="component-list__name"
+                data-id={idx}
+                key={name}
+                onClick={this.handleChangeChild}
+              >
                 {name}
               </li>
             );
           })}
         </ul>
+        <hr />
         {React.Children.map(children, (item, idx) => {
           if (selectedChild === idx) return item;
         })}
