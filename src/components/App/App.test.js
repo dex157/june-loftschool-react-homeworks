@@ -165,7 +165,7 @@ describe('Компонент App', () => {
         expect(wrapper.instance().renderForm).toBeDefined();
       });
 
-      it(`Если state.step === 1 возвращает компонент <PersonalForm firstName={state.firstName} lastName={state.lastName} email={state.email onChangeForm={App.handleChangeForm} />`, () => {
+      it(`Если state.step === 1 возвращает компонент <PersonalForm firstName={state.firstName} lastName={state.lastName} email={state.email} onChangeForm={App.handleChangeForm} />`, () => {
         wrapper.setState({
           step: 1,
           firstName: 'test',
