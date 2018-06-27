@@ -7,39 +7,28 @@ class PersonalForm extends Component {
   };
 
   render() {
-    // const propKeysArr = Object.keys(this.props).slice(0, 3);
-    const { firstName, lastName, email } = this.props;
+    // const propKeysArr = Object.keys(this.props).filter(item => (item !== 'onChangeForm')); Почему при таком написании тесты не проходят???
+    const propKeysArr = ['firstName', 'lastName', 'email'];
 
     return (
       <div className="personal-form" data-test="personal-form">
         <h1 className="title">Персональная информация</h1>
-        {/* {propKeysArr.map(fieldName => (
+        {propKeysArr.map(item => (
           <input
-            key={fieldName}
-            name={fieldName}
-            value={this.props[fieldName]}
-            placeholder={~fieldName.indexOf('N') ? `${fieldName[0].toUpperCase()}${fieldName.slice(1, fieldName.indexOf('N'))} ${fieldName.slice(fieldName.indexOf('N')).toLowerCase()}` : `${fieldName[0].toUpperCase()}${fieldName.slice(1)}`}
+            key={item}
+            name={item}
+            value={this.props[item]}
+            placeholder={
+              ~item.indexOf('N')
+                ? `${item[0].toUpperCase()}${item.slice(
+                    1,
+                    item.indexOf('N')
+                  )} ${item.slice(item.indexOf('N')).toLowerCase()}`
+                : `${item[0].toUpperCase()}${item.slice(1)}`
+            }
             onChange={this.handleChangeForm}
           />
-        ))} */}
-        <input
-          name="firstName"
-          value={firstName}
-          placeholder="First name"
-          onChange={this.handleChangeForm}
-        />
-        <input
-          name="lastName"
-          value={lastName}
-          placeholder="Last name"
-          onChange={this.handleChangeForm}
-        />
-        <input
-          name="email"
-          value={email}
-          placeholder="Email"
-          onChange={this.handleChangeForm}
-        />
+        ))}
       </div>
     );
   }
