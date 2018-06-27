@@ -7,16 +7,22 @@ class Step extends Component {
   };
 
   render() {
-    console.log(this.props.isSelected)
+    let classes;
+    if( this.props.isClickable && this.props.isSelected )
+      classes = 'step step-clickable step-selected';
+    else if(this.props.isClickable && !this.props.isSelected)
+      classes = 'step step-clickable';
+    else if(!this.props.isClickable && this.props.isSelected)
+      classes = 'step step-selected';
+    else 
+      classes = 'step';
+
     return (
       <Fragment>
-        <div
-          className={this.props.isClickable ? 'step step-clickable' : 'step'}
-        >
-        {this.props.isSelected ? <div className="step-selected" /> : null}
-        </div>
+        <div className={classes}>
         <div className="step__number">{this.props.number}</div>
         <div className="step__title">{this.props.children}</div>
+        </div>
       </Fragment>
     );
   }
