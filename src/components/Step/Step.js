@@ -18,7 +18,7 @@ class Step extends Component {
 
     return (
       <Fragment>
-        <div className={classes}>
+        <div className={classes} onClick={this.handleClick}>
           <div className="step__title">{this.props.children}</div>
           <div className="step__number">{this.props.number}</div>
         </div>
