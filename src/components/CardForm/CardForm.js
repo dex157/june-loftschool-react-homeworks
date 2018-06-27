@@ -13,6 +13,7 @@ class CardForm extends Component {
         <div className="card-form">
           <input
             value={this.props.cardNumber}
+            placeholder="Card number"
             name="cardNumber"
             onChange={e => this.handleChangeForm(e)}
           />

@@ -99,17 +99,16 @@ class App extends Component {
       <Fragment>
         <div className="container">
           <div className="tab-panel">
-            <div className="form-content">
-              <div className="button-panel">
-                <button
-                  className="button-next"
-                  onClick={this.handleClickNextForm}
-                >
-                  Next
-                  <Step />
-                  {this.renderForm()}
-                </button>
-              </div>
+            <div className="form-content">{this.renderForm()}</div>
+            <div className="button-panel">
+              <button
+                className="button-next"
+                onClick={this.handleClickNextForm}
+                disabled={!this.isFormCommitable()}
+              >
+                Next
+              </button>
+              <Step number={this.state.step}>Step number :</Step>
             </div>
           </div>
         </div>
