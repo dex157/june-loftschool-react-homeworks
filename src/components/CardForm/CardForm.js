@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import Title from '../Title';
 import './CardForm.css';
 
@@ -14,7 +14,7 @@ class CardForm extends PureComponent {
   render() {
     const { cardNumber } = this.props;
     return (
-      <Fragment>
+      <div data-test="card-form">
         <Title>Номер карты</Title>
         <div className="card-form">
           <input
@@ -24,7 +24,7 @@ class CardForm extends PureComponent {
             onChange={this.handleChangeForm}
           />
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

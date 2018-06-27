@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Step from '../Step';
-
 import PersonalForm from '../PersonalForm';
 import CardForm from '../CardForm';
 
