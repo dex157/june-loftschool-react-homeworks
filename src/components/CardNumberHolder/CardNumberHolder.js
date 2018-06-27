@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class CardNumberHolder extends Component {
+  componentDidMount() {
+    console.log('DidMount - CardNumberHolder');
+  }
+
   render() {
-    return (
-      null
-    );
+    return <input type="number" />;
   }
 }
 

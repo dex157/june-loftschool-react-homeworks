@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class CardNumberInput extends Component {
-
   render() {
     return null;
   }
