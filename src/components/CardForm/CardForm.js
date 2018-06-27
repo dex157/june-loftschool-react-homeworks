@@ -9,8 +9,6 @@ class CardForm extends PureComponent {
     onChangeForm(name, value);
   };
 
-  componentWillUnmount = () => {};
-
   render() {
     const { cardNumber } = this.props;
     return (
