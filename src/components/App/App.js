@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PersonalForm from '../PersonalForm';
 import CardForm from '../CardForm';
+import Step from '../Step';
 
 class App extends Component {
   state = {
@@ -105,6 +106,8 @@ class App extends Component {
                   onClick={this.handleClickNextForm}
                 >
                   Next
+                  <Step />
+                  {this.renderForm()}
                 </button>
               </div>
             </div>

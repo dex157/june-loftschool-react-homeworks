@@ -9,9 +9,21 @@ class PersonalForm extends Component {
     return (
       <Fragment>
         <form className="personal-form">
-          <input name="firstName" onChange={e => this.handleChangeForm(e)} />
-          <input name="lastName" onChange={e => this.handleChangeForm(e)} />
-          <input name="email" onChange={e => this.handleChangeForm(e)} />
+          <input
+            name="firstName"
+            onChange={e => this.handleChangeForm(e)}
+            placeholder="First name"
+          />
+          <input
+            name="lastName"
+            onChange={e => this.handleChangeForm(e)}
+            placeholder="Last name"
+          />
+          <input
+            name="email"
+            onChange={e => this.handleChangeForm(e)}
+            placeholder="Email"
+          />
         </form>
       </Fragment>
     );
