@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Message from '../Message/Message';
+import Message from '../Message';
 import './Chat.css';
 
-export default class Chat extends Component {
+class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,38 +10,37 @@ export default class Chat extends Component {
       messageInput: ''
     };
   }
-  changeInputMessage = e => {
-    const value = e.target.value;
-    this.setState(state => ({
-      messageInput: value
-    }));
-  };
 
-  sendMessageOnEnter = e => {
-    if (e.key === 'Enter') {
-      let message = [{ text: this.state.messageInput }];
-      this.setState(state => ({
-        messages: this.state.messages.concat(message),
+  changeInputMessage = event => {
+    this.setState({ messageInput: event.target.value });
+  };
+  sendMessageOnEnter = event => {
+    if (event.key === 'Enter')
+      this.setState(() => ({
+        messages: [...this.state.messages, { text: this.state.messageInput }],
         messageInput: ''
       }));
-    }
   };
   render() {
     return (
       <div className="chat">
-        <div className="message_list">
-          {this.state.messages.map((msg, index) => {
-            return <Message key={index} text={msg.text} />;
-          })}
+        <div>
+          <input
+            type="text"
+            value={this.state.messageInput}
+            className="input-message"
+            onChange={this.changeInputMessage}
+            onKeyPress={this.sendMessageOnEnter}
+          />
+          <div className="messages">
+            {this.state.messages.map((msg, index) => (
+              <Message text={msg.text} key={index} />
+            ))}
+          </div>
         </div>
-        <input
-          className="input-message"
-          type="text"
-          value={this.state.messageInput}
-          onChange={this.changeInputMessage}
-          onKeyPress={this.sendMessageOnEnter}
-        />
       </div>
     );
   }
 }
+
+export default Chat;
