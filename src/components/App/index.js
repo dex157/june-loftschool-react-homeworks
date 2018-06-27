@@ -7,24 +7,25 @@ import './App.css';
 class App extends React.Component {
 
 	state = {
+		step: 1,
 		Steps: [
 			{
 				title: 'Personal information',
 				isClickable: true,
 				isSelected: true,
-				Step: 1
+				step: 1
 			},
 			{
 				title: 'Card information',
 				isClickable: false,
 				isSelected: false,
-				Step: 2
+				step: 2
 			},
 			{
 				title: 'Finish',
 				isClickable: false,
 				isSelected: false,
-				Step: 3
+				step: 3
 			}
 		]
 	}
@@ -44,22 +45,28 @@ class App extends React.Component {
 		}
 	}
 
-	// handleCLick = () => {
-	// 	// this.setState({Step: 1 + this.state.Step})
-	// }
+	handleCLick = () => {
+		const {step} = this.state;
+		
+		if(step <= 2 ) {
+			this.setState({step: step + 1})
+		}
+		
+	}
 
-	// clickStep = (step) => {
-	// 	this.setState({Step: item.Step})
-	// }
+	clickStep = (item) => {
+		const step = item.step;
+		this.setState({Step: step})
+	}
 
 	render() {
 		return(
 			<div className='container'>
 				<div className='tab-panel'>
-					{this.state.Steps.map(item => <Step title={item.title} isSelected={item.isSelected} isClickable={item.isClickable} onClick={this.clickStep}/>)}
+					{this.state.Steps.map(item => <Step title={item.title} isSelected={item.isSelected} isClickable={item.isClickable} onClick={(item) => this.clickStep(item)}/>)}
 				</div>
 				<div className='form-content'>
-					{this.handleSwitch()}
+					{this.handleSwitch(this.state.step)}
 				</div>
 				<div className='button-panel'>
 					<button className='button-next' onClick={this.handleCLick}>next</button>

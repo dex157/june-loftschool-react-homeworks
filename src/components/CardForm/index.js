@@ -11,7 +11,6 @@ class CardForm extends React.Component {
 			<div className='card-form'>
 				<Title title='Номер карты'/>
 				<input type="text" placeholder="0000000000000000"/>
-
 			</div>
 		)
 	}
