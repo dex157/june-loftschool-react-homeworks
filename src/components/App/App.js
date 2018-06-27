@@ -81,6 +81,7 @@ class App extends Component {
 
   renderForm = () => {
     const { step, firstName, lastName, email, cardNumber } = this.state;
+    console.log(this.state)
     if (step === 1)
       return (
         <PersonalForm

@@ -13,16 +13,19 @@ class PersonalForm extends Component {
             name="firstName"
             onChange={e => this.handleChangeForm(e)}
             placeholder="First name"
+            value={this.props.firstName}
           />
           <input
             name="lastName"
             onChange={e => this.handleChangeForm(e)}
             placeholder="Last name"
+            value={this.props.lastName}
           />
           <input
             name="email"
             onChange={e => this.handleChangeForm(e)}
             placeholder="Email"
+            value={this.props.email}
           />
         </form>
       </Fragment>
