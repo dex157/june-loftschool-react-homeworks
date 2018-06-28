@@ -1,3 +1,8 @@
+body {
+  display: block;
+  margin: 8px;
+}
+
 .container {
   width: 600px;
   margin: 20px auto 0;
