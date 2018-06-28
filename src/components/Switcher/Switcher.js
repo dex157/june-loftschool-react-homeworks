@@ -9,32 +9,40 @@ class Switcher extends Component {
     selectedChild: 0
   };
 
-  handleChangeChild = (event) => {
-    this.setState({selectedChild: event.target.dataset.id});
+  handleChangeChild = event => {
+    this.setState({ selectedChild: event.target.dataset.id });
   };
 
   render() {
-    const { selectedChild } = this.state;
-    const {children} = this.props;
-    const navItems = ['VideoPlayer', 'Card number formating', 'ModalButton'];
+    const { selectedChild } = this.state,
+      { children } = this.props;
 
     return (
       <div className="switcher">
         <nav>
           <ul className="component-list">
-            {navItems.map((item, index) => (
-              <li key={index} className="component-list__name" data-id={index} onClick={this.handleChangeChild}>
-                {item}
-              </li>
-            ))}
+            {React.Children.map(children, (item, index) => {
+              const name = item.type.displayName || item.type.name;
+
+              return (
+                <li
+                  key={index}
+                  className="component-list__name"
+                  data-id={index}
+                  onClick={this.handleChangeChild}
+                >
+                  {name}
+                </li>
+              );
+            })}
           </ul>
         </nav>
-        <hr></hr>
+        <hr />
         <div className="component-wrapper">
-        {React.Children.toArray(children)[selectedChild]}
+          {React.Children.toArray(children)[selectedChild]}
         </div>
       </div>
-    )
+    );
   }
 }
 

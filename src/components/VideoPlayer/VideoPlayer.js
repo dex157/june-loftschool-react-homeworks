@@ -4,7 +4,7 @@ import './VideoPlayer.css';
 
 class VideoPlayer extends PureComponent {
   video = React.createRef();
-  
+
   handlerVideoPlay = () => {
     this.video.current.play();
   };
@@ -12,12 +12,12 @@ class VideoPlayer extends PureComponent {
   handlerVideoPause = () => {
     this.video.current.pause();
   };
-  
+
   render() {
     return (
       <div className="video-player">
         <video className="video-player__source" ref={this.video}>
-          <source src={videoFile} type="video/mp4"></source>
+          <source src={videoFile} type="video/mp4" />
         </video>
         <div>
           <button onClick={this.handlerVideoPlay}>Play</button>

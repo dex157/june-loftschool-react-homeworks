@@ -6,17 +6,17 @@ class ModalButton extends Component {
   state = {
     isModalShow: false
   };
-  
+
   hideModal = () => {
-    this.setState({isModalShow: false});
+    this.setState({ isModalShow: false });
   };
 
   showModal = () => {
-    this.setState({isModalShow: true});
+    this.setState({ isModalShow: true });
   };
 
   render() {
-  const {isModalShow} = this.state;
+    const { isModalShow } = this.state;
 
     return (
       <div>
@@ -32,7 +32,7 @@ class ModalButton extends Component {
           </div>
         </Modal>
       </div>
-    )
+    );
   }
 }
 
