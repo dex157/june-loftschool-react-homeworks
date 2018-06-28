@@ -1,0 +1,5 @@
+[0627/221610.623:ERROR:scoped_process_suspend.cc(31)] NtSuspendProcess: Попытка доступа к процессу, выполняющему процедуру завершения. (0xc000010a)
+[0627/221610.643:ERROR:process_info.cc(118)] ReadProcessMemory bool __cdecl crashpad::(anonymous namespace)::ReadStruct(HANDLE, crashpad::WinVMAddress, T *) [T = crashpad::process_types::PEB<crashpad::process_types::internal::Traits64>]: Запрос ReadProcessMemory или WriteProcessMemory был выполнен только частично. (0x12B)
+[0627/221610.646:ERROR:process_info.cc(545)] ReadProcessData failed
+[0627/221610.649:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
+[0627/221610.649:ERROR:exception_snapshot_win.cc(88)] thread ID 18336 not found in process
