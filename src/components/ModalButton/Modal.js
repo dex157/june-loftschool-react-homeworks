@@ -1,8 +1,11 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
+import ReactDOM from 'react-dom';
 
-class Modal extends Component {
+class Modal extends PureComponent {
   render() {
-    return null;
+    const { children } = this.props;
+
+    return ReactDOM.createPortal(children, document.getElementById('portal'));
   }
 }
 

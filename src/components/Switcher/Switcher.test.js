@@ -1,6 +1,6 @@
 import React from 'react';
 import Switcher from '../Switcher';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('Компонент Switcher', () => {
   const A = () => <div />;
@@ -31,7 +31,7 @@ describe('Компонент Switcher', () => {
   });
 
   it('Рендерит второго ребенка если state.selectedChild == 1', () => {
-    wrapper.setState({selectedChild: 1});
+    wrapper.setState({ selectedChild: 1 });
     wrapper.update();
 
     expect(wrapper.find(BComponent)).toHaveLength(1);
