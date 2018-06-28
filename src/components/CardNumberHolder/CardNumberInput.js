@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
 
-class CardNumberInput extends Component {
-  state = {
-    number: ''
-  };
+export default class CardNumberInput extends Component {
+  constructor(props) {
+    super(props);
+    this.refInput = React.createRef();
+    this.state = {
+      number: props.cardNumber ? this.format(props.cardNumber) : ''
+    };
+  }
 
   componentWillReceiveProps(nextProps) {
-    this.setState(state => ({
-      number: this.format(nextProps)
-    }));
+    const { cardNumber } = nextProps;
+    this.stateChange(cardNumber);
   }
+
+  stateChange = cardNumber => {
+    this.setState(
+      state => ({
+        number: this.format(cardNumber)
+      }),
+      () => (this.refInput.current.value = this.state.number)
+    );
+  };
 
   format = value => {
     if (value === null) {
       return '';
     }
     const newValue = value.toString();
-    return newValue
+    const modified = newValue
       .replace(/[^\dA-Z]/g, '')
-      .replace(/(\d{4})/g, '$1 ')
+      .replace(/(.{4})/g, '$1 ')
       .trim();
+    return modified;
   };
 
   normalize = value => {
@@ -29,8 +42,11 @@ class CardNumberInput extends Component {
 
   render() {
     const { onChange } = this.props;
-    return <input onChange={onChange} />;
+    return (
+      <input
+        ref={this.refInput}
+        onChange={event => onChange(this.normalize(event.target.value))}
+      />
+    );
   }
 }
-
-export default CardNumberInput;

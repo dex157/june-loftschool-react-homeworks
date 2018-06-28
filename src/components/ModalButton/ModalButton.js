@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from './Modal.js';
 import './ModalButton.css';
 
-class ModalButton extends Component {
+export default class ModalButton extends Component {
   state = {
     isModalShow: false
   };
@@ -28,5 +28,3 @@ class ModalButton extends Component {
     );
   }
 }
-
-export default ModalButton;
