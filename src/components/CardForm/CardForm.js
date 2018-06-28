@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import './CardForm.css';
 
 export class CardForm extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleChangeForm = event => {
     this.props.onChangeForm(event.target.name, event.target.value);
   };

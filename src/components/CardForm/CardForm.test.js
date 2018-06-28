@@ -4,9 +4,7 @@ import { shallow, mount } from 'enzyme';
 
 describe('Компонент CardForm', () => {
   describe('Рендер', () => {
-    const wrapper = shallow(
-      <CardForm onChangeTimeOver={jest.fn()} />
-    );
+    const wrapper = shallow(<CardForm onChangeTimeOver={jest.fn()} />);
 
     describe('Должен присутствовать элемент с классом ', () => {
       it('.card-form', () => {
@@ -14,9 +12,7 @@ describe('Компонент CardForm', () => {
       });
       it('.card-form input[name="cardNumber"]', () => {
         expect(
-          wrapper.find(
-            '.card-form input[name="cardNumber"]'
-          )
+          wrapper.find('.card-form input[name="cardNumber"]')
         ).toHaveLength(1);
       });
 
@@ -29,14 +25,12 @@ describe('Компонент CardForm', () => {
           />
         );
 
-        wrapper
-          .find('input[name="cardNumber"]')
-          .simulate('change', {
-            target: {
-              value: 'test-value',
-              name: 'test-name'
-            }
-          });
+        wrapper.find('input[name="cardNumber"]').simulate('change', {
+          target: {
+            value: 'test-value',
+            name: 'test-name'
+          }
+        });
 
         expect(onChangeFormMock).toHaveBeenCalledTimes(1);
         expect(onChangeFormMock).toHaveBeenLastCalledWith(
@@ -57,9 +51,7 @@ describe('Компонент CardForm', () => {
 
       describe('handleChangeForm', () => {
         it('Присутствует', () => {
-          expect(
-            wrapper.instance().handleChangeForm
-          ).toBeDefined();
+          expect(wrapper.instance().handleChangeForm).toBeDefined();
         });
         it('При вызове вызывает функцию onChangeForm переданную через props, аргументами name и value становятся значения из event.target', () => {
           wrapper.instance().handleChangeForm({
@@ -77,16 +69,12 @@ describe('Компонент CardForm', () => {
       });
       describe('componentWillUnmount', () => {
         it('Присутствует', () => {
-          expect(
-            wrapper.instance().componentWillUnmount
-          ).toBeDefined();
+          expect(wrapper.instance().componentWillUnmount).toBeDefined();
         });
       });
       describe('constructor', () => {
         it('Присутствует', () => {
-          expect(
-            wrapper.instance().constructor
-          ).toBeDefined();
+          expect(wrapper.instance().constructor).toBeDefined();
         });
       });
     });
