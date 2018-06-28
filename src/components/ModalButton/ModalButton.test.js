@@ -1,7 +1,7 @@
 import React from 'react';
 import ModalButton from './ModalButton';
 import Modal from './Modal';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('Компонент ModalButton', () => {
   const wrapper = shallow(<ModalButton />);
@@ -19,7 +19,7 @@ describe('Компонент ModalButton', () => {
       });
 
       it('При вызове устанавливает state.isModalShow = false', () => {
-        wrapper.setState({isModalShow: true});
+        wrapper.setState({ isModalShow: true });
         wrapper.instance().hideModal();
         wrapper.update();
         expect(wrapper.state().isModalShow).toBeFalsy();
@@ -30,7 +30,7 @@ describe('Компонент ModalButton', () => {
         expect(wrapper.instance().showModal).toBeDefined();
       });
       it('При вызове устанавливает state.isModalShow = true', () => {
-        wrapper.setState({isModalShow: false});
+        wrapper.setState({ isModalShow: false });
         wrapper.instance().showModal();
         wrapper.update();
         expect(wrapper.state().isModalShow).toBeTruthy();
@@ -38,7 +38,7 @@ describe('Компонент ModalButton', () => {
     });
     describe('render', () => {
       it('Если state.isModalShow = true показывает компонент Modal', () => {
-        wrapper.setState({isModalShow: true});
+        wrapper.setState({ isModalShow: true });
         wrapper.update();
 
         expect(wrapper.find(Modal)).toHaveLength(1);
