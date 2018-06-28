@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
-import CardNumberHolder from '../CardNumberHolder/CardNumberHolder';
-import ModalButton from '../ModalButton/ModalButton';
-
 import './Switcher.css';
 
 // Для работы этой компоненты нужно использовать методы React.Children.toArray
@@ -13,26 +9,12 @@ class Switcher extends Component {
     selectedChild: 0
   };
 
-  componentDidMount() {
-    console.log(this.state.selectedChild);
-  }
-
-  renderForm = () => {
-    const { selectedChild } = this.state;
-
-    const videoPlayer = <VideoPlayer />;
-
-    const cardNumberHolder = <CardNumberHolder />;
-
-    const modalButton = <ModalButton />;
-
-    return selectedChild === 0
-      ? videoPlayer
-      : selectedChild === 1
-        ? cardNumberHolder
-        : selectedChild === 2
-          ? modalButton
-          : null;
+  handleChangeChild = event => {
+    const target = event.target;
+    const id = target.dataset.id;
+    this.setState({
+      selectedChild: id
+    });
   };
 
   clickHandler = event => {
@@ -43,29 +25,30 @@ class Switcher extends Component {
   };
 
   render() {
-    const stepList = ['Video Player', 'Card number formating', 'ModalButton'];
-
-    const stepComponent = (text, index) => (
-      <li
-        className="component-list__name"
-        data-id={index}
-        key={text}
-        onClick={this.clickHandler}
-      >
-        {text}
-      </li>
-    );
+    const { children } = this.props;
+    const { selectedChild } = this.state;
+    const childrenArr = React.Children.toArray(children);
 
     return (
       <div className="switcher">
-        <nav>
-          <ul className="component-list">
-            {stepList.map((step, i) => stepComponent(step, i))}
-          </ul>
-        </nav>
+        <ul className="component-list">
+          {React.Children.map(children, (child, index) => (
+            <li
+              className="component-list__name"
+              key={index}
+              data-id={index}
+              onClick={this.handleChangeChild}
+            >
+              {child.type.displayName || child.type.name}
+            </li>
+          ))}
+        </ul>
+
         <hr />
 
-        <div className="component-wrapper">{this.renderForm()}</div>
+        <section className="component-wrapper">
+          {childrenArr[selectedChild]}
+        </section>
       </div>
     );
   }

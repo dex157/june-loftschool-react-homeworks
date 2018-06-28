@@ -2,23 +2,37 @@ import React, { PureComponent } from 'react';
 import videoFile from './Video.mp4';
 import './VideoPlayer.css';
 
-class VideoPlayer extends PureComponent {
+export default class VideoPlayer extends PureComponent {
   componentDidMount() {
     console.log('DidMount - VideoPlayer');
   }
   render() {
     return (
       <div className="video-player">
-        <video className="video-player__source">
-          <source src={videoFile} type="video/mp4" />
-        </video>
+        <video
+          src={videoFile}
+          className="video-player__source"
+          ref="videoRef"
+        />
+
         <div>
-          <button>Play</button>
-          <button>Stop</button>
+          <button
+            onClick={() => {
+              this.refs.videoRef.play();
+            }}
+          >
+            Play
+          </button>
+
+          <button
+            onClick={() => {
+              this.refs.videoRef.pause();
+            }}
+          >
+            Stop
+          </button>
         </div>
       </div>
     );
   }
 }
-
-export default VideoPlayer;
