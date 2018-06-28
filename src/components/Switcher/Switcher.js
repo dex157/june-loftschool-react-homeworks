@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Switcher.css';
-import ModalButton from '../ModalButton';
+import CardNumberHolder from '../CardNumberHolder';
 
 // Для работы этой компоненты нужно использовать методы React.Children.toArray
 // а так же работать с child.type.name и child.type.displayName
@@ -39,7 +39,7 @@ export default class Switcher extends Component {
           </ul>
         </nav>
         <div className="component-wrapper">
-          <ModalButton />
+          <CardNumberHolder />
         </div>
       </div>
     );

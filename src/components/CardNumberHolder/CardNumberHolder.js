@@ -6,7 +6,13 @@ class CardNumberHolder extends Component {
     cardNumber: ''
   };
 
-  handleChange = () => {};
+  handleChange = (event) => {
+    const value = event.target.value;
+    this.format(value);
+    this.setState(state => ({
+      number: this.normalize(value)
+    }))
+  };
 
   render() {
     return <CardNumberInput onChange={this.handleChange} />;
