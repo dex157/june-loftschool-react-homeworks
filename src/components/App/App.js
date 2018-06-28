@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
+import CardNumberHolder from '../CardNumberHolder';
+import ModalButton from '../ModalButton';
+import Switcher from '../Switcher';
+import VideoPlayer from '../VideoPlayer';
 
-class App extends Component {
+export default class App extends Component {
   render() {
-    return null;
+    return (
+      <Switcher>
+        <VideoPlayer />
+        <CardNumberHolder />
+        <ModalButton />
+      </Switcher>
+    );
   }
 }
-
-export default App;
