@@ -25,8 +25,8 @@ class VideoPlayer extends PureComponent {
         >
           <source src={videoFile} type="video/mp4" />
         </video>
-        <button name="Start" onClick={this.playVideo.bind(this)}>
-          Start
+        <button name="Play" onClick={this.playVideo.bind(this)}>
+          Play
         </button>
         <button name="Stop" onClick={this.stopVideo.bind(this)}>
           Stop

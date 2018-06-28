@@ -15,13 +15,15 @@ class ModalButton extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.showModal}>Show Modal Window!</button>
+        <button onClick={this.showModal}>Show modal!</button>
         {this.state.isModalShow && (
-          <Modal domNode={document.getElementById('modal')}>
-            <div className="modal__fog">
-              <div className="modal__body">
-                <p>It is modal window</p>
-                <button onClick={this.hideModal}>Close the modal</button>
+          <Modal domNode={document.getElementById('portal')}>
+            <div className="modal">
+              <div className="modal__fog">
+                <div className="modal__body">
+                  <p>It is modal window</p>
+                  <button onClick={this.hideModal}>Close the modal</button>
+                </div>
               </div>
             </div>
           </Modal>

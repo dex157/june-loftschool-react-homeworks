@@ -42,7 +42,7 @@ class Switcher extends Component {
             })}
           </ul>
         </nav>
-        <div className="divider" />
+        <hr />
         <div className="component-wrapper">
           {React.Children.map(children, (child, index) => {
             if (index === selectedChild) {
