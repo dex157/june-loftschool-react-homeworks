@@ -11,7 +11,7 @@ class CardForm extends Component {
 
   render() {
     return (
-      <div className="card-form">
+      <div data-test="card-form" className="card-form">
         <input
           name="cardNumber"
           onChange={this.handleChangeForm}

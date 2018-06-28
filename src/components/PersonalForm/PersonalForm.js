@@ -10,7 +10,7 @@ class PersonalForm extends Component {
 
   render() {
     return (
-      <div className="personal-form">
+      <div data-test="personal-form" className="personal-form">
         <input
           name="firstName"
           onChange={this.handleChangeForm}
