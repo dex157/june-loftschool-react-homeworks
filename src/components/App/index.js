@@ -27,16 +27,29 @@ class App extends React.Component {
 				isSelected: false,
 				step: 3
 			}
-		]
+		],
+		personalForm: {
+			firstName: '',
+			lastName: '',
+			email: ''
+		},
+		cardForm: {
+			cardNumber: ''
+		}
 	}
 
-	handleSwitch = (step = 1) => {
+	onChangeForm = () => {
+		
+	}
+
+	handleSwitch = () => {
+		const {step} = this.state;
 
 		switch(step) {
 			case 1: 
-				return <PersonalForm />;
+				return <PersonalForm firstName={this.state.personalForm.firstName} lastName={this.state.personalForm.lastName} email={this.state.personalForm.email} onChangeForm={this.onChangeForm}/>;
 			case 2: 
-				return <CardForm />;
+				return <CardForm cardNumber={this.state.cardForm.cardNumber}/>;
 			case 3: 
 				return <p>Получилось!</p>;
 			default:
@@ -66,7 +79,7 @@ class App extends React.Component {
 					{this.state.Steps.map(item => <Step title={item.title} isSelected={item.isSelected} isClickable={item.isClickable} onClick={(item) => this.clickStep(item)}/>)}
 				</div>
 				<div className='form-content'>
-					{this.handleSwitch(this.state.step)}
+					{this.handleSwitch()}
 				</div>
 				<div className='button-panel'>
 					<button className='button-next' onClick={this.handleCLick}>next</button>
