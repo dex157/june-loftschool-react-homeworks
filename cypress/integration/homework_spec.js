@@ -43,7 +43,7 @@ describe('homework', () => {
         cy.get('video').then($tag => {
           expect($tag[0].paused).to.eq(false);
           expect($tag[0].ended).to.eq(false);
-          expect($tag[0].currentTime).to.be.eq(0);
+          expect($tag[0].currentTime).to.not.eq(0);
         });
       });
       it('Выключает видео при нажатии на кнопку с надписью Stop', () => {
@@ -60,7 +60,7 @@ describe('homework', () => {
         cy.get('video').then($tag => {
           expect($tag[0].paused).to.eq(true);
           expect($tag[0].ended).to.eq(false);
-          expect($tag[0].currentTime).to.not.be.eq(0);
+          expect($tag[0].currentTime).to.not.eq(0);
         });
       });
     });
