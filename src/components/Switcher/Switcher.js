@@ -15,7 +15,7 @@ class Switcher extends Component {
   }
 
   handleChangeChild = event => {
-    let targetIndex = parseInt(event.target.getAttribute('data-id'));
+    let targetIndex = parseInt(event.target.getAttribute('data-id'), 10);
     this.setState({
       selectedChild: targetIndex
     });
