@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import CardNumberHolder from 'components/CardNumberHolder';
+import ModalButton from 'components/ModalButton';
+import Switcher from 'components/Switcher';
+import VideoPlayer from 'components/VideoPlayer';
 import './App.css';
 
 class App extends Component {
   render() {
-    return null;
+    return (
+      <Switcher>
+        <VideoPlayer />
+        <CardNumberHolder />
+        <ModalButton />
+      </Switcher>
+    );
   }
 }
 
