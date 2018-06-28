@@ -27,7 +27,7 @@ describe('Компонент CardNumberInput', () => {
           expect(wrapper.instance().format(12345)).toEqual('1234 5');
         });
       });
-    });
+    })
 
     describe('normalize', () => {
       it('Присутствует', () => {
