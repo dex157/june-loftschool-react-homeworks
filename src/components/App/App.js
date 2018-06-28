@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PersonalForm from '../PersonalForm';
 import CardForm from '../CardForm';
 import Step from '../Step';
+import Title from '../Title';
 
 class App extends Component {
   state = {
@@ -81,7 +82,6 @@ class App extends Component {
 
   renderForm = () => {
     const { step, firstName, lastName, email, cardNumber } = this.state;
-    console.log(this.state)
     if (step === 1)
       return (
         <PersonalForm
@@ -105,6 +105,7 @@ class App extends Component {
   render() {
     return (
       <Fragment>
+        <Title />
         <div className="container">
           <div className="tab-panel">
             <Step
