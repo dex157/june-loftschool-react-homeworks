@@ -1,6 +1,6 @@
 import React from 'react';
 import CardNumberInput from './CardNumberInput';
-import {mount} from 'enzyme';
+import { mount } from 'enzyme';
 
 describe('Компонент CardNumberInput', () => {
   describe('Методы класса', () => {
@@ -56,7 +56,7 @@ describe('Компонент CardNumberInput', () => {
       });
 
       it(`При получении новых props '12345' меняет state компоненты state.number на '1234 5'`, () => {
-        wrapper.setProps({cardNumber: '12345'});
+        wrapper.setProps({ cardNumber: '12345' });
         expect(wrapper.state().number).toEqual('1234 5');
       });
     });
