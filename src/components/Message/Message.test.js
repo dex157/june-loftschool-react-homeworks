@@ -1,5 +1,5 @@
 import React from 'react';
-import Message from './Message';
+import Message from './index';
 import { shallow } from 'enzyme';
 
 describe('Компонент Message', () => {
