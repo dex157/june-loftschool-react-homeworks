@@ -8,7 +8,7 @@ export class PersonalForm extends Component {
   render() {
     const { firstName, lastName, email } = this.props;
     return (
-      <div className="personal-form">
+      <div className="personal-form" data-test="personal-form">
         <h1 className="title">Персональная информация</h1>
         <input
           name="firstName"

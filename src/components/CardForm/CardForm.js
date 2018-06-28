@@ -14,7 +14,7 @@ export class CardForm extends Component {
 
   render() {
     return (
-      <div className="card-form">
+      <div className="card-form" data-test="card-form">
         <h1 className="title">Номер карты</h1>
         <input
           name="cardNumber"
