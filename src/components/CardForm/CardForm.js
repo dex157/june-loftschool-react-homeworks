@@ -11,14 +11,14 @@ class CardForm extends Component {
   render() {
     return (
       <Fragment>
-        <div className="card-form">
+        <form className="card-form" data-test="card-form">
           <input
             value={this.props.cardNumber}
             placeholder="Card number"
             name="cardNumber"
             onChange={e => this.handleChangeForm(e)}
           />
-        </div>
+        </form>
       </Fragment>
     );
   }
