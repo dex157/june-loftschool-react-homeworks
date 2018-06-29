@@ -28,18 +28,23 @@ class App extends React.Component {
 				step: 3
 			}
 		],
-		personalForm: {
-			firstName: '',
-			lastName: '',
-			email: ''
-		},
-		cardForm: {
-			cardNumber: ''
-		}
+		firstName: '',
+		lastName: '',
+		email: '',
+		cardNumber: ''
 	}
 
-	onChangeForm = () => {
-		
+	onChangeForm = (event) => {
+		if(event.target.name === 'firstName'){
+			this.setState({firstName: event.target.value});
+		} else if(event.target.name === 'lastName'){
+			this.setState({lastName: event.target.value});
+		} else if(event.target.name === 'email'){
+			this.setState({email: event.target.value})
+		}	else if(event.target.name === 'cardNumber'){
+			this.setState({cardNumber: event.target.value})
+			
+		}	
 	}
 
 	handleSwitch = () => {
@@ -47,9 +52,9 @@ class App extends React.Component {
 
 		switch(step) {
 			case 1: 
-				return <PersonalForm firstName={this.state.personalForm.firstName} lastName={this.state.personalForm.lastName} email={this.state.personalForm.email} onChangeForm={this.onChangeForm}/>;
+				return <PersonalForm firstName={this.state.firstName} lastName={this.state.lastName} email={this.state.email} onChangeForm={this.onChangeForm}/>;
 			case 2: 
-				return <CardForm cardNumber={this.state.cardForm.cardNumber}/>;
+				return <CardForm cardNumber={this.state.cardNumber} onChangeForm={this.onChangeForm}/>;
 			case 3: 
 				return <p>Получилось!</p>;
 			default:
