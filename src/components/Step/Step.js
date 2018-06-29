@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './Step.css';
 
-export class Step extends Component {
+export class Step extends PureComponent {
   handleClick = () => {
     if (this.props.isClickable) {
       this.props.onClick(this.props.number);
     }
   };
   render() {
-    let { isSelected, isClickable, number, children, onClick } = this.props;
+    let { isSelected, isClickable, number, children } = this.props;
     return (
       <div
         onClick={this.handleClick}

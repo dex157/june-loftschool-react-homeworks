@@ -14,6 +14,7 @@ export class App extends Component {
   };
 
   handleTabClick = step => {
+    debugger;
     this.setState(state => ({ ...this.state, step }));
   };
 
@@ -79,7 +80,6 @@ export class App extends Component {
       <div className="container">
         <div className="tab-panel">
           {stepTitles.map((title, i) => (
-            // debugger
             <Step
               key={title}
               number={++i}
