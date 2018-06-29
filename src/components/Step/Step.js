@@ -1,9 +1,24 @@
-import React from 'react'
+import React from "react";
+import "./Step.css";
 
-export default class Step extends React.Component{
+export default class Step extends React.Component {
   render() {
-    return <div>
+    const {  title, number,isClickable, isSelected } = this.props;
 
-    </div>
+    return <div
+      className={`step ${isClickable && "step-clickable"} ${isSelected && "step-selected"}`}
+      onClick={this.handleClick}
+    >
+      <p className={"step__number"}>{number}</p>
+      <p className="step__title">{title}</p>
+    </div>;
   }
+
+  handleClick = (event) => {
+    const { onClick, isClickable, number } = this.props;
+
+    if (isClickable && typeof onClick === "function") {
+      onClick(number);
+    }
+  };
 }
