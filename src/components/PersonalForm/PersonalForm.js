@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import './PersonalForm.css';
 
 class PersonalForm extends Component {
   handleChangeForm(e) {

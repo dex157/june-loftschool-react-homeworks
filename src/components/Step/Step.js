@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import './Step.css';
 
 class Step extends Component {
   handleClick = () => {

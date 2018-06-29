@@ -3,6 +3,7 @@ import PersonalForm from '../PersonalForm';
 import CardForm from '../CardForm';
 import Step from '../Step';
 import Title from '../Title';
+import './App.css';
 
 class App extends Component {
   state = {
