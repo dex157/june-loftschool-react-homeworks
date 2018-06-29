@@ -14,7 +14,6 @@ export class App extends Component {
   };
 
   handleTabClick = step => {
-    debugger;
     this.setState(state => ({ ...this.state, step }));
   };
 
