@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import PersonalForm from '../PersonalForm';
+import CardForm from '../CardForm';
+import Step from '../Step';
+import Title from '../Title';
 import './App.css';
 
 export default class App extends Component {
@@ -28,10 +32,48 @@ export default class App extends Component {
     }));
   };
 
+  onChangeForm = e => {
+    const name = e.target.name;
+    const val = e.target.value;
+    this.setState(() => ({
+      [name]: val
+    }));
+  };
+  renderForm = () => {
+    const { firstName, lastName, email, cardNumber } = this.state;
+    const personalForm = (
+      <PersonalForm
+        email={email}
+        lastName={lastName}
+        firstName={firstName}
+        Title={Title}
+        onChangeForm={this.handleChangeForm}
+      />
+    );
+
+    const cardForm = (
+      <CardForm
+        {...cardNumber}
+        onChangeForm={this.handleChangeForm}
+        Title={Title}
+      />
+    );
+    const congrats = <h1>Поздравляем!</h1>;
+    switch (this.state.step) {
+      case 1:
+        return personalForm;
+      case 2:
+        return cardForm;
+      case 3:
+        return congrats;
+      default:
+        return personalForm;
+    }
+  };
   isFormCommitable = () => {
     const { firstName, lastName, email, cardNumber, step } = this.state;
     const step1 = firstName !== '' && lastName !== '' && email.includes('@');
-    const step2 = cardNumber.toString().length === 16;
+    const step2 = cardNumber.length === 16;
     switch (step) {
       case 1:
         return step1;
@@ -49,13 +91,22 @@ export default class App extends Component {
       [name]: val
     }));
   };
+
+  handleClick = number => {};
+  isSelected = number => {
+    if (number === this.state.step) {
+      return true;
+    }
+    return false;
+  };
   render() {
-    // const { firstName, lastName, cardNumber } = this.state;
     return (
       <div className="container">
-        <div className="tab-pannel" />
-        <div className="form-content" />
-        <div className="button-pannel">
+        <div className="tab-panel">
+          <Step currentStep={this.state.step} />
+        </div>
+        <div className="form-content">{this.renderForm()}</div>
+        <div className="button-panel">
           <button
             onClick={this.handleClickNextForm}
             className="button-next"
