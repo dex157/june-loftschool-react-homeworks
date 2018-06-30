@@ -9,14 +9,14 @@ export default class CardForm extends React.Component {
       <h1>Номер карты</h1>
       <input
         name="cardNumber"
-        placeholder={"0".repeat(16)}
+        placeholder={"0000000000000000"}
         value={ cardNumber }
-        onChange={this.handleChangeForm}
+        onChange={this.onChangeForm}
       />
     </div>;
   }
 
-  handleChangeForm = event => {
+  onChangeForm = event => {
     const { onChange } = this.props;
     if (typeof onChange === "function") {
       const { name, value } = event.target;

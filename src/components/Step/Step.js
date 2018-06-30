@@ -6,7 +6,7 @@ export default class Step extends React.Component {
     const {  title, number,isClickable, isSelected } = this.props;
 
     return <div
-      className={`step ${isClickable && "step-clickable"} ${isSelected && "step-selected"}`}
+      className={`step ${isClickable ? "step-clickable" : ""} ${isSelected ? "step-selected" : ""}`.replace(/\s+/g,' ')}
       onClick={this.handleClick}
     >
       <p className={"step__number"}>{number}</p>

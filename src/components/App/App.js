@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import PersonalForm from "../PersonalForm";
 import CardForm from "../CardForm";
-import Step from "../Step";
+import Title from "../Title";
 
 import "./App.css";
 
@@ -11,31 +11,14 @@ export default class App extends React.Component {
     email: "",
     firstName: "",
     lastName: "",
-    steps: ["Персональная информация", "Информация о карте", "Завершение"],
-    step: 2
+    step: 1
   };
 
   render() {
-    const stepsComponent = (text, index) =>
-      (
-        <Step
-          key={text}
-          title={text}
-          number={index + 1}
-          isClickable={index + 1 < this.state.step}
-          isSelected={index + 1 === this.state.step}
-          onClick={this.handleTabClick}
-        >
-          {text}
-        </Step>
-      );
+    return <div id="container">
+      <Title step={this.state.step} handleTabClick={this.handleTabClick}/>
 
-    return <Fragment>
-      <div className="tab-panel">
-        {this.state.steps.map((step, i) => stepsComponent(step, i))}
-      </div>
-
-      {this.renderPersonalForm()}
+      {this.renderForm()}
 
       <div className="button-panel">
         <button
@@ -46,7 +29,7 @@ export default class App extends React.Component {
           Дальше >
         </button>
       </div>
-    </Fragment>;
+    </div>;
   }
 
   //
@@ -54,12 +37,12 @@ export default class App extends React.Component {
   isFormCommitable = () => {
     const { firstName, lastName, email, cardNumber, step } = this.state;
 
-    if (step === 1) return !!firstName && !!lastName && email.includes("@");
+    if (step === 1) return !!firstName && !!lastName && !email.indexOf("@");
     if (step === 2) return /\d{16}/.test(cardNumber);
     return false;
   };
 
-  renderPersonalForm = () => {
+  renderForm = () => {
     const { step, firstName, lastName, email, cardNumber } = this.state;
 
     return <div className="form-content">
@@ -73,7 +56,7 @@ export default class App extends React.Component {
         cardNumber={cardNumber}
         onChange={this.handleChangeForm}
       />}
-      {step === 3 && <h1>Поздравляем!</h1>}
+      {step === 3 && <h1 data-test="congratulations">Поздравляем!</h1>}
     </div>;
   };
 
@@ -92,6 +75,6 @@ export default class App extends React.Component {
   handleChangeForm = (name, value) => {
     this.setState({
       [name]: value
-    })
-  }
+    });
+  };
 }

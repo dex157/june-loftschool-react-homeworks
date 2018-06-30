@@ -1,21 +1,29 @@
-import React, { Fragment } from "react";
+import React from "react";
+import Step from "../Step"
 import "./Title.css";
 
 export default class Title extends React.Component {
+  state = {
+    steps: ["Персональная информация", "Информация о карте", "Завершение"],
+  };
+
   render() {
+    const stepsComponent = (text, index) =>
+      (
+        <Step
+          key={text}
+          title={text}
+          number={index + 1}
+          isClickable={index + 1 < this.props.step}
+          isSelected={index + 1 === this.props.step}
+          onClick={this.props.handleTabClick}
+        >
+          {text}
+        </Step>
+      );
+
     return <div className="tab-panel">
-      <div className="step">
-        <p className="step__number">1</p>
-        <p className="step__title">Personal information</p>
-      </div>
-      <div className="step">
-        <p className="step__number">2</p>
-        <p className="step__title">Card information</p>
-      </div>
-      <div className="step">
-        <p className="step__number">3</p>
-        <p className="step__title">Finish</p>
-      </div>
+      {this.state.steps.map((step, i) => stepsComponent(step, i))}
     </div>;
   }
 }

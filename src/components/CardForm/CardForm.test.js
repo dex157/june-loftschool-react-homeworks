@@ -14,7 +14,7 @@ describe('Компонент CardForm', () => {
         expect(wrapper.find('.card-form input[name="cardNumber"]')).toHaveLength(1);
       });
 
-      it('onChange input[name="cardNumber"] должен вызывать handleChangeForm', () => {
+      it('onChange input[name="cardNumber"] должен вызывать onChangeForm', () => {
         const onChangeFormMock = jest.fn();
         const wrapper = shallow(
           <CardForm onChangeTimeOver={jest.fn()} onChangeForm={onChangeFormMock} />,
@@ -35,12 +35,12 @@ describe('Компонент CardForm', () => {
         <CardForm onChangeTimeOver={jest.fn()} onChangeForm={onChangeFormMock} />,
       );
 
-      describe('handleChangeForm', () => {
+      describe('onChangeForm', () => {
         it('Присутствует', () => {
-          expect(wrapper.instance().handleChangeForm).toBeDefined();
+          expect(wrapper.instance().onChangeForm).toBeDefined();
         });
         it('При вызове вызывает функцию onChangeForm переданную через props, аргументами name и value становятся значения из event.target', () => {
-          wrapper.instance().handleChangeForm({
+          wrapper.instance().onChangeForm({
             target: { name: 'test-name', value: 'test-value' },
           });
           expect(onChangeFormMock).toHaveBeenCalledTimes(1);

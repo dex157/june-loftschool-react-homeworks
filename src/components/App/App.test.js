@@ -69,13 +69,13 @@ describe('Компонент App', () => {
       });
     });
 
-    describe('handleChangeForm', () => {
+    describe('onChangeForm', () => {
       const wrapper = shallow(<App />);
       it('Присутствует', () => {
-        expect(wrapper.instance().handleChangeForm).toBeDefined();
+        expect(wrapper.instance().onChangeForm).toBeDefined();
       });
       it('При вызове с 2 аргументами меняется state[первый аргумент] = второй аргумент', () => {
-        wrapper.instance().handleChangeForm('firstName', 'Иван');
+        wrapper.instance().onChangeForm('firstName', 'Иван');
         wrapper.update();
         expect(wrapper.state().firstName).toEqual('Иван');
       });
@@ -176,7 +176,7 @@ describe('Компонент App', () => {
           firstName: 'test',
           lastName: 'test',
           email: 'test@',
-          onChangeForm: wrapper.instance().handleChangeForm,
+          onChangeForm: wrapper.instance().onChangeForm,
         });
       });
       it(`Если state.step === 2 возвращает компонент <CardForm cardNumber={state.cardNumber} onChangeForm={this.handleChangeForm} onChangeTimeOver={this.handleChangeTimeOver} />`, () => {
@@ -186,7 +186,7 @@ describe('Компонент App', () => {
         });
         expect(wrapper.instance().renderForm().props).toEqual({
           cardNumber: '1234',
-          onChangeForm: wrapper.instance().handleChangeForm,
+          onChangeForm: wrapper.instance().onChangeForm,
           onChangeTimeOver: wrapper.instance().handleChangeTimeOver,
         });
       });
