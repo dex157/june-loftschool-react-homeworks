@@ -3,13 +3,14 @@ import CardNumberInput from './CardNumberInput';
 
 class CardNumberHolder extends Component {
   state = {
-    cardNumber: 'пожалуйста'
+    cardNumber: ''
   };
   static displayName = 'Card number formating ';
 
-  handleChange = value => {
-    this.setState({ cardNumber: value });
+  handleChange = event => {
+    this.setState({ cardNumber: event.target.value });
   };
+
   render() {
     const { cardNumber } = this.state.cardNumber;
     return (

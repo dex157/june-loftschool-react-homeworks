@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class CardNumberInput extends Component {
   state = {
     number: ''
   };
 
-  // static getDerivedStateFromProps(nextProps, prevState) {
-  //   return {
-  //     number: nextProps
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      number: this.format(this.props.cardNumber)
+    };
+  }
+
+  static propTypes = {
+    cardNumber: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  };
 
   componentDidMount() {
-    let qwe = this.props.cardNumber;
-    // debugger;
     const value = this.normalize(this.props.cardNumber);
     this.setState({ number: this.format(value) });
   }
 
   componentWillReceiveProps(nextProps) {
-    // debugger;
-    this.setState(state => {
-      this.format(nextProps.cardNumber);
-    });
+    if (nextProps.cardNumber !== this.props.cardNumber) {
+      this.setState(state => {
+        this.format(nextProps.cardNumber);
+      });
+    }
   }
 
   format = value => {
@@ -40,9 +45,8 @@ class CardNumberInput extends Component {
   };
 
   render() {
-    const { number } = this.state.number;
-    // const { onChange } = this.props.onChange;
-    return <input value={number} onChange={this.props.onChange} />;
+    const { number, onChange } = this.state.number;
+    return <input value={number} onChange={onChange} />;
   }
 }
 
