@@ -35,8 +35,7 @@ describe('homework', () => {
     });
     describe('Логика', () => {
       it('Включает видео при нажатии на кнопку с надписью Play', () => {
-        cy
-          .get('button')
+        cy.get('button')
           .contains('Play')
           .click();
         cy.wait(300);
@@ -47,13 +46,11 @@ describe('homework', () => {
         });
       });
       it('Выключает видео при нажатии на кнопку с надписью Stop', () => {
-        cy
-          .get('button')
+        cy.get('button')
           .contains('Play')
           .click();
         cy.wait(300);
-        cy
-          .get('button')
+        cy.get('button')
           .contains('Stop')
           .click();
 
@@ -68,8 +65,7 @@ describe('homework', () => {
 
   describe('Card number formating', () => {
     before(() => {
-      cy
-        .get('.component-list__name')
+      cy.get('.component-list__name')
         .contains('Card number formating')
         .click();
     });
@@ -82,7 +78,9 @@ describe('homework', () => {
 
     describe('Логика', () => {
       it('Форматирует ввод, после 4го символа появляется пробел', () => {
-        cy.get('input').type('12345{rightarrow}6789{rightarrow}0123{rightarrow}456');
+        cy.get('input').type(
+          '12345{rightarrow}6789{rightarrow}0123{rightarrow}456'
+        );
         cy.get('input').and('have.value', '1234 5678 9012 3456');
       });
     });
@@ -91,8 +89,7 @@ describe('homework', () => {
   describe('ModalButton', () => {
     beforeEach(() => {
       cy.reload();
-      cy
-        .get('.component-list__name')
+      cy.get('.component-list__name')
         .contains('ModalButton')
         .click();
     });
@@ -109,21 +106,18 @@ describe('homework', () => {
 
     describe('Логика', () => {
       it('При нажатии кнопки Show modal! появляется модальное окно #portal .modal', () => {
-        cy
-          .get('button')
+        cy.get('button')
           .contains('Show modal!')
           .click();
         cy.get('#portal .modal');
       });
 
       it('При нажатии кнопки Close в модальном окне окно закрывается', () => {
-        cy
-          .get('button')
+        cy.get('button')
           .contains('Show modal!')
           .click();
 
-        cy
-          .get('.modal button')
+        cy.get('.modal button')
           .contains('Close')
           .click();
 
