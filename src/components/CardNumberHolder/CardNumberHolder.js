@@ -7,12 +7,12 @@ class CardNumberHolder extends Component {
   };
   static displayName = 'Card number formating ';
 
-  handleChange = event => {
-    this.setState({ cardNumber: event.target.value });
+  handleChange = value => {
+    this.setState({ cardNumber: value });
   };
 
   render() {
-    const { cardNumber } = this.state.cardNumber;
+    const { cardNumber } = this.state;
     return (
       <CardNumberInput cardNumber={cardNumber} onChange={this.handleChange} />
     );

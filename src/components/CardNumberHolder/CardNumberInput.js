@@ -1,24 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 class CardNumberInput extends Component {
   state = {
     number: ''
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      number: this.format(this.props.cardNumber)
-    };
-  }
-
-  static propTypes = {
-    cardNumber: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-  };
-
   componentDidMount() {
     const value = this.normalize(this.props.cardNumber);
+    debugger;
     this.setState({ number: this.format(value) });
   }
 
@@ -44,9 +33,16 @@ class CardNumberInput extends Component {
     return value ? value.replace(/s/g, '') : '';
   };
 
+  handleChange = event => {
+    const { onChange } = this.props;
+    let numberCard = this.setState({ cardNumber: event.target.value });
+    onChange(numberCard);
+  };
+
   render() {
-    const { number, onChange } = this.state.number;
-    return <input value={number} onChange={onChange} />;
+    const { number } = this.state;
+    // const { onChange } = this.props;
+    return <input value={number} onChange={this.handleChange} />;
   }
 }
 
