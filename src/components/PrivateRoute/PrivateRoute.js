@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
 import { AuthHOC } from '../AuthorizeProvider/AuthorizeProvider';
 import { Route, Redirect } from 'react-router-dom';
-import { AuthConsumer } from "../AuthContext";
 
 class PrivateRoute extends PureComponent {
   render() {
     const {component: Component, ...rest} = this.props;
-    return <AuthConsumer>
+    return <AuthHOC>
       {({ isAuthorized }) => (
         <Route
           {...rest}
@@ -19,7 +18,7 @@ class PrivateRoute extends PureComponent {
           }
         />
       )}
-    </AuthConsumer>
+    </AuthHOC>
   }
 }
 
