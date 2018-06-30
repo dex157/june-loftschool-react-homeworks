@@ -10,21 +10,19 @@ class Chat extends Component {
     this.setState({
       messageInput: event.target.value
     });
-    if (event.key === 'Enter') {
-      this.sendMessageOnEnter();
-    }
-    ///[...this.state.messages, ...[1,2,3]
   };
-  // changeInputMessage = () => {};
-  sendMessageOnEnter = () => {
+  changeInputMessage = () => {
+    console.log('Hello');
+  };
+  sendMessageOnEnter = event => {
     const newMess = this.state.messageInput;
-    // this.changeInputMessage();
-    this.setState(state => ({
-      messages: [...this.state.messages, ...[newMess]],
-      messageInput: ''
-    }));
+    if (event.key === 'Enter') {
+      this.setState(state => ({
+        messages: [...this.state.messages, ...[{ text: newMess }]],
+        messageInput: ''
+      }));
+    }
   };
-  ///   [{text: значение_из_messageInput}]
   render() {
     return (
       <div className="chat">
@@ -33,14 +31,14 @@ class Chat extends Component {
             key={Object.values(item)
               .slice(0, 4)
               .join('')}
-            text={item}
+            text={item.text}
           />
         ))}
         <input
           className="input-message"
           value={this.state.messageInput}
           onChange={this.handleOnChange}
-          onKeyPress={this.handleOnChange}
+          onKeyPress={this.sendMessageOnEnter}
         />
       </div>
     );

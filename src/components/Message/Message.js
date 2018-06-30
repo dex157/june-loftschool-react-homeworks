@@ -8,15 +8,4 @@ const Message = props => {
   );
 };
 
-// class Message extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <span className="message" onClick={console.log('Hello')}>
-//           Hello
-//         </span>
-//       </div>
-//     );
-//   }
-// }
 export default Message;
