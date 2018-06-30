@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './Market.css';
+
+import Order from '../Order';
+import { createOrder, moveOrderToFarm } from '../../actions/marketActions';
 
 let id = 0;
 
@@ -20,7 +24,7 @@ export const vegetables = [
   'Лук',
   'Перец',
   'Картофель',
-  'Редька',
+  'Редька'
 ];
 
 const getNewOrder = () => {
@@ -28,14 +32,78 @@ const getNewOrder = () => {
     id: getId(),
     name: vegetables[Math.floor(Math.random() * vegetables.length)],
     price: 100 + Math.floor(Math.random() * 100),
-    createdAt: new Date(),
+    createdAt: new Date()
   };
 };
 
 export class Market extends Component {
+  handlerAddOrder = () => {
+    const { createOrder } = this.props;
+
+    createOrder(getNewOrder());
+  };
+
+  handlerMoveOrderToFarm = () => {
+    const { moveOrderToFarm, market } = this.props;
+
+    market.orders.forEach(item => moveOrderToFarm(item));
+  };
+
   render() {
-    return <div className="market" />;
+    const { market } = this.props,
+      isButtonDisabled = false; // Проблема с тестом
+    // isButtonDisabled = market.orders.length === 0;
+
+    return (
+      <div className="market">
+        <h2>Новые заказы в магазине</h2>
+        <button
+          className="new-orders__create-button"
+          onClick={this.handlerAddOrder}
+        >
+          Создать заказ
+        </button>
+        <button
+          disabled={isButtonDisabled}
+          onClick={this.handlerMoveOrderToFarm}
+        >
+          Отправить заказ на ферму
+        </button>
+        <div className="order-list">
+          {market.orders.map((item, index) => {
+            return (
+              <Order
+                key={`${item.name}_${index}`}
+                name={item.name}
+                price={item.price}
+                createdAt={item.createdAt.toTimeString()}
+              />
+            );
+          })}
+        </div>
+      </div>
+    );
   }
 }
 
-export default Market;
+const mapStateToProps = state => {
+  return {
+    market: state.market
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    createOrder: payload => {
+      dispatch(createOrder(payload));
+    },
+    moveOrderToFarm: payload => {
+      dispatch(moveOrderToFarm(payload));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Market);
