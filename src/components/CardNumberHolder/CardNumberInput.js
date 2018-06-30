@@ -6,12 +6,12 @@ class CardNumberInput extends Component {
   };
 
   format(cardNumber) {
-    if (cardNumber)
-      return cardNumber
-        .toString()
-        .match(/.{1,4}/g)
-        .join(' ');
-    else return '';
+    return cardNumber
+      ? cardNumber
+          .toString()
+          .match(/.{1,4}/g)
+          .join(' ')
+      : '';
   }
 
   normalize(cardNumber) {
@@ -19,9 +19,9 @@ class CardNumberInput extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const number = this.normalize(nextProps.cardNumber);
+    const normNumber = this.normalize(nextProps.cardNumber);
     this.setState({
-      number: this.format(nextProps.cardNumber)
+      number: this.format(normNumber)
     });
   }
 

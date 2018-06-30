@@ -10,7 +10,7 @@ class Switcher extends Component {
   };
 
   handleChangeChild = e => {
-    this.setState({ selectedChild: parseInt(e.target.dataset.id) });
+    this.setState({ selectedChild: parseInt(e.target.dataset.id, 10) });
   };
 
   render() {

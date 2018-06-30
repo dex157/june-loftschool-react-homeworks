@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Modal from './Modal';
 import './ModalButton.css';
 
@@ -20,7 +20,23 @@ class ModalButton extends Component {
   };
 
   render() {
-    return this.state.isModalShow ? <Modal /> : null;
+    return (
+      <Fragment>
+        <button onClick={this.showModal}>Show modal!</button>
+        {this.state.isModalShow ? (
+          <Modal domNode={document.querySelector('#portal')}>
+            <div className="modal">
+              <div className="modal__fog">
+                <div className="modal__body">
+                  <h1>Modal!</h1>
+                  <button onClick={this.hideModal}>Close</button>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        ) : null}
+      </Fragment>
+    );
   }
 }
 
