@@ -39,7 +39,7 @@ class Switcher extends Component {
         </ul>
         <hr/>
         {React.Children.map(children, (item, index) => {
-          if (selectedChild == index) return item;
+          if (selectedChild === index) return item;
         })}
       </Fragment>
     );
