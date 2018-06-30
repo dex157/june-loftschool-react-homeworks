@@ -39,9 +39,9 @@ export default class Chat extends Component {
       return;
     }
 
-    this.setState({
-      messages: [...this.state.messages, { "text": this.state.messageInput }],
+    this.setState((prevState, props) => ({
+      messages: [...prevState.messages, { "text": prevState.messageInput }],
       messageInput: ""
-    });
+    }));
   };
 }
