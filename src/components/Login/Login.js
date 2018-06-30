@@ -13,31 +13,36 @@ class Login extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleSubmit(authorizeUserFn) {
+    if (!authorizeUserFn(this.state.email, this.state.password)) {
+      this.setState({ authFailed: true });
+    }
+  }
+
   render() {
-    return (
-      <AuthHOC>
-        {({ authorize, isAuthorized }) =>
-          isAuthorized ? (
-            <Redirect to="/private" />
-          ) : (
-            <div>
-              <div>
-                <input
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                />
-                <input
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <button onClick={authorize}>Submit</button>
-            </div>
-          )
-        }
-      </AuthHOC>
+    return this.props.isAuthorized ? (
+      <Redirect to="/" />
+    ) : (
+      <div>
+        <div>
+          <input
+            name="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
+          <input
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+          {this.state.authFailed && (
+            <p className="error">Неверный пароль и/или почта.</p>
+          )}
+        </div>
+        <button onClick={() => this.handleSubmit(this.props.authorizeUser)}>
+          Submit
+        </button>
+      </div>
     );
   }
 }
