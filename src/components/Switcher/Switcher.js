@@ -35,6 +35,7 @@ class Switcher extends Component {
             );
           })}
         </ol>
+        <hr />
         {React.Children.map(children, (item, index) => {
           if (selectedChild === index) return item;
         })}
