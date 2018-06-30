@@ -30,7 +30,7 @@ class CardNumberInput extends Component {
       { onChange } = this.props;
     return (
       <Fragment>
-        <input name="CardNumberInput" onChange={onChange} value={number} />
+        <input name="Card number" onChange={onChange} value={number} />
       </Fragment>
     );
   }

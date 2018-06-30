@@ -10,7 +10,9 @@ class Switcher extends Component {
   };
 
   handleChangeChild = e => {
-    this.setState({ selectedChild: parseInt(e.target.dataset.id, 10) });
+    this.setState({ 
+      selectedChild: parseInt(e.target.dataset.id, 10) 
+    });
   };
 
   render() {
@@ -19,7 +21,7 @@ class Switcher extends Component {
 
     return (
       <Fragment>
-        <ol className="component-list">
+        <ul className="component-list">
           {React.Children.map(children, (item, index) => {
             const name = item.type.displayName || item.type.name;
 
@@ -32,12 +34,12 @@ class Switcher extends Component {
               >
                 {name}
               </li>
-            );
+            )
           })}
-        </ol>
-        <hr />
+        </ul>
+        <hr/>
         {React.Children.map(children, (item, index) => {
-          if (selectedChild === index) return item;
+          if (selectedChild == index) return item;
         })}
       </Fragment>
     );
