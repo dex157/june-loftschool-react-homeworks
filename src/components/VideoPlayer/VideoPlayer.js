@@ -5,6 +5,8 @@ import './VideoPlayer.css';
 class VideoPlayer extends PureComponent {
   video = React.createRef();
 
+  static displayName = 'VideoPlayer';
+
   play = () => {
     this.video.current.play();
   };
