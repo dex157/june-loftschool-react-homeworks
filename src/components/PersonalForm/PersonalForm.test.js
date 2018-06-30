@@ -20,7 +20,7 @@ describe('Компонент PersonalForm', () => {
         expect(wrapper.find('.personal-form input[name="email"]')).toHaveLength(1);
       });
 
-      it('onChange input[name="firstName"] должен вызывать handleChangeForm', () => {
+      it('onChange input[name="firstName"] должен вызывать onChangeForm', () => {
         const onChangeFormMock = jest.fn();
         const wrapper = shallow(<PersonalForm onChangeForm={onChangeFormMock} />);
 
@@ -31,7 +31,7 @@ describe('Компонент PersonalForm', () => {
         expect(onChangeFormMock).toHaveBeenCalledTimes(1);
         expect(onChangeFormMock).toHaveBeenLastCalledWith('test-name', 'test-value');
       });
-      it('onChange input[name="lastName"] должен вызывать handleChangeForm', () => {
+      it('onChange input[name="lastName"] должен вызывать onChangeForm', () => {
         const onChangeFormMock = jest.fn();
         const wrapper = shallow(<PersonalForm onChangeForm={onChangeFormMock} />);
 
@@ -42,7 +42,7 @@ describe('Компонент PersonalForm', () => {
         expect(onChangeFormMock).toHaveBeenCalledTimes(1);
         expect(onChangeFormMock).toHaveBeenLastCalledWith('test-name', 'test-value');
       });
-      it('onChange input[name="email"] должен вызывать handleChangeForm', () => {
+      it('onChange input[name="email"] должен вызывать onChangeForm', () => {
         const onChangeFormMock = jest.fn();
         const wrapper = shallow(<PersonalForm onChangeForm={onChangeFormMock} />);
 
@@ -59,12 +59,12 @@ describe('Компонент PersonalForm', () => {
       const onChangeFormMock = jest.fn();
       const wrapper = shallow(<PersonalForm onChangeForm={onChangeFormMock} />);
 
-      describe('handleChangeForm', () => {
+      describe('onChangeForm', () => {
         it('Присутствует', () => {
-          expect(wrapper.instance().handleChangeForm).toBeDefined();
+          expect(wrapper.instance().onChangeForm).toBeDefined();
         });
         it('При вызове вызывает функцию onChangeForm переданную через props, аргументами name и value становятся значения из event.target', () => {
-          wrapper.instance().handleChangeForm({
+          wrapper.instance().onChangeForm({
             target: { name: 'test-name', value: 'test-value' },
           });
           expect(onChangeFormMock).toHaveBeenCalledTimes(1);
