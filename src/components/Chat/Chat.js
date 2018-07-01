@@ -15,12 +15,19 @@ export default class Chat extends Component {
       <div className="chat">
         <div className="message-list">
           <div className="messages">
-            {messages.map(({ text }, index) => (<Message key={index} text={text} />))}
+            {messages.map(({ text }, index) => (
+              <Message key={index} text={text} />
+            ))}
           </div>
         </div>
-        <input className="input-message" onChange={this.changeInputMessage} onKeyPress={this.sendMessageOnEnter} value={messageInput} />
+        <input
+          className="input-message"
+          onChange={this.changeInputMessage}
+          onKeyPress={this.sendMessageOnEnter}
+          value={messageInput}
+        />
       </div>
-    )
+    );
   }
 
   changeInputMessage = event => {
@@ -32,16 +39,11 @@ export default class Chat extends Component {
   sendMessageOnEnter = event => {
     if (event.key === 'Enter' && this.state.messageInput) {
       this.setState(state => {
-        state.messages.push({text: state.messageInput});
+        state.messages.push({ text: state.messageInput });
         state.messageInput = '';
 
         return state;
       });
     }
-  }
-  
-
-
-
-
+  };
 }
