@@ -16,7 +16,7 @@ class VideoPlayer extends PureComponent {
   render() {
     return (
       <div className="video-player">
-        <video id="video1" className="video-player__source" ref={this.video}>
+        <video className="video-player__source" ref={this.video}>
           <source src={videoFile} type="video/mp4" />
         </video>
         <div>

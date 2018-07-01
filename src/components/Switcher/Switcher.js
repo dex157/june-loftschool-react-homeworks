@@ -20,7 +20,7 @@ class Switcher extends Component {
         <ul className="component-list">
           {nav.map(element => {
             return (
-            <li className="component-list__name" id={element.id}> 
+            <li className="component-list__name" id={element.id} key={element.id}> 
               {element.text}
             </li>
             )
