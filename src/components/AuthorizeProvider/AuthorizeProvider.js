@@ -11,14 +11,14 @@ class AuthorizeProvider extends Component {
   };
 
   validData = {
-    validEmail: 'student',
+    validLogin: 'student',
     validPassword: '123'
   };
 
-  authorizeUser = ({ email, password }) => {
-    const { validEmail, validPassword } = this.validData;
+  authorizeUser = ({ login, password }) => {
+    const { validLogin, validPassword } = this.validData;
 
-    if (email === validEmail && password === validPassword) {
+    if (login === validLogin && password === validPassword) {
       this.setState({ isAuthorized: true });
       return true;
     } else return false;

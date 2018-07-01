@@ -4,16 +4,16 @@ import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
   state = {
-    email: '',
+    login: '',
     password: '',
-    isAuthSuccess: false
+    isAuthSuccess: true
   };
 
   handleSubmit = () => {
     const { authorizeUser } = this.props;
-    const { email, password } = this.state;
+    const { login, password } = this.state;
 
-    const autorized = authorizeUser({ email, password });
+    const autorized = authorizeUser({ login, password });
     this.setState({ isAuthSuccess: autorized });
   };
 
@@ -23,14 +23,14 @@ class Login extends Component {
 
   render() {
     const { isAuthorized } = this.props;
-    const { email, password, isAuthSuccess } = this.state;
+    const { login, password, isAuthSuccess } = this.state;
 
     return isAuthorized ? (
       <Redirect to="/" />
     ) : (
       <div>
         <div>
-          <input name="email" value={email} onChange={this.handleChange} />
+          <input name="login" value={login} onChange={this.handleChange} />
           <input
             name="password"
             value={password}
