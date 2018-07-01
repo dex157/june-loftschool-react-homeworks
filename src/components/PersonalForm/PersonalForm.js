@@ -9,7 +9,7 @@ export default class PersonalForm extends Component {
 
    render() {
       return (
-         <div className="personal-form">
+         <div className="personal-form" data-test="personal-form">
             <h1 className="title">Персональная информация</h1>
             <input name="firstName" placeholder="Имя" value={this.props.firstName} onChange={this.handleChangeForm}/>
             <input name="lastName" placeholder="Фамилия" value={this.props.lastName} onChange={this.handleChangeForm}/>
