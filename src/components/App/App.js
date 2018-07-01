@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
+import VideoPlayer from 'components/VideoPlayer';
+import Switcher from 'components/Switcher';
 
 class App extends Component {
+  div = React.createRef();
+
   render() {
-    return null;
+    return (
+      <Switcher>
+        <div>
+          <VideoPlayer />
+        </div>
+      </Switcher>
+    );
   }
 }
 
