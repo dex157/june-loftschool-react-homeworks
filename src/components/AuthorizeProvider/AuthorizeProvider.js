@@ -6,6 +6,18 @@ const { Provider, Consumer } = React.createContext({ isAuthorized: false });
 // по этому тут так много кода, изучайте как следует!
 // немного кода я все таки вырезал ^^
 class AuthorizeProvider extends Component {
+  state = {
+    isAuthorized: false
+  };
+
+  authorizeUser = (email, password) => {
+    if (email === 'student' && password === '123') {
+      this.setState({ isAuthorized: true });
+      return true;
+    }
+    return false;
+  };
+
   render() {
     const { children } = this.props;
     const { isAuthorized } = this.state;
