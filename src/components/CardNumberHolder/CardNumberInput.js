@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 class CardNumberInput extends Component {
   state = {
-    number: ''
+    number: "1234 5"
   };
 
   format(cardNumber) {
@@ -19,7 +19,9 @@ class CardNumberInput extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+
     const normNumber = this.normalize(nextProps.cardNumber);
+    console.log(this.format(normNumber))
     this.setState({
       number: this.format(normNumber)
     });
@@ -30,7 +32,7 @@ class CardNumberInput extends Component {
       { onChange } = this.props;
     return (
       <Fragment>
-        <input name="Card number" onChange={onChange} value={number} />
+        <input type="text" onChange={onChange} value={number} />
       </Fragment>
     );
   }
