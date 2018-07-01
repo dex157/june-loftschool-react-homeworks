@@ -7,16 +7,14 @@ class CardNumberInput extends Component {
 
   componentDidMount() {
     const value = this.normalize(this.props.cardNumber);
-    debugger;
     this.setState({ number: this.format(value) });
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.cardNumber !== this.props.cardNumber) {
-      this.setState(state => {
-        this.format(nextProps.cardNumber);
-      });
-    }
+    const cardNumber = this.format(nextProps.cardNumber);
+    this.setState({
+      number: cardNumber
+    });
   }
 
   format = value => {
@@ -25,23 +23,23 @@ class CardNumberInput extends Component {
     }
     const resultValue = value
       .toString()
-      .replace(/(\w{4})/g, match => `${match} `);
+      .replace(/(\w{4})/g, match => `${match} `)
+      .trim();
     return resultValue;
   };
 
   normalize = value => {
-    return value ? value.replace(/s/g, '') : '';
+    return value ? value.split(' ').join('') : '';
   };
 
   handleChange = event => {
     const { onChange } = this.props;
-    let numberCard = this.setState({ cardNumber: event.target.value });
+    let numberCard = this.normalize(event.target.value);
     onChange(numberCard);
   };
 
   render() {
     const { number } = this.state;
-    // const { onChange } = this.props;
     return <input value={number} onChange={this.handleChange} />;
   }
 }
