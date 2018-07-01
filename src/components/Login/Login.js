@@ -30,7 +30,7 @@ class Login extends Component {
     ) : (
       <div>
         <div>
-          <input name="login" value={login} onChange={this.handleChange} />
+          <input name="email" value={login} onChange={this.handleChange} />
           <input
             name="password"
             value={password}
