@@ -2,72 +2,65 @@ import React, { Component } from 'react';
 import PersonalForm from '../PersonalForm';
 import CardForm from '../CardForm';
 import Step from '../Step';
-import Title from '../Title';
 import './App.css';
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      step: 1,
-      firstName: '',
-      lastName: '',
-      email: '',
-      cardNumber: ''
-    };
-  }
+  state = {
+    step: 1,
+    firstName: '',
+    lastName: '',
+    email: '',
+    cardNumber: ''
+  };
+
   handleClickNextForm = e => {
-    e.preventDefault();
     const { step } = this.state;
     this.setState(() => ({
       step: step >= 3 ? 3 : step + 1
     }));
   };
 
-  handleTabClick = e => {
-    e.preventDefault();
-    const val = e.target.value;
+  handleTabClick = step => {
     this.setState(() => ({
-      step: val
+      step
     }));
   };
 
-  onChangeForm = e => {
-    const name = e.target.name;
-    const val = e.target.value;
+  handleChangeForm = (name, value) => {
     this.setState(() => ({
-      [name]: val
+      [name]: value
     }));
   };
+
   renderForm = () => {
-    const { firstName, lastName, email, cardNumber } = this.state;
-    const personalForm = (
-      <PersonalForm
-        email={email}
-        lastName={lastName}
-        firstName={firstName}
-        Title={Title}
-        onChangeForm={this.handleChangeForm}
-      />
-    );
-
-    const cardForm = (
-      <CardForm
-        {...cardNumber}
-        onChangeForm={this.handleChangeForm}
-        Title={Title}
-      />
-    );
-    const congrats = <h1>Поздравляем!</h1>;
     switch (this.state.step) {
       case 1:
-        return personalForm;
+        return (
+          <PersonalForm
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+            email={this.state.email}
+            onChangeForm={this.handleChangeForm}
+          />
+        );
       case 2:
-        return cardForm;
+        return (
+          <CardForm
+            cardNumber={this.state.cardNumber}
+            onChangeForm={this.handleChangeForm}
+          />
+        );
       case 3:
-        return congrats;
+        return <p data-test="congratulations">Поздравляем!</p>;
       default:
-        return personalForm;
+        return (
+          <PersonalForm
+            firstName={this.state.firstName}
+            lastName={this.state.lastName}
+            email={this.state.email}
+            onChangeForm={this.handleChangeForm}
+          />
+        );
     }
   };
   isFormCommitable = () => {
@@ -84,26 +77,43 @@ export default class App extends Component {
     }
   };
 
-  handleChangeForm = e => {
-    const val = e.target.value;
-    const name = e.target.name;
-    this.setState(() => ({
-      [name]: val
-    }));
-  };
-
-  handleClick = number => {};
-  isSelected = number => {
-    if (number === this.state.step) {
-      return true;
-    }
-    return false;
-  };
   render() {
+    const isSelected = number => {
+      if (number === this.state.step) {
+        return true;
+      }
+      return false;
+    };
+
+    const isClickable = number => {
+      if (number < this.state.step) {
+        return true;
+      }
+      return false;
+    };
+    const tabs = [
+      { number: 1, title: 'Personal information' },
+      { number: 2, title: 'Card information' },
+      { number: 3, title: 'Finish' }
+    ];
+
     return (
       <div className="container">
         <div className="tab-panel">
-          <Step currentStep={this.state.step} />
+          {tabs.map(tab => {
+            const { number, title } = tab;
+            return (
+              <Step
+                key={number}
+                onClick={this.handleTabClick}
+                isClickable={isClickable(number)}
+                isSelected={isSelected(number)}
+                number={number}
+              >
+                {title}
+              </Step>
+            );
+          })}
         </div>
         <div className="form-content">{this.renderForm()}</div>
         <div className="button-panel">

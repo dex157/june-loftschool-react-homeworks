@@ -1,26 +1,28 @@
-import React, { Fragment } from 'react';
+import React, { Component } from 'react';
 import './Step.css';
 
-const Step = ({ currentStep }) => {
-  const tabs = [
-    { number: 1, title: 'Personal information' },
-    { number: 2, title: 'Card information' },
-    { number: 3, title: 'Finish' }
-  ];
+class Step extends Component {
+  handleClick = () => {
+    let number = this.props.number;
+    if (this.props.isClickable) {
+      this.props.onClick(number);
+    }
+  };
 
-  return (
-    <Fragment>
-      {tabs.map(step => {
-        const { number, title } = step;
-        return (
-          <div key={step.title} className="step step-clickable">
-            <p className="step__number">{number}</p>
-            <p className="step__title">{title} </p>
-          </div>
-        );
-      })}
-    </Fragment>
-  );
-};
+  render() {
+    const { isClickable, isSelected, number } = this.props;
+    return (
+      <div
+        className={`step ${(isSelected && 'step-selected') ||
+          ''} ${(isClickable && 'step-clickable') || ''}`}
+        value={number}
+        onClick={this.handleClick}
+      >
+        <p className="step__number">{number}</p>
+        <p className="step__title">{this.props.children}</p>
+      </div>
+    );
+  }
+}
 
 export default Step;
