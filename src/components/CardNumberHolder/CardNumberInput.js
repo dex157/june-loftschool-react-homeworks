@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 class CardNumberInput extends Component {
   state = {
-    number: "1234 5"
+    number: this.format(this.props.cardNumber)
   };
 
   format(cardNumber) {
@@ -19,9 +19,7 @@ class CardNumberInput extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
     const normNumber = this.normalize(nextProps.cardNumber);
-    console.log(this.format(normNumber))
     this.setState({
       number: this.format(normNumber)
     });
