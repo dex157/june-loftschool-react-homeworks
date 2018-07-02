@@ -11,40 +11,49 @@ class App extends React.Component {
 		Steps: [
 			{
 				title: 'Personal information',
-				isClickable: true,
 				isSelected: true,
-				step: 1
 			},
 			{
 				title: 'Card information',
-				isClickable: false,
 				isSelected: false,
-				step: 2
 			},
 			{
 				title: 'Finish',
-				isClickable: false,
 				isSelected: false,
-				step: 3
 			}
 		],
 		firstName: '',
 		lastName: '',
 		email: '',
-		cardNumber: ''
+		cardNumber: '',
+		isClickable: false
 	}
 
 	onChangeForm = (event) => {
+		if(this.state.firstName !== '' && this.state.lastName !== '' && this.state.email.includes('@')){
+			this.setState({isClickable: true})
+		}	
+
 		if(event.target.name === 'firstName'){
 			this.setState({firstName: event.target.value});
 		} else if(event.target.name === 'lastName'){
 			this.setState({lastName: event.target.value});
 		} else if(event.target.name === 'email'){
 			this.setState({email: event.target.value})
-		}	else if(event.target.name === 'cardNumber'){
-			this.setState({cardNumber: event.target.value})
-			
 		}	
+		
+		
+	}
+
+	onChangeFormCard = (event) => {
+		if(event.target.name === 'cardNumber'){
+			this.setState({cardNumber: event.target.value});
+		} 
+		
+		if(this.state.cardNumber.length === 16) {
+			this.setState({isClickable: true});
+		}
+
 	}
 
 	handleSwitch = () => {
@@ -54,7 +63,7 @@ class App extends React.Component {
 			case 1: 
 				return <PersonalForm firstName={this.state.firstName} lastName={this.state.lastName} email={this.state.email} onChangeForm={this.onChangeForm}/>;
 			case 2: 
-				return <CardForm cardNumber={this.state.cardNumber} onChangeForm={this.onChangeForm}/>;
+				return <CardForm cardNumber={this.state.cardNumber} onChangeFormCard={this.onChangeFormCard}/>;
 			case 3: 
 				return <p>Получилось!</p>;
 			default:
@@ -63,36 +72,34 @@ class App extends React.Component {
 		}
 	}
 
-	handleCLick = () => {
+	handleCLick = (event) => {
 		const {step} = this.state;
-		
-		if(step <= 2 ) {
+
+		if(this.state.isClickable && step <= 2){
 			this.setState({step: step + 1})
+			this.setState({isClickable: false})
 		}
-		
 	}
 
-	clickStep = (item) => {
-		const step = item.step;
-		this.setState({Step: step})
+	clickStep = (event) => {
+		console.log(event.target.key)
 	}
 
 	render() {
 		return(
 			<div className='container'>
 				<div className='tab-panel'>
-					{this.state.Steps.map(item => <Step title={item.title} isSelected={item.isSelected} isClickable={item.isClickable} onClick={(item) => this.clickStep(item)}/>)}
+					{this.state.Steps.map((item, i) => <Step key={i} title={item.title} isSelected={item.isSelected} onClick={this.clickStep}/>)}
 				</div>
 				<div className='form-content'>
 					{this.handleSwitch()}
 				</div>
 				<div className='button-panel'>
-					<button className='button-next' onClick={this.handleCLick}>next</button>
+					<button className={this.state.isClickable ? 'button-next' : 'button-next:disabled'} onClick={this.handleCLick}>next</button>
 				</div>
 			</div>
 		)
 	}
 }
 
-// export { default } from './App';
 export default App;
