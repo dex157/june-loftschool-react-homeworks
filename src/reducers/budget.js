@@ -1,6 +1,12 @@
 import { CREATE_ORDER, MOVE_ORDER_TO_FARM } from '../actions/marketTypes.js';
 import { MOVE_ORDER_TO_CUSTOMER } from '../actions/farmTypes.js';
-import { initialState } from './helpers';
+
+const initialState = {
+  profit: 0,
+  marketExpanse: 0,
+  farmExpanse: 0,
+  deliveryExpanse: 0
+};
 
 const budget = (state = initialState, action) => {
   const expenseMarket = 20;

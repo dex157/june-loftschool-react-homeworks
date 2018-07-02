@@ -23,15 +23,15 @@ const Budget = props => {
       </p>
       <p>
         Расходы продавцов:
-        <span className="t-sellers"> {marketExpanse}</span>
+        <span className="t-sellers"> {-marketExpanse}</span>
       </p>
       <p>
         Расходы на ферме:
-        <span className="t-farm"> {farmExpanse}</span>
+        <span className="t-farm"> {-farmExpanse}</span>
       </p>
       <p>
         Расходы на доставку:
-        <span className="t-delivery"> {deliveryExpanse}</span>
+        <span className="t-delivery"> {-deliveryExpanse}</span>
       </p>
       <p>
         Итого:

@@ -4,7 +4,7 @@ import './Order.css';
 const Order = props => {
   const { name, price, createdAt } = props;
   return (
-    <div classNameName="order">
+    <div className="order">
       <div className="order__upper">
         <p className="p--order">Название: {name}</p>
         <p className="p--order">

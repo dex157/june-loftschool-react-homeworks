@@ -1,6 +1,11 @@
 import { MOVE_ORDER_TO_FARM } from '../actions/marketTypes.js';
 import { MOVE_ORDER_TO_CUSTOMER } from '../actions/farmTypes.js';
-import { initialState } from './helpers';
+
+const initialState = {
+  orders: [],
+  profit: 0,
+  productionPrice: 0
+};
 
 const farm = (state = initialState, action) => {
   switch (action.type) {

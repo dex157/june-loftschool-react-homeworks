@@ -1,14 +1,17 @@
 import { CREATE_ORDER, MOVE_ORDER_TO_FARM } from '../actions/marketTypes.js';
-import { initialState } from './helpers';
+
+const initialState = {
+  orders: []
+};
 
 const market = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_ORDER:
-      return { ...state, orders: [action.payload] };
+      return { ...state, orders: [...state.orders, action.payload] };
     case MOVE_ORDER_TO_FARM:
       return {
         ...state,
-        orders: state.orders.slice(state.length - 2, state.length - 1)
+        orders: [...state.orders.slice(state.length - 2, state.length - 1)]
       };
     default:
       return state;

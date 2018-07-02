@@ -48,7 +48,7 @@ const getNewOrder = () => {
     id: getId(),
     name: vegetables[Math.floor(Math.random() * vegetables.length)],
     price: 100 + Math.floor(Math.random() * 100),
-    createdAt: new Date()
+    createdAt: new Date().toLocaleDateString('ru')
   };
 };
 
@@ -60,7 +60,7 @@ class Market extends Component {
   };
 
   sendOrderHandler = () => {
-    const { orders, moveOrderToFarm } = this.props.moveOrderToFarm;
+    const { orders, moveOrderToFarm } = this.props;
     const lastOrder = orders[orders.length - 1];
     moveOrderToFarm(lastOrder);
   };
