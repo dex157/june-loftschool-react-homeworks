@@ -18,10 +18,9 @@ class AuthorizeProvider extends Component {
   authorizeUser = ({ email, password }) => {
     const { validEmail, validPassword } = this.validData;
 
-    if (email === validEmail && password === validPassword) {
-      this.setState({ isAuthorized: true });
-      return true;
-    } else return false;
+    const isAuthorized = email === validEmail && password === validPassword;
+    this.setState({ isAuthorized });
+    return isAuthorized;
   };
 
   render() {
