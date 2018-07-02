@@ -60,8 +60,6 @@ export default class App extends PureComponent {
   renderForm() {
     const state = this.state;
 
-    console.log(state);
-
     if (state.step === 1) {
       return (
         <PersonalForm
