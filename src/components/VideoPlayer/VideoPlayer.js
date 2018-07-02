@@ -3,7 +3,7 @@ import videoFile from './Video.mp4';
 import './VideoPlayer.css';
 
 class VideoPlayer extends PureComponent {
-  static displayName = 'Video player';
+  static displayName = 'VideoPlayer';
 
   video = React.createRef();
 

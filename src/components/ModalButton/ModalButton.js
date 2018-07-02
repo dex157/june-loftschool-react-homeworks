@@ -3,7 +3,7 @@ import Modal from './Modal';
 import './ModalButton.css';
 
 class ModalButton extends Component {
-  static displayName = 'Modal button';
+  static displayName = 'ModalButton';
 
   state = {
     isModalShow: false
