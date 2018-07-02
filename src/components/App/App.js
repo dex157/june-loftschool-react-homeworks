@@ -60,6 +60,8 @@ export default class App extends PureComponent {
   renderForm() {
     const state = this.state;
 
+    console.log(state);
+
     if (state.step === 1) {
       return (
         <PersonalForm
@@ -89,6 +91,7 @@ export default class App extends PureComponent {
 
   handleTabClick = nextStep => {
     this.setState({ step: nextStep });
+    console.log(this.state);
   };
 
   handleChangeForm = (fieldName, name) => {

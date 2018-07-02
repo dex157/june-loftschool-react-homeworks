@@ -5,6 +5,8 @@ export default class CardForm extends PureComponent {
   componentWillUnmount() {}
 
   render() {
+    const { cardNumber } = this.props;
+
     return (
       <div data-test="card-form">
         <h1 className="title">Номер карты</h1>
@@ -12,6 +14,7 @@ export default class CardForm extends PureComponent {
           <input
             name="cardNumber"
             placeholder="0000000000000000"
+            value={cardNumber}
             onChange={this.handleChangeForm}
           />
         </div>
