@@ -277,7 +277,7 @@ describe('Домашняя работа', () => {
               cy.get('.t-delivery').then($el => {
                 const delivery = parseInt($el.text(), 10);
 
-                expect(total).to.eq(profit + sellers + farm + delivery);
+                expect(total).to.eq(profit - sellers - farm - delivery);
               });
             });
           });

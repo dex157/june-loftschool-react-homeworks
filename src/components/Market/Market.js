@@ -51,7 +51,7 @@ export class Market extends PureComponent {
       <div className="market">
         <h2>Новые заказы в магазине</h2>
         <button className="new-orders__create-button" onClick={() => createOrder(getNewOrder())}>Создать заказ</button>
-        <button onClick={() => moveOrderToFarm(orders[0])}>Отправить заказ на ферму</button>
+        <button onClick={() => moveOrderToFarm(orders[0])} disabled={!orders.length}>Отправить заказ на ферму</button>
         <ul className="order-list">
           {orders.map(({ id, name, price, createdAt }) => (
             <Order key={id} id={id} name={name} price={price} createdAt={createdAt}/>

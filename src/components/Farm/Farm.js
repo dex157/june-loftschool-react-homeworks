@@ -11,7 +11,7 @@ export class Farm extends PureComponent {
     return (
       <div className="farm">
         <h2>Производство на ферме</h2>
-        <button className="new-orders__create-button" onClick={() => moveOrderToCustomer(orders[0])}>Отправить урожай клиенту</button>
+        <button onClick={() => moveOrderToCustomer(orders[0])} disabled={!orders.length}>Отправить урожай клиенту</button>
         <ul className="order-farm__list">
           {orders.map(({ id, name, price, createdAt }) => (
             <Order key={id} id={id} name={name} price={price} createdAt={createdAt}/>
