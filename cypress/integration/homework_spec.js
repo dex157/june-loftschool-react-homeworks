@@ -140,6 +140,7 @@ describe('Домашняя работа', () => {
   });
   describe('Сценарий создания заказа в магазине', () => {
     before(() => {
+      cy.visit('/');
       cy.get('.new-orders__create-button').click();
     });
     it('Сумма заказов отражается в строке «Всего получено денег»', () => {
@@ -160,10 +161,10 @@ describe('Домашняя работа', () => {
         });
       });
     });
-    it('Расходы продавцов равны -20', () => {
+    it('Расходы продавцов равны 20', () => {
       cy.get('.t-sellers').then($el => {
         const sellers = parseInt($el.text(), 10);
-        expect(sellers).to.eq(-20);
+        expect(sellers).to.eq(20);
       });
     });
     it('«Итого» равно стоимость заказа минус расходы продавцов', () => {
@@ -178,6 +179,7 @@ describe('Домашняя работа', () => {
   });
   describe('Сценарий отправки заказа на производство на ферму', () => {
     before(() => {
+      cy.visit('/');
       cy.get('.new-orders__create-button').click();
       cy
         .get('button')
@@ -202,16 +204,16 @@ describe('Домашняя работа', () => {
         });
       });
     });
-    it('Расходы продавцов равны -20', () => {
+    it('Расходы продавцов равны 20', () => {
       cy.get('.t-sellers').then($el => {
         const sellers = parseInt($el.text(), 10);
-        expect(sellers).to.eq(-20);
+        expect(sellers).to.eq(20);
       });
     });
-    it('Расходы на ферме равны -100', () => {
+    it('Расходы на ферме равны 100', () => {
       cy.get('.t-farm').then($el => {
         const sellers = parseInt($el.text(), 10);
-        expect(sellers).to.eq(-100);
+        expect(sellers).to.eq(100);
       });
     });
     it('«Итого» равно стоимость заказа минус расходы продавцов, минус ферма', () => {
@@ -224,8 +226,9 @@ describe('Домашняя работа', () => {
       });
     });
   });
-  describe.only('Сценарий отправки заказа клиенту', () => {
+  describe('Сценарий отправки заказа клиенту', () => {
     before(() => {
+      cy.visit('/');
       cy.get('.new-orders__create-button').click();
       cy.get('.new-orders__create-button').click();
       cy.get('.new-orders__create-button').click();

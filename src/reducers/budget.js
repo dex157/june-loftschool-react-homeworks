@@ -1,10 +1,14 @@
 import { CREATE_ORDER, MOVE_ORDER_TO_FARM } from '../actions/marketTypes';
 import { MOVE_ORDER_TO_CUSTOMER } from '../actions/farmTypes';
 
-export default (
-  state = { profit: 0, marketExpanse: 0, farmExpanse: 0, deliveryExpanse: 0 },
-  action
-) => {
+const initialState = {
+  profit: 0,
+  marketExpanse: 0,
+  farmExpanse: 0,
+  deliveryExpanse: 0
+};
+
+export default (state = initialState, action) => {
   switch (action.type) {
     case CREATE_ORDER:
       return {
