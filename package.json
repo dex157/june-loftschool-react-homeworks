@@ -6,7 +6,8 @@
     "prettier": "^1.13.5",
     "react": "16.4.1",
     "react-dom": "16.4.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "webpack": "^4.14.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -15,12 +16,15 @@
     "check-prettier": "prettier --config ./.prettierrc --list-different src/**/*.js",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "start:dev": "webpack-dev-server"
   },
   "devDependencies": {
-    "cypress": "^3.0.1",
+    "cypress": "^3.0.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "eslint-plugin-cypress": "^2.0.1"
+    "eslint-plugin-cypress": "^2.0.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
   }
 }

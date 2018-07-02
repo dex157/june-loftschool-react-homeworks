@@ -1,5 +1,5 @@
 import React from 'react';
-import App from './App';
+import App from '../App';
 
 import { shallow } from 'enzyme';
 
@@ -24,7 +24,9 @@ describe('Компонент App', () => {
       });
 
       it('button-panel button.button-next', () => {
-        expect(wrapper.find('.button-panel button.button-next')).toHaveLength(1);
+        expect(wrapper.find('.button-panel button.button-next')).toHaveLength(
+          1
+        );
       });
     });
 
@@ -46,7 +48,7 @@ describe('Компонент App', () => {
       firstName: '',
       lastName: '',
       email: '',
-      cardNumber: '',
+      cardNumber: ''
     };
     Object.keys(state).forEach(key => {
       it(`${key}: ${state[key] === '' ? "''" : state[key]}`, () => {
@@ -105,7 +107,7 @@ describe('Компонент App', () => {
             step: 1,
             lastName: 'test',
             firstName: 'test',
-            email: 'test@',
+            email: 'test@'
           });
           expect(wrapper.instance().isFormCommitable()).toBeTruthy();
         });
@@ -114,7 +116,7 @@ describe('Компонент App', () => {
             step: 1,
             lastName: 'test',
             firstName: '',
-            email: 'test@',
+            email: 'test@'
           });
 
           expect(wrapper.instance().isFormCommitable()).toBeFalsy();
@@ -124,7 +126,7 @@ describe('Компонент App', () => {
             step: 1,
             lastName: '',
             firstName: 'test',
-            email: 'test@',
+            email: 'test@'
           });
 
           expect(wrapper.instance().isFormCommitable()).toBeFalsy();
@@ -134,7 +136,7 @@ describe('Компонент App', () => {
             step: 1,
             lastName: 'test',
             firstName: 'test',
-            email: '',
+            email: ''
           });
 
           expect(wrapper.instance().isFormCommitable()).toBeFalsy();
@@ -144,7 +146,7 @@ describe('Компонент App', () => {
         it('Должен возврать  true если cardNumber.length === 16', () => {
           wrapper.setState({
             step: 2,
-            cardNumber: '1324123412341234',
+            cardNumber: '1324123412341234'
           });
           expect(wrapper.instance().isFormCommitable()).toBeTruthy();
         });
@@ -152,7 +154,7 @@ describe('Компонент App', () => {
       describe('Если state.step !== 1 | 2', () => {
         it('Должен возврать false', () => {
           wrapper.setState({
-            step: 3,
+            step: 3
           });
           expect(wrapper.instance().isFormCommitable()).toBeFalsy();
         });
@@ -170,33 +172,33 @@ describe('Компонент App', () => {
           step: 1,
           firstName: 'test',
           lastName: 'test',
-          email: 'test@',
+          email: 'test@'
         });
         expect(wrapper.instance().renderForm().props).toEqual({
           firstName: 'test',
           lastName: 'test',
           email: 'test@',
-          onChangeForm: wrapper.instance().handleChangeForm,
+          onChangeForm: wrapper.instance().handleChangeForm
         });
       });
       it(`Если state.step === 2 возвращает компонент <CardForm cardNumber={state.cardNumber} onChangeForm={this.handleChangeForm} onChangeTimeOver={this.handleChangeTimeOver} />`, () => {
         wrapper.setState({
           step: 2,
-          cardNumber: '1234',
+          cardNumber: '1234'
         });
         expect(wrapper.instance().renderForm().props).toEqual({
           cardNumber: '1234',
           onChangeForm: wrapper.instance().handleChangeForm,
-          onChangeTimeOver: wrapper.instance().handleChangeTimeOver,
+          onChangeTimeOver: wrapper.instance().handleChangeTimeOver
         });
       });
       it(`Если state.step === 3 возвращает строку 'Поздравляем!'`, () => {
         const wrapper = shallow(<App />);
         wrapper.setState({
-          step: 3,
+          step: 3
         });
         expect(wrapper.instance().renderForm()).toEqual(
-          <p data-test="congratulations">Поздравляем!</p>,
+          <p data-test="congratulations">Поздравляем!</p>
         );
       });
     });

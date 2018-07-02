@@ -1,5 +1,5 @@
 import React from 'react';
-import Step from './Step';
+import Step from '../Step';
 import { shallow } from 'enzyme';
 
 describe('Компонент Step', () => {
@@ -7,7 +7,7 @@ describe('Компонент Step', () => {
   const wrapper = shallow(
     <Step number={1} onClick={onClickMock} clickable>
       test string
-    </Step>,
+    </Step>
   );
   describe('Рендер', () => {
     describe('Должен присутствовать элемент с классом ', () => {
@@ -28,7 +28,7 @@ describe('Компонент Step', () => {
       const wrapper = shallow(
         <Step isSelected number={1} onClick={onClickMock}>
           test string
-        </Step>,
+        </Step>
       );
       expect(wrapper.find('.step.step-selected')).toHaveLength(1);
     });
@@ -37,7 +37,7 @@ describe('Компонент Step', () => {
       const wrapper = shallow(
         <Step isSelected={false} isClickable number={1} onClick={onClickMock}>
           test string
-        </Step>,
+        </Step>
       );
       expect(wrapper.find('.step.step-clickable')).toHaveLength(1);
     });
@@ -62,7 +62,7 @@ describe('Компонент Step', () => {
           const wrapper = shallow(
             <Step number={1} onClick={onClickMock} isClickable>
               test string
-            </Step>,
+            </Step>
           );
           wrapper.instance().handleClick();
           expect(onClickMock).toHaveBeenCalledTimes(1);
@@ -73,7 +73,7 @@ describe('Компонент Step', () => {
           const wrapper = shallow(
             <Step number={1} onClick={onClickMock} isClickable={false}>
               test string
-            </Step>,
+            </Step>
           );
           wrapper.instance().handleClick();
           expect(onClickMock).toHaveBeenCalledTimes(0);
@@ -84,7 +84,7 @@ describe('Компонент Step', () => {
           const wrapper = shallow(
             <Step number={999} onClick={onClickMock} isClickable>
               test string
-            </Step>,
+            </Step>
           );
           wrapper.instance().handleClick();
           expect(onClickMock).toBeCalledWith(999);
