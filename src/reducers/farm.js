@@ -15,7 +15,7 @@ const farm = (state = initialState, action) => {
     const ordersLength = state.orders.length;
       return {
         ...state,
-        ...state.orders, orders: [...state.orders.slice(0, ordersLength - 1)]
+        orders: [...state.orders.slice(0, ordersLength - 1)]
       };
     default:
       return state;
