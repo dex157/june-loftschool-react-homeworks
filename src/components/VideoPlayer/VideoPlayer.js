@@ -11,7 +11,6 @@ class VideoPlayer extends PureComponent {
 
   pause = () => {
     this.video.current.pause();
-    console.log(this.video.current.style);
   };
 
   render() {
