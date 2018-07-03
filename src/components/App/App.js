@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import { Switch, withRouter } from 'react-router-dom';
 import { AuthorizeProvider } from 'components/AuthorizeProvider';
 
+// initial commit
+
 export class App extends PureComponent {
   render() {
     return (
