@@ -34,17 +34,6 @@ class App extends React.Component {
 				return false;
 		}
 
-	// onChangeFormCard = (event) => {
-	// 	if(event.target.name === 'cardNumber'){
-	// 		this.setState({cardNumber: event.target.value});
-	// 	} 
-		
-	// 	if(this.state.cardNumber.length === 16) {
-	// 		this.setState({isClickable: true});
-	// 	}
-
-	// }
-
 	renderForm = () => {
 		const {step} = this.state;
 		const state = this.state;

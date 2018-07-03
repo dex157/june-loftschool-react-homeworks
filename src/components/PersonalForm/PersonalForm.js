@@ -14,7 +14,7 @@ class PersonalForm extends Component {
 	render() {
 		const {firstName, lastName, email} = this.props;
 		return(
-			<div className='personal-form'>
+			<div className='personal-form' data-test="personal-form">
 				<Title title='Персональная информация'/>
 				<input type="text" name='firstName' placeholder='First name' value={firstName} onChange={this.handleChangeForm}/>
 				<input type="text" name='lastName' placeholder='Last name' value={lastName} onChange={this.handleChangeForm}/>

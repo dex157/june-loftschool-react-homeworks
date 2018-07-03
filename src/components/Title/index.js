@@ -6,5 +6,4 @@ function Title ({title}) {
 	)
 }
 
-// export { default } from './Title';
 export default Title;
