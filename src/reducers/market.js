@@ -5,13 +5,13 @@ const initialState = {
 };
 
 const market = (state = initialState, action) => {
+  const ordersLength = state.orders.length;
   switch (action.type) {
     case CREATE_ORDER:
       return { ...state, orders: [...state.orders, action.payload] };
     case MOVE_ORDER_TO_FARM:
       return {
-        ...state,
-        orders: [...state.orders.slice(state.length - 2, state.length - 1)]
+        ...state.orders, orders: [...state.orders.slice(0, ordersLength - 1)]
       };
     default:
       return state;

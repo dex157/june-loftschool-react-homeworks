@@ -17,8 +17,8 @@ const budget = (state = initialState, action) => {
     case CREATE_ORDER:
       return {
         ...state,
-        profit: action.payload.price,
-        marketExpense: +expenseMarket
+        profit: state.profit + action.payload.price,
+        marketExpanse: state.marketExpanse + expenseMarket
       };
     case MOVE_ORDER_TO_FARM:
       return { ...state, farmExpanse: state.farmExpanse + expenseFarm };

@@ -10,11 +10,12 @@ const initialState = {
 const farm = (state = initialState, action) => {
   switch (action.type) {
     case MOVE_ORDER_TO_FARM:
-      return { ...state, orders: [action.payload] };
+      return { ...state, orders: [...state.orders, action.payload] };
     case MOVE_ORDER_TO_CUSTOMER:
+    const ordersLength = state.orders.length;
       return {
         ...state,
-        orders: state.orders.slice(state.length - 2, state.length - 1)
+        ...state.orders, orders: [...state.orders.slice(0, ordersLength - 1)]
       };
     default:
       return state;
