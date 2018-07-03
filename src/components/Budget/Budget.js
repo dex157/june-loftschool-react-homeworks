@@ -8,32 +8,32 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {};
 
-const Budget = props => (
+const Budget = ({budget}) => (
   <div className="budget">
     <h2>Бюджет</h2>
     <p>
       Всего получено денег:{' '}
-      <span className="t-profit">{props.budget.profit}</span>
+      <span className="t-profit">{budget.profit}</span>
     </p>
     <p>
       Расходы продавцов:{' '}
-      <span className="t-sellers">{-props.budget.sellerExpanse}</span>
+      <span className="t-sellers">{-budget.sellerExpanse}</span>
     </p>
     <p>
       Расходы на ферме:{' '}
-      <span className="t-farm">{-props.budget.farmExpanse}</span>
+      <span className="t-farm">{-budget.farmExpanse}</span>
     </p>
     <p>
       Расходы на доставку:{' '}
-      <span className="t-delivery">{-props.budget.deliveryExpanse}</span>
+      <span className="t-delivery">{-budget.deliveryExpanse}</span>
     </p>
     <p>
       Итого:{' '}
       <span className="t-total">
-        {props.budget.profit -
-          props.budget.sellerExpanse -
-          props.budget.farmExpanse -
-          props.budget.deliveryExpanse}
+        {budget.profit -
+          budget.sellerExpanse -
+          budget.farmExpanse -
+          budget.deliveryExpanse}
       </span>
     </p>
   </div>
