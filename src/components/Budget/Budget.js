@@ -1,6 +1,6 @@
 import React from 'react';
 import './Budget.css';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
   budget: state.budget
@@ -8,32 +8,32 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {};
 
-export const Budget = () => (
+const Budget = props => (
   <div className="budget">
     <h2>Бюджет</h2>
     <p>
       Всего получено денег:{' '}
-      <span className="t-profit">{this.props.budget.profit}</span>
+      <span className="t-profit">{props.budget.profit}</span>
     </p>
     <p>
       Расходы продавцов:{' '}
-      <span className="t-sellers">{-this.props.budget.sellerExpanse}</span>
+      <span className="t-sellers">{-props.budget.sellerExpanse}</span>
     </p>
     <p>
       Расходы на ферме:{' '}
-      <span className="t-farm">{-this.props.budget.farmExpanse}</span>
+      <span className="t-farm">{-props.budget.farmExpanse}</span>
     </p>
     <p>
       Расходы на доставку:{' '}
-      <span className="t-delivery">{-this.props.budget.deliveryExpanse}</span>
+      <span className="t-delivery">{-props.budget.deliveryExpanse}</span>
     </p>
     <p>
       Итого:{' '}
       <span className="t-total">
-        {this.props.budget.profit -
-        this.props.budget.sellerExpanse -
-        this.props.budget.farmExpanse -
-        this.props.budget.deliveryExpanse}
+        {props.budget.profit -
+          props.budget.sellerExpanse -
+          props.budget.farmExpanse -
+          props.budget.deliveryExpanse}
       </span>
     </p>
   </div>
