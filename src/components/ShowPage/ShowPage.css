@@ -1,0 +1,16 @@
+.cast {
+  margin: 10px;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+}
+
+.cast__body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.cast__person {
+  margin: 0 10px;
+}
