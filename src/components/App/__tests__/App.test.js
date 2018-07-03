@@ -1,8 +1,8 @@
 import React from 'react';
-import App from '../App';
-import Market from '../../Market';
-import Farm from '../../Farm';
-import Budget from '../../Budget';
+import App from 'components/App';
+import Market from 'components/Market';
+import Farm from 'components/Farm';
+import Budget from 'components/Budget';
 import { shallow } from 'enzyme';
 
 describe('Компонент App', () => {
