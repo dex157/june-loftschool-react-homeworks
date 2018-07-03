@@ -16,7 +16,7 @@ class App extends React.Component {
 		steps: ['Personal information', 'Card information', 'Finish']
 	}
 
-	onChangeForm = (name, value) => {
+	handleChangeForm = (name, value) => {
 			this.setState({[name]: value});
 		}
 		isFormCommitable = () => {
@@ -45,16 +45,17 @@ class App extends React.Component {
 
 	// }
 
-	handleSwitch = () => {
+	renderForm = () => {
 		const {step} = this.state;
+		const state = this.state;
 
 		switch(step) {
 			case 1: 
-				return <PersonalForm firstName={this.state.firstName} lastName={this.state.lastName} email={this.state.email} onChangeForm={this.onChangeForm} />;
+				return <PersonalForm firstName={state.firstName} lastName={state.lastName} email={state.email} onChangeForm={this.handleChangeForm} />;
 			case 2: 
-				return <CardForm cardNumber={this.state.cardNumber} onChangeForm={this.onChangeForm}/>;
+				return <CardForm cardNumber={state.cardNumber} onChangeForm={this.handleChangeForm} onChangeTimeOver={this.handleChangeTimeOver} />;
 			case 3: 
-				return <p>Получилось!</p>;
+				return <p data-test="congratulations">Поздравляем!</p>;
 			default:
 				return <p>Чтото не так :(</p>
 			
@@ -78,10 +79,10 @@ class App extends React.Component {
 					{steps.map((item, i) => <Step key={i} number={i + 1} isSelected={step === i + 1} isClickable={step > i} onClick={this.handleTabClick}>{item}</Step>)}
 				</div>
 				<div className='form-content'>
-					{this.handleSwitch()}
+					{this.renderForm()}
 				</div>
 				<div className='button-panel'>
-					<button disabled={!this.isFormCommitable()} className={this.state.isClickable ? 'button-next' : 'button-next:disabled'} onClick={this.handleClickNextForm}>next</button>
+					<button disabled={!this.isFormCommitable()} className='button-next' onClick={this.handleClickNextForm}>next</button>
 				</div>
 			</div>
 		)

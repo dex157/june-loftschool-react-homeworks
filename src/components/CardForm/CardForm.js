@@ -4,6 +4,10 @@ import './CardForm.css';
 
 class CardForm extends Component {
 
+	componentWillUnmount = () => {
+		
+	}
+
 	handleChangeForm = e => {
 		const {onChangeForm} = this.props;
 		const {name, value} = e.target;
@@ -23,4 +27,3 @@ class CardForm extends Component {
 }
 
 export default CardForm;
-
