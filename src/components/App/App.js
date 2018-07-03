@@ -5,12 +5,6 @@ import Farm from '../Farm';
 import Budget from '../Budget';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({
-  budget: state.budget
-});
-
-const mapDispatchToProps = {};
-
 export class App extends Component {
   render() {
     const { budget } = this.props;
@@ -18,13 +12,10 @@ export class App extends Component {
       <div className="app">
         <Market />
         <Farm />
-        <Budget budget={budget} />
+        <Budget />
       </div>
     );
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;
