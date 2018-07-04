@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createOrder, moveOrderToFarm } from 'actions/marketActions';
-import { Order } from '../Order';
+import Order from '../Order';
 import './Market.css';
 
 const mapStateToProps = state => ({
@@ -73,12 +73,12 @@ export class Market extends Component {
         </button>
 
         <div className="order-list">
-          {orders.map((order, i) => (
+          {orders.map(order => (
             <Order
               key={order.id}
               name={order.name}
               price={order.price}
-              createdAt={order.createdAt}
+              createdAt={order.createdAt.toLocaleString()}
             />
           ))}
         </div>

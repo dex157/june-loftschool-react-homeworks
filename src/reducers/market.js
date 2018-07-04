@@ -1,4 +1,4 @@
-import { CREATE_ORDER, MOVE_ORDER_TO_FARM } from '../../actions/marketTypes';
+import { CREATE_ORDER, MOVE_ORDER_TO_FARM } from '../actions/marketTypes';
 import { sortOrderFn } from './helpers';
 
 const initialState = {
@@ -19,10 +19,17 @@ export default (state = initialState, action) => {
       if (orderIndex === -1) {
         return state;
       } else {
-        const deleteOrder = state.orders.splice(orderIndex, 1);
-        debugger;
+        // state.orders.splice(orderIndex, 1);
+        // return {
+        //   ...state
+        // };
         return {
-          ...state
+          ...state,
+          orders: [
+            ...state,
+            ...state.orders.slice(0, orderIndex),
+            ...state.orders.slice(orderIndex + 1)
+          ]
         };
       }
 
