@@ -1,17 +1,7 @@
 import { createActions } from 'redux-actions';
 
-const {
-  search: {
-    getRequest: getShowRequest,
-    getSuccess: getSuccesshShowRequest,
-    getFailure: getFailureShowRequest
-  }
-} = createActions({
-  SHOW: {
-    _REQUEST: null,
-    _SUCCESS: null,
-    _FAILURE: null
-  }
-});
+const getShowRequest = createActions('SHOW_REQUEST');
+const getSuccesshShowRequest = createActions('SHOW_SUCCESS');
+const getFailureShowRequest = createActions('SHOW_FAILURE');
 
 export { getShowRequest, getSuccesshShowRequest, getFailureShowRequest };
