@@ -1,8 +1,13 @@
 import { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 class Modal extends Component {
   render() {
-    return null;
+    const { isModalShow, children } = this.props;
+
+    if (isModalShow) {
+      return ReactDOM.createPortal(children, document.getElementById('portal'));
+    } else return null;
   }
 }
 
