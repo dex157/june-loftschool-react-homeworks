@@ -14,7 +14,7 @@ class CardNumberInput extends Component {
   }
 
   format(number) {
-    if (number === null) {
+    if (number === null || !number) {
       return '';
     }
 
