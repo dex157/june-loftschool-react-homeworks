@@ -4,5 +4,5 @@ import shows from './shows';
 
 export default combineReducers({
   search,
-  shows,
+  shows
 });
