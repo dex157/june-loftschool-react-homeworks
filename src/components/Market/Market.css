@@ -2,7 +2,9 @@
   border-radius: 4px;
   background-color: #eee;
   padding: 10px 20px;
-  margin: 0 10px;
+  margin: 10px;
+  width: 30%;
+  min-width: 300px;
 }
 
 .new-orders__create-form {
@@ -10,7 +12,15 @@
   flex-direction: column;
 }
 
-
 .order-list {
   padding: 20px 0;
+}
+
+.market__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.market__buttons button {
+  margin: 5px 15px;
 }
