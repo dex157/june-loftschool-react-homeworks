@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Modal from './Modal';
 import './ModalButton.css';
 
@@ -20,10 +20,22 @@ class ModalButton extends Component {
   };
 
   render() {
-    return !this.state.isModalShow ? (
-      <button onClick={this.showModal}>Show modal</button>
-    ) : (
-      <Modal onClick={this.hideModal} />
+    return (
+      <Fragment>
+        <button onClick={this.showModal}>Show modal!</button>
+        {this.state.isModalShow && (
+          <Modal domeNode={document.querySelector('#portal')}>
+            <div className="modal">
+              <div className="modal__fog">
+                <div className="modal__body">
+                  <h1>Модальное окно!</h1>
+                  <button onClick={this.hideModal}>Close</button>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        )}
+      </Fragment>
     );
   }
 }
