@@ -6,6 +6,10 @@ const { Provider, Consumer } = React.createContext({ isAuthorized: false });
 // по этому тут так много кода, изучайте как следует!
 // немного кода я все таки вырезал ^^
 class AuthorizeProvider extends Component {
+  state = {
+    isAuthorized: false
+  };
+
   render() {
     const { children } = this.props;
     const { isAuthorized } = this.state;
@@ -16,6 +20,12 @@ class AuthorizeProvider extends Component {
       </Provider>
     );
   }
+  authorizeUser = (login, pass) => {
+    if (login === 'student' && pass === '123') {
+      this.setState({ isAuthorized: true });
+      return true;
+    } else return false;
+  };
 }
 
 const AuthHOC = WrappedComponent =>
