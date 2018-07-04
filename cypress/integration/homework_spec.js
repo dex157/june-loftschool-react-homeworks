@@ -140,6 +140,7 @@ describe('Домашняя работа', () => {
   });
   describe('Сценарий создания заказа в магазине', () => {
     before(() => {
+      cy.visit('/');
       cy.get('.new-orders__create-button').click();
     });
     it('Сумма заказов отражается в строке «Всего получено денег»', () => {
@@ -178,6 +179,7 @@ describe('Домашняя работа', () => {
   });
   describe('Сценарий отправки заказа на производство на ферму', () => {
     before(() => {
+      cy.visit('/');
       cy.get('.new-orders__create-button').click();
       cy
         .get('button')
@@ -224,8 +226,9 @@ describe('Домашняя работа', () => {
       });
     });
   });
-  describe.only('Сценарий отправки заказа клиенту', () => {
+  describe('Сценарий отправки заказа клиенту', () => {
     before(() => {
+      cy.visit('/');
       cy.get('.new-orders__create-button').click();
       cy.get('.new-orders__create-button').click();
       cy.get('.new-orders__create-button').click();
