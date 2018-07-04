@@ -8,6 +8,8 @@ class Switcher extends Component {
     selectedChild: 0
   };
 
+  static displayName = 'Switcher';
+
   handleChangeChild = e => {
     const id = e.target.dataset.id;
     this.setState(() => ({
@@ -35,6 +37,7 @@ class Switcher extends Component {
             })}
           </ul>
         </nav>
+        <hr />
         <div className="component-wrapper">
           {kids[this.state.selectedChild]}
         </div>

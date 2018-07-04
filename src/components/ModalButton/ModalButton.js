@@ -7,6 +7,8 @@ class ModalButton extends Component {
     isModalShow: false
   };
 
+  static displayName = 'ModalButton';
+
   hideModal = () => {
     this.setState(state => ({
       isModalShow: false
