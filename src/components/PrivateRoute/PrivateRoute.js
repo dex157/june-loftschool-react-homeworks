@@ -3,7 +3,7 @@ import { AuthHOC } from 'components/AuthorizeProvider';
 
 class PrivateRoute extends PureComponent {
   render() {
-    return null;
+    return <p>Private</p>;
   }
 }
 

@@ -1,13 +1,33 @@
 import React, { PureComponent } from 'react';
-import { Switch, withRouter } from 'react-router-dom';
+import { Switch, withRouter, Route, Link } from 'react-router-dom';
 import { AuthorizeProvider } from 'components/AuthorizeProvider';
+import Public from '../Public';
+import Login from '../Login';
+import Private from '../Private';
 
 export class App extends PureComponent {
   render() {
     return (
       <AuthorizeProvider>
         <div>
-          <Switch />
+          <nav>
+            <ul>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/private">Private</Link>
+              </li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route path="/" component={Public} />
+            <Route path="/login" component={Login} />
+            <Route path="/private" comonent={Private} />
+          </Switch>
         </div>
       </AuthorizeProvider>
     );
