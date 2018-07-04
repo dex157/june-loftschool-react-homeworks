@@ -10,12 +10,12 @@ describe('компонента AuthorizeProvider', () => {
       expect(wrapper.state()).toEqual({ isAuthorized: false });
     });
 
-    it('Компонента имеет метод authorzeUser', () => {
+    it('Компонента имеет метод authorizeUser', () => {
       expect(wrapper.instance().authorizeUser).toBeDefined();
     });
   });
 
-  describe('поведение метода autorizeUser', () => {
+  describe('поведение метода authorizeUser', () => {
     const wrapper = shallow(<AuthorizeProvider />);
 
     it('С аргументами ("student", "123") возвращает true', () => {
