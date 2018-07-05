@@ -1,19 +1,16 @@
-import {
-  getSearchRequest,
-  getSuccesshSearchRequest,
-  getFailureSearchRequest
-} from '../actions/search';
+import { searchRequest, searchSuccess, searchFailure } from '../actions/search';
 
-import {search} from '../api.js';
+import { search } from '../api.js';
 
 const searchMiddleware = store => next => action => {
-  if (action.type === getSearchRequest.toString()) {
-    search(action.payload)
+  if (action.type === searchRequest.toString()) {
+    const data = action.payload;
+    search(data)
       .then(result => {
-        store.dispatch(getSuccesshSearchRequest(result));
+        store.dispatch(searchSuccess(result));
       })
       .catch(error => {
-        store.dispatch(getFailureSearchRequest(error));
+        store.dispatch(searchFailure(error));
       });
   }
 
