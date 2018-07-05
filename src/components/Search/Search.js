@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './Search.css';
 import ShowPreview from '../ShowPreview';
 import {
   getSearchData,
@@ -55,19 +56,20 @@ class Search extends Component {
             </div>
           )}
         </div>
-        {searchIsLoaded && 
-            dataSearch.map(element => {
+        <div className="t-search-result">
+          {searchIsLoaded &&
+            dataSearch.map(({ id, name, image, summary }) => {
               return (
                 <ShowPreview
-                  id={element.id}
-                  name={element.name}
-                  image={element.image}
-                  summary={element.summary}
-                  key={element.id}
+                  id={id}
+                  name={name}
+                  image={image}
+                  summary={summary}
+                  key={id}
                 />
-              )
-            })
-        }
+              );
+            })}
+        </div>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import { showRequest, showSuccess, showFailure } from '../actions/show';
 
-import { show } from '../api.js';
+import { show } from '../api';
 
 const showMiddleware = store => next => action => {
   if (action.type === showRequest.toString()) {

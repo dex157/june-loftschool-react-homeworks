@@ -20,7 +20,7 @@ const loadingState = handleActions(
 
 const result = handleActions(
   {
-    [showRequest.toString()]: (_state, action) => action.payload
+    [showSuccess.toString()]: (_state, action) => action.payload
   },
   []
 );

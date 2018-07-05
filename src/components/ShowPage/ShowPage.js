@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './ShowPage.css';
+
 import {
   getShowData,
   showIsLoaded,
@@ -10,11 +12,15 @@ import {
 import { showRequest } from '../../actions/show';
 
 class ShowPage extends Component {
-  render() {
-    const { showRequest, dataShow, match } = this.props;
+  constructor(props) {
+    super(props);
+    const { showRequest, match } = props;
     const id = match.params.id;
     showRequest(id);
+  }
 
+  render() {
+    const { dataShow, showIsLoading, showIsFailure, showIsLoaded } = this.props;
 
     return (
       <div>
@@ -25,14 +31,28 @@ class ShowPage extends Component {
         {showIsLoaded && (
           <div>
             <p>{dataShow.name}</p>
-            <img src={dataShow.image.medium} alt={dataShow.name} />
-            <div><p dangerouslySetInnerHTML={{ __html: dataShow.summary }} /></div>
+            {dataShow.image !== null && (
+              <img
+                src={dataShow.image.medium}
+                alt={dataShow.name}
+                className="preview__image"
+              />
+            )}
             <div>
-              {dataShow.persons.map(element => {
+              <p dangerouslySetInnerHTML={{ __html: dataShow.summary }} />
+            </div>
+            <div class="t-row">
+              {dataShow.persons.map(({ name, image, id }) => {
                 return (
-                  <div>
-                    <p>{element.name}</p>
-                    <img src={element.image} alt={element.name} />
+                  <div className="t-person" key={id}>
+                    <p>{name}</p>
+                    {image !== null && (
+                      <img
+                        src={image.medium}
+                        alt={name}
+                        className="preview__image"
+                      />
+                    )}
                   </div>
                 );
               })}
