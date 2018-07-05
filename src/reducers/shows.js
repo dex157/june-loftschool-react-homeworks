@@ -1,27 +1,32 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
-import {
-    showRequest,
-    showSuccess,
-    showFailure
-} from '../actions/show';
+import { showRequest, showSuccess, showFailure } from '../actions/show';
 
-const isFetching = handleActions({
+const isFetching = handleActions(
+  {
     [showRequest]: () => true,
     [showSuccess]: () => false,
-    [showFailure]: () => false,
-}, false);
+    [showFailure]: () => false
+  },
+  false
+);
 
-const entities = handleActions({
+const entities = handleActions(
+  {
     [showSuccess]: (_state, action) => action.payload
-}, []);
+  },
+  []
+);
 
-const error = handleActions({
+const error = handleActions(
+  {
     [showFailure]: (_state, action) => action.payload
-}, null);
+  },
+  null
+);
 
 export default combineReducers({
-    isFetching,
-    entities,
-    error
+  isFetching,
+  entities,
+  error
 });

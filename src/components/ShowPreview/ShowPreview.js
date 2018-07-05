@@ -3,43 +3,44 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './ShowPreview.css';
 import { showRequest } from '../../actions/show';
+import { getSerials } from '../../selectors/searchSelectors';
 
 class ShowPreview extends PureComponent {
-    fetchDataShow = (showId) => {
-        this.props.showRequest(showId);
-    };
-    
-    render() {
-        const { serials } = this.props;
+  fetchDataShow = showId => {
+    this.props.showRequest(showId);
+  };
 
-        return (
-            <ul className="serials__list">
-                {serials.map(this.renderSerial)}
-            </ul>
-        )
-    };
+  render() {
+    const { serials } = this.props;
 
-    renderSerial = serial => (
-        <li className="serial" key={serial.id}>
-            <Link 
-                className="serial__link"
-                to={`/shows/${serial.id}`}
-                onClick={() => this.fetchDataShow(serial.id)}>
-                    {serial.name}
-            </Link>
-            {serial.image && <img className="serial__img" src={serial.image.medium} alt={serial.name} />}
-            <div className="serial__summary" dangerouslySetInnerHTML={{__html: serial.summary}} />
-        </li>
-    );
-};
+    return <ul className="serials__list">{serials.map(this.renderSerial)}</ul>;
+  }
+
+  renderSerial = ({ id, name, image, summary }) => (
+    <li className="serial" key={id}>
+      <Link
+        className="serial__link"
+        to={`/shows/${id}`}
+        onClick={() => this.fetchDataShow(id)}
+      >
+        {name}
+      </Link>
+      {image && <img className="serial__img" src={image.medium} alt={name} />}
+      <div
+        className="serial__summary"
+        dangerouslySetInnerHTML={{ __html: summary }}
+      />
+    </li>
+  );
+}
 
 const mapStateToProps = state => ({
-    serials: state.search.serials
+  serials: getSerials(state)
 });
 
 const mapDispatchToProps = { showRequest };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ShowPreview);

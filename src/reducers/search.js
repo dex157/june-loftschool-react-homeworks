@@ -1,27 +1,32 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
-import {
-    searchRequest,
-   searchSuccess,
-   searchFailure
-} from '../actions/search';
+import { searchRequest, searchSuccess, searchFailure } from '../actions/search';
 
-const isFetching = handleActions({
+const isFetching = handleActions(
+  {
     [searchRequest]: () => true,
     [searchSuccess]: () => false,
-    [searchFailure]: () => false,
-}, false);
+    [searchFailure]: () => false
+  },
+  false
+);
 
-const serials = handleActions({
+const serials = handleActions(
+  {
     [searchSuccess]: (_state, action) => action.payload
-}, []);
+  },
+  []
+);
 
-const error = handleActions({
+const error = handleActions(
+  {
     [searchFailure]: (_state, action) => action.payload
-}, null);
+  },
+  null
+);
 
 export default combineReducers({
-    isFetching,
-    serials,
-    error
+  isFetching,
+  serials,
+  error
 });
