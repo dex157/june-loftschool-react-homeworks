@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Switch, withRouter, Link, Route, Redirect } from 'react-router-dom';
+import { Switch, withRouter, Link, Route } from 'react-router-dom';
 import { AuthorizeProvider } from 'components/AuthorizeProvider';
 import  Public from 'components/Public';
 import  Login from 'components/Login';
