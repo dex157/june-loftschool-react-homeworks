@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-class ShowPreview extends Component {
+export default class ShowPreview extends Component {
   render() {
-    const { name, image, summary } = this.props;
+    const { name, image, summary, id } = this.props;
     return (
-      <div>
-        <div>
-          <a>
+      <div className="t-search-result">
+        <div className="preview t-preview">
+          <Link to={`/shows/${id}`} className="preview__link t-link">
             <h3>{name}</h3>
-          </a>
-          {image && <img src={image.medium} alt={name} />}
+          </Link>
+          {(image !== null) && <img src={image.medium} alt={name} className="preview__image"/>}
         </div>
-        <div>{summary}</div>
+        <div>
+          <p className="preview__descr" dangerouslySetInnerHTML={{ __html: summary }}>
+          </p>
+        </div>
       </div>
     );
   }
 }
-
-export default ShowPreview;

@@ -1,36 +1,35 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import {
-  getSearchRequest,
-  getSuccessSearchRequest,
-  getFailureSearchRequest
+  searchRequest,
+  searchSuccess,
+  searchFailure
 } from '../actions/search.js';
 
-const isFetching = handleActions(
+export const LOADING_STATE = {
+  idle: 'IDLE',
+  loading: 'LOADING',
+  success: 'SUCCESS',
+  failure: 'FAILURE'
+};
+
+const loadingState = handleActions(
   {
-    [getSearchRequest.toString()]: () => true,
-    [getSuccessSearchRequest.toString()]: () => false,
-    [getFailureSearchRequest.toString()]: () => false
+    [searchRequest.toString()]: () => LOADING_STATE.loading,
+    [searchSuccess.toString()]: () => LOADING_STATE.success,
+    [searchFailure.toString()]: () => LOADING_STATE.failure
   },
-  false
+  LOADING_STATE.idle
 );
 
 const result = handleActions(
   {
-    [getSuccessSearchRequest.toString()]: (_state, action) => action.payload
+    [searchSuccess.toString()]: (_state, action) => action.payload
   },
-  false
-);
-
-const error = handleActions(
-  {
-    [getFailureSearchRequest.toString()]: (_state, action) => action.payload
-  },
-  false
+  []
 );
 
 export default combineReducers({
-  isFetching,
   result,
-  error
+  loadingState
 });

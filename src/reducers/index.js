@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import search from './search';
-import shows from './shows';
+import show from './show';
 
 export default combineReducers({
   search,
-  shows
+  show
 });
