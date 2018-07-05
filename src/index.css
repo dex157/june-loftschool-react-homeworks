@@ -3,3 +3,13 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+ul {
+  list-style-type: none;
+}
+
+.serial__link {
+  display: block;
+  padding-bottom: 10px;
+  font-weight: bold;
+}

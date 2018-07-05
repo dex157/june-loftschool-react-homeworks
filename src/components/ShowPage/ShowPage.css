@@ -1,0 +1,23 @@
+.serial-showresult__summary {
+    text-align: center;
+}
+
+.serial-showresult__summary p {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.cast__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cast__item {
+   width: 150px;
+   padding: 10px 15px;
+}
+
+.cast__img {
+    width: 90%;
+}
