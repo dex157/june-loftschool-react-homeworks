@@ -2,14 +2,14 @@ import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import {
   getSearchRequest,
-  getSuccesshSearchRequest,
+  getSuccessSearchRequest,
   getFailureSearchRequest
 } from '../actions/search.js';
 
 const isFetching = handleActions(
   {
     [getSearchRequest.toString()]: () => true,
-    [getSuccesshSearchRequest.toString()]: () => false,
+    [getSuccessSearchRequest.toString()]: () => false,
     [getFailureSearchRequest.toString()]: () => false
   },
   false
@@ -17,7 +17,7 @@ const isFetching = handleActions(
 
 const result = handleActions(
   {
-    [getSuccesshSearchRequest.toString()]: (_state, action) => action.payload
+    [getSuccessSearchRequest.toString()]: (_state, action) => action.payload
   },
   false
 );

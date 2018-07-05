@@ -2,14 +2,14 @@ import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import {
   getShowRequest,
-  getSuccesshShowRequest,
+  getSuccessShowRequest,
   getFailureShowRequest
 } from '../actions/show.js';
 
 const isFetching = handleActions(
   {
     [getShowRequest.toString()]: () => true,
-    [getSuccesshShowRequest.toString()]: () => false,
+    [getSuccessShowRequest.toString()]: () => false,
     [getFailureShowRequest.toString()]: () => false
   },
   false
@@ -17,7 +17,7 @@ const isFetching = handleActions(
 
 const result = handleActions(
   {
-    [getSuccesshShowRequest.toString()]: (_state, action) => action.payload
+    [getSuccessShowRequest.toString()]: (_state, action) => action.payload
   },
   false
 );
