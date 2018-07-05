@@ -47,14 +47,14 @@ const students = [
 
 async function main() {
   for (let student of students) {
-    await createHomeworkBranch(7, student);
+    await createHomeworkBranch(8, student);
   }
   await execPromise('git checkout june_master');
 }
 
 async function createHomeworkBranch(homeworkNumber, student) {
-  let homeworkName = `${student}/homework_${homeworkNumber}`;
-  await execPromise(`git checkout homework_${homeworkNumber}`);
+  let homeworkName = `${student}/homework-${homeworkNumber}`;
+  await execPromise(`git checkout homework-${homeworkNumber}`);
   await execPromise(`git checkout -b ${homeworkName}`);
   await execPromise(`git push --set-upstream origin ${homeworkName}`);
 }
