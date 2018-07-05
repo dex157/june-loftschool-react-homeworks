@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
+import ShowPreview from '../ShowPreview';
 import { searchRequest } from '../../actions/search';
+import { showRequest } from '../../actions/show';
 import { connect } from 'react-redux';
 import {
   getSearchFetchState,
-  getSearchError
+  getSearchError,
+  getSerials
 } from '../../selectors/searchSelectors';
 
 class Search extends PureComponent {
@@ -14,6 +17,10 @@ class Search extends PureComponent {
   fetchDataSearch = () => {
     this.props.searchRequest(this.state.inputValue);
     this.setState({ inputValue: '' });
+  };
+
+  fetchDataShow = showId => {
+    this.props.showRequest(showId);
   };
 
   handleInputChange = e => {
@@ -28,7 +35,7 @@ class Search extends PureComponent {
 
   render() {
     const { inputValue } = this.state,
-      { isFetching, error } = this.props;
+      { isFetching, error, serials } = this.props;
 
     if (isFetching) {
       return <p>Выполняется поиск</p>;
@@ -39,25 +46,40 @@ class Search extends PureComponent {
     }
 
     return (
-      <div className="serials__search">
-        <input
-          value={inputValue}
-          placeholder="Название сериала"
-          onChange={this.handleInputChange}
-          onKeyPress={this.sendRequestOnEnter}
-        />
-        <button onClick={this.fetchDataSearch}>Найти</button>
-      </div>
+      <React.Fragment>
+        <div className="serials__search">
+          <input
+            value={inputValue}
+            placeholder="Название сериала"
+            onChange={this.handleInputChange}
+            onKeyPress={this.sendRequestOnEnter}
+          />
+          <button onClick={this.fetchDataSearch}>Найти</button>
+        </div>
+        <ul className="serials__list">
+          {serials.map(({ id, name, image, summary }) => (
+            <ShowPreview
+              key={id}
+              id={id}
+              name={name}
+              image={image}
+              summary={summary}
+              fetchDataShow={this.fetchDataShow}
+            />
+          ))}
+        </ul>
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => ({
   isFetching: getSearchFetchState(state),
-  error: getSearchError(state)
+  error: getSearchError(state),
+  serials: getSerials(state)
 });
 
-const mapDispatchToProps = { searchRequest };
+const mapDispatchToProps = { searchRequest, showRequest };
 
 export default connect(
   mapStateToProps,

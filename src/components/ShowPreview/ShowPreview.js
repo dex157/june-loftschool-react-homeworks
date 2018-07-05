@@ -1,46 +1,26 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './ShowPreview.css';
-import { showRequest } from '../../actions/show';
-import { getSerials } from '../../selectors/searchSelectors';
 
-class ShowPreview extends PureComponent {
-  fetchDataShow = showId => {
-    this.props.showRequest(showId);
-  };
-
+export default class ShowPreview extends PureComponent {
   render() {
-    const { serials } = this.props;
+    const { id, name, image, summary, fetchDataShow } = this.props;
 
-    return <ul className="serials__list">{serials.map(this.renderSerial)}</ul>;
+    return (
+      <li className="serial" key={id}>
+        <Link
+          className="serial__link"
+          to={`/shows/${id}`}
+          onClick={() => fetchDataShow(id)}
+        >
+          {name}
+        </Link>
+        {image && <img className="serial__img" src={image.medium} alt={name} />}
+        <div
+          className="serial__summary"
+          dangerouslySetInnerHTML={{ __html: summary }}
+        />
+      </li>
+    );
   }
-
-  renderSerial = ({ id, name, image, summary }) => (
-    <li className="serial" key={id}>
-      <Link
-        className="serial__link"
-        to={`/shows/${id}`}
-        onClick={() => this.fetchDataShow(id)}
-      >
-        {name}
-      </Link>
-      {image && <img className="serial__img" src={image.medium} alt={name} />}
-      <div
-        className="serial__summary"
-        dangerouslySetInnerHTML={{ __html: summary }}
-      />
-    </li>
-  );
 }
-
-const mapStateToProps = state => ({
-  serials: getSerials(state)
-});
-
-const mapDispatchToProps = { showRequest };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ShowPreview);
