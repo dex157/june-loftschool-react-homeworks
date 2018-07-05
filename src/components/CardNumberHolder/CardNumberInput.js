@@ -13,8 +13,9 @@ class CardNumberInput extends Component {
       return this.state.number;
     }
     return str
-    .toString()
-    .replace(/(\d{0,4})/gi, '$1 ').trim();
+      .toString()
+      .replace(/(\d{0,4})/gi, '$1 ')
+      .trim();
   }
 
   normalize(str) {
