@@ -15,7 +15,7 @@ class CardForm extends Component {
   render() {
     const { cardNumber } = this.props;
     return (
-      <div className="card-form">
+      <div data-test="card-form">
         <Title title='Номер карты' />
         <input
           type="text"
