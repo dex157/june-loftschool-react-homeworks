@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class CardNumberInput extends Component {
+  state = {
+    number: this.props.cardNumber
+  };
+
   format = num => {
     if (num != null) {
       num = num.toString();
@@ -25,16 +29,22 @@ class CardNumberInput extends Component {
     return num.replace(/\s/g, '');
   };
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ number: this.format(nextProps.cardNumber) });
+  componentWillMount() {
+    this.setState({ number: this.format(this.props.cardNumber) });
   }
 
-  state = {
-    number: this.format(this.props.cardNumber)
+  componentWillReceiveProps(nextProps) {
+    if (this.props !== nextProps) {
+      this.setState({ number: this.format(nextProps.cardNumber) });
+    }
+  }
+
+  handleOnChange = event => {
+    this.props.onChange(this.normalize(event.target.value));
   };
 
   render() {
-    return <input value={this.state.number} onChange={this.props.onChange} />;
+    return <input value={this.state.number} onChange={this.handleOnChange} />;
   }
 }
 
