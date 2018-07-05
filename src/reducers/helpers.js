@@ -1,1 +1,3 @@
-export const sortOrderFn = (a, b) => b.createdAt - a.createdAt;
+const sortOrderFn = (a, b) => b.createdAt - a.createdAt;
+
+export { sortOrderFn };
