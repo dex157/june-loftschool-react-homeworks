@@ -7,3 +7,10 @@ body {
 html, body, #root {
   height: 100%;
 }
+
+a: visited {
+  color: black;
+}
+a {
+  color: black;
+}
