@@ -28,7 +28,7 @@ class Login extends Component {
           { email, password, isAuthSuccess } = this.state;
 
     return isAuthorized ? (
-      <Redirect to="/private" />
+      <Redirect to="/" />
     ) : (
       <Fragment>
           <input name="email" value={email} onChange={this.handleChange} />
