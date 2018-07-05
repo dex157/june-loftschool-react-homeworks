@@ -1,0 +1,20 @@
+language: node_js
+
+node_js:
+  - 9
+
+cache:
+  directories:
+    - ~/.npm
+    - ~/.cache
+
+install:
+  - yarn install
+
+before_script:
+  - yarn start -- --silent &
+
+script:
+  - yarn build
+  - yarn run cypress:run
+  - yarn test
