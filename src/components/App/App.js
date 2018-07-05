@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import VideoPlayer from 'components/VideoPlayer';
 import Switcher from 'components/Switcher';
+import VideoPlayer from 'components/VideoPlayer';
+import ModalButton from 'components/ModalButton';
+import CardNumberHolder from 'components/CardNumberHolder';
 
 class App extends Component {
-  div = React.createRef();
-
   render() {
     return (
       <Switcher>
-        <div>
-          <VideoPlayer />
-        </div>
+        <VideoPlayer />
+        <CardNumberHolder />
+        <ModalButton />
       </Switcher>
     );
   }
