@@ -1,13 +1,21 @@
 import { searchRequest, searchSuccess, searchFailure } from '../actions/search';
 
-const reducer = handleActions(
+import defaultState from './defaultState';
+
+export const search = handleActions(
   {
     [searchRequest]: (state, { payload: { resultList } }) => {
-      return { ...state, searchResults: [...resultList] };
-    },
-    [decrement]: (state, { payload: { amount } }) => {
-      return { ...state, counter: state.counter + amount };
-    }
+      console.log('searchRequest');
+      console.log('resultList =', resultList);
+      return { ...state, search: { result: [...state.search.result], isFetching: true,  error: null } }; },
+    [searchSuccess]: (state, { payload: { success } }) => {
+      console.log('searchSuccess');
+      console.log('success =', success);
+      return { ...state, search: { result: [...state.search.result, ...success], isFetching: false,  error: null } }; },
+    [searchFailure]: (state, { payload: { failure } }) => {
+      console.log('searchFailure');
+      console.log('failure =', failure);
+      return { ...state, search: { result: [...state.search.result], isFetching: false,  error: failure } }; }
   },
   defaultState
 );
