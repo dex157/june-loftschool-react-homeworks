@@ -1,8 +1,9 @@
+import { handleActions } from 'redux-actions';
 import { showRequest, showSuccess, showFailure } from '../actions/show';
 
-import defaultState from './defaultState';
+import defaultState from '../defaultState';
 
-export const search = handleActions(
+export default handleActions(
   {
     [showRequest]: (state, { payload: { resultList } }) => {
       console.log('showRequest');
