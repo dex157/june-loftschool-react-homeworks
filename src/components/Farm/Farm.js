@@ -6,7 +6,7 @@ import './Farm.css';
 
 export class Farm extends Component {
   render() {
-    const { orders } = this.props;
+    const { orders, moveOrderToCustomer } = this.props;
 
     return (
       <div className="farm">
