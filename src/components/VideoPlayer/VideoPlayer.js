@@ -3,8 +3,31 @@ import videoFile from './Video.mp4';
 import './VideoPlayer.css';
 
 class VideoPlayer extends PureComponent {
+  videoRef = React.createRef();
+
+  handleClickPlay = () => {
+    this.videoRef.current.play();
+  };
+
+  handleClickPause = () => {
+    this.videoRef.current.pause();
+  };
+
   render() {
-    return null;
+    return (
+      <div className="video-player">
+        <video
+          className="video-player__source"
+          src={videoFile}
+          ref={this.videoRef}
+          type="video/mp4"
+        />
+        <div>
+          <button onClick={this.handleClickPlay}>Play</button>
+          <button onClick={this.handleClickPause}>Stop</button>
+        </div>
+      </div>
+    );
   }
 }
 
