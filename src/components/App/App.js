@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-<<<<<<< HEAD
 import { Switch, withRouter, Link, Route } from 'react-router-dom';
 import { AuthorizeProvider, AuthHOC } from 'components/AuthorizeProvider';
 import Login from 'components/Login';
@@ -25,17 +24,6 @@ export class App extends PureComponent {
               <Route path="/private" component={wrappedPrivate} />
             </Switch>
           </div>
-=======
-import { Switch, withRouter } from 'react-router-dom';
-import { AuthorizeProvider } from 'components/AuthorizeProvider';
-
-export class App extends PureComponent {
-  render() {
-    return (
-      <AuthorizeProvider>
-        <div>
-          <Switch />
->>>>>>> 4679c637cdeca45dadaff1d41e614a99ac5934c1
         </div>
       </AuthorizeProvider>
     );
