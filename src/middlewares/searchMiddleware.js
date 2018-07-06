@@ -1,18 +1,19 @@
 import {
-  getShowsRequest,
-  getShowsFailure,
-  getShowsSuccess
+  searchRequest,
+  searchSuccess,
+  searchFailure
 } from '../actions/search';
 import { search } from '../api';
 
-export const searchMiddleware = store => next => action => {
-  if (action.type === getShowsRequest.toString()) {
+export default store => next => action => {
+  if (action.type === searchRequest.toString()) {
     search(action.payload).then(
-      function(shows) {
-        store.dispatch(getShowsSuccess(shows, shows.length));
-      },
-      function(error) {
-        store.dispatch(getShowsFailure(error));
+      shows => {
+        try {
+          store.dispatch(searchSuccess(shows, shows.length));
+        } catch (e) {
+          store.dispatch(searchFailure(e));
+        }
       }
     );
   }

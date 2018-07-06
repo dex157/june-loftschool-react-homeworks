@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers';
 import { showMiddleware } from './middlewares/showMiddleware';
-import { searchMiddleware } from './middlewares/searchMiddleware';
+import searchMiddleware from './middlewares/searchMiddleware';
 
 export default initialState =>
   createStore(

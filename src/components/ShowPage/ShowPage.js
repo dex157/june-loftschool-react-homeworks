@@ -17,7 +17,7 @@ class ShowPage extends PureComponent {
     return (
       <div className="t-person">
         <p>{actor.person.name}</p>
-        <img src={actor.person.image.medium} alt={actor.person.name} />
+        {actor.person.image && <img src={actor.person.image.medium} alt={actor.person.name} />}
       </div>
     );
   };

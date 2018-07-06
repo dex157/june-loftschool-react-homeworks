@@ -1,9 +1,9 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import {
-  getShowsRequest,
-  getShowsSuccess,
-  getShowsFailure
+  searchRequest,
+  searchSuccess,
+  searchFailure
 } from '../actions/search';
 
 export const LOADING_STATE = {
@@ -15,23 +15,23 @@ export const LOADING_STATE = {
 
 const entities = handleActions(
   {
-    [getShowsSuccess.toString()]: (_state, action) => action.payload
+    [searchSuccess.toString()]: (_state, action) => action.payload
   },
   []
 );
 
 const loadingState = handleActions(
   {
-    [getShowsRequest.toString()]: () => LOADING_STATE.loading,
-    [getShowsSuccess.toString()]: () => LOADING_STATE.success,
-    [getShowsFailure.toString()]: () => LOADING_STATE.failure
+    [searchRequest.toString()]: () => LOADING_STATE.loading,
+    [searchSuccess.toString()]: () => LOADING_STATE.success,
+    [searchFailure.toString()]: () => LOADING_STATE.failure
   },
   LOADING_STATE.idle
 );
 
 const error = handleActions(
   {
-    [getShowsFailure.toString()]: (_state, action) => action.payload
+    [searchFailure.toString()]: (_state, action) => action.payload
   },
   null
 );

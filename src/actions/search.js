@@ -1,17 +1,20 @@
 import { createActions } from 'redux-actions';
 
 const {
-  shows: {
-    getRequest: getShowsRequest,
-    getSuccess: getShowsSuccess,
-    getFailure: getShowsFailure
+  search: {
+    request: searchRequest,
+    success: searchSuccess,
+    failure: searchFailure
   }
 } = createActions({
-  SHOWS: {
-    GET_REQUEST: null,
-    GET_SUCCESS: null,
-    GET_FAILURE: null
-  }
-});
+    SEARCH:
+      {
+        REQUEST: null,
+        SUCCESS: null,
+        FAILURE: null
+      }
+  },
+  { namespace: "_" }
+);
 
-export { getShowsRequest, getShowsSuccess, getShowsFailure };
+export { searchRequest, searchSuccess, searchFailure };

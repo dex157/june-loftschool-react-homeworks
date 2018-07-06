@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
-import { getShowsRequest } from '../../actions/search';
+import { searchRequest } from '../../actions/search';
 import { LOADING_STATE } from '../../reducers/search';
 import { connect } from 'react-redux';
 import ShowPreview from '../ShowPreview/ShowPreview';
 
 class Search extends PureComponent {
   fetchData = () => {
-    this.props.getShowsRequest(this.state.query);
+    this.props.searchRequest(this.state.query);
   };
 
   state = {
@@ -18,7 +18,7 @@ class Search extends PureComponent {
   };
 
   render() {
-    const { shows, loadingState } = this.props;
+    const { searchResults, loadingState } = this.props;
 
     if (loadingState === LOADING_STATE.loading) {
       return <p>Данные загружаются...</p>;
@@ -33,7 +33,7 @@ class Search extends PureComponent {
           placeholder="Название сериала"
         />
         <button onClick={this.fetchData}>Найти</button>
-        <div className="t-search-result">{shows.map(this.renderEpisode)}</div>
+        <div className="t-search-result">{searchResults.map(this.renderEpisode)}</div>
       </div>
     );
   }
@@ -57,10 +57,10 @@ const mapStateToProps = state => ({
   isLoaded: LOADING_STATE.success,
   isError: LOADING_STATE.failure,
   isLoading: LOADING_STATE.loading,
-  shows: state.search.entities
+  searchResults: state.search.entities
 });
 
-const mapDispatchToProps = { getShowsRequest };
+const mapDispatchToProps = { searchRequest };
 
 export default connect(
   mapStateToProps,
