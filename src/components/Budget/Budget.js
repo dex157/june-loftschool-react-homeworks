@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './Budget.css';
 
 export const Budget = ({ market, profit, farm, delivery }) => {
-  const total = profit - (market + farm + delivery);
+  const total = profit - market - farm - delivery;
   return (
     <div className="budget">
       <h2>Бюджет</h2>
@@ -17,7 +17,7 @@ export const Budget = ({ market, profit, farm, delivery }) => {
       <p>Расходы на доставку</p>
       <span className="t-delivery">{-delivery}</span>
       <p>Итого</p>
-      <span className="t-total">{-total}</span>
+      <span className="t-total">{total}</span>
     </div>
   );
 };
