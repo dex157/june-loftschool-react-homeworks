@@ -6,5 +6,5 @@ import budget from './budget';
 export default combineReducers({
   market,
   farm,
-  budget,
+  budget
 });
