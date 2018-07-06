@@ -1,5 +1,5 @@
 import { createActions } from 'redux-actions';
 
-const { searchRequest, searchSuccess, searchFailure } = createActions('_REQUEST', '_SUCCESS', '_FAILURE');
+const { searchRequest, searchSuccess, searchFailure } = createActions('SEARCH_REQUEST', 'SEARCH_SUCCESS', 'SEARCH_FAILURE');
 
 export { searchRequest, searchSuccess, searchFailure };

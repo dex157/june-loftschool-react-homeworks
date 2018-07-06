@@ -1,5 +1,5 @@
 import { search } from '../api';
-import {searchRequest} from '../actions/search';
+import {searchRequest, searchSuccess, searchFailure} from '../actions/search';
 
 export const searchMiddleware = store => next => action => {
   console.log('searchMiddleware');
@@ -8,7 +8,10 @@ export const searchMiddleware = store => next => action => {
   console.log('searchRequest.toString() =', searchRequest.toString());
 
   if (action.type === searchRequest.toString()) {
-    search(action.query);
+    search(action.query).then(searchResult => {
+      store.dispatch(searchSuccess(searchResult));
+    }).catch(error => {
+      store.dispatch(searchFailure(error)); });
   }
 
   return next(action);
