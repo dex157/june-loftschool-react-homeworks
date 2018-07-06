@@ -1,3 +1,7 @@
 import React from 'react';
 
-export default () => <p>Public page</p>;
+const Public = () => {
+  return <p>Public page</p>;
+};
+
+export default Public;
