@@ -27,12 +27,15 @@ class CardNumberInput extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { cardNumber } = nextProps;
+    console.log('1 ===>', cardNumber);
 
     this.handleFunc(cardNumber);
   }
 
   componentDidMount() {
     const { cardNumber } = this.props;
+    console.log('3 ===>', cardNumber);
+    
 
     this.handleFunc(cardNumber);
   }
@@ -44,7 +47,10 @@ class CardNumberInput extends Component {
   }
 
   render() {
-    return <input onChange={this.props.onChange} value={this.state.number} />;
+    const { onChange } = this.props;
+    console.log('render ===>', onChange);
+    
+    return <input onChange={onChange} value={this.state.number} />;
   }
 }
 

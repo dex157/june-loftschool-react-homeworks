@@ -19,7 +19,7 @@ class Switcher extends Component {
     const { children } = this.props;
     const { selectedChild } = this.state;
     const childList = React.Children.toArray(children);
-
+    
     return (
       <div className="switcher">
         <nav>
