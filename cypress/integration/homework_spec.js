@@ -28,7 +28,7 @@ describe('Домашняя работа', () => {
         .get('button')
         .contains('Найти')
         .click();
-      cy.get('.t-search-result .t-preview:first-child .t-link').click();
+      cy.get('.serials__list .serial:first-child .serial__link').click();
     });
 
     it('На странице шоу пристствует информация о касте шоу', () => {
@@ -37,8 +37,8 @@ describe('Домашняя работа', () => {
         .get('button')
         .contains('Найти')
         .click();
-      cy.get('.t-search-result .t-preview:first-child .t-link').click();
-      cy.get('.t-person p').contains('Justin Roiland');
+      cy.get('.serials__list .serial:first-child .serial__link').click();
+      cy.get('.cast__name').contains('Justin Roiland');
     });
   });
 });

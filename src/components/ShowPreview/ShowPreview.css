@@ -1,0 +1,11 @@
+.serials__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.serial {
+   min-width: 250px;
+   width: 30%; 
+   padding: 0 15px;
+}
