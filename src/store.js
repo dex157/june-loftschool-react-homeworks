@@ -5,12 +5,12 @@ import searchMiddleware from './middlewares/searchMiddleware';
 
 export default () => {
   const store = createStore(
-    rootReducer, 
+    rootReducer,
     compose(
       applyMiddleware(searchMiddleware, showMiddleware),
-      window.devToolsExtension ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
+      window.devToolsExtension ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
     )
   );
 
   return store;
-}
+};

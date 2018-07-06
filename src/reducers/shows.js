@@ -1,16 +1,12 @@
 import { handleActions } from 'redux-actions';
-import {
-    getShowRequest,
-    getShowSuccess,
-    getShowFailure,
-} from 'actions/show';
+import { getShowRequest, getShowSuccess } from 'actions/show';
 
 const show = handleActions(
-    {
-        [getShowSuccess.toString()]: (state, action) => action.payload, 
-        [getShowRequest.toString()]: (state, action) => state
-    },
-    {}
+  {
+    [getShowSuccess.toString()]: (state, action) => action.payload,
+    [getShowRequest.toString()]: (state, action) => state
+  },
+  {}
 );
 
 export default show;

@@ -1,23 +1,22 @@
 import React, { PureComponent } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class ShowPreview extends PureComponent {
-    
-    render() {
-        const { image, name, id, summary } = this.props
+  render() {
+    const { id, name, image, summary } = this.props;
 
-        return (
-            <div className='t-preview'>
-                <div>
-                    <a className='t-link' href={`shows/${id}`}>
-                        <h3>{name}</h3>
-                    </a>
-                    {image && <img src={image} alt={name}/>}
-                </div>
-                <div dangerouslySetInnerHTML={{__html: summary}}></div>
-            </div>
-        );
-    }
+    return (
+      <div className="t-preview">
+        <div>
+          <Link to={`shows/${id}`} className="t-link">
+            {name}
+          </Link>
+          {image && <img src={image} alt={name} />}
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: summary }} />
+      </div>
+    );
+  }
 }
 
-export default withRouter(ShowPreview);
+export default ShowPreview;
