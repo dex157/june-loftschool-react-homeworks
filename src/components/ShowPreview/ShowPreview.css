@@ -1,11 +1,12 @@
 .t-preview {
   display: flex;
   flex-direction: column;
-  align-items: center;
   max-width: 300px;
   margin: 0 15px;
 }
 
-.t-link {
-  cursor: pointer;
+.preview__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

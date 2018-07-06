@@ -7,7 +7,7 @@ export default class ShowPreview extends PureComponent {
     const { name, id, image, summary } = this.props;
     return (
       <div className="t-preview">
-        <div>
+        <div className="preview__header">
           <Link to={`/shows/${id}`} className="t-link">
             <h3>{name}</h3>
           </Link>

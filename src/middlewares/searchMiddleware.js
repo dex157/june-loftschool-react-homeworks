@@ -8,6 +8,7 @@ export default store => next => action => {
         store.dispatch(searchSuccess(serials));
       })
       .catch(error => {
+        console.log(error);
         store.dispatch(searchFailure(error));
       });
   }

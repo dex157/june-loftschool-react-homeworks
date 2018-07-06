@@ -21,7 +21,7 @@ class AppRouter extends Component {
   };
 
   render() {
-    const { result, isFetching } = this.props;
+    const { result, isFetching, error } = this.props;
 
     if (isFetching)
       return (
@@ -30,6 +30,8 @@ class AppRouter extends Component {
           <div className="App-logo" />
         </div>
       );
+
+    if (error) return <div>Произошла сетевая ошибка</div>;
 
     return (
       <div>

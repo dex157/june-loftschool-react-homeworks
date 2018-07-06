@@ -13,14 +13,14 @@ const isFetching = handleActions(
 
 const result = handleActions(
   {
-    [searchSuccess.toString()]: (state, action) => [state, ...action.payload]
+    [searchSuccess.toString()]: (_state, action) => [...action.payload]
   },
   []
 );
 
 const error = handleActions(
   {
-    [searchFailure.toString()]: (state, action) => action.payload
+    [searchFailure.toString()]: (_state, action) => action.payload
   },
   null
 );
