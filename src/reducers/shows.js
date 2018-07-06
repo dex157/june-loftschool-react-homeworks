@@ -4,23 +4,23 @@ import { showRequest, showSuccess, showFailure } from '../actions/show';
 
 const isFetching = handleActions(
   {
-    [showRequest]: () => true,
-    [showSuccess]: () => false,
-    [showFailure]: () => false
+    [showRequest.toString()]: () => true,
+    [showSuccess.toString()]: () => false,
+    [showFailure.toString()]: () => false
   },
   false
 );
 
 const entities = handleActions(
   {
-    [showSuccess]: (_state, action) => action.payload
+    [showSuccess.toString()]: (_state, action) => action.payload
   },
   []
 );
 
 const error = handleActions(
   {
-    [showFailure]: (_state, action) => action.payload
+    [showFailure.toString()]: (_state, action) => action.payload
   },
   null
 );

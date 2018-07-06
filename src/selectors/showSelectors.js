@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 
+export const getShowFetchState = state => state.shows.isFetching;
+export const getShowError = state => state.shows.error;
 export const getChosenSerial = createSelector(
   state => state.shows.entities,
   chosenSerial =>

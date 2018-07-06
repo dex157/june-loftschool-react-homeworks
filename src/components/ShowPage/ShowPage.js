@@ -1,12 +1,24 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import './ShowPage.css';
-import { getChosenSerial } from '../../selectors/showSelectors';
+import {
+  getChosenSerial,
+  getShowFetchState,
+  getShowError
+} from '../../selectors/showSelectors';
 
 class ShowPage extends PureComponent {
   render() {
-    const { chosenSerial } = this.props,
+    const { chosenSerial, isFetching, error } = this.props,
       { name, image, summary, _embedded } = chosenSerial;
+
+      if (isFetching) {
+        return <p>Выполняется поиск</p>;
+      }
+  
+      if (error) {
+        return <p>Произошла сетевая ошибка</p>;
+      }
 
     return (
       <div className="serial-showresult">
@@ -44,6 +56,8 @@ class ShowPage extends PureComponent {
 }
 
 const mapStateToProps = state => ({
+  isFetching: getShowFetchState(state),
+  error: getShowError(state),
   chosenSerial: getChosenSerial(state)
 });
 

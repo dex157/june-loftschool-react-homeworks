@@ -4,23 +4,23 @@ import { searchRequest, searchSuccess, searchFailure } from '../actions/search';
 
 const isFetching = handleActions(
   {
-    [searchRequest]: () => true,
-    [searchSuccess]: () => false,
-    [searchFailure]: () => false
+    [searchRequest.toString()]: () => true,
+    [searchSuccess.toString()]: () => false,
+    [searchFailure.toString()]: () => false
   },
   false
 );
 
 const serials = handleActions(
   {
-    [searchSuccess]: (_state, action) => action.payload
+    [searchSuccess.toString()]: (_state, action) => action.payload
   },
   []
 );
 
 const error = handleActions(
   {
-    [searchFailure]: (_state, action) => action.payload
+    [searchFailure.toString()]: (_state, action) => action.payload
   },
   null
 );
