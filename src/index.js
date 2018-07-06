@@ -6,7 +6,9 @@ import getStore from './store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-const store = getStore();
+const initialState = {searchResults: []}
+
+const store = getStore(initialState);
 
 ReactDOM.render(
   <BrowserRouter>
