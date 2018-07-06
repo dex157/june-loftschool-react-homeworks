@@ -1,0 +1,10 @@
+.actors-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.t-person {
+  margin: 0 10px;
+}

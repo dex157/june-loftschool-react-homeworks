@@ -5,7 +5,15 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 40px;
+  width: 40px;
+  background-image: url('http://online-games.kuzenstudio.ru/wp-content/uploads/2015/1/bistroe-sozdanie-fleshki-dlya-ustanovki-linux.png');
+  background-size: contain;
+  margin: auto
+}
+
+.App-logo img {
+  width: 100%;
 }
 
 .App-header {
@@ -24,6 +32,10 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
