@@ -1,22 +1,24 @@
 import { handleActions } from 'redux-actions';
+import { combineReducers } from 'redux';
 import { showRequest, showSuccess, showFailure } from '../actions/show';
 
-import defaultState from '../defaultState';
-
-export default handleActions(
+const entities = handleActions(
   {
-    [showRequest]: (state, { payload: { resultList } }) => {
-      console.log('showRequest');
-      console.log('resultList =', resultList);
-      return { ...state, shows: { isFetching: true } }; },
-    [showSuccess]: (state, { payload: { success } }) => {
-      console.log('showSuccess');
-      console.log('success =', success);
-      return { ...state, shows: { entities: [...state.shows.entities, ...success], isFetching: false } }; },
-    [showFailure]: (state, { payload: { failure } }) => {
-      console.log('showFailure');
-      console.log('failure =', failure);
-      return { ...state, shows: { isFetching: false } }; }
+    [showSuccess]: (state, action) => [...state, action.payload]
   },
-  defaultState
+  []
 );
+
+const isFetching = handleActions(
+  {
+    [showRequest]: () => true,
+    [showSuccess]: () => false,
+    [showFailure]: () => false
+  },
+  false
+);
+
+export default combineReducers({
+  entities,
+  isFetching
+});
