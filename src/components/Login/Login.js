@@ -13,7 +13,7 @@ class Login extends Component {
     const { authorizeUser } = this.props;
     const { email, password } = this.state;
 
-    const autorized = authorizeUser({ email, password });
+    const autorized = authorizeUser(email, password);
     this.setState({ isAuthSuccess: autorized });
   };
 
