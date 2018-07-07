@@ -68,8 +68,7 @@ describe('Домашняя работа', () => {
     });
     it('Создание 1 заказа и перевод заказа на ферму', () => {
       cy.get('.new-orders__create-button').click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
       cy.get('.market .order-list .order').should('have.length', 0);
@@ -79,16 +78,13 @@ describe('Домашняя работа', () => {
       cy.get('.new-orders__create-button').click();
       cy.get('.new-orders__create-button').click();
       cy.get('.new-orders__create-button').click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
       cy.get('.market .order-list .order').should('have.length', 0);
@@ -97,12 +93,10 @@ describe('Домашняя работа', () => {
 
     it('Создание 1 заказа с отправкой клиенту', () => {
       cy.get('.new-orders__create-button').click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить урожай клиенту')
         .click();
       cy.get('.farm .order').should('have.length', 0);
@@ -111,28 +105,22 @@ describe('Домашняя работа', () => {
       cy.get('.new-orders__create-button').click();
       cy.get('.new-orders__create-button').click();
       cy.get('.new-orders__create-button').click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить урожай клиенту')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить урожай клиенту')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить урожай клиенту')
         .click();
       cy.get('.farm .order').should('have.length', 0);
@@ -181,8 +169,7 @@ describe('Домашняя работа', () => {
     before(() => {
       cy.visit('/');
       cy.get('.new-orders__create-button').click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
     });
@@ -233,36 +220,28 @@ describe('Домашняя работа', () => {
       cy.get('.new-orders__create-button').click();
       cy.get('.new-orders__create-button').click();
       cy.get('.new-orders__create-button').click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить заказ на ферму')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить урожай клиенту')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить урожай клиенту')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить урожай клиенту')
         .click();
-      cy
-        .get('button')
+      cy.get('button')
         .contains('Отправить урожай клиенту')
         .click();
     });
