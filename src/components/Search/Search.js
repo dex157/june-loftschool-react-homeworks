@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 import './Search.css';
 
@@ -85,9 +84,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Search)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Search);
