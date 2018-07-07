@@ -1,17 +1,17 @@
-import React, { PureComponent } from 'react';
-import { Switch, withRouter } from 'react-router-dom';
-import { AuthorizeProvider } from 'components/AuthorizeProvider';
+import React, {PureComponent} from 'react';
+import {Switch, withRouter} from 'react-router-dom';
+import {AuthorizeProvider} from 'components/AuthorizeProvider';
 
 export class App extends PureComponent {
-  render() {
-    return (
-      <AuthorizeProvider>
-        <div>
-          <Switch />
-        </div>
-      </AuthorizeProvider>
-    );
-  }
+   render() {
+      return (
+         <AuthorizeProvider>
+            <div>
+               <Switch/>
+            </div>
+         </AuthorizeProvider>
+      );
+   }
 }
 
 // это важно!
