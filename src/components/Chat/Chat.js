@@ -8,9 +8,15 @@ export default class Chat extends Component {
     messageInput: ""
   };
 
+  componentDidUpdate() {
+    let chatScroll = document.querySelector('.message-list');
+    chatScroll.scrollTop = chatScroll.scrollHeight;
+  }
+
   render() {
-    const messages = this.state.messages.map(message =>
+    const messages = this.state.messages.map((message, index) =>
       <Message
+        key={index}
         text={message.text}
       />);
 
