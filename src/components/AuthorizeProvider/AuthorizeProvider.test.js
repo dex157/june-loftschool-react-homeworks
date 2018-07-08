@@ -10,7 +10,7 @@ describe('компонента AuthorizeProvider', () => {
       expect(wrapper.state()).toEqual({ isAuthorized: false });
     });
 
-    it('Компонента имеет метод authorzeUser', () => {
+    it('Компонента имеет метод authorizeUser', () => {
       expect(wrapper.instance().authorizeUser).toBeDefined();
     });
   });
