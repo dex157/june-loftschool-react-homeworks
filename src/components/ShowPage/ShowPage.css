@@ -1,0 +1,48 @@
+.show-page {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  max-width: 96%;
+  width: 600px;
+  margin: 20px auto;
+}
+
+.show-page__header {
+  font-size: 30px;
+  text-align: center;
+}
+
+.show-page__image {
+  width: 100%;
+}
+
+.show-page__summary {
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.t-person {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+}
+
+.t-person__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.t-person__image {
+  width: 100%;
+} 
+
+.t-person__header {
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+}
