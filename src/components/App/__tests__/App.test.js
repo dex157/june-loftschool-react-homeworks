@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '../App';
+import { App } from '../App';
 import Market from '../../Market';
 import Farm from '../../Farm';
 import Budget from '../../Budget';
