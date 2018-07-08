@@ -7,13 +7,13 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 
-const store = createStore();
+// const store = createStore();
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider store={store}>
+    {/* <Provider store={store}> */}
       <AppRouter />
-    </Provider>
+    {/* </Provider> */}
   </BrowserRouter>,
   document.getElementById('root')
 );
