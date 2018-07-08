@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
 
 export default class CardForm extends Component {
+  componentWillUnmount() {}
   handleChangeForm = event => {
-    const { onChangeForm } = this.props,
-      name = event.target.name,
-      value = event.target.value;
-
-    onChangeForm(name, value);
+    const name = event.target.name;
+    const value = event.target.value;
+    this.props.onChangeForm(name, value);
   };
 
   render() {
     const { cardNumber } = this.props;
     return (
-      <CardForm>
-        <div className="card-form">
-          <input
-            name="cardNumber"
-            onChange={this.handleChangeForm}
-            value={cardNumber}
-          />
-        </div>
-      </CardForm>
+      <div className="card-form" data-test="card-form">
+        <input
+          name="cardNumber"
+          onChange={this.handleChangeForm}
+          value={cardNumber}
+        />
+      </div>
     );
   }
 }
