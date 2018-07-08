@@ -6,7 +6,10 @@ import getStore from './store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
-const store = getStore();
+const store = getStore({
+  search: { result: [], isFetching: false, error: null },
+  shows: { entities: [], isFetching: false }
+});
 
 ReactDOM.render(
   <BrowserRouter>
@@ -14,5 +17,5 @@ ReactDOM.render(
       <AppRouter />
     </Provider>
   </BrowserRouter>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
