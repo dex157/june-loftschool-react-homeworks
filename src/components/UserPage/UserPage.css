@@ -1,0 +1,40 @@
+.user__logout {
+  width: 400px;
+  margin: 50px auto 20px;
+  text-align: center;
+}
+
+.user__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 20px;
+}
+
+.user__page {
+  display: flex;
+  flex-direction: row;
+}
+
+.user__avatar {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(238, 238, 238);
+  border-image: initial;
+}
+
+.user__stats {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.user__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
