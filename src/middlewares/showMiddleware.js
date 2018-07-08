@@ -5,7 +5,7 @@ import {
 } from 'components/ShowPage/pageActions';
 import { show } from 'api';
 
-const showMiddleware = store => next => action => {
+export default store => next => action => {
   if (action.type === getPageRequest.toString()) {
     show(action.payload)
       .then(result => store.dispatch(getPageSuccess(result)))
@@ -14,5 +14,3 @@ const showMiddleware = store => next => action => {
 
   return next(action);
 };
-
-export default showMiddleware;

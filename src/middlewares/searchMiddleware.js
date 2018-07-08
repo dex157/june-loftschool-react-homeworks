@@ -5,7 +5,7 @@ import {
 } from 'components/Search/searchActions';
 import { search } from 'api';
 
-const searchMiddleware = store => next => action => {
+export default store => next => action => {
   if (action.type === getSearchRequest.toString()) {
     search(action.payload)
       .then(result => store.dispatch(getSearchSuccess(result)))
@@ -14,5 +14,3 @@ const searchMiddleware = store => next => action => {
 
   return next(action);
 };
-
-export default searchMiddleware;

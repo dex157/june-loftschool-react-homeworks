@@ -13,7 +13,7 @@ class ShowList extends React.PureComponent {
           {result.map(item => (
             <ShowPreview
               key={item.id}
-              image={item.image.medium}
+              image={item.image}
               name={item.name}
               id={item.id}
               summary={item.summary}

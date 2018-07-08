@@ -1,4 +1,4 @@
-import searchMiddleware from './searchMiddleware.js';
+import searchMiddleware from './searchMiddleware';
 
 jest.mock('../api');
 
@@ -18,10 +18,10 @@ describe('searchMiddleware', () => {
     const storeMock = {
       dispatch: dispatchMock,
     };
-    searchMiddleware(storeMock)(jest.fn())({ type: 'SEARCH/GET_SUCCESS', payload: {} });
+    searchMiddleware(storeMock)(jest.fn())({ type: 'SEARCH/GET_REQUEST', payload: {} });
     setTimeout(() => {
       expect(dispatchMock).toHaveBeenCalledTimes(1);
       done();
-    }, 5000);
+    }, 16);
   });
 });
