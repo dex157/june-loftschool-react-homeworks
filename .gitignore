@@ -26,3 +26,5 @@ cypress/screenshots
 
 # vscode
 .vscode
+.idea/
+

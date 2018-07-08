@@ -6,6 +6,8 @@ class CardNumberHolder extends React.Component {
     cardNumber: ""
   };
 
+  static displayName = 'Card number formating';
+
   render() {
     return <CardNumberInput
       cardNumber={this.state.cardNumber}
