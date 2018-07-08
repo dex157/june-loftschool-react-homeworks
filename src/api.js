@@ -5,10 +5,12 @@ const instance = axios.create({
 });
 
 export const setTokenApi = access_token => {
+  console.log('setTokenApi');
   instance.defaults.params = { access_token };
 };
 
 export const clearTokenApi = () => {
+  console.log('clearTokenApi');
   instance.defaults.params = { access_token: undefined };
 };
 

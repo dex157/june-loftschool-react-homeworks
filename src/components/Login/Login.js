@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { authRequest } from '../../ducks';
 
 import './Login.css';
 
@@ -18,6 +21,11 @@ class Login extends Component {
       case 'Enter':
         if (e.target.value) {
           console.log('HERE');
+          console.log('this.props =', this.props);
+          const { authRequest } = this.props,
+            { authToken } = this.state;
+
+          authRequest(authToken);
         }
         break;
       default:
@@ -51,4 +59,20 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    authRequest: payload => {
+      console.log('###authRequest###');
+      dispatch(authRequest(payload));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
