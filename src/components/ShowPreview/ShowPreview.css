@@ -1,0 +1,39 @@
+.t-search-result {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.t-preview {
+  width: 23%;
+  padding: 20px;
+  margin: 0;
+  border-radius: 4px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.t-preview__link {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.t-preview__image {
+  max-width: 100%;
+  margin-bottom: 8px;
+}
+
+.t-preview__text {
+  text-align: center;
+  font-size: 16px;
+  overflow: hidden;
+  max-height: 160px;
+}

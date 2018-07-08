@@ -6,7 +6,7 @@ describe('Домашняя работа', () => {
     it('Присутствует input', () => {
       cy.get('input');
     });
-    it('Присутствует кнопка найтм', () => {
+    it('Присутствует кнопка найти', () => {
       cy.get('button').contains('Найти');
     });
   });
@@ -38,7 +38,7 @@ describe('Домашняя работа', () => {
         .contains('Найти')
         .click();
       cy.get('.t-search-result .t-preview:first-child .t-link').click();
-      cy.get('.t-person p').contains('Justin Roiland');
+      cy.get('.t-person').contains('Justin Roiland');
     });
   });
 });
