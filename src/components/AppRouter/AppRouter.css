@@ -19,6 +19,10 @@
   font-size: 1.5em;
 }
 
+.t-link {
+  display: block;
+}
+
 .App-intro {
   font-size: large;
 }
