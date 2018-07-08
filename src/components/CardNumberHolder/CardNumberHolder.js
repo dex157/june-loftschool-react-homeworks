@@ -1,20 +1,16 @@
-import React, { Component, Fragment } from 'react';
-import CardNumberInput from './CardNumberInput';
+import React from "react";
+import CardNumberInput from "./CardNumberInput";
 
-class CardNumberHolder extends Component {
+class CardNumberHolder extends React.Component {
   state = {
-    cardNumber: ''
+    cardNumber: ""
   };
 
   render() {
-    return (
-      <Fragment>
-        <CardNumberInput
-          cardNumber={this.state.cardNumber}
-          onChange={this.handleChange}
-        />
-      </Fragment>
-    );
+    return <CardNumberInput
+      cardNumber={this.state.cardNumber}
+      onChange={this.handleChange}
+    />;
   }
 
   handleChange = value => {

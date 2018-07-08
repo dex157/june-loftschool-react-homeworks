@@ -1,44 +1,39 @@
-import React, { Component } from 'react';
-import propTypes from 'prop-types';
+import React from "react";
 
-class CardNumberInput extends Component {
-  static propTypes = {
-    cardNumber: propTypes.string,
-    onChange: propTypes.func
-  };
-
+class CardNumberInput extends React.Component {
   state = {
     number: this.format(this.props.cardNumber)
   };
 
+  componentWillMount() {
+    this.setState({
+      number: this.format(this.props.cardNumber)
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
+    if (this.props === nextProps) return;
     this.setState({ number: this.format(nextProps.cardNumber) });
   }
 
   format(value) {
-    return !value ? '' : `${value}`.replace(/(\w{0,4})/g, '$1 ').trimRight();
+    return !value ? "" : `${value}`.replace(/(\w{0,4})/g, "$1 ").trimRight();
   }
 
   normalize(value) {
-    return value.replace(/\s/g, '');
+    return value.replace(/\s/g, "");
   }
 
   handleInput = event => {
     const { onChange } = this.props;
-    if (typeof onChange !== 'function') {
+    if (typeof onChange !== "function") {
       return;
     }
-    const value = this.normalize(event.target.value);
-
-    if (value.length > 16) {
-      return;
-    }
-
-    onChange(value);
+    onChange(this.normalize(event.target.value));
   };
 
   render() {
-    return <input value={this.state.number} onChange={this.handleInput} />;
+    return <input value={this.state.number} onChange={this.handleInput}/>;
   }
 }
 
