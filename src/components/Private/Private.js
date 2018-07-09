@@ -1,3 +1,5 @@
 import React from 'react';
 
-export default () => <p>Private page</p>;
+const Private = () => <p>Private page</p>;
+
+export default Private;
