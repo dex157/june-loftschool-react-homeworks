@@ -8,32 +8,32 @@ import {
 
 const data = handleActions(
   {
-    [fetchFollowersSuccess.toString()]: (_state, action) => action.payload
+    [fetchFollowersSuccess]: (_state, action) => action.payload
   },
   []
 );
 
 const error = handleActions(
   {
-    [fetchFollowersFailure.toString()]: (_state, action) => action.payload
+    [fetchFollowersFailure]: (_state, action) => action.payload
   },
   null
 );
 
 const isFetching = handleActions(
   {
-    [fetchFollowersRequest.toString()]: () => true,
-    [fetchFollowersSuccess.toString()]: () => false,
-    [fetchFollowersFailure.toString()]: () => false
+    [fetchFollowersRequest]: () => true,
+    [fetchFollowersSuccess]: () => false,
+    [fetchFollowersFailure]: () => false
   },
   false
 );
 
 const isFetched = handleActions(
   {
-    [fetchFollowersRequest.toString()]: () => false,
-    [fetchFollowersSuccess.toString()]: () => true,
-    [fetchFollowersFailure.toString()]: () => true
+    [fetchFollowersRequest]: () => false,
+    [fetchFollowersSuccess]: () => true,
+    [fetchFollowersFailure]: () => true
   },
   false
 );

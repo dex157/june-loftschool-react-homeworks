@@ -1,4 +1,4 @@
-import { takeEvery , put, call } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import { authorize } from '../ducks/auth';
 import { requestFlow } from './request';
 import {
@@ -13,19 +13,20 @@ import {
   getUserFollowers,
   getUserRepos
 } from '../api';
+
 import { getTokenFromLocalStorage } from 'localStorage';
 
-export function* fetchUserWatch() {
-  yield takeEvery(authorize, tokenOwnerRequest);
+function* authorizeWorker() {
+  try {
+    const token = getTokenFromLocalStorage();
+    yield put(fetchTokenOwnerRequest());
+    const result = yield call(requestFlow, getTokenOwner, token);
+    yield put(fetchUserSuccess(result));
+  } catch (error) {
+    yield put(fetchUserFailure(error));
+  }
 }
 
-function* tokenOwnerRequest() {
-  try {
-    yield put(fetchTokenOwnerRequest);
-    const token = yield call(getTokenFromLocalStorage);
-    const result = yield call(requestFlow(getTokenOwner, token));
-    yield put(fetchUserSuccess, result);
-  } catch (error) {
-    yield put(fetchUserFailure, error);
-  }
+export function* fetchUserWatch() {
+  yield takeEvery(authorize, authorizeWorker);
 }

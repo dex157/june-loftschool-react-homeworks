@@ -11,6 +11,7 @@ export default function* authFlow() {
   while (true) {
     const isAuthorized = yield select(getIsAuthorized); /* boolean */
     const localStorageToken = yield call(getTokenFromLocalStorage);
+    console.log(localStorageToken);
 
     let token;
 

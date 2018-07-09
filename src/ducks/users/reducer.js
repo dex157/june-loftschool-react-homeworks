@@ -9,34 +9,35 @@ import {
 
 const data = handleActions(
   {
-    [fetchUserSuccess.toString()]: (_state, action) => action.payload
+    [fetchUserSuccess]: (_state, action) => action.payload
   },
   []
 );
 
 const error = handleActions(
   {
-    [fetchUserFailure.toString()]: (_state, action) => action.payload
+    [fetchUserRequest]: () => null,
+    [fetchUserFailure]: (_state, action) => action.payload
   },
   null
 );
 
 const isFetching = handleActions(
   {
-    [fetchTokenOwnerRequest.toString()]: () => true,
-    [fetchUserRequest.toString()]: () => true,
-    [fetchUserSuccess.toString()]: () => false,
-    [fetchUserFailure.toString()]: () => false
+    [fetchTokenOwnerRequest]: () => true,
+    [fetchUserRequest]: () => true,
+    [fetchUserSuccess]: () => false,
+    [fetchUserFailure]: () => false
   },
   false
 );
 
 const isFetched = handleActions(
   {
-    [fetchTokenOwnerRequest.toString()]: () => false,
-    [fetchUserRequest.toString()]: () => false,
-    [fetchUserSuccess.toString()]: () => true,
-    [fetchUserFailure.toString()]: () => true
+    [fetchTokenOwnerRequest]: () => false,
+    [fetchUserRequest]: () => false,
+    [fetchUserSuccess]: () => true,
+    [fetchUserFailure]: () => true
   },
   false
 );

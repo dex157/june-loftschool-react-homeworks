@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = { authorize };
 
 class Login extends Component {
-  onEnterPress = (evt) => {
+  onEnterPress = evt => {
     const { authorize } = this.props;
     const enterCode = 13;
     const fieldValue = evt.target.value;
@@ -24,24 +24,26 @@ class Login extends Component {
     if (targetCode === enterCode) {
       authorize(fieldValue);
     }
-  }
+  };
 
   render() {
-    const {networkError, isNetworkError, isFetching} = this.props;
+    const { networkError, isNetworkError, isFetching } = this.props;
+
+    if (isFetching) {
+      return (
+        <div className="spinner">
+          <Spinner size="64px" color="fuchsia" gap={5} />
+        </div>
+      );
+    }
 
     return (
-      <div>
-        {isNetworkError && 
-        <div className="error">
-          <p className="error__message">{networkError}</p>
-       </div>}
-
-       {isFetching &&
-        <Spinner size="64px" color="fuchsia" gap={5} />
-       }
-
-
       <div className="login">
+        {isNetworkError && (
+          <div className="error">
+            <p className="error__message">{networkError}</p>
+          </div>
+        )}
         <div className="login__wrapper">
           <p>
             Получить токен нужно на своей странице github, перейдите по{' '}
@@ -56,7 +58,6 @@ class Login extends Component {
           />
           <p>После ввода нажать Enter</p>
         </div>
-      </div>
       </div>
     );
   }

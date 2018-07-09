@@ -4,15 +4,16 @@ import { networkError, clearNetworkErrors } from './action';
 
 const error = handleActions(
   {
-    [networkError.toString()]: (_state, action) => action.payload
+    [networkError]: (_state, action) => action.payload,
+    [clearNetworkErrors]: () => null
   },
   null
 );
 
 const message = handleActions(
   {
-    [clearNetworkErrors.toString()]: (_state, action) =>
-      action.payload.response.data.message
+    [networkError]: (_state, action) => action.payload.response.data.message,
+    [clearNetworkErrors]: () => null
   },
   null
 );

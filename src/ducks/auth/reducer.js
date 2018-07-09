@@ -4,8 +4,8 @@ import { authorize, logout } from './action';
 
 const isAuthorized = handleActions(
   {
-    [authorize.toString()]: (_state, action) => true,
-    [logout.toString()]: (_state, action) => false
+    [authorize]: (_state, action) => true,
+    [logout]: (_state, action) => false
   },
   false
 );
