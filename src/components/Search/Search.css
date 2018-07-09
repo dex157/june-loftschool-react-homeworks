@@ -1,0 +1,7 @@
+.t-search-result {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
