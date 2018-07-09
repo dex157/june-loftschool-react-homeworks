@@ -1,5 +1,15 @@
-import { fetchFollowersRequest, fetchFollowersSuccess, fetchFollowersFailure } from './action';
+import {
+  fetchFollowersRequest,
+  fetchFollowersSuccess,
+  fetchFollowersFailure
+} from './action';
 import followers from './reducer';
-import {getFollowers} from './selector';
+import { getFollowers } from './selector';
 
-export { fetchFollowersRequest, fetchFollowersSuccess, fetchFollowersFailure, followers, getFollowers };
+export {
+  fetchFollowersRequest,
+  fetchFollowersSuccess,
+  fetchFollowersFailure,
+  followers,
+  getFollowers
+};

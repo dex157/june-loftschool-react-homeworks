@@ -1,6 +1,11 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
-import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './action';
+import {
+  fetchTokenOwnerRequest,
+  fetchUserRequest,
+  fetchUserSuccess,
+  fetchUserFailure
+} from './action';
 
 const data = handleActions(
   {
@@ -18,6 +23,7 @@ const error = handleActions(
 
 const isFetching = handleActions(
   {
+    [fetchTokenOwnerRequest.toString()]: () => true,
     [fetchUserRequest.toString()]: () => true,
     [fetchUserSuccess.toString()]: () => false,
     [fetchUserFailure.toString()]: () => false
@@ -27,6 +33,7 @@ const isFetching = handleActions(
 
 const isFetched = handleActions(
   {
+    [fetchTokenOwnerRequest.toString()]: () => false,
     [fetchUserRequest.toString()]: () => false,
     [fetchUserSuccess.toString()]: () => true,
     [fetchUserFailure.toString()]: () => true

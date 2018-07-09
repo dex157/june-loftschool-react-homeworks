@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions';
+import { combineReducers } from 'redux';
 import { authorize, logout } from './action';
 
 const isAuthorized = handleActions(
@@ -9,4 +10,6 @@ const isAuthorized = handleActions(
   false
 );
 
-export default isAuthorized;
+export default combineReducers({
+  isAuthorized
+});

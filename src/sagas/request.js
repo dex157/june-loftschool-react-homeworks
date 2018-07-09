@@ -6,7 +6,7 @@ import {
 } from 'ducks/network';
 import { logout } from 'ducks/auth';
 
-export default function* requestFlow(fn, args) {
+export function* requestFlow(fn, args) {
   try {
     const response = yield call(fn, args);
     if (yield select(getIsNetworkErrorPresent)) yield put(clearNetworkErrors());

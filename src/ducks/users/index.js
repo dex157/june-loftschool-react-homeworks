@@ -1,5 +1,19 @@
-import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './action';
+import {
+  fetchUserRequest,
+  fetchTokenOwnerRequest,
+  fetchUserSuccess,
+  fetchUserFailure
+} from './action';
 import users from './reducer';
-import {getIsFetching, getIsFetched, getUserData } from './reducer';
+import { getIsFetching, getIsFetched, getUserData } from './selector';
 
-export { fetchUserRequest, fetchUserSuccess, fetchUserFailure, users, getIsFetching, getIsFetched, getUserData };
+export {
+  fetchTokenOwnerRequest,
+  fetchUserRequest,
+  fetchUserSuccess,
+  fetchUserFailure,
+  users,
+  getIsFetching,
+  getIsFetched,
+  getUserData
+};

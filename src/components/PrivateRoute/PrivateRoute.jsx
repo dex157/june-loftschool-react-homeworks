@@ -1,7 +1,12 @@
 import React, { PureComponent } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import {
+  getIsAuthorized
+} from '../../ducks/auth';
+import { connect } from 'react-redux';
 
-export default class PrivateRoute extends PureComponent {
+
+class PrivateRoute extends PureComponent {
   render() {
     const { component: Component, isAuthorized, ...rest } = this.props;
     return (
@@ -15,3 +20,12 @@ export default class PrivateRoute extends PureComponent {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  isAuthorized: getIsAuthorized(state)
+});
+
+
+export default connect(
+  mapStateToProps
+)(PrivateRoute);

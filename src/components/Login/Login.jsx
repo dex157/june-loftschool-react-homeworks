@@ -6,15 +6,26 @@ import { getIsFetching } from '../../ducks/users';
 import { getNetworkError, getIsNetworkErrorPresent } from '../../ducks/network';
 import Spinner from 'react-svg-spinner';
 
+const mapStateToProps = state => ({
+  isFetching: getIsFetching(state),
+  isAuthorized: getIsAuthorized(state),
+  networkError: getNetworkError(state),
+  isNetworkError: getIsNetworkErrorPresent(state)
+});
+
+const mapDispatchToProps = { authorize };
+
 class Login extends Component {
-  onEnterPress(evt) {
+  onEnterPress = (evt) => {
     const { authorize } = this.props;
     const enterCode = 13;
     const fieldValue = evt.target.value;
-    if (evt.target.keyCode === enterCode) {
+    const targetCode = evt.keyCode;
+    if (targetCode === enterCode) {
       authorize(fieldValue);
     }
   }
+
   render() {
     const {networkError, isNetworkError, isFetching} = this.props;
 
@@ -50,15 +61,6 @@ class Login extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  isFetching: getIsFetching(state),
-  isAuthorized: getIsAuthorized(state),
-  networkError: getNetworkError(state),
-  isNetworkError: getIsNetworkErrorPresent(state)
-});
-
-const mapDispatchToProps = { authorize };
 
 export default connect(
   mapStateToProps,

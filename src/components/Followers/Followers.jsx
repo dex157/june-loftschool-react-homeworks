@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './Follower.css';
-import Follower from './Follower';
+import './Followers.css';
+import Follower from '../Follower';
 
 export default class Followers extends Component {
   render() {
