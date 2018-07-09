@@ -1,6 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import { showRequest } from 'actions/show';
 import { connect } from 'react-redux';
+import './ShowPage.css';
 
 class ShowPage extends PureComponent {
   componentDidMount = () => {
@@ -12,7 +13,7 @@ class ShowPage extends PureComponent {
 
   render() {
     const { entities, isFetching, error } = this.props;
-    const { name, image, summary } = entities;
+    const { name, image, summary, actors = [] } = entities;
 
     if (isFetching) {
       return <p>Загрузка...</p>;
@@ -27,6 +28,14 @@ class ShowPage extends PureComponent {
         <p>{name}</p>
         {image && <img src={image} alt={name} />}
         <div dangerouslySetInnerHTML={{ __html: summary }} />
+        <div className="sc-ifAKCX dHcTOt">
+          {actors.map(actor => (
+            <div className="t-person" key={actor.id}>
+              <p>{actor.name}</p>
+              <img src={actor.image} alt={actor.name} />
+            </div>
+          ))}
+        </div>
       </Fragment>
     );
   }

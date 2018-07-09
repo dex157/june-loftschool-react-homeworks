@@ -29,12 +29,3 @@ const search = (state = initilState, action) => {
 };
 
 export default search;
-
-// export const search = handleActions(
-//   {
-//     [getSearchRequest.toString()]: (state, action) => {},
-//     [getSearchSuccess.toString()]: (state, action) => {},
-//     [getSearchFailure.toString()]: (state, action) => {}
-//   },
-//   initilState
-// );
