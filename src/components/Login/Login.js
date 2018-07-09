@@ -17,14 +17,13 @@ class Login extends Component {
     const { authorizeUser } = this.props;
     const { email, password } = this.state;
     const authorized = !authorizeUser(email, password);
-    
+
     this.setState({ isAuthSuccess: authorized });
   };
 
   render() {
     const { isAuthorized } = this.props;
     const { email, password, isAuthSuccess } = this.state;
-    
 
     return isAuthorized ? (
       <Redirect to="/private" />

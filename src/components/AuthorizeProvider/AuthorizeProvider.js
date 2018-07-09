@@ -12,10 +12,10 @@ class AuthorizeProvider extends Component {
 
   authorizeUser = (email, password) => {
     const isAuthorized = email === 'student' && password === '123';
-    
+
     this.setState({ isAuthorized });
     return isAuthorized;
-  }
+  };
 
   render() {
     const { children } = this.props;

@@ -8,7 +8,8 @@ import PrivateRoute from 'components/PrivateRoute';
 
 export class App extends PureComponent {
   render() {
-    return <AuthorizeProvider>
+    return (
+      <AuthorizeProvider>
         <div>
           <nav>
             <ul>
@@ -30,7 +31,8 @@ export class App extends PureComponent {
             <Redirect from="*" to="/" />
           </Switch>
         </div>
-      </AuthorizeProvider>;
+      </AuthorizeProvider>
+    );
   }
 }
 
