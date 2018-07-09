@@ -14,3 +14,13 @@
 .login__input {
   width: 100%;
 }
+
+.error {
+  width: 400px;
+  text-align: center;
+  margin: 50px auto 20px;
+}
+
+.error__message {
+  color: red;
+}

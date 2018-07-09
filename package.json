@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "^0.18.0",
     "prettier": "^1.13.5",
     "react": "16.4.1",
     "react-dom": "16.4.1",
@@ -20,6 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "prettier-fix": "yarn prettier --config ./.prettierrc --write src/**/*.js",
+    "check-prettier": "prettier --config ./.prettierrc --list-different src/**/*.js",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },

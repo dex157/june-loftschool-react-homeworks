@@ -1,4 +1,5 @@
-import { actions } from './action';
+import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './action';
 import users from './reducer';
+import {getIsFetching, getIsFetched, getUserData } from './reducer';
 
-export { actions, users };
+export { fetchUserRequest, fetchUserSuccess, fetchUserFailure, users, getIsFetching, getIsFetched, getUserData };
