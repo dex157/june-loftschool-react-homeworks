@@ -5,17 +5,16 @@ const showMiddleware = store => next => action => {
   if (action.type === showRequest.toString()) {
     show(action.payload)
       .then(ep => {
-        let actors = [];
-        actors = ep._embedded.cast.map(({ person }) => ({
+        const actors = ep._embedded.cast.map(({ person }) => ({
           id: person.id,
           name: person.name,
-          image: person.image.medium
+          image: person.image ? person.image.medium : null
         }));
 
         const episode = {
           id: ep.id,
           name: ep.name,
-          image: ep.image.medium,
+          image: ep.image ? ep.image.medium : null,
           summary: ep.summary,
           actors: actors
         };

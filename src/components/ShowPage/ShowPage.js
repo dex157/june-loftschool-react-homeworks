@@ -32,7 +32,7 @@ class ShowPage extends PureComponent {
           {actors.map(actor => (
             <div className="t-person" key={actor.id}>
               <p>{actor.name}</p>
-              <img src={actor.image} alt={actor.name} />
+              {actor.image && <img src={actor.image} alt={actor.name} />}
             </div>
           ))}
         </div>
