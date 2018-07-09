@@ -1,0 +1,9 @@
+{
+  "target": "es2018",
+  "checkJs": false,
+  "baseUrl": "./src",
+  "paths": {
+    "components/*": ["./src/components/*"]
+  },
+  "exclude": ["node_modules"]
+}

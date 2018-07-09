@@ -1,0 +1,13 @@
+.search {
+}
+
+.search__header {
+  margin-bottom: 30px;
+}
+
+.search__preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
