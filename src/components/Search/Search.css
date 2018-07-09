@@ -1,0 +1,5 @@
+.t-search-result {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

@@ -6,9 +6,9 @@
     "prettier": "^1.13.5",
     "react": "16.4.1",
     "react-dom": "16.4.1",
-    "react-scripts": "1.1.4",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
     "redux": "^4.0.0",
     "redux-actions": "^2.4.0",
     "styled-components": "^3.3.3"
@@ -18,6 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "prettier-fix": "yarn prettier --config ./.prettierrc --write src/**/*.js",
+    "check-prettier": "prettier --config ./.prettierrc --list-different src/**/*.js",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
