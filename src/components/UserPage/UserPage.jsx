@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './UserPage.css';
 import Followers from '../Followers'
 import { logout } from '../../ducks/auth';
-import { getIsFetching, getUserData, fetchUserRequest } from '../../ducks/users';
+import { getIsFetching, getUserData, fetchUserRequest, fetchTokenOwnerRequest } from '../../ducks/users';
 import Spinner from 'react-svg-spinner';
 
 const mapStateToProps = state => ({
@@ -11,19 +11,26 @@ const mapStateToProps = state => ({
   isFetching: getIsFetching(state),
 });
 
-const mapDispatchToProps = { logout, fetchUserRequest };
+const mapDispatchToProps = { logout, fetchUserRequest, fetchTokenOwnerRequest };
 
 class UserPage extends Component {
-  componentDidUpdate(prevProps) {
-    const oldMatch = prevProps.match.params.name;
-    console.log(oldMatch);
-    const newMatch = this.props.match.params.name;
-    console.log(newMatch);
-    const {fetchUserRequest} = this.props;
-    if (oldMatch !== newMatch) {
-      if (newMatch !== 'me' && newMatch !== undefined) {
-       fetchUserRequest(newMatch);
+  state = {
+    key: ''
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const oldValueParam = prevState.key;
+    const newValueParam = this.props.match.params.name;
+    const {fetchUserRequest, fetchTokenOwnerRequest} = this.props;
+    if (oldValueParam !== newValueParam) {
+      if (!newValueParam && oldValueParam) {
+        fetchTokenOwnerRequest();
+      } else {
+        fetchUserRequest(newValueParam);
       }
+      this.setState((state) => ({
+        key: newValueParam
+      }))
     }
   }
 

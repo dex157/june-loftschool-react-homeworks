@@ -7,9 +7,7 @@ import {
   fetchUserSuccess,
   fetchUserFailure
 } from '../ducks/users';
-import {
-  fetchFollowersRequest
-} from '../ducks/followers';
+
 import {
   getTokenOwner,
   getUserInformation
@@ -34,7 +32,17 @@ function* getUserInfoWorker(action) {
   }
 }
 
+function* tokenOwnerWorker() {
+  try {
+    const result = yield call(requestFlow, getTokenOwner);
+    yield put(fetchUserSuccess(result.data));
+  } catch (error) {
+    yield put(fetchUserFailure(error));
+  }
+}
+
 export function* fetchUserWatch() {
   yield takeEvery(authorize, authorizeWorker);
+  yield takeEvery(fetchTokenOwnerRequest, tokenOwnerWorker);
   yield takeEvery(fetchUserRequest, getUserInfoWorker);
 }
