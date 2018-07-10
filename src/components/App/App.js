@@ -75,39 +75,10 @@ export default class App extends Component {
           <button className="button-next" onClick={this.handleClickNextForm} />
         </div>
 
-        <Title />
+        {/* <Title />
         <CardForm />
-        <PersonalForm />
+        <PersonalForm /> */}
       </div>
     );
   }
 }
-// if (
-// this.state.firstName !== '' &&
-// this.state.lastName !== '' &&
-// this.state.email !== '' &&
-// this.state.email.includes('@')
-// ) {
-//   return true;
-// } else if (
-//   this.state.firstName !== '' &&
-//   this.state.lastName === '' &&
-//   this.state.email !== '' &&
-//   this.state.email.includes('@')
-// ) {
-//   return false;
-// } else if (
-//   this.state.firstName !== '' &&
-//   this.state.lastName === '' &&
-//   this.state.email !== '' &&
-//   this.state.email.includes('@')
-// ) {
-//   return false;
-// } else if (
-//   this.state.firstName !== '' &&
-//   this.state.lastName !== '' &&
-//   this.state.email === '' &&
-//   this.state.email.includes('@')
-// ) {
-//   return false;
-// }
