@@ -22,12 +22,10 @@ class ModalButton extends Component {
   render() {
     const isModalShow = this.state.isModalShow;
 
-    return (
-      <div>
-        <button onClick={this.showModal}>Show Modal!</button>
+    return <div>
+        <button onClick={this.showModal}>Show modal!</button>
         {isModalShow && <Modal closeModal={this.hideModal} />}
-      </div>
-    );
+      </div>;
   }
 }
 
