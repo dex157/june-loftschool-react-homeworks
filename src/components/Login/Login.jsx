@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './Login.css';
 import { authorize, getIsAuthorized } from '../../ducks/auth';
 import { getIsFetching } from '../../ducks/users';
@@ -26,15 +27,23 @@ class Login extends Component {
     }
   };
 
+  renderSpinner = () => {
+    return (
+    <div className="spinner">
+      <Spinner size="64px" color="fuchsia" gap={5} />
+    </div>
+    )
+  }
+
   render() {
-    const { networkError, isNetworkError, isFetching } = this.props;
+    const { networkError, isNetworkError, isFetching, isAuthorized } = this.props;
+
+    if (isAuthorized) {
+      return <Redirect to="/" />
+    } 
 
     if (isFetching) {
-      return (
-        <div className="spinner">
-          <Spinner size="64px" color="fuchsia" gap={5} />
-        </div>
-      );
+      this.renderSpinner();
     }
 
     return (

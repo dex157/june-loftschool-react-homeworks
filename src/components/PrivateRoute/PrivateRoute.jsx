@@ -9,12 +9,14 @@ import { connect } from 'react-redux';
 class PrivateRoute extends PureComponent {
   render() {
     const { component: Component, isAuthorized, ...rest } = this.props;
+
     return (
       <Route
         isAuthorized={isAuthorized}
         {...rest}
         render={props =>
-          isAuthorized ? <Component {...props} /> : <Redirect to="/login" />
+          isAuthorized ? <Component 
+          {...props} /> : <Redirect to="/login" />
         }
       />
     );

@@ -4,12 +4,14 @@ import {
   fetchFollowersFailure
 } from './action';
 import followers from './reducer';
-import { getFollowers } from './selector';
+import { getFollowers, getIsFetching, getIsFetched } from './selector';
 
 export {
   fetchFollowersRequest,
   fetchFollowersSuccess,
   fetchFollowersFailure,
   followers,
-  getFollowers
+  getFollowers,
+  getIsFetching,
+  getIsFetched
 };

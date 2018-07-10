@@ -8,7 +8,7 @@ export default class Follower extends Component {
     const {name, url} = this.props;
 
     return (
-      <div className="follower">
+      <div className="follower" key={name}>
       <div className="follower__avatar">
         <img className="follower__image" src={url} alt={name} />
       </div>

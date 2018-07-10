@@ -10,6 +10,7 @@ class AppRouter extends Component {
       <main>
         <Switch>
           <Route path="/login" component={Login} />
+          <Route exact path="/" render={() => <Redirect to="/users/me" />} />
           <PrivateRoute path="/users/me" component={UserPage} />
           <PrivateRoute path="/users/:name" component={UserPage} />
           <Redirect to="/login" />

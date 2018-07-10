@@ -8,20 +8,27 @@ import {
   fetchUserFailure
 } from '../ducks/users';
 import {
+  fetchFollowersRequest
+} from '../ducks/followers';
+import {
   getTokenOwner,
-  getUserInformation,
-  getUserFollowers,
-  getUserRepos
+  getUserInformation
 } from '../api';
-
-import { getTokenFromLocalStorage } from 'localStorage';
 
 function* authorizeWorker() {
   try {
-    const token = getTokenFromLocalStorage();
     yield put(fetchTokenOwnerRequest());
-    const result = yield call(requestFlow, getTokenOwner, token);
-    yield put(fetchUserSuccess(result));
+    const result = yield call(requestFlow, getTokenOwner);
+    yield put(fetchUserSuccess(result.data));
+  } catch (error) {
+    yield put(fetchUserFailure(error));
+  }
+}
+
+function* getUserInfoWorker(action) {
+  try {
+    const result = yield requestFlow (getUserInformation, action.payload);
+    yield put(fetchUserSuccess(result.data));
   } catch (error) {
     yield put(fetchUserFailure(error));
   }
@@ -29,4 +36,5 @@ function* authorizeWorker() {
 
 export function* fetchUserWatch() {
   yield takeEvery(authorize, authorizeWorker);
+  yield takeEvery(fetchUserRequest, getUserInfoWorker);
 }
