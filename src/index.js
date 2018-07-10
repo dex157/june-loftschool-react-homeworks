@@ -8,6 +8,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 const store = getStore();
 
+// initial commit
+
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
