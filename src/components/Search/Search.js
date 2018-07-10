@@ -1,8 +1,6 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { searchRequest } from '../../actions/search';
-import { withRouter } from 'react-router-dom';
-import { format } from 'url';
 
 class Search extends PureComponent {
   state = {
@@ -14,22 +12,21 @@ class Search extends PureComponent {
       searchVal: e.target.value
     });
   };
-  onSubmit = e => {
-    e.preventDefault();
+  onClick = () => {
     const { searchRequest } = this.props;
     const { searchVal } = this.state;
     searchRequest(searchVal);
   };
   render() {
     return (
-      <form action="">
+      <Fragment>
         <input
           type="text"
           onChange={this.handleChange}
           value={this.state.searchVal}
         />
-        <button>Найти</button>
-      </form>
+        <button onClick={this.onClick}>Найти</button>
+      </Fragment>
     );
   }
 }
