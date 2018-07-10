@@ -26,7 +26,7 @@ class Login extends Component {
     const { email, password, isAuthSuccess } = this.state;
 
     return isAuthorized ? (
-      <Redirect to="/private" />
+      <Redirect to="/" />
     ) : (
       <div>
         <div>
