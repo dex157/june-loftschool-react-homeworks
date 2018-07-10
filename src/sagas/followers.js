@@ -3,7 +3,7 @@ import {
   fetchFollowersSuccess,
   fetchFollowersFailure
 } from '../ducks/followers';
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, put } from 'redux-saga/effects';
 import { getUserFollowers } from '../api';
 import { requestFlow } from './request';
 
