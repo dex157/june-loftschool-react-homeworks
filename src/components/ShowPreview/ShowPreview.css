@@ -1,0 +1,11 @@
+.preview {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.preview-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
