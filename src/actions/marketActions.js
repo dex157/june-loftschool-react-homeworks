@@ -5,7 +5,7 @@ export const createOrder = payload => ({
   payload
 });
 
-export const moveOrderToFarm = id => ({
+export const moveOrderToFarm = payload => ({
   type: MOVE_ORDER_TO_FARM,
-  payload: id
+  payload
 });
