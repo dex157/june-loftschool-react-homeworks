@@ -1,12 +1,15 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
-import {
+import {authorize, logout} from "./auth-actions";
+
+/*import {
   authRequest,
   authSuccess,
   authFailure,
-} from './auth-actions';
+} from './auth-actions';*/
+/*import { createSelector } from 'reselect';*/
 
-export const LOADING_STATE = {
+/*export const LOADING_STATE = {
   idle: 'IDLE',
   loading: 'LOADING',
   success: 'SUCCESS',
@@ -38,32 +41,30 @@ const error = handleActions(
 
 export const authorize = handleActions(
   {
-    /*[authRequest.toString()]: (_state, action) => action.payload*/
+    /!*[authRequest.toString()]: (_state, action) => action.payload*!/
   },
   false,
 );
 
 export const logout = handleActions(
   {
-    /*[authRequest.toString()]: (_state, action) => action.payload*/
+    /!*[authRequest.toString()]: (_state, action) => action.payload*!/
   },
   false,
+);*/
+
+
+
+const IsAuthorized = handleActions(
+  {
+    [authorize]: (state, action) => true,
+    [logout]: () => false
+  },
+  false
 );
 
-export const getIsAuthorized = handleActions(
-  {
-    /*[authRequest.toString()]: (_state) => _state,*/
-  },
-  false,
-);
+export const getIsAuthorized = state => state.auth.isAuthorized;
 
 export default combineReducers({
-  /*authStatus: authStatus,
-  loadingState,
-  error,*/
-  authorize,
-  logout,
-  getIsAuthorized,
-
-
+  IsAuthorized,
 });

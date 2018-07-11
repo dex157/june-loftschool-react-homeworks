@@ -1,6 +1,7 @@
 import { take, put, call, select } from 'redux-saga/effects'
 import { setTokenApi, clearTokenApi } from '../api'
-import { authorize, logout, getIsAuthorized } from '../ducks/auth-reducer'
+import { authorize, logout } from '../ducks/auth-actions'
+import { getIsAuthorized } from '../ducks/auth-reducer'
 import {
   getTokenFromLocalStorage,
   setTokenToLocalStorage,

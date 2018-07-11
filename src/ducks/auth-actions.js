@@ -1,6 +1,6 @@
-import { createActions } from 'redux-actions';
+import { createAction, createActions } from "redux-actions";
 
-const {
+/*const {
   auth: {
     request: authRequest,
     success: authSuccess,
@@ -14,4 +14,8 @@ const {
   },
 }, { namespace: "_" });
 
-export { authRequest, authSuccess, authFailure };
+export { authRequest, authSuccess, authFailure };*/
+
+export const setToken = createAction("SET_TOKEN");
+export const { authorize } = createActions("AUTHORIZE");
+export const { logout } = createActions("LOGOUT");

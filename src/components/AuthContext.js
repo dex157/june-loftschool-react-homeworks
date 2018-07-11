@@ -10,7 +10,7 @@ export { AuthProvider, AuthConsumer };
 */
 
 import React, { Component } from 'react';
-import { authRequest } from '../ducks/auth-actions';
+import { authorize } from '../ducks/auth-actions';
 import { connect } from 'react-redux';
 
 const { Provider, Consumer } = React.createContext({ isAuthorized: false });
@@ -23,7 +23,7 @@ class AuthProvider extends Component {
   authorizeUser = (authToken) => {
     /*let credentialsMatched =
       authToken === "60bc2786052210834b4336b974eae81ad01ca225";*/
-    this.props.authRequest(authToken);
+    this.props.authorize(authToken);
   };
 
   render() {
@@ -55,7 +55,7 @@ const AuthConsumerHOC = WrappedComponent =>
     }
   };
 
-const mapDispatchToProps = { authRequest };
+const mapDispatchToProps = { authorize };
 
 const mapStateToProps = state => ({
   isAuthorized: state.auth.authStatus
