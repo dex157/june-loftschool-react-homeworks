@@ -57,7 +57,9 @@ export const logout = handleActions(
 
 const IsAuthorized = handleActions(
   {
-    [authorize]: (state, action) => true,
+    [authorize]: (state, action) => {
+      return action.payload !== undefined ? true : false;
+    },
     [logout]: () => false
   },
   false

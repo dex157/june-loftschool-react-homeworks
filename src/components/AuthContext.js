@@ -27,8 +27,7 @@ class AuthProvider extends Component {
   };
 
   render() {
-    const { children } = this.props;
-    const { isAuthorized } = this.state;
+    const { children, isAuthorized } = this.props;
 
     return (
       <Provider value={{ isAuthorized, authorizeUser: this.authorizeUser }}>
@@ -57,9 +56,12 @@ const AuthConsumerHOC = WrappedComponent =>
 
 const mapDispatchToProps = { authorize };
 
-const mapStateToProps = state => ({
-  isAuthorized: state.auth.authStatus
-});
+const mapStateToProps = state => {
+  console.log(state.auth);
+  return ({
+    isAuthorized: state.auth.IsAuthorized
+  });
+};
 
 
 const AuthProviderHOC = connect(
