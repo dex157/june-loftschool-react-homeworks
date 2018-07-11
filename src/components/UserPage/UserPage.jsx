@@ -21,18 +21,29 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = { logout, fetchUserRequest, fetchTokenOwnerRequest };
 
 class UserPage extends PureComponent {
-  componentDidUpdate(prevProps, prevState) {
-    const prevUser = prevProps.match.params.name;
-    const newUser = this.props.match.params.name;
-    const { fetchUserRequest, match } = this.props;
-    console.log(this.props);
-    console.log(prevUser);
-    console.log(newUser);
-
-    if (match.path === '/users/me') {
-      return;
+  componentDidMount() {
+    const {
+      match: {
+        params: { name: newUser }
+      },
+      fetchUserRequest,
+      fetchTokenOwnerRequest
+    } = this.props;
+    if (newUser) {
+      fetchUserRequest(newUser);
+    } else {
+      fetchTokenOwnerRequest();
     }
+  }
 
+  componentDidUpdate(prevProps) {
+    const prevUser = prevProps.match.params.name;
+    const {
+      match: {
+        params: { name: newUser }
+      },
+      fetchUserRequest
+    } = this.props;
     if (newUser !== prevUser) {
       fetchUserRequest(newUser);
     }
@@ -51,35 +62,40 @@ class UserPage extends PureComponent {
     );
   };
 
-  renderUser = ({ name, url, followersCount, reposCount }, isFetched) => {
-    return (
-      <div className="user__info">
-        <div className="user__page">
-          <div className="user__avatar">
-            <img className="user__image" src={url} alt={name} />
+  renderUser = userData => {
+    if (userData) {
+      return (
+        <div className="user__info">
+          <div className="user__page">
+            <div className="user__avatar">
+              <img
+                className="user__image"
+                src={userData.url}
+                alt={userData.name}
+              />
+            </div>
+            <div className="user__stats">
+              <h3>{userData.name}</h3>
+              <p>Followers: {userData.followersCount}</p>
+              <p>Public repos: {userData.reposCount}</p>
+            </div>
           </div>
-          <div className="user__stats">
-            <h3>{name}</h3>
-            <p>Followers: {followersCount}</p>
-            <p>Public repos: {reposCount}</p>
-          </div>
+          {console.log(123)}
+          {!this.props.isFetching && <Followers login={userData.name} />}
         </div>
-        {isFetched && <Followers login={name} />}
-      </div>
-    );
+      );
+    }
   };
 
   render() {
-    const { userData, isFetching, isFetched } = this.props;
+    const { userData, isFetching } = this.props;
 
     return (
       <div className="user">
         <div className="user__logout">
           <button onClick={this.logoutHandler}>Logout</button>
         </div>
-        {isFetching
-          ? this.renderSpinner()
-          : this.renderUser(userData, isFetched)};
+        {isFetching ? this.renderSpinner() : this.renderUser(userData)};
       </div>
     );
   }

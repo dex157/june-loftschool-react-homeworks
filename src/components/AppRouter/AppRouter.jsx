@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import Login from '../Login';
 import PrivateRoute from '../PrivateRoute';
 import UserPage from '../UserPage';
 
-class AppRouter extends Component {
+class AppRouter extends PureComponent {
   render() {
     return (
       <main>
