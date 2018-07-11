@@ -21,20 +21,20 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = { logout, fetchUserRequest, fetchTokenOwnerRequest };
 
 class UserPage extends PureComponent {
-  componentDidMount() {
-    const { fetchTokenOwnerRequest } = this.props;
-    fetchTokenOwnerRequest();
-  }
-
   componentDidUpdate(prevProps, prevState) {
     const prevUser = prevProps.match.params.name;
     const newUser = this.props.match.params.name;
-    const { fetchUserRequest, fetchTokenOwnerRequest } = this.props;
+    const { fetchUserRequest, match } = this.props;
     console.log(this.props);
-    if (prevUser !== newUser) {
+    console.log(prevUser);
+    console.log(newUser);
+
+    if (match.path === '/users/me') {
+      return;
+    }
+
+    if (newUser !== prevUser) {
       fetchUserRequest(newUser);
-    } else if (location === pathName) {
-      fetchTokenOwnerRequest();
     }
   }
 

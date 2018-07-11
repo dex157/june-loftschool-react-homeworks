@@ -1,5 +1,7 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { requestFlow } from './request';
+import { authorize } from 'ducks/auth';
+
 import {
   fetchTokenOwnerRequest,
   fetchUserRequest,
@@ -20,6 +22,7 @@ function* getUserInfoWorker(action) {
 
 function* tokenOwnerWorker() {
   try {
+    yield put(fetchTokenOwnerRequest());
     const result = yield call(requestFlow, getTokenOwner);
     yield put(fetchUserSuccess(result.data));
   } catch (error) {
@@ -28,6 +31,6 @@ function* tokenOwnerWorker() {
 }
 
 export function* fetchUserWatch() {
-  yield takeEvery(fetchTokenOwnerRequest, tokenOwnerWorker);
+  yield takeEvery(authorize, tokenOwnerWorker);
   yield takeEvery(fetchUserRequest, getUserInfoWorker);
 }
