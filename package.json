@@ -1,6 +1,6 @@
 {
-  "name": "loftschool_react_homeworks",
-  "version": "0.1.0",
+  "name": "yes",
+  "version": "yes",
   "private": true,
   "dependencies": {
     "react": "16.4.1",
@@ -20,5 +20,10 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint-plugin-cypress": "^2.0.1"
-  }
+  },
+  "description": "yes",
+  "main": "yes",
+  "repository": "yes",
+  "author": "yes",
+  "license": "yes"
 }
