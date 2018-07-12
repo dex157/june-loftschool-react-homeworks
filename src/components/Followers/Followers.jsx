@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { fetchFollowersRequest };
 
-class Followers extends PureComponent {
+export class Followers extends PureComponent {
   componentDidMount = () => {
     const { login, fetchFollowersRequest } = this.props;
     fetchFollowersRequest(login);

@@ -13,14 +13,14 @@ import {
 import Spinner from 'react-svg-spinner';
 
 const mapStateToProps = state => ({
-  userData: getUserData(state),
+  user: getUserData(state),
   isFetching: getIsFetching(state),
   isFetched: getIsFetched(state)
 });
 
 const mapDispatchToProps = { logout, fetchUserRequest, fetchTokenOwnerRequest };
 
-class UserPage extends PureComponent {
+export class UserPage extends PureComponent {
   componentDidMount() {
     const {
       match: {
@@ -62,40 +62,41 @@ class UserPage extends PureComponent {
     );
   };
 
-  renderUser = userData => {
-    if (userData) {
+  renderUser = user => {
+    if (user) {
       return (
         <div className="user__info">
           <div className="user__page">
             <div className="user__avatar">
               <img
                 className="user__image"
-                src={userData.url}
-                alt={userData.name}
+                src={user.url}
+                alt={user.name}
               />
             </div>
             <div className="user__stats">
-              <h3>{userData.name}</h3>
-              <p>Followers: {userData.followersCount}</p>
-              <p>Public repos: {userData.reposCount}</p>
+              <h3 className="user__name">{user.name}</h3>
+              <p className="user__followers">Followers: {user.followersCount}</p>
+              <p className="user__repos">Public repos: {user.reposCount}</p>
             </div>
           </div>
-          {console.log(123)}
-          {!this.props.isFetching && <Followers login={userData.name} />}
+          {!this.props.isFetching && <Followers login={user.name} />}
         </div>
       );
+    } else {
+      return <div className="user__none">Пользователь не найден</div>
     }
   };
 
   render() {
-    const { userData, isFetching } = this.props;
+    const { user, isFetching } = this.props;
 
     return (
       <div className="user">
         <div className="user__logout">
           <button onClick={this.logoutHandler}>Logout</button>
         </div>
-        {isFetching ? this.renderSpinner() : this.renderUser(userData)};
+        {isFetching ? this.renderSpinner() : this.renderUser(user)};
       </div>
     );
   }

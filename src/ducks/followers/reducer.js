@@ -15,6 +15,8 @@ const data = handleActions(
 
 const error = handleActions(
   {
+    [fetchFollowersRequest]: () => null,
+    [fetchFollowersSuccess]: () => null,
     [fetchFollowersFailure]: (_state, action) => action.payload
   },
   null

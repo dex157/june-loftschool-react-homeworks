@@ -4,15 +4,15 @@ import Login from '../Login';
 import PrivateRoute from '../PrivateRoute';
 import UserPage from '../UserPage';
 
-class AppRouter extends PureComponent {
+export class AppRouter extends PureComponent {
   render() {
     return (
       <main>
         <Switch>
           <Route path="/login" component={Login} />
-          <Route exact path="/" render={() => <Redirect to="/users/me" />} />
-          <PrivateRoute path="/users/me" component={UserPage} />
-          <PrivateRoute path="/users/:name" component={UserPage} />
+          <Route exact path="/" render={() => <Redirect to="/user/me" />} />
+          <PrivateRoute path="/user/me" component={UserPage} />
+          <PrivateRoute path="/user/:name" component={UserPage} />
           <Redirect to="/login" />
         </Switch>
       </main>

@@ -9,6 +9,7 @@ import {
 
 const data = handleActions(
   {
+    [fetchUserRequest]: (_state, action) => null,
     [fetchUserSuccess]: (_state, action) => action.payload
   },
   []
@@ -17,6 +18,7 @@ const data = handleActions(
 const error = handleActions(
   {
     [fetchUserRequest]: () => null,
+    [fetchUserSuccess]: () => null,
     [fetchUserFailure]: (_state, action) => action.payload
   },
   null

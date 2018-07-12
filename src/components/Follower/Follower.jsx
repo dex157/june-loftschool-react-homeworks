@@ -12,7 +12,7 @@ export default class Follower extends PureComponent {
           <img className="follower__image" src={url} alt={name} />
         </div>
         <div className="follower__nickname">
-          <Link to={`/users/${name}`} className="follower__link">
+          <Link to={`/user/${name}`} className="follower__link">
             <h3>{name}</h3>
           </Link>
         </div>
