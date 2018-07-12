@@ -22,8 +22,12 @@ class Search extends PureComponent {
   render() {
     const { result, isFetching, error } = this.props;
 
-    isFetching && <p>Идёт поиск...</p>;
-    error && <p>Что то пошло не так</p>;
+    if (isFetching) {
+      return <p>Идёт поиск...</p>;
+    }
+    if (error) {
+      return <p>Что то пошло не так</p>;
+    }
 
     return (
       <div>
