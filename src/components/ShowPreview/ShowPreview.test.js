@@ -12,7 +12,7 @@ describe('Компонент ShowPreview', () => {
       it('Должен содержать имя фильма props', () => {
         expect(wrapper.contains('test_name')).toBeTruthy();
       });
-      it('Если props.iamge == null не должно быть тега img', () => {
+      it('Если props.image == null не должно быть тега img', () => {
         const wrapper = shallow(
           <ShowPreview
             {...{ image: null, name: 'test_name', id: '123', summary: '<p>Test</p>' }}
