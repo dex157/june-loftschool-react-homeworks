@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import './Market.css';
 import { connect } from 'react-redux';
 import Order from 'components/Order';
-import {
-  createOrder,
-  moveOrderToFarm,
-  deleteOrderFromMarket
-} from 'actions/marketActions';
+import { createOrder, deleteOrderFromMarket } from 'actions/marketActions';
+import { addOrderToFarm } from 'actions/farmActions';
+import { getMarketOrders } from 'reducers/market';
+import { getFarmOrders } from 'reducers/farm';
 
 let id = 0;
 
@@ -40,18 +39,19 @@ const getNewOrder = () => {
 };
 
 const mapStateToProps = state => ({
-  market: state.market
+  market: getMarketOrders(state),
+  farm: getFarmOrders(state)
 });
 
 const mapDispatchToProps = {
   createOrder,
-  moveOrderToFarm,
-  deleteOrderFromMarket
+  deleteOrderFromMarket,
+  addOrderToFarm
 };
 
 export class Market extends Component {
   render() {
-    const { createOrder, moveOrderToFarm, deleteOrderFromMarket } = this.props;
+    const { createOrder, deleteOrderFromMarket, addOrderToFarm } = this.props;
     const { market } = this.props;
     return (
       <div className="market">
@@ -73,7 +73,12 @@ export class Market extends Component {
         <button
           onClick={() => {
             Object.keys(market).length > 0 &&
-              moveOrderToFarm(market[0].id, market[0].name, market[0].price, market[0].createdAt) &&
+              addOrderToFarm(
+                market[0].id,
+                market[0].name,
+                market[0].price,
+                market[0].createdAt
+              ) &&
               deleteOrderFromMarket(market[0].id);
           }}
         >

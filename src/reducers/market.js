@@ -1,21 +1,26 @@
-import {
-  CREATE_ORDER,
-  MOVE_ORDER_TO_FARM,
-  DELETE_ORDER_FROM_MARKET
-} from 'actions/marketTypes';
+import { combineReducers } from 'redux';
+import { CREATE_ORDER, DELETE_ORDER_FROM_MARKET } from 'actions/marketTypes';
 
-export default (state = [], action) => {
+const orders = (state = [], action) => {
   switch (action.type) {
     case CREATE_ORDER:
-      return [action.payload, ...state];
-
-    case MOVE_ORDER_TO_FARM:
-      return [action.payload, ...state];
+      const { payload } = action;
+      return [...state, payload];
 
     case DELETE_ORDER_FROM_MARKET:
-      return state.filter(order => order.id !== action.payload);
+      const id = action.payload;
+      return state.filter(order => order.id !== id);
+
+    // case DELETE_ORDER_FROM_MARKET:
+    //   return state.filter(order => order.id !== action.payload);
 
     default:
       return state;
   }
 };
+
+export default combineReducers({
+  orders
+});
+
+export const getMarketOrders = state => state.market.orders;

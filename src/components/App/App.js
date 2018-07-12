@@ -10,6 +10,7 @@ export class App extends Component {
       <div className="app">
         <Market />
         <Farm />
+        <Budget />
       </div>
     )
   }
