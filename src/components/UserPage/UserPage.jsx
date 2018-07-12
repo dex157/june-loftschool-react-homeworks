@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import './UserPage.css';
 import Followers from '../Followers';
-import { logout } from '../../ducks/auth';
 import {
   getIsFetching,
   getIsFetched,
@@ -18,7 +17,7 @@ const mapStateToProps = state => ({
   isFetched: getIsFetched(state)
 });
 
-const mapDispatchToProps = { logout, fetchUserRequest, fetchTokenOwnerRequest };
+const mapDispatchToProps = { fetchUserRequest, fetchTokenOwnerRequest };
 
 export class UserPage extends PureComponent {
   componentDidMount() {
@@ -48,11 +47,6 @@ export class UserPage extends PureComponent {
       fetchUserRequest(newUser);
     }
   }
-
-  logoutHandler = () => {
-    const { logout } = this.props;
-    logout();
-  };
 
   renderSpinner = () => {
     return (
@@ -93,9 +87,6 @@ export class UserPage extends PureComponent {
 
     return (
       <div className="user">
-        <div className="user__logout">
-          <button onClick={this.logoutHandler}>Logout</button>
-        </div>
         {isFetching ? this.renderSpinner() : this.renderUser(user)};
       </div>
     );

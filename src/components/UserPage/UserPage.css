@@ -1,9 +1,3 @@
-.user__logout {
-  width: 400px;
-  margin: 50px auto 20px;
-  text-align: center;
-}
-
 .user__info {
   display: flex;
   flex-direction: column;
