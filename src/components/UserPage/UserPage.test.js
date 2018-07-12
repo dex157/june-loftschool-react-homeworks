@@ -30,6 +30,7 @@ describe('Компонент UserPage', () => {
     <UserPage
       match={{ params: {} }}
       isFetching={false}
+      isFetched={true}
       fetchUserRequest={jest.fn()}
       fetchTokenOwnerRequest={jest.fn()}
       user= { 

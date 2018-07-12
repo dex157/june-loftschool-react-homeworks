@@ -20,7 +20,7 @@ describe('Экшен `fetchUserRequest`', () => {
   });
 
   it('Очищают поле `data`', () => {
-    expect(state.data).toEqual(null);
+    expect(state.data).toEqual([]);
   });
 
   it('Очищают поле `error`', () => {

@@ -41,10 +41,13 @@ export class UserPage extends PureComponent {
       match: {
         params: { name: newUser }
       },
-      fetchUserRequest
+      fetchUserRequest,
+      fetchTokenOwnerRequest
     } = this.props;
-    if (newUser !== prevUser) {
+    if (newUser !== prevUser && newUser) {
       fetchUserRequest(newUser);
+    } else if (!newUser && prevUser) {
+      fetchTokenOwnerRequest();
     }
   }
 
@@ -56,38 +59,38 @@ export class UserPage extends PureComponent {
     );
   };
 
-  renderUser = user => {
-    if (user) {
+  renderUser = () => {
+    const { isFetched, user } = this.props;
+    if (user && isFetched) {
       return (
         <div className="user__info">
           <div className="user__page">
             <div className="user__avatar">
-              <img
-                className="user__image"
-                src={user.url}
-                alt={user.name}
-              />
+              <img className="user__image" src={user.url} alt={user.name} />
             </div>
             <div className="user__stats">
               <h3 className="user__name">{user.name}</h3>
-              <p className="user__followers">Followers: {user.followersCount}</p>
+              <p className="user__followers">
+                Followers: {user.followersCount}
+              </p>
               <p className="user__repos">Public repos: {user.reposCount}</p>
             </div>
           </div>
-          {!this.props.isFetching && <Followers login={user.name} />}
+          {!this.props.isFetching &&
+            isFetched && <Followers login={user.name} />}
         </div>
       );
     } else {
-      return <div className="user__none">Пользователь не найден</div>
+      return <div className="user__none">Пользователь не найден</div>;
     }
   };
 
   render() {
-    const { user, isFetching } = this.props;
+    const { isFetching } = this.props;
 
     return (
       <div className="user">
-        {isFetching ? this.renderSpinner() : this.renderUser(user)};
+        {isFetching ? this.renderSpinner() : this.renderUser()};
       </div>
     );
   }

@@ -9,7 +9,7 @@ import {
 
 const data = handleActions(
   {
-    [fetchUserRequest]: (_state, action) => null,
+    [fetchUserRequest]: () => [],
     [fetchUserSuccess]: (_state, action) => action.payload
   },
   []
