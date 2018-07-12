@@ -1,32 +1,43 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, { PureComponent, Fragment } from 'react';
 import { showRequest } from '../../actions/show';
-class ShowPage extends Component {
-  componentDidMount() {
-    const { showRequest } = this.props;
-    const { id } = this.props.parms.id;
-    showRequest(id);
-  }
+import { connect } from 'react-redux';
+
+class ShowPage extends PureComponent {
+  componentDidMount = () => {
+    const { id } = this.props.match.params;
+    this.props.showRequest(id);
+  };
+
   render() {
     const { entities, isFetching, error } = this.props;
-    const { name, summary, actors = [] } = entities;
 
+    if (isFetching) {
+      return <p>Загрузка...</p>;
+    }
+
+    if (error) {
+      return <p>Ошибка! Попробуйте перезагрузить страницу.</p>;
+    }
+
+    const { name, image, summary, _embedded } = entities;
     return (
       <Fragment>
-        {isFetching && <p>Выполняется поиск</p>}
-        {error && <p>Ошибка!</p>}
         <p>{name}</p>
+        {image && <img src={image.medium || image.original} alt={name} />}
         <div dangerouslySetInnerHTML={{ __html: summary }} />
-        <div>
-          {actors.map(actor => {
-            return (
-              <div className="t-person" key={actor.id}>
-                <p>{actor.name}</p>
-                {actor.image && <img src={actor.image} alt={actor.name} />}
-              </div>
-            );
-          })}
-        </div>
+        {_embedded &&
+          _embedded.cast.map(({ person }) => (
+            <div className="t-person" key={person.id}>
+              <p>{person.name}</p>
+              {person.image && (
+                <img
+                  src={person.image.medium || person.image.original}
+                  alt={person.name}
+                />
+              )}
+            </div>
+          ))}
+        <div />
       </Fragment>
     );
   }
@@ -34,8 +45,8 @@ class ShowPage extends Component {
 
 const mapStateToProps = state => ({
   isFetching: state.shows.isFetching,
-  entities: state.show.entities,
-  error: state.show.error
+  entities: state.shows.entities,
+  error: state.shows.error
 });
 
 const mapDispatchToProps = { showRequest };

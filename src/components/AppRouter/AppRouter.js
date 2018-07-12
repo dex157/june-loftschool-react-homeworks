@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
-import ShowPage from '../ShowPage';
 import Search from '../Search';
+import ShowPage from '../ShowPage';
 import './AppRouter.css';
 
 class AppRouter extends PureComponent {
