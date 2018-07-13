@@ -10,20 +10,17 @@ class Budget extends React.Component {
       <div className="budget">
         <h2>Бюджет</h2>
         <p>
-          Всего получено денег: {profit > 0 ? ' -' : ' '}
-          <span className="t-profit">{profit}</span>
+          Всего получено денег: <span className="t-profit">{profit}</span>
         </p>
         <p>
-          Расходы продавцов: {marketExpanse > 0 ? ' -' : ' '}
-          <span className="t-profit">{marketExpanse}</span>
+          Расходы продавцов: <span className="t-profit">{-marketExpanse}</span>
         </p>
         <p>
-          Расходы на ферме: {farmExpanse > 0 ? ' -' : ' '}
-          <span className="t-profit">{farmExpanse}</span>
+          Расходы на ферме: <span className="t-profit">{-farmExpanse}</span>
         </p>
         <p>
-          Расходы на доставку: {deliveryExpanse > 0 ? ' -' : ' '}
-          <span className="t-profit">{deliveryExpanse}</span>
+          Расходы на доставку:{' '}
+          <span className="t-profit">{-deliveryExpanse}</span>
         </p>
         <p>
           Итого:{' '}
