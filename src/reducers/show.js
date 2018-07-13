@@ -11,14 +11,14 @@ const isLoading = handleActions(
   false
 );
 
-const entities = handleActions(
+const select = handleActions(
   {
-    [showSuccess.toString()]: (state, action) => [state, ...action.payload]
+    [showSuccess.toString()]: (state, action) => action.payload
   },
   []
 );
 
 export default combineReducers({
-  entities,
+  select,
   isLoading
 });

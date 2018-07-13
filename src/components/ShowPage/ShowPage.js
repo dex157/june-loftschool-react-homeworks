@@ -11,9 +11,11 @@ class ShowPage extends PureComponent {
   }
 
   getSerial(id) {
-    const { entities } = this.props;
-    const select = entities.filter(serial => String(serial.id) === id)[0];
-    if (!select) return null;
+    const { select } = this.props;
+    if (!select.id) {
+      return null;
+    }
+
     const actors = select._embedded.cast.map(({ person }) => ({
       name: person.name,
       image: person.image ? person.image.medium : null
@@ -54,7 +56,7 @@ class ShowPage extends PureComponent {
 
 const mapStateToProps = state => ({
   isLoading: state.show.isLoading,
-  entities: state.show.entities
+  select: state.show.select
 });
 
 const mapDispatchToProps = {

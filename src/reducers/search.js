@@ -13,7 +13,7 @@ const isLoading = handleActions(
 
 const serials = handleActions(
   {
-    [searchSuccess.toString()]: (state, action) => [state, ...action.payload]
+    [searchSuccess.toString()]: (state, action) => action.payload
   },
   []
 );
