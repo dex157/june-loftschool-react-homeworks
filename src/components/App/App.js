@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+// import CardForm from '../CardForm/CardForm';
+// import PersonalForm from '../PersonalForm/PersonalForm';
 
 class App extends Component {
 
@@ -13,7 +15,6 @@ class App extends Component {
             cardNumber: ''
         };
     }
-    
 
     handleTabClick = e => {
         this.setState({
@@ -27,35 +28,39 @@ class App extends Component {
         });
     }
 
-    handleClickNextForm() {
-        this.setState({
-            step: this.state.step + 1
-        });
+    handleChangeForm = e => {
+        const { name, value } = e.target;
+        this.props.onChangeForm(name, value);
     }
 
-    isFormCommitable() {
-        // if (state.firstName !== '' && state.lastName !== '' && state.email !== '' && state.email.includes('@')) {
-        //     true
-        // } else {
-        //     false
-        // }
+    handleClickNextForm = e => {
+        if (this.state.step !== 3) {
+            this.setState({
+                step: this.state.step + 1
+            });
+        } else {
+            e.preventDefault();
+        }
+        
     }
 
-    renderForm() {
+    isFormCommitable = e => {
+    }
 
+    renderForm = e => {
     }
 
     render() {
+
         return (
             <div className="container">
                 <div className="tab-panel"></div>
                 <div className="form-content"></div>
                 <div className="button-panel">
                     <button 
-                        className="button-next" 
-                        disabled="" 
-                        onClick={this.handleClickNextForm}
-                        >Next</button>
+                        className="button-next"
+                        onClick={this.handleClickNextForm}>Next
+                    </button>
                 </div>
             </div>
         )
