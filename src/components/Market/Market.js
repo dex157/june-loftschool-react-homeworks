@@ -84,15 +84,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    createOrder: payload => {
-      dispatch(createOrder(payload));
-    },
-    moveOrderToFarm: payload => {
-      dispatch(moveOrderToFarm(payload));
-    }
-  };
+const mapDispatchToProps = {
+  createOrder,
+  moveOrderToFarm
 };
 
 export default connect(
