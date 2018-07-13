@@ -21,8 +21,6 @@ class AuthProvider extends Component {
   };
 
   authorizeUser = (authToken) => {
-    /*let credentialsMatched =
-      authToken === "60bc2786052210834b4336b974eae81ad01ca225";*/
     this.props.authorize(authToken);
   };
 

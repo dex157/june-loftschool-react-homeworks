@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import {authorize, logout} from "./auth-actions";
+import {getTokenOwner} from '../api'
 
 /*import {
   authRequest,
@@ -58,7 +59,7 @@ export const logout = handleActions(
 const IsAuthorized = handleActions(
   {
     [authorize]: (state, action) => {
-      return action.payload !== undefined ? true : false;
+      return true;
     },
     [logout]: () => false
   },

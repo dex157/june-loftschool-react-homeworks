@@ -30,11 +30,11 @@ localstorage и отражения инфромации текущего пол�
 ├── ducks
 │   ├── auth-actions.js
 │   ├── index.js
-│   └── users.js
+│   └── user-actions.js
 ├── sagas
 │   ├── auth-actions.js
 │   ├── index.js
-│   └── users.js
+│   └── user-actions.js
 ├── setupTests.js
 ├── localstorage.js
 └── store.js

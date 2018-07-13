@@ -1,35 +1,29 @@
-import { take, put, call, select } from 'redux-saga/effects'
-import { setTokenApi, clearTokenApi } from '../api'
-/*import { authorize, logout, getIsAuthorized } from 'ducks/auth'*/
+import { take, put, call, select, takeLatest } from "redux-saga/effects";
+import { getTokenOwner, getUserInformation } from "../api";
 import {
-  getTokenFromLocalStorage,
-  setTokenToLocalStorage,
-  removeTokenFromLocalStorage
-} from 'localStorage'
+  getLoginRequest, getLoginSuccess, getLoginFailure,
+  getUserInfoRequest, getUserInfoSuccess, getUserInfoFailure
+} from "../ducks/user-actions";
 
-function* fetchUserWatch() {
-  /*while (true) {
-    const isAuthorized = yield select(getIsAuthorized) /!* boolean *!/
-    const localStorageToken = yield call(getTokenFromLocalStorage)
+function* fetchUserWatch(action) {
+  while (true) {
+    try {
+      const userLookupResult = yield call(getTokenOwner);
+      let loginSuccessResult = getLoginSuccess(userLookupResult);
+      yield put(loginSuccessResult);
+     /* if (action === getUserInfoRequest) {
+        console.log('o_0');
+      } else {
 
-    let token
-
-    if (!isAuthorized && localStorageToken) {
-      token = localStorageToken
-      yield put(authorize())
-    } else {
-      const action = yield take(authorize)
-      token = action.payload
+      }*/
+    } catch (error) {
+      yield put(getLoginFailure(error));
     }
-
-    yield call(setTokenApi, token)
-    yield call(setTokenToLocalStorage, token)
-
-    yield take(logout)
-
-    yield call(removeTokenFromLocalStorage)
-    yield call(clearTokenApi)
-  }*/
+  }
 }
 
-export default fetchUserWatch;
+function* searchRequestWatch() {
+  yield takeLatest(getLoginRequest, fetchUserWatch);
+}
+
+export default searchRequestWatch;
