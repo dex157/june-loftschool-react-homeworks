@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-// import CardForm from '../CardForm/CardForm';
-// import PersonalForm from '../PersonalForm/PersonalForm';
+import CardForm from '../CardForm/CardForm';
+import PersonalForm from '../PersonalForm/PersonalForm';
+import Step from '../Step/Step';
+import './App.css';
 
 class App extends Component {
 
@@ -16,21 +18,18 @@ class App extends Component {
         };
     }
 
-    handleTabClick = e => {
+    handleTabClick = event => {
         this.setState({
-            step: e.target.innerHTML
+            step: event
         });
     }
 
-    handleChangeForm = e => {
+    //НЕ ПОНИМАЮ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    handleChangeForm = (call, value) => {
+        // const { name, value } = e.target;
         this.setState({
-            firstName: e.target.value
+            [call]: value
         });
-    }
-
-    handleChangeForm = e => {
-        const { name, value } = e.target;
-        this.props.onChangeForm(name, value);
     }
 
     handleClickNextForm = e => {
@@ -40,26 +39,64 @@ class App extends Component {
             });
         } else {
             e.preventDefault();
-        }
-        
+        }        
     }
 
     isFormCommitable = e => {
+        const { firstName, lastName, email, cardNumber, step } = this.state;
+
+        switch (step) {
+            case 1:
+                const valueRequired = [firstName, lastName, email];
+                return !valueRequired.includes('') && email.includes('@');
+            case 2:
+                return cardNumber.length === 16;
+            default:
+                return false;
+        }
     }
 
-    renderForm = e => {
+    renderForm = () => {
+        const { firstName, lastName, email, cardNumber, step } = this.state;
+
+        const personalForm = (
+            <PersonalForm
+                firstName={firstName}
+                lastName={lastName}
+                email={email}
+                onChangeForm={this.handleChangeForm}
+            />
+        );
+
+        const cardForm = (
+            <CardForm
+                cardNumber={cardNumber}
+                onChangeForm={this.handleChangeForm}
+            />
+        );
+
+        const theEnd = <p data-test="congratulations">Поздравляем!</p>;
+
+        return step === 1 ? personalForm : step === 2 ? cardForm : theEnd;
     }
 
     render() {
 
         return (
             <div className="container">
-                <div className="tab-panel"></div>
-                <div className="form-content"></div>
+                <div className="tab-panel">
+                </div>
+
+                <div className="form-content">
+                </div>
+
                 <div className="button-panel">
                     <button 
                         className="button-next"
-                        onClick={this.handleClickNextForm}>Next
+                        onClick={this.handleClickNextForm}
+                        disabled={!this.isFormCommitable()}
+                    >
+                        Next
                     </button>
                 </div>
             </div>
