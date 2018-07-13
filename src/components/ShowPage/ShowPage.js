@@ -4,7 +4,7 @@ import './ShowPage.css';
 import { showRequest } from '../../actions/show';
 
 class ShowPage extends Component {
-  componentWillMount() {
+  componentDidMount() {
     const show = this.props.match.params.id;
     this.props.showRequest(show);
   }
