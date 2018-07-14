@@ -6,14 +6,19 @@ import {
 } from 'ducks/network';
 import { logout } from 'ducks/auth';
 
-export default function*(fn, args) {
+export function* requestFlow(fn, args) {
   try {
     const response = yield call(fn, args);
-    if (yield select(getIsNetworkErrorPresent)) yield put(clearNetworkErrors());
+    if (yield select(getIsNetworkErrorPresent)) {
+      yield put(clearNetworkErrors());
+    }
     return response;
   } catch (error) {
     yield put(networkError(error));
-    if (error.response.status === 401) yield put(logout());
+
+    if (error.response.status === 401) {
+      yield put(logout());
+    }
 
     throw error;
   }

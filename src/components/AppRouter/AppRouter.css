@@ -1,0 +1,12 @@
+.logout {
+  width: 400px;
+  margin: 50px auto 20px;
+  text-align: center;
+}
+
+.error {
+  width: 400px;
+  margin: 50px auto 20px;
+  color: red;
+  text-align: center;
+}
