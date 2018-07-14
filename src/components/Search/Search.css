@@ -1,0 +1,9 @@
+.result {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.kayeln {
+  padding-bottom: 20px;
+}
