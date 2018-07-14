@@ -5,25 +5,26 @@ import {
   getUserInfoRequest, getUserInfoSuccess, getUserInfoFailure
 } from "../ducks/user-actions";
 
-function* fetchUserWatch(action) {
-  while (true) {
+function* fetchUserWatch() {
     try {
-      const userLookupResult = yield call(getTokenOwner);
-      let loginSuccessResult = getLoginSuccess(userLookupResult);
-      yield put(loginSuccessResult);
-     /* if (action === getUserInfoRequest) {
-        console.log('o_0');
-      } else {
+      const response = yield call(getTokenOwner);
+      yield put(getLoginSuccess(response));
 
-      }*/
+      try {
+        const userLogin = response.data.login;
+        const userInfo = yield call(() => getUserInformation(userLogin));
+        yield put(getUserInfoSuccess(userInfo));
+      } catch (error) {
+        yield put(getUserInfoFailure(error));
+      }
+
     } catch (error) {
       yield put(getLoginFailure(error));
     }
-  }
 }
 
-function* searchRequestWatch() {
-  yield takeLatest(getLoginRequest, fetchUserWatch);
+function* userRequestWatch() {
+  yield takeLatest(getUserInfoRequest, fetchUserWatch);
 }
 
-export default searchRequestWatch;
+export default userRequestWatch;

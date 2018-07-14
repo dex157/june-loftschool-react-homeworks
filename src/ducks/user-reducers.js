@@ -11,28 +11,34 @@ import {
 
 const login = handleActions(
   {
-    [getLoginSuccess.toString()]: (_state, action) => action.payload.data.login
+    [getLoginSuccess]: (_state, action) => action.payload.data.login
   },
-  'Loading, please wait...  '
+  ''
 );
 
 const userInfo = handleActions(
   {
-    [getUserInfoSuccess.toString()]: (_state, action) => action.payload.data
+    [getUserInfoSuccess]: (_state, action) => action.payload.data
   },
-  'Loading, please wait...  '
+  {
+    login : '',
+    id: -1,
+    avatar_url : '',
+    followers: 0,
+    public_repos: 0
+  }
 );
 
 const loginError = handleActions(
   {
-    [getLoginFailure.toString()]: (_state, action) => action.payload
+    [getLoginFailure]: (_state, action) => action.payload
   },
   null
 );
 
 const userInfoError = handleActions(
   {
-    [getUserInfoFailure.toString()]: (_state, action) => action.payload
+    [getUserInfoFailure]: (_state, action) => action.payload
   },
   null
 );
