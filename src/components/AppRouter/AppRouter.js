@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Switch, withRouter, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Login from '../Login';
 import UserPage from '../UserPage';
 import PrivateRoute from '../PrivateRoute';
+import { getIsAuthorized } from '../../ducks';
 
 class AppRouter extends Component {
   render() {
-    const isAuthorized = false;
+    const { isAuthorized } = this.props;
 
     return (
       <div className="main">
@@ -18,11 +20,26 @@ class AppRouter extends Component {
             component={UserPage}
             isAuthorized={isAuthorized}
           />
-          {!isAuthorized && <Redirect exact from="/" to="/login"/>}
+          {!isAuthorized && <Redirect exact from="/" to="/login" />}
         </Switch>
       </div>
     );
   }
 }
 
-export default withRouter(AppRouter);
+const mapStateToProps = state => {
+  return {
+    isAuthorized: getIsAuthorized(state)
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {};
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(AppRouter)
+);

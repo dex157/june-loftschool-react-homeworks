@@ -1,24 +1,34 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { getTokenOwner, setTokenApi, clearTokenApi } from '../api';
-import { authRequest, authSuccess, authFailure } from '../ducks';
-
-function* auth(action) {
-  console.log('@@@auth@@@');
-  console.log('action =', action);
-  try {
-    setTokenApi(action.payload);
-
-    const response = yield call(getTokenOwner);
-
-    console.log('response =', response);
-
-    yield put(authSuccess);
-  } catch (e) {
-    clearTokenApi();
-    yield put(authFailure);
-  }
-}
+import { call, put, select, take } from 'redux-saga/effects';
+import { setTokenApi, clearTokenApi } from '../api';
+import { authorize, logout, getIsAuthorized } from '../ducks';
+import {
+  getTokenFromLocalStorage,
+  setTokenToLocalStorage,
+  removeTokenFromLocalStorage
+} from '../localStorage';
 
 export function* authFlow() {
-  yield takeEvery(authRequest.toString(), auth);
+  while (true) {
+    const isAuthorized = yield select(getIsAuthorized);
+    const localStorageToken = yield call(getTokenFromLocalStorage);
+
+    let token;
+
+    if (!isAuthorized && localStorageToken) {
+      token = localStorageToken;
+      yield put(authorize());
+    } else {
+      const action = yield take(authorize);
+
+      token = action.payload;
+    }
+
+    yield call(setTokenApi, token);
+    yield call(setTokenToLocalStorage, token);
+
+    yield take(logout);
+
+    yield call(removeTokenFromLocalStorage);
+    yield call(clearTokenApi);
+  }
 }

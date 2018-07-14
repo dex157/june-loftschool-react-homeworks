@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-import { authRequest } from '../../ducks';
+import { authorize, getIsAuthorized } from '../../ducks';
 
 import './Login.css';
 
@@ -20,12 +21,10 @@ class Login extends Component {
     switch (e.key) {
       case 'Enter':
         if (e.target.value) {
-          console.log('HERE');
-          console.log('this.props =', this.props);
-          const { authRequest } = this.props,
+          const { authorize } = this.props,
             { authToken } = this.state;
 
-          authRequest(authToken);
+          authorize(authToken);
         }
         break;
       default:
@@ -34,7 +33,12 @@ class Login extends Component {
   };
 
   render() {
-    const { authToken } = this.state;
+    const { authToken } = this.state,
+      { isAuthorized } = this.props;
+
+    if (isAuthorized) {
+      return <Redirect to="/users/me" />;
+    }
 
     return (
       <div className="sc-EHOje dAZrsR">
@@ -60,14 +64,15 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    isAuthorized: getIsAuthorized(state)
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    authRequest: payload => {
-      console.log('###authRequest###');
-      dispatch(authRequest(payload));
+    authorize: payload => {
+      dispatch(authorize(payload));
     }
   };
 };

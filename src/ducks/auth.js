@@ -1,19 +1,18 @@
+import { combineReducers } from 'redux';
 import { createActions, handleActions } from 'redux-actions';
 
-const { authRequest, authSuccess, authFailure } = createActions(
-  'AUTH_REQUEST',
-  'AUTH_SUCCESS',
-  'AUTH_FAILURE'
-);
+const { authorize, logout } = createActions('AUTHORIZE', 'LOGOUT');
+
+const getIsAuthorized = state => state.auth.isAuthorized;
 
 const isAuthorized = handleActions(
   {
-    [authSuccess]: () => true,
-    [authFailure]: () => false
+    [authorize]: () => true,
+    [logout]: () => false
   },
   false
 );
 
-export { authRequest, authSuccess, authFailure };
+export { authorize, logout, getIsAuthorized };
 
-export default isAuthorized;
+export default combineReducers({ isAuthorized });

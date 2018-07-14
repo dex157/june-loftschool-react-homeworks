@@ -15,12 +15,12 @@ const store = createStore({
   //   error: null,
   //   message: null
   // },
-  // users: {
-  //   data: null,
-  //   error: null,
-  //   isFetched: false,
-  //   isFetching: false
-  // }
+  users: {
+    data: null,
+    error: null,
+    isFetched: false,
+    isFetching: false
+  }
 });
 
 ReactDOM.render(
