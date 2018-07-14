@@ -1,11 +1,8 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import './Title.css';
 export default class Title extends Component {
   render() {
-    return (
-      <Fragment>
-        <div>Hello World</div>
-      </Fragment>
-    );
+    const { children } = this.props;
+    return <h1 className="title">{children}</h1>;
   }
 }

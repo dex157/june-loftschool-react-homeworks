@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import './App.css';
 import CardForm from '../CardForm/CardForm';
-import Title from '../Title/Title';
 import PersonalForm from '../PersonalForm/PersonalForm';
+import Step from '../Step/Step';
 export default class App extends Component {
   state = {
     step: 1,
     firstName: '',
     lastName: '',
     email: '',
-    cardNumber: ''
+    cardNumber: '',
+    stepsTitle: ['Персональная информация', 'Номер карты', 'Finish']
   };
   handleTabClick = argument => {
     this.setState({ step: argument });
   };
 
   handleChangeForm = (first, second) => {
-    this.setState(state => {
-      state[first] = second;
-    });
+    this.setState({ [first]: second });
   };
   handleClickNextForm = () => {
     this.setState({ step: this.state.step + 1 });
@@ -67,17 +66,32 @@ export default class App extends Component {
   };
 
   render() {
+    const { step, stepsTitle } = this.state;
     return (
       <div className="container">
-        <div className="tab-panel" />
-        <div className="form-content" />
-        <div className="button-panel">
-          <button className="button-next" onClick={this.handleClickNextForm} />
+        <div className="tab-panel">
+          {stepsTitle.map((stepsTitle, i) => (
+            <Step
+              key={i}
+              number={i + 1}
+              isSelected={step === i + 1}
+              isClickable={step > i}
+              onClick={this.handleTabClick}
+            >
+              {stepsTitle}
+            </Step>
+          ))}
         </div>
-
-        {/* <Title />
-        <CardForm />
-        <PersonalForm /> */}
+        <div className="form-content">{this.renderForm()}</div>
+        <div className="button-panel">
+          <button
+            className="button-next"
+            onClick={this.handleClickNextForm}
+            disabled={!this.isFormCommitable()}
+          >
+            Next
+          </button>
+        </div>
       </div>
     );
   }
