@@ -22,10 +22,10 @@ export class AppRouter extends Component {
           />
           <PrivateRoute
             path="/users/:name"
-            // component={UserPage}
-            // isAuthorized={isAuthorized}
+            component={UserPage}
+            isAuthorized={isAuthorized}
           />
-          {!isAuthorized && <Redirect exact from="/" to="/login" />}
+          <Redirect to="/users/me" />
         </Switch>
       </div>
     );

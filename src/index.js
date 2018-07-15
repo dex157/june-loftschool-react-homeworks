@@ -20,6 +20,12 @@ const store = createStore({
     error: null,
     isFetched: false,
     isFetching: false
+  },
+  followers: {
+    ids: [],
+    error: null,
+    isFetched: false,
+    isFetching: false
   }
 });
 

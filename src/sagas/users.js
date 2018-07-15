@@ -6,8 +6,6 @@ function* getUser() {
   try {
     const response = yield call(getTokenOwner);
 
-    console.log(response);
-
     yield put(successUser(response));
   } catch (error) {
     yield put(failureUser(error.toString()));

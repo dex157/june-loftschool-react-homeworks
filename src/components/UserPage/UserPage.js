@@ -8,11 +8,7 @@ import Followers from '../Followers';
 
 import {
   requestUser,
-  // successUser,
-  // failureUser,
   getData,
-  // getError,
-  // getIsFetched,
   getIsFetching
 } from '../../ducks';
 
