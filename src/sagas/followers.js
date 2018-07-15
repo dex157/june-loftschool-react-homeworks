@@ -9,7 +9,6 @@ import { getUserFollowers } from '../api';
 function* fetchFollowersSaga(action) {
   try {
     const response = yield call(getUserFollowers, action.payload);
-    console.log(response);
     yield put(fetchFollowersSuccess(response.data));
   } catch (error) {
     yield put(fetchFollowersFailure(error));
