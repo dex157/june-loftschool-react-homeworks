@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 
 class CardNumberInput extends Component {
   state = {
-    number: this.props.cardNumber
+    number: this.format(this.props.cardNumber)
   };
 
-  format = value => {
+  format(value) {
     return String(value)
       .replace(/[^\dA-Z]/g, '')
       .replace(/(.{4})/g, '$1 ')
       .trim();
-  };
-  normalize = value => {
+  }
+
+  normalize(value) {
     return String(value).replace(/\s/g, '');
-  };
+  }
+
   componentWillReceiveProps = props => {
     this.setState({
       number: this.format(props.cardNumber)
