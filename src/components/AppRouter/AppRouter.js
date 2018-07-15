@@ -7,7 +7,7 @@ import UserPage from '../UserPage';
 import PrivateRoute from '../PrivateRoute';
 import { getIsAuthorized } from '../../ducks';
 
-class AppRouter extends Component {
+export class AppRouter extends Component {
   render() {
     const { isAuthorized } = this.props;
 
@@ -19,6 +19,11 @@ class AppRouter extends Component {
             path="/users/me"
             component={UserPage}
             isAuthorized={isAuthorized}
+          />
+          <PrivateRoute
+            path="/users/:name"
+            // component={UserPage}
+            // isAuthorized={isAuthorized}
           />
           {!isAuthorized && <Redirect exact from="/" to="/login" />}
         </Switch>

@@ -4,6 +4,8 @@ import Spinner from 'react-svg-spinner';
 
 import './UserPage.css';
 
+import Followers from '../Followers';
+
 import {
   requestUser,
   // successUser,
@@ -14,7 +16,7 @@ import {
   getIsFetching
 } from '../../ducks';
 
-class UserPage extends Component {
+export class UserPage extends Component {
   componentDidMount() {
     const { requestUser } = this.props;
 
@@ -34,12 +36,10 @@ class UserPage extends Component {
       );
     }
 
-    if (!data || data.length === 0) {
+    if (!data || data == null) {
       return (
         <div className="sc-bdVaJa kujKIt">
-          <div className="sc-bxivhb jcdCai">
-            Данные отсутствуют.
-          </div>
+          <div className="sc-bxivhb jcdCai">Данные отсутствуют.</div>
         </div>
       );
     }
@@ -57,6 +57,7 @@ class UserPage extends Component {
             <p>Followers: {followers}</p>
             <p>Public repos: {public_repos}</p>
           </div>
+          <Followers login={login} />
         </div>
       </div>
     );
