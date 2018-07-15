@@ -25,7 +25,7 @@ export const error = handleActions(
   {
     [requestUser]: () => null,
     [successUser]: () => null,
-    [failureUser]: (_state, action) => action.payload
+    [failureUser]: (_state, action) => action.payload.message
   },
   null
 );

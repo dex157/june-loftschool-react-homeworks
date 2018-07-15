@@ -25,7 +25,7 @@ export const error = handleActions(
   {
     [requestFollowers]: () => null,
     [successFollowers]: () => null,
-    [failureFollowers]: (_state, action) => action.payload
+    [failureFollowers]: (_state, action) => action.payload.message
   },
   null
 );

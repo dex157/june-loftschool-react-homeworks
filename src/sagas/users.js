@@ -1,24 +1,21 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { getTokenOwner, getUserInformation } from '../api';
 import { requestUser, successUser, failureUser } from '../ducks';
+import requestFlow from './request';
 
 function* getUser(action) {
   try {
-    console.log('getUser');
-    console.log(action);
+    let response;
+
     if (action.payload) {
-      console.log('^^^^^^^^');
-      const response = yield call(getUserInformation, action.payload);
-
-      yield put(successUser(response));
+      response = yield call(requestFlow, getUserInformation, action.payload);
     } else {
-      console.log('***********');
-      const response = yield call(getTokenOwner);
-
-      yield put(successUser(response));
+      response = yield call(requestFlow, getTokenOwner);
     }
+    yield put(successUser(response));
   } catch (error) {
-    yield put(failureUser(error.toString()));
+    console.log(error);
+    yield put(failureUser(error));
   }
 }
 

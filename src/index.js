@@ -11,10 +11,10 @@ const store = createStore({
   auth: {
     isAuthorized: false
   },
-  // network: {
-  //   error: null,
-  //   message: null
-  // },
+  network: {
+    error: null,
+    message: null
+  },
   users: {
     data: null,
     error: null,
