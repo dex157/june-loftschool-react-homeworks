@@ -4,12 +4,14 @@ import {shallow} from 'enzyme';
 import {UserPage} from './UserPage';
 
 describe('Написать тесты для компоненты UserPage', () => {
-  const emptyFn = jest.fn();
-
-  const wrapper = shallow(<UserPage requestUser={emptyFn} isFetching={false} data={null}/>);
+  const wrapper = shallow(<UserPage requestUser={jest.fn()}
+    isFetching={false}
+    data={null}
+    match={{params: {name: 'name'}}}
+    location={{pathname: 'pathname'}}/>);
 
   it('Проверить наличие метода componentDidUpdate', () => {
-    expect(wrapper.instance().componentDidMount).toBeDefined();
+    expect(wrapper.instance().componentDidUpdate).toBeDefined();
   })
 
   it('Проверить наличие спинера/лоадера если props.isFetching === true', () => {

@@ -21,6 +21,6 @@ describe('Написать тесты для редьюсера users', () => {
   })
   
   it('Проверить, что экшены fetchUserRequest, fetchUserSuccess, fetchUserFailure наполняют данными error, если приходит экшен fetchUserFailure', () => {
-    expect(error(null, failureUser({error: 'error'}))).toHaveProperty('error', 'error');
+    expect(error(null, failureUser({message: 'error'}))).toEqual('error');
   })
 })
