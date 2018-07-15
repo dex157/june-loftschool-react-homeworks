@@ -43,6 +43,10 @@ export class Market extends Component {
          this.props.createOrder(getNewOrder())
       };
 
+      const handleSendOrderToFarm = () => {
+         this.props.moveOrderToFarm(this.props.orders[0])
+      };
+
       return (
          <div className="market">
             <h2>Новые заказы в магазине</h2>
@@ -53,7 +57,7 @@ export class Market extends Component {
             >Создать заказ
             </button>
             <button
-               onClick={() => this.props.moveOrderToFarm(this.props.orders[0])}
+               onClick={handleSendOrderToFarm}
                disabled={!(this.props.orders.length > 0)}
             >Отправить заказ на ферму
             </button>
