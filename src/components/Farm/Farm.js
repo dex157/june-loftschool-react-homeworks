@@ -8,10 +8,14 @@ export class Farm extends Component {
    render() {
       const {orders} = this.props;
 
+      const handleSendOrderToCustomer = () => {
+         this.props.moveOrderToCustomer(this.props.orders[0])
+      };
+
       return (
          <div className="farm"><h2>Производство на ферме</h2>
             <button
-               onClick={() => this.props.moveOrderToCustomer(this.props.orders[0])}
+               onClick={handleSendOrderToCustomer}
                disabled={!(this.props.orders.length > 0)}
             >Отправить урожай клиенту</button>
             <div className="order-list">
@@ -32,16 +36,9 @@ const mapStateToProps = state => ({
    orders: state.farm.orders
 });
 
-const mapDispatchToProps = dispatch => {
-   return {
-      moveOrderToCustomer: payload => { dispatch(moveOrderToCustomer(payload)) }
-   };
+const mapDispatchToProps = {
+   moveOrderToCustomer
 };
-//TODO упрощенный вид
-// const mapDispatchToProps = {
-//    createOrder,
-//    moveOrderToFarm
-// };
 
 export default connect(
    mapStateToProps,

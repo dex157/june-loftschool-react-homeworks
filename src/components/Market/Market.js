@@ -39,13 +39,17 @@ export class Market extends Component {
    render() {
       const {orders} = this.props;
 
+      const handleCreateNewOrder = () => {
+         this.props.createOrder(getNewOrder())
+      };
+
       return (
          <div className="market">
             <h2>Новые заказы в магазине</h2>
 
             <button
                className="new-orders__create-button"
-               onClick={() => this.props.createOrder(getNewOrder())}
+               onClick={handleCreateNewOrder}
             >Создать заказ
             </button>
             <button
@@ -72,17 +76,10 @@ const mapStateToProps = state => ({
    orders: state.market.orders
 });
 
-const mapDispatchToProps = dispatch => {
-   return {
-      createOrder: payload => { dispatch(createOrder(payload)) },
-      moveOrderToFarm: payload => { dispatch(moveOrderToFarm(payload)) }
-   };
+const mapDispatchToProps = {
+   createOrder,
+   moveOrderToFarm
 };
-//TODO упрощенный вид
-// const mapDispatchToProps = {
-//    createOrder,
-//    moveOrderToFarm
-// };
 
 export default connect(
    mapStateToProps,
