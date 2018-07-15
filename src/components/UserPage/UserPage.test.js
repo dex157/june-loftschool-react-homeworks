@@ -12,11 +12,13 @@ describe('Написать тесты для компоненты UserPage', () 
     expect(wrapper.instance().componentDidMount).toBeDefined();
   })
 
-  // it('Проверить наличие спинера/лоадера если props.isFetching === true', () => {
-    // expect(wrapper.find('Spinner')).toHaveLength(1);
-  // })
+  it('Проверить наличие спинера/лоадера если props.isFetching === true', () => {
+    wrapper.setProps({isFetching: true});
+    expect(wrapper.find('.Spinner')).toHaveLength(1);
+  })
 
   it('Проверить наличие сообщения об отсутствии пользователя если isFetching === false && user == null', () => {
+    wrapper.setProps({isFetching: false});
     expect(wrapper.find('.sc-bxivhb.jcdCai').text()).toEqual('Данные отсутствуют.')
   })
 
@@ -41,9 +43,7 @@ describe('Написать тесты для компоненты UserPage', () 
   })
 
   it('В основной верстке должен быть компонент Followers с передачей login через props', () => {
-    expect(wrapper.find('Followers').filterWhere((item) => {
-      return item.prop('login') === 'maxim1989';
-    })).toHaveLength(1);
+    expect(wrapper.find('.Followers')).toHaveLength(1);
   })
 
 })

@@ -7,7 +7,7 @@ import './Followers.css';
 
 import { requestFollowers, getIds, getIsFetchingFollowers } from '../../ducks';
 
-class Followers extends Component {
+export class Followers extends Component {
   componentDidMount() {
     const { requestFollowers, login } = this.props;
 
@@ -20,7 +20,7 @@ class Followers extends Component {
     if (isFetching) {
       return (
         <div className="sc-ifAKCX iFlUUQ">
-          <Spinner size="64px" color="fuchsia" gap={5} />
+          <Spinner className='Spinner' size="64px" color="fuchsia" gap={5} />
         </div>
       );
     }
@@ -38,7 +38,7 @@ class Followers extends Component {
                 />
               </div>
               <div className="sc-htpNat eznsMN">
-                <Link to={`/user/${item.login}`}>
+                <Link to={`/users/${item.login}`}>
                   <h3>{item.login}</h3>
                 </Link>
               </div>

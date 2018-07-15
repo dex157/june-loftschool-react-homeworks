@@ -15,7 +15,7 @@ export class AppRouter extends Component {
       <div className="main">
         <Switch>
           <Route path="/login" component={Login} />
-          <PrivateRoute
+          <PrivateRoute exact
             path="/users/me"
             component={UserPage}
             isAuthorized={isAuthorized}

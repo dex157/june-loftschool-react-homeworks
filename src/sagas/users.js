@@ -1,17 +1,27 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
-import { getTokenOwner } from '../api';
+import { takeLatest, call, put } from 'redux-saga/effects';
+import { getTokenOwner, getUserInformation } from '../api';
 import { requestUser, successUser, failureUser } from '../ducks';
 
-function* getUser() {
+function* getUser(action) {
   try {
-    const response = yield call(getTokenOwner);
+    console.log('getUser');
+    console.log(action);
+    if (action.payload) {
+      console.log('^^^^^^^^');
+      const response = yield call(getUserInformation, action.payload);
 
-    yield put(successUser(response));
+      yield put(successUser(response));
+    } else {
+      console.log('***********');
+      const response = yield call(getTokenOwner);
+
+      yield put(successUser(response));
+    }
   } catch (error) {
     yield put(failureUser(error.toString()));
   }
 }
 
 export function* fetchUserWatch() {
-  yield takeEvery(requestUser.toString(), getUser);
+  yield takeLatest(requestUser.toString(), getUser);
 }

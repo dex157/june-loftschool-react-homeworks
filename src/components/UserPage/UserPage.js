@@ -14,9 +14,17 @@ import {
 
 export class UserPage extends Component {
   componentDidMount() {
-    const { requestUser } = this.props;
+    const { requestUser, match } = this.props;
 
-    requestUser();
+    requestUser(match.params.name);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { requestUser, match } = this.props;
+
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      requestUser(match.params.name);
+    }
   }
 
   render() {
@@ -26,7 +34,7 @@ export class UserPage extends Component {
       return (
         <div className="sc-bdVaJa kujKIt">
           <div className="sc-bxivhb jcdCai">
-            <Spinner size="64px" color="fuchsia" gap={5} />
+            <Spinner className="Spinner" size="64px" color="fuchsia" gap={5} />
           </div>
         </div>
       );
@@ -54,7 +62,7 @@ export class UserPage extends Component {
             <p>Public repos: {public_repos}</p>
           </div>
         </div>
-        <Followers login={login} />
+        <Followers className="Followers" login={login} />
       </div>
     );
   }
