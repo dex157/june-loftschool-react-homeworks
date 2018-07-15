@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import {
   fetchTokenOwnerRequest,
   fetchUserRequest,
@@ -61,23 +62,38 @@ class UserPage extends PureComponent {
     } else {
       return (
         <div>
-          <div>
-            {avatar && <img className="my-avatar" src={avatar} alt={login} />}
-            <div>
+          <UserWrapperDiv>
+            {avatar && <UserAvatar className="my-avatar" src={avatar} alt={login} />}
+            <UserInfo>
               <h2>{login}</h2>
               <ul>
                 <li>Folowers: {followers}</li>
                 <li>Folowing: {following}</li>
                 <li>Public repos: {public_repos}</li>
               </ul>
-            </div>
-          </div>
+            </UserInfo>
+          </UserWrapperDiv>
           <Followers login={login} />
         </div>
       );
     }
   }
-}
+};
+
+const UserAvatar = styled.img`
+  width: 12rem;
+  height: 12rem;
+`;
+
+const UserWrapperDiv = styled.div`
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+`;
+
+const UserInfo = styled.div`
+  padding-left: 1rem;
+`;
 
 const mapStateToProps = state => ({
   isFetching: getIsFetching(state),

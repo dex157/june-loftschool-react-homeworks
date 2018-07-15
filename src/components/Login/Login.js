@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { authorize, getIsAuthorized } from '../../ducks/auth';
 
 class Login extends PureComponent {
@@ -27,21 +28,42 @@ class Login extends PureComponent {
     }
 
     return (
-      <React.Fragment>
+      <LoginDivWrapper>
+        <p>Получить токен нужно на своей странице github, перейдите по <a target="_blank" rel="noopener noreferrer" href="https://github.com/settings/tokens">адресу</a> и 
+          создать себе токен. Запишите куда нибудь токен, так как после создания 
+          доступ к нему будет только один раз.</p>
         <label>
-          <span>Введите токен </span>
-          <input
+          <span>Введите токен github </span>
+          <LoginInput
             value={token}
             placeholder="auth_token"
             onChange={this.handleInputChange}
             onKeyPress={this.authorizeOnEnter}
           />
         </label>
-        <p>После ввода нажать Enter</p>
-      </React.Fragment>
+        <LoginHintP>После ввода нажать Enter.</LoginHintP>
+      </LoginDivWrapper>
     );
   }
-}
+};
+
+const LoginDivWrapper = styled.div`
+  width: 30rem;
+`;
+
+const LoginInput = styled.input`
+  width: 18rem;
+  height: 1.5rem;
+  border-radius: 2rem;
+  border: 0.05rem solid grey;
+  padding-left: 0.5rem;
+  outline: none;
+`;
+
+const LoginHintP = styled.p`
+  font-size: 0.8rem;
+  padding-left: 10rem;
+`;
 
 const mapStateToProps = state => ({
   isAuthorized: getIsAuthorized(state)
