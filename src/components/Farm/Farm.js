@@ -5,17 +5,17 @@ import {moveOrderToCustomer} from 'actions/farmActions';
 import {connect} from 'react-redux';
 
 export class Farm extends Component {
+   handleSendOrderToCustomer = () => {
+      this.props.moveOrderToCustomer(this.props.orders[0])
+   };
+
    render() {
       const {orders} = this.props;
-
-      const handleSendOrderToCustomer = () => {
-         this.props.moveOrderToCustomer(this.props.orders[0])
-      };
 
       return (
          <div className="farm"><h2>Производство на ферме</h2>
             <button
-               onClick={handleSendOrderToCustomer}
+               onClick={this.handleSendOrderToCustomer}
                disabled={!(this.props.orders.length > 0)}
             >Отправить урожай клиенту</button>
             <div className="order-list">
