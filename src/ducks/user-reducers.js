@@ -1,10 +1,8 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import {
-  getLoginRequest,
   getLoginSuccess,
   getLoginFailure,
-  getUserInfoRequest,
   getUserInfoSuccess,
   getUserInfoFailure
 } from "./user-actions";

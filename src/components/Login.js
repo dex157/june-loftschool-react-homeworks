@@ -58,5 +58,5 @@ const mapDispatchToProps = { authorize };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps)
-(Login);
+  mapDispatchToProps
+)(Login);
