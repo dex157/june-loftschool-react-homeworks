@@ -1,8 +1,11 @@
-import { take, put, call, select, takeLatest } from "redux-saga/effects";
+import { put, call, takeLatest } from "redux-saga/effects";
 import { getTokenOwner, getUserInformation } from "../api";
 import {
-  getLoginRequest, getLoginSuccess, getLoginFailure,
-  getUserInfoRequest, getUserInfoSuccess, getUserInfoFailure
+  getLoginSuccess,
+  getLoginFailure,
+  getUserInfoRequest,
+  getUserInfoSuccess,
+  getUserInfoFailure
 } from "../ducks/user-actions";
 
 function* fetchUserWatch() {

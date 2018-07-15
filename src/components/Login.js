@@ -1,25 +1,24 @@
 import React, { Component } from "react";
 import "./Login.css";
 import { Redirect } from "react-router-dom/";
-import { AuthConsumerHOC } from './AuthContext';
+import {authorize} from "../ducks/auth-actions";
+import { connect } from "react-redux";
 
 class Login extends Component {
   state = {
-    authToken: ""
+    authToken: "",
+    isAuthorized: false
   };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleKeyPress = (e, authorizeUserFn) => {
+  handleKeyPress = (e) => {
     if (e.key === "Enter") {
-      this.authorizeUser(authorizeUserFn);
+      let authToken = this.state.authToken;
+      this.props.authorize(authToken);
     }
-  };
-
-  authorizeUser = (authorizeUserFn) => {
-    authorizeUserFn(this.state.authToken);
   };
 
   render() {
@@ -36,7 +35,7 @@ class Login extends Component {
           </p>
           <input
             onChange={this.handleChange}
-            onKeyPress={(e) => this.handleKeyPress(e, this.props.authorizeUser)}
+            onKeyPress={(e) => this.handleKeyPress(e)}
             className="sc-gzVnrw lfdfns"
             placeholder="auth_token"
             name="authToken"
@@ -49,4 +48,15 @@ class Login extends Component {
   }
 }
 
-export default AuthConsumerHOC(Login);
+const mapStateToProps = state => {
+  return ({
+    isAuthorized: state.auth.IsAuthorized
+  });
+};
+
+const mapDispatchToProps = { authorize };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps)
+(Login);

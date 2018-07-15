@@ -6,23 +6,20 @@ import {
 } from "react-router-dom";
 import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
-import { AuthProviderHOC } from "./AuthContext";
 import UserPage from "./UserPage";
 
 class AppRouter extends Component {
   render() {
     return (
-      <AuthProviderHOC>
-        <Switch>
-          <Route path="/login" component={Login}/>
-          <PrivateRoute
-            path="/user/me"
-            component={UserPage}
-          />
-          <Redirect from="*" to="/login"/>
-        </Switch>
-      </AuthProviderHOC>
-    )
+      <Switch>
+        <Route path="/login" component={Login}/>
+        <PrivateRoute
+          path="/user/me"
+          component={UserPage}
+        />
+        <Redirect from="*" to="/login"/>
+      </Switch>
+    );
   }
 }
 

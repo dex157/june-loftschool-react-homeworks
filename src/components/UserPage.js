@@ -5,13 +5,8 @@ import './UserPage.css'
 
 class UserPage extends Component {
 
-  fetchData = () => {
-    this.props.getUserInfoRequest();
-    /*this.props.getUserInfoRequest();*/
-  };
-
   componentDidMount = () => {
-    this.fetchData();
+    this.props.getUserInfoRequest();
   };
 
   render() {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { AuthConsumerHOC } from './AuthContext';
+import { connect } from "react-redux";
 
 class PrivateRoute extends React.PureComponent {
   render() {
@@ -20,4 +20,12 @@ class PrivateRoute extends React.PureComponent {
   }
 }
 
-export default AuthConsumerHOC(PrivateRoute);
+const mapStateToProps = state => {
+  return ({
+    isAuthorized: state.auth.IsAuthorized
+  });
+};
+
+export default connect(
+  mapStateToProps, {})
+(PrivateRoute);
