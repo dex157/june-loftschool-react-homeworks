@@ -12,18 +12,19 @@ const getData = state => state.users.data,
   getIsFetched = state => state.users.isFetched,
   getIsFetching = state => state.users.isFetching;
 
-const data = handleActions(
+export const data = handleActions(
   {
-    [successUser]: (_state, action) => {
-      return { ...action.payload.data };
-    },
+    [requestUser]: () => null,
+    [successUser]: (_state, action) => action.payload.data,
     [failureUser]: () => null
   },
   null
 );
 
-const error = handleActions(
+export const error = handleActions(
   {
+    [requestUser]: () => null,
+    [successUser]: () => null,
     [failureUser]: (_state, action) => action.payload
   },
   null
@@ -37,7 +38,7 @@ const isFetched = handleActions(
   false
 );
 
-const isFetching = handleActions(
+export const isFetching = handleActions(
   {
     [requestUser]: () => true,
     [successUser]: () => false,

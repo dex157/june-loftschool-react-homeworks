@@ -57,8 +57,8 @@ export class UserPage extends Component {
             <p>Followers: {followers}</p>
             <p>Public repos: {public_repos}</p>
           </div>
-          <Followers login={login} />
         </div>
+        <Followers login={login} />
       </div>
     );
   }
