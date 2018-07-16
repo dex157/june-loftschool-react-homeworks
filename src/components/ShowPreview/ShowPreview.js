@@ -6,7 +6,7 @@ const ShowPreview = ({ id, name, image, summary }) => {
   return (
     <div key={id} className="t-preview">
       <div>
-        <Link className='t-link' to={`/shows/${id}`} key={id}>
+        <Link className="t-link" to={`/shows/${id}`} key={id}>
           <h3>{name}</h3>
         </Link>
         {image === null ? null : <img src={image} alt={name} />}

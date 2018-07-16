@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import './ShowPage.css';
 import { showRequest } from '../../actions/show';
+import { getShow } from '../../selectors/';
 
 class ShowPage extends Component {
   componentDidMount() {
@@ -11,15 +12,7 @@ class ShowPage extends Component {
 
   render() {
     const { isFetching, entities } = this.props;
-    const summary = entities && entities[0] && entities[0].summary;
-    const name = entities && entities[0] && entities[0].name;
-    const image = entities && entities[0] && entities[0].image;
-    const cast =
-      (entities &&
-        entities[0] &&
-        entities[0]._embedded &&
-        entities[0]._embedded.cast) ||
-      [];
+    const { name, image, summary, cast } = entities;
     return isFetching ? (
       <p>Загрузка...</p>
     ) : (
@@ -44,18 +37,14 @@ class ShowPage extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    showRequest: payload => {
-      dispatch(showRequest(payload));
-    }
-  };
+const mapDispatchToProps = {
+  showRequest
 };
 
 const mapStateToProps = state => {
   return {
     isFetching: state.shows.isFetching,
-    entities: state.shows.entities
+    entities: getShow(state)
   };
 };
 

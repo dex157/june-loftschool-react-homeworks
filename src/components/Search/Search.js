@@ -65,12 +65,8 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    searchRequest: payload => {
-      dispatch(searchRequest(payload));
-    }
-  };
+const mapDispatchToProps = {
+  searchRequest
 };
 
 export default withRouter(
