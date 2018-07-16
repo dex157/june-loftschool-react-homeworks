@@ -2,9 +2,9 @@ import {
   fetchFollowersRequest,
   fetchFollowersSuccess,
   fetchFollowersFailure,
-} from 'ducks/followers';
+} from '../ducks/followers';
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { getUserFollowers } from 'api';
+import { getUserFollowers } from '../api';
 
 function* fetchFollowersSaga(action) {
   try {
