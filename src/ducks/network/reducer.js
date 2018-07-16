@@ -4,14 +4,14 @@ import { combineReducers } from 'redux';
 
 const error = handleActions(
   {
-    [clearNetworkErrors.toString()]: () => false
+    [clearNetworkErrors]: () => null
   },
-  false
+  null
 );
 
 const message = handleActions(
   {
-    [networkError.toString()]: (_state, action) => action.payload
+    [networkError]: (_state, action) => action.payload
   },
   null
 );
