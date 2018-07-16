@@ -9,7 +9,7 @@ const ShowPreview = ({ id, name, image, summary }) => {
         <Link className="t-link" to={`/shows/${id}`} key={id}>
           <h3>{name}</h3>
         </Link>
-        {image === null ? null : <img src={image} alt={name} />}
+        {image === null ? null : <img src={image.medium} alt={name} />}
       </div>
       <div dangerouslySetInnerHTML={{ __html: summary }} key={summary} />
     </div>
