@@ -1,7 +1,14 @@
 import React, { PureComponent } from 'react';
+import {connect} from 'react-redux';
 import './ShowPage.css';
+import { showRequest } from '../../actions/show';
 
-export default class ShowPage extends PureComponent {
+class ShowPage extends PureComponent {
+  
+  static defaultProps = {
+    entity: {name: ""}
+  }
+
   componentWillMount() {
     const { showRequest, match } = this.props;
     showRequest(match.params.id);
@@ -33,3 +40,9 @@ export default class ShowPage extends PureComponent {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { entity: state.shows.entity }
+}
+
+export default connect(mapStateToProps, { showRequest })(ShowPage);
