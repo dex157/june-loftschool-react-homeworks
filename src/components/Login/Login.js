@@ -29,9 +29,18 @@ class Login extends PureComponent {
 
     return (
       <LoginDivWrapper>
-        <p>Получить токен нужно на своей странице github, перейдите по <a target="_blank" rel="noopener noreferrer" href="https://github.com/settings/tokens">адресу</a> и 
-          создать себе токен. Запишите куда нибудь токен, так как после создания 
-          доступ к нему будет только один раз.</p>
+        <p>
+          Получить токен нужно на своей странице github, перейдите по{' '}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/settings/tokens"
+          >
+            адресу
+          </a>{' '}
+          и создать себе токен. Запишите куда нибудь токен, так как после
+          создания доступ к нему будет только один раз.
+        </p>
         <label>
           <span>Введите токен github </span>
           <LoginInput
@@ -45,7 +54,7 @@ class Login extends PureComponent {
       </LoginDivWrapper>
     );
   }
-};
+}
 
 const LoginDivWrapper = styled.div`
   width: 30rem;

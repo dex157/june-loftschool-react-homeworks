@@ -9,7 +9,7 @@ import {
 } from '../../ducks/followers';
 import Spinner from 'react-svg-spinner';
 
-class Followers extends PureComponent {
+export class Followers extends PureComponent {
   componentDidMount() {
     this.props.fetchFollowersRequest(this.props.login);
   }
@@ -18,27 +18,39 @@ class Followers extends PureComponent {
     const { isFetching, ids } = this.props;
 
     if (isFetching) {
-      return <Spinner size="64px" color="fuchsia" gap={5} />;
+      return (
+        <Spinner className="spinner" size="64px" color="fuchsia" gap={5} />
+      );
     }
 
-    if (!isFetching && !ids.length) {
+    if (!isFetching && !ids) {
       return <div>Подписчики отсутствуют</div>;
     }
+
     return (
       <FollowersWrapDiv>
         <h3>Followers:</h3>
+        {!ids.length && <div>Подписчики отсутствуют</div>}
         <FollowersUl>
           {ids.map(({ id, login, avatar_url }) => (
-            <FollowerLi key={id}>
-              <Link to={`/user/${login}`}>{login}</Link>
-              <FollowerAvatarImg className="follower-avatar" src={avatar_url} alt={login} />
+            <FollowerLi className="follower" key={id}>
+              <div className="follower__login">
+                <Link className="follower__link" to={`/user/${login}`}>
+                  {login}
+                </Link>
+              </div>
+              <FollowerAvatarImg
+                className="follower__avatar"
+                src={avatar_url}
+                alt={login}
+              />
             </FollowerLi>
           ))}
         </FollowersUl>
       </FollowersWrapDiv>
     );
   }
-};
+}
 
 const FollowersWrapDiv = styled.div`
   text-align: center;

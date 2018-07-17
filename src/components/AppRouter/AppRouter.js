@@ -9,28 +9,33 @@ import { logout, getIsAuthorized } from '../../ducks/auth';
 import { getIsFetching } from '../../ducks/users';
 import { getNetworkErrorMessage } from '../../ducks/network';
 
-class AppRouter extends PureComponent {
+export class AppRouter extends PureComponent {
   handleLogout = () => {
     this.props.logout();
   };
-  
+
   render() {
     const { isAuthorized, isFetching, networkErrorMessage } = this.props;
 
     return (
       <AppDivWrapper className="app">
-        {networkErrorMessage && <NetworkErrorDiv>{networkErrorMessage}!</NetworkErrorDiv>}
-        {isAuthorized && !isFetching && <LogoutBtn onClick={this.handleLogout}>Logout</LogoutBtn>}
+        {networkErrorMessage && (
+          <NetworkErrorDiv>{networkErrorMessage}!</NetworkErrorDiv>
+        )}
+        {isAuthorized &&
+          !isFetching && (
+            <LogoutBtn onClick={this.handleLogout}>Logout</LogoutBtn>
+          )}
         <Switch>
           <Route path="/login" component={Login} />
-          <PrivateRoute exact path="/user/me" component={UserPage} />
+          <PrivateRoute path="/user/me" component={UserPage} />
           <PrivateRoute path="/user/:name" component={UserPage} />
           <Redirect to="/user/me" />
         </Switch>
       </AppDivWrapper>
     );
   }
-};
+}
 
 const AppDivWrapper = styled.div`
   padding-top: 2rem;
@@ -54,20 +59,22 @@ const LogoutBtn = styled.button`
   color: #fff;
   transition: 0.5s;
 
-		&:hover {
-			filter: brightness(80%);
-		}
+  &:hover {
+    filter: brightness(80%);
+  }
 `;
 
 const mapStateToProps = state => ({
   isAuthorized: getIsAuthorized(state),
   isFetching: getIsFetching(state),
-  networkErrorMessage: getNetworkErrorMessage(state),
+  networkErrorMessage: getNetworkErrorMessage(state)
 });
 
 const mapDispatchToProps = { logout };
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AppRouter));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(AppRouter)
+);

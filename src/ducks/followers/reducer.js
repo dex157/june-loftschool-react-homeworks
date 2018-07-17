@@ -5,6 +5,7 @@ import {
   fetchFollowersSuccess,
   fetchFollowersFailure
 } from './actions';
+import { logout } from '../auth';
 
 const isFetching = handleActions(
   {
@@ -17,10 +18,11 @@ const isFetching = handleActions(
 
 const ids = handleActions(
   {
-    [fetchFollowersRequest.toString()]: () => [],
+    [logout.toString()]: () => null,
+    [fetchFollowersRequest.toString()]: () => null,
     [fetchFollowersSuccess.toString()]: (_state, action) => action.payload
   },
-  []
+  null
 );
 
 const error = handleActions(

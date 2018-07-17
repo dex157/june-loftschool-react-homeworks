@@ -6,6 +6,7 @@ import {
   fetchUserSuccess,
   fetchUserFailure
 } from './actions';
+import { logout } from '../auth';
 
 const isFetching = handleActions(
   {
@@ -19,10 +20,11 @@ const isFetching = handleActions(
 
 const userData = handleActions(
   {
-    [fetchUserRequest.toString()]: () => {},
-    [fetchUserSuccess.toString()]: (_state, action) => action.payload
+    [logout.toString()]: () => null,
+    [fetchUserRequest.toString()]: () => null,
+    [fetchUserSuccess.toString()]: (_state, action) => action.payload.data
   },
-  {}
+  null
 );
 
 const error = handleActions(

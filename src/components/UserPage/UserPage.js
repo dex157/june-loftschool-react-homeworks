@@ -10,75 +10,79 @@ import {
 import Followers from '../Followers';
 import Spinner from 'react-svg-spinner';
 
-class UserPage extends PureComponent {
+export class UserPage extends PureComponent {
   componentDidMount() {
     const {
       fetchTokenOwnerRequest,
       fetchUserRequest,
       match: {
-        params: { name },
+        params: { name }
       },
-      userData = {}
+      userData
     } = this.props;
 
     if (!name) fetchTokenOwnerRequest();
-    if (name && !Object.keys(userData).length) fetchUserRequest(name);
-  };
+    if (name && !userData) fetchUserRequest(name);
+  }
 
   componentDidUpdate(prevProps) {
     const {
       fetchTokenOwnerRequest,
       fetchUserRequest,
       match: {
-        params: { name },
-      },
+        params: { name }
+      }
     } = this.props;
 
     if (name !== prevProps.match.params.name) {
       if (!name) {
-        fetchTokenOwnerRequest()
+        fetchTokenOwnerRequest();
       } else {
-      fetchUserRequest(name);
+        fetchUserRequest(name);
       }
     }
-  };
+  }
 
   render() {
-    const { isFetching, userData = {} } = this.props;
-    const {
-      login,
-      avatar_url: avatar,
-      public_repos,
-      followers,
-      following
-    } = userData;
+    const { isFetching, userData } = this.props;
 
     if (isFetching) {
-      return <Spinner size="64px" color="fuchsia" gap={5} />;
-    }
-
-    if (!isFetching && !Object.keys(userData).length) {
-      return <div>Такой пользователь отсутствует</div>;
-    } else {
       return (
-        <div>
-          <UserWrapperDiv>
-            {avatar && <UserAvatar className="my-avatar" src={avatar} alt={login} />}
-            <UserInfo>
-              <h2>{login}</h2>
-              <ul>
-                <li>Folowers: {followers}</li>
-                <li>Folowing: {following}</li>
-                <li>Public repos: {public_repos}</li>
-              </ul>
-            </UserInfo>
-          </UserWrapperDiv>
-          <Followers login={login} />
-        </div>
+        <Spinner className="spinner" size="64px" color="fuchsia" gap={5} />
       );
     }
+
+    if (!isFetching && !userData) {
+      return (
+        <div className="user__notfound">Такой пользователь отсутствует</div>
+      );
+    }
+    const { login, avatar_url, public_repos, followers, following } = userData;
+
+    return (
+      <div>
+        <UserWrapperDiv>
+          <UserAvatar className="user__avatar" src={avatar_url} alt={login} />
+          <UserInfo>
+            <h2 className="user__login">{login}</h2>
+            <ul>
+              <li className="user__followers">
+                Folowers: <span>{followers}</span>
+              </li>
+              <li className="user__following">
+                Folowing: <span>{following}</span>
+              </li>
+              <li className="user__repos">
+                Public repos: <span>{public_repos}</span>
+              </li>
+            </ul>
+          </UserInfo>
+        </UserWrapperDiv>
+        <Followers login={login} />
+      </div>
+    );
   }
-};
+}
 
 const UserAvatar = styled.img`
   width: 12rem;

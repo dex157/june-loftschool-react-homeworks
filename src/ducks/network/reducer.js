@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import {
-    networkError,
-    clearNetworkError
-} from './actions';
+import { networkError, clearNetworkError } from './actions';
 
 const error = handleActions(
   {
@@ -15,7 +12,8 @@ const error = handleActions(
 
 const message = handleActions(
   {
-    [networkError.toString()]: (_state, action) => action.payload.response.data.message,
+    [networkError.toString()]: (_state, action) =>
+      action.payload.response.data.message,
     [clearNetworkError.toString()]: () => null
   },
   null
