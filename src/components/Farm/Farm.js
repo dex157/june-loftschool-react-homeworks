@@ -48,13 +48,10 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    moveOrderToCustomer: payload => {
-      dispatch(moveOrderToCustomer(payload));
-    }
-  };
+const mapDispatchToProps = {
+  moveOrderToCustomer
 };
+
 
 export default connect(
   mapStateToProps,
