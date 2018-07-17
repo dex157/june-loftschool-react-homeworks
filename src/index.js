@@ -1,13 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import AppRouter from 'components/AppRouter';
-import createStore from 'store';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AppRouter from 'components/AppRouter'
+import createStore from 'store'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 
-import './index.css';
+import 'bootstrap/dist/css/bootstrap.css'
+import './index.css'
 
-const store = createStore();
+const store = createStore()
 
 ReactDOM.render(
   <BrowserRouter>
@@ -15,5 +16,5 @@ ReactDOM.render(
       <AppRouter />
     </Provider>
   </BrowserRouter>,
-  document.getElementById('root'),
-);
+  document.getElementById('root')
+)

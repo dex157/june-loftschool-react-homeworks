@@ -2,20 +2,21 @@
   "name": "loftschool_react_homeworks",
   "version": "0.1.0",
   "private": true,
-
   "dependencies": {
     "axios": "0.18.0",
+    "bootstrap": "^4.1.1",
     "prettier": "^1.13.5",
+    "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-svg-spinner": "1.0.1",
-    "react": "16.4.1",
+    "redux": "^4.0.0",
     "redux-actions": "^2.4.0",
-    "redux": "^4.0.0"
+    "redux-saga": "^0.16.0",
+    "reselect": "^3.0.1"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -24,11 +25,12 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
-
   "devDependencies": {
+    "@types/jest": "^23.1.4",
     "cypress": "^3.0.2",
-    "enzyme-adapter-react-16": "^1.1.1",
     "enzyme": "^3.3.0",
-    "eslint-plugin-cypress": "^2.0.1"
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint-plugin-cypress": "^2.0.1",
+    "prop-types": "^15.6.2"
   }
 }
