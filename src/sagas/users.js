@@ -6,15 +6,16 @@ import {
   fetchUserSuccess,
   fetchUserFailure
 } from '../ducks/users';
+import requestsFlow from './request';
 
 function* fetchUserSaga(action) {
   try {
     let response;
 
     if (action.type === fetchTokenOwnerRequest().type) {
-      response = yield call(getTokenOwner);
+      response = yield call(requestsFlow, getTokenOwner);
     } else {
-      response = yield call(getUserInformation, action.payload);
+      response = yield call(requestsFlow, getUserInformation, action.payload);
     }
 
     yield put(fetchUserSuccess(response.data));

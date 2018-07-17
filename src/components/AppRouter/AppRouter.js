@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import Login from '../Login';
 import UserPage from '../UserPage';
 import PrivateRoute from '../PrivateRoute';
-import { getIsAuthorized } from '../../ducks/auth';
+import { getIsAuthorized, logout } from '../../ducks/auth';
 import styled from 'styled-components';
-import { logout } from '../../ducks/auth';
 import { getNetworkError, getIsNetworkErrorPresent } from '../../ducks/network';
 
 class AppRouter extends Component {
@@ -18,9 +17,9 @@ class AppRouter extends Component {
 
     return (
       <App>
-        {isNetworkError ? (
+        {isNetworkError && (
           <p style={{ color: 'red' }}>{networkErrorMessage}</p>
-        ) : null}
+        )}
         {isAuthorized ? (
           <button onClick={this.handleClick}>Выйти</button>
         ) : null}

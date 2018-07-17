@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import {
@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 import Spinner from 'react-svg-spinner';
 import Followers from '../Followers';
 
-class UserPage extends Component {
+class UserPage extends PureComponent {
   componentDidMount() {
     this.fetchUser();
   }
@@ -32,10 +32,9 @@ class UserPage extends Component {
 
   render() {
     const { isFetched, user } = this.props;
-
     return (
       <Wrapper>
-        {isFetched ? (
+        {isFetched && user ? (
           <Fragment>
             <User>
               <AvatarBorder>

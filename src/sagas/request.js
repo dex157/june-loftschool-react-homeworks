@@ -3,10 +3,10 @@ import {
   getIsNetworkErrorPresent,
   clearNetworkErrors,
   networkError
-} from 'ducks/network';
+} from '../ducks/network';
 import { logout } from 'ducks/auth';
 
-export default function*(fn, ...args) {
+export default function*(fn, args) {
   try {
     const response = yield call(fn, args);
     if (yield select(getIsNetworkErrorPresent)) yield put(clearNetworkErrors());

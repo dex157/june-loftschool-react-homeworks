@@ -16,6 +16,11 @@ class Followers extends Component {
     const { fetchFollowersRequest, login } = this.props;
     fetchFollowersRequest(login);
   }
+
+  componentDidUpdate(prevProps) {
+    const { login } = this.props;
+    fetchFollowersRequest(login);
+  }
   render() {
     const { isFetched, followers } = this.props;
     return (

@@ -5,6 +5,7 @@ import {
   fetchUserFailure,
   fetchTokenOwnerRequest
 } from './actions';
+import { logout } from '../auth';
 import { combineReducers } from 'redux';
 
 const data = handleActions(
@@ -12,7 +13,8 @@ const data = handleActions(
     [fetchUserRequest]: () => null,
     [fetchTokenOwnerRequest]: () => null,
     [fetchUserSuccess]: (state, action) => action.payload,
-    [fetchUserFailure]: () => null
+    [fetchUserFailure]: () => null,
+    [logout]: () => null
   },
   null
 );

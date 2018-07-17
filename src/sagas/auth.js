@@ -9,7 +9,7 @@ import {
 
 function* authFlow() {
   while (true) {
-    const isAuthorized = yield select(getIsAuthorized); /* boolean */
+    const isAuthorized = yield select(getIsAuthorized);
     const localStorageToken = yield call(getTokenFromLocalStorage);
     let token;
 

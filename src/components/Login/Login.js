@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { authorize, getIsAuthorized, logout } from '../../ducks/auth';
+import { authorize, getIsAuthorized } from '../../ducks/auth';
 
 class Login extends Component {
   state = {
@@ -17,7 +17,7 @@ class Login extends Component {
 
   handleKeyPress = event => {
     if (event.key === 'Enter') {
-      return this.props.authorize(this.state.loginInput)
+      return this.props.authorize(this.state.loginInput);
     }
   };
 
@@ -40,6 +40,7 @@ class Login extends Component {
             onKeyPress={this.handleKeyPress}
             value={this.state.loginInput}
             onChange={this.handleChange}
+            autoFocus
           />
           <LoginText>После ввода нажать Enter</LoginText>
         </LoginBlock>
@@ -77,8 +78,7 @@ const mapStateToProps = state => ({
 });
 
 const maspDispatchToProps = {
-  authorize,
-  logout
+  authorize
 };
 
 export default connect(
