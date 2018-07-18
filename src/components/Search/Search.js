@@ -36,7 +36,7 @@ class Search extends PureComponent {
             Найти
           </button>
         </div>
-        <div className="tv-series">
+        <div className="t-search-result">
           {result.map((elem, index) => (
             <ShowPreview
               key={index}

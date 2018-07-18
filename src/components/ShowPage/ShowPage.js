@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { showRequest } from '../../ducks/shows';
+import './ShowPage.css';
 
 class ShowPage extends PureComponent {
   componentWillMount() {
@@ -12,8 +13,6 @@ class ShowPage extends PureComponent {
     if (error) return this.errorRender();
     if (isFetching) return this.loadingRender();
 
-    console.log(result._embedded);
-    console.log(result._embedded.cast);
     return (
       <div className="show-page">
         <div className="title">
@@ -25,14 +24,20 @@ class ShowPage extends PureComponent {
         <div dangerouslySetInnerHTML={{ __html: result.summary }} />
         <div>
           <ul>
-            {/* {result._embedded.cast.map((el, index) => (
-              <li key={index}>
-                <h5>{el.person.name}</h5>
-                {el.person.url && (
-                  <img width="150px" src={el.person.url} alt={el.person.name} />
-                )}
-              </li>
-            ))} */}
+            {result._embedded &&
+              result._embedded.cast.map((el, index) => (
+                <li className="t-person" key={index}>
+                  <p>{el.person.name}</p>
+                  {el.person.image && (
+                    <img
+                      width="250px"
+                      height="350px"
+                      src={el.person.image.original}
+                      alt={el.person.name}
+                    />
+                  )}
+                </li>
+              ))}
           </ul>
         </div>
       </div>
