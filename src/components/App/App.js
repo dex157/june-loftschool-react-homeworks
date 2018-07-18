@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CardForm from '../CardForm/CardForm';
 import PersonalForm from '../PersonalForm/PersonalForm';
 import Step from '../Step/Step';
+import Title from '../Title/Title';
 import './App.css';
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
             cardNumber: ''
         };
     }
-
+    
     handleTabClick = event => {
         this.setState({
             step: event
@@ -81,13 +82,29 @@ class App extends Component {
     }
 
     render() {
+        const { step } = this.state;
+        const stepsList = ['Personal information', 'Card information', 'Finish'];
+        const stepsComponent = (text, index) => (
+          <Step
+            key={text}
+            number={index}
+            isClickable={index < step}
+            isSelected={index === step}
+            onClick={this.handleTabClick}
+          >
+            {text}
+          </Step>
+        );
 
         return (
             <div className="container">
                 <div className="tab-panel">
+                    {stepsList.map((step, i) => stepsComponent(step, i + 1))}
                 </div>
 
                 <div className="form-content">
+                    <Title step={step} />
+                    {this.renderForm()}
                 </div>
 
                 <div className="button-panel">
