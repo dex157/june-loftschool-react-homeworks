@@ -8,7 +8,7 @@ import { getIsAuthorized, logout } from '../../ducks/auth';
 import styled from 'styled-components';
 import { getNetworkError, getIsNetworkErrorPresent } from '../../ducks/network';
 
-class AppRouter extends Component {
+export class AppRouter extends Component {
   handleClick = () => {
     this.props.logout();
   };

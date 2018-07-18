@@ -12,7 +12,7 @@ const data = handleActions(
   {
     [fetchUserRequest]: () => null,
     [fetchTokenOwnerRequest]: () => null,
-    [fetchUserSuccess]: (state, action) => action.payload,
+    [fetchUserSuccess]: (_state, action) => action.payload,
     [fetchUserFailure]: () => null,
     [logout]: () => null
   },

@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 import Spinner from 'react-svg-spinner';
 import Followers from '../Followers';
 
-class UserPage extends PureComponent {
+export class UserPage extends PureComponent {
   componentDidMount() {
     this.fetchUser();
   }
@@ -38,18 +38,18 @@ class UserPage extends PureComponent {
           <Fragment>
             <User>
               <AvatarBorder>
-                <Avatar src={user.avatar_url} alt="avatar" />
+                <Avatar className="avatar" src={user.avatar_url} alt="avatar" />
               </AvatarBorder>
               <UserInfo>
-                <Name>{user.login}</Name>
+                <Name className="login">{user.login}</Name>
                 <Text>Public repos: {user.public_repos}</Text>
-                <Text>Followers: {user.followers}</Text>
+                <Text className="followers">Followers: {user.followers}</Text>
               </UserInfo>
             </User>
-            <Followers login={user.login} />
+            <Followers className="followers_container" login={user.login} />
           </Fragment>
         ) : (
-          <Spinner size="64px" color="blue" gap={5} />
+          <Spinner className="spinner" size="64px" color="blue" gap={5} />
         )}
       </Wrapper>
     );

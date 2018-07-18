@@ -11,7 +11,7 @@ import {
 } from '../../ducks/followers';
 import styled from 'styled-components';
 
-class Followers extends Component {
+export class Followers extends Component {
   componentDidMount() {
     const { fetchFollowersRequest, login } = this.props;
     fetchFollowersRequest(login);
@@ -27,7 +27,7 @@ class Followers extends Component {
       <FollowersContainer>
         {isFetched ? (
           followers.map(follower => (
-            <Follower key={follower.id}>
+            <Follower className='follower' key={follower.id}>
               <AvatarContainer>
                 <Avatar src={follower.avatar} />
               </AvatarContainer>
@@ -37,7 +37,7 @@ class Followers extends Component {
             </Follower>
           ))
         ) : (
-          <Spinner color="red" />
+          <Spinner className="spinner" color="red" />
         )}
       </FollowersContainer>
     );
