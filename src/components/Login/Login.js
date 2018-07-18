@@ -4,6 +4,24 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { authorize, getIsAuthorized } from '../../ducks/auth';
 
+const LoginDivWrapper = styled.div`
+  width: 30rem;
+`;
+
+const LoginInput = styled.input`
+  width: 18rem;
+  height: 1.5rem;
+  border-radius: 2rem;
+  border: 0.05rem solid grey;
+  padding-left: 0.5rem;
+  outline: none;
+`;
+
+const LoginHintP = styled.p`
+  font-size: 0.8rem;
+  padding-left: 10rem;
+`;
+
 class Login extends PureComponent {
   state = {
     token: ''
@@ -55,24 +73,6 @@ class Login extends PureComponent {
     );
   }
 }
-
-const LoginDivWrapper = styled.div`
-  width: 30rem;
-`;
-
-const LoginInput = styled.input`
-  width: 18rem;
-  height: 1.5rem;
-  border-radius: 2rem;
-  border: 0.05rem solid grey;
-  padding-left: 0.5rem;
-  outline: none;
-`;
-
-const LoginHintP = styled.p`
-  font-size: 0.8rem;
-  padding-left: 10rem;
-`;
 
 const mapStateToProps = state => ({
   isAuthorized: getIsAuthorized(state)

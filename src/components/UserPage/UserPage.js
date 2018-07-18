@@ -10,6 +10,21 @@ import {
 import Followers from '../Followers';
 import Spinner from 'react-svg-spinner';
 
+const UserAvatar = styled.img`
+  width: 12rem;
+  height: 12rem;
+`;
+
+const UserWrapperDiv = styled.div`
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+`;
+
+const UserInfo = styled.div`
+  padding-left: 1rem;
+`;
+
 export class UserPage extends PureComponent {
   componentDidMount() {
     const {
@@ -83,21 +98,6 @@ export class UserPage extends PureComponent {
     );
   }
 }
-
-const UserAvatar = styled.img`
-  width: 12rem;
-  height: 12rem;
-`;
-
-const UserWrapperDiv = styled.div`
-  padding-top: 2rem;
-  display: flex;
-  justify-content: center;
-`;
-
-const UserInfo = styled.div`
-  padding-left: 1rem;
-`;
 
 const mapStateToProps = state => ({
   isFetching: getIsFetching(state),

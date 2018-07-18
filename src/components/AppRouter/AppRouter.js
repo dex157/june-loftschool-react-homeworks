@@ -9,6 +9,33 @@ import { logout, getIsAuthorized } from '../../ducks/auth';
 import { getIsFetching } from '../../ducks/users';
 import { getNetworkErrorMessage } from '../../ducks/network';
 
+const AppDivWrapper = styled.div`
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const NetworkErrorDiv = styled.div`
+  color: red;
+  text-align: center;
+`;
+
+const LogoutBtn = styled.button`
+  cursor: pointer;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  border: none;
+  background-color: #ff8663;
+  color: #fff;
+  transition: 0.5s;
+
+  &:hover {
+    filter: brightness(80%);
+  }
+`;
+
 export class AppRouter extends PureComponent {
   handleLogout = () => {
     this.props.logout();
@@ -36,33 +63,6 @@ export class AppRouter extends PureComponent {
     );
   }
 }
-
-const AppDivWrapper = styled.div`
-  padding-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const NetworkErrorDiv = styled.div`
-  color: red;
-  text-align: center;
-`;
-
-const LogoutBtn = styled.button`
-  cursor: pointer;
-  width: 5rem;
-  height: 2rem;
-  border-radius: 0.6rem;
-  border: none;
-  background-color: #ff8663;
-  color: #fff;
-  transition: 0.5s;
-
-  &:hover {
-    filter: brightness(80%);
-  }
-`;
 
 const mapStateToProps = state => ({
   isAuthorized: getIsAuthorized(state),

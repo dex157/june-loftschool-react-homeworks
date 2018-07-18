@@ -9,6 +9,28 @@ import {
 } from '../../ducks/followers';
 import Spinner from 'react-svg-spinner';
 
+const FollowersWrapDiv = styled.div`
+  text-align: center;
+`;
+
+const FollowersUl = styled.ul`
+  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const FollowerLi = styled.li`
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const FollowerAvatarImg = styled.img`
+  width: 7rem;
+  height: 7rem;
+`;
+
 export class Followers extends PureComponent {
   componentDidMount() {
     this.props.fetchFollowersRequest(this.props.login);
@@ -51,28 +73,6 @@ export class Followers extends PureComponent {
     );
   }
 }
-
-const FollowersWrapDiv = styled.div`
-  text-align: center;
-`;
-
-const FollowersUl = styled.ul`
-  padding-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-`;
-
-const FollowerLi = styled.li`
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const FollowerAvatarImg = styled.img`
-  width: 7rem;
-  height: 7rem;
-`;
 
 const mapStateToProps = state => ({
   isFetching: getIsFollowersFetching(state),
