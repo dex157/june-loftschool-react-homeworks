@@ -14,7 +14,7 @@ export const Budget = props => {
         Всего получено денег: <span className="t-profit">{profit}</span>
       </p>
       <p>
-        Расходы на продавцов:{' '}
+        Расходы продавцов:{' '}
         <span className="t-sellers">{-sellerExpanse}</span>
       </p>
       <p>
