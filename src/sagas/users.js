@@ -8,13 +8,19 @@ import {
   getUserInfoFailure
 } from "../ducks/user-actions";
 
-function* fetchUserWatch() {
+function* fetchUserWatch(action) {
     try {
-      const response = yield call(getTokenOwner);
-      yield put(getLoginSuccess(response));
+      let userLogin;
+      if (!action.payload) {
+        const response = yield call(getTokenOwner);
+        yield put(getLoginSuccess(response));
+        userLogin = response.data.login;
+      } else {
+        userLogin = action.payload;
+      }
 
       try {
-        const userLogin = response.data.login;
+
         const userInfo = yield call(() => getUserInformation(userLogin));
         yield put(getUserInfoSuccess(userInfo));
       } catch (error) {

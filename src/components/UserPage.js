@@ -1,32 +1,42 @@
 import React, { Component } from "react";
 import { getLoginRequest, getUserInfoRequest } from "../ducks/user-actions";
+import { isFetching } from "../ducks/user-reducers";
 import { connect } from "react-redux";
+import Spinner from 'react-svg-spinner';
 import './UserPage.css'
+import Followers from "./Followers";
 
 class UserPage extends Component {
 
   componentDidMount = () => {
-    this.props.getUserInfoRequest();
+    const requestUser = this.props.match.params.name;
+    this.props.getUserInfoRequest(requestUser);
   };
 
   render() {
 
-    const { userInfo } = this.props.login;
+    const { login, isFetching } = this.props;
 
+    if(isFetching) {
+      return <Spinner size="64px" color="fuchsia" gap={5} />;;
+    }
+
+    const userInfo = login.userInfo;
     return (
       <div className="user-container_w">
-        <div className="user-container">
-          <div className="ava-container">
-            <img src={userInfo.avatar_url}
-                 alt={userInfo.login}/>
+          <div className="user-container">
+            <div className="ava-container">
+              <img src={userInfo.avatar_url}
+                   alt={userInfo.login}/>
+            </div>
+            <div className="user-stat">
+              <h3>{userInfo.login}</h3>
+              <p>Followers: {userInfo.followers}</p>
+              <p>Public repos: {userInfo.public_repos}</p>
+            </div>
           </div>
-          <div className="user-stat">
-            <h3>{userInfo.login}</h3>
-            <p>Followers: {userInfo.followers}</p>
-            <p>Public repos: {userInfo.public_repos}</p>
-          </div>
+          <Followers followersFor={userInfo.login}/>
         </div>
-      </div>
     );
   }
 }
@@ -34,7 +44,8 @@ class UserPage extends Component {
 const mapStateToProps = state => {
   console.log(state);
   return ({
-    login: state.login
+    login: state.login,
+    isFetching: isFetching(state)
   });
 };
 

@@ -8,15 +8,13 @@ import Login from "./Login";
 import PrivateRoute from "./PrivateRoute";
 import UserPage from "./UserPage";
 
-class AppRouter extends Component {
+export class AppRouter extends Component {
   render() {
     return (
       <Switch>
         <Route path="/login" component={Login}/>
-        <PrivateRoute
-          path="/user/me"
-          component={UserPage}
-        />
+        <PrivateRoute path="/user/me" component={UserPage}/>
+        <PrivateRoute path="/user/:name" component={UserPage}/>
         <Redirect from="*" to="/login"/>
       </Switch>
     );
