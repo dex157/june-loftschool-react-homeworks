@@ -159,7 +159,7 @@ if (isFetching) {
 
 1.  Для компоненты `AppRouter` нужно **написать тесты**:
 
-    - Проверить наhttp://localhost:3000/loginличие `Switch`,
+    - Проверить наличие `Switch`,
     - Проверить наличие компоненты `<PrivateRoute path="/user/me" />`,
     - Проверить наличие компоненты `<PrivateRoute path="/user/:name" />`,
     - Проверить наличие комполненты `<Route path="/login" />`,
