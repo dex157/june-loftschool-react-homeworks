@@ -1,1 +1,1 @@
-export { default } from './AppRouter.js';
+export { default } from './AppRouter';

@@ -1,8 +1,21 @@
 import React, { PureComponent } from 'react';
 import './AppRouter.css';
+import { Redirect, Route, Switch, withRouter } from "react-router-dom";
+import Login from "../Login";
+import PrivateRoute from "../PrivateRoute";
 
-export default class AppRouter extends PureComponent {
+class AppRouter extends PureComponent {
   render() {
-    return <div>Привет</div>;
+    return (
+      <main>
+        <Switch>
+          <Route path="/user/me" component={PrivateRoute} />
+          <Route path="/login" component={Login} />
+          <Redirect from="/" to="/login" />
+        </Switch>
+      </main>
+    );
   }
 }
+
+export default withRouter(AppRouter);

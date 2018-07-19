@@ -1,1 +1,1 @@
-export { default } from './Follower.js';
+export { default } from './Follower';
