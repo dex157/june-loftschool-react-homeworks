@@ -1,13 +1,19 @@
 import React, { PureComponent } from 'react';
 import './PrivateRoute.css';
-import { Redirect } from 'react-router-dom';
-import UserPage from "../UserPage";
-
+import { Redirect, Route } from 'react-router-dom';
 
 export default class PrivateRoute extends PureComponent {
   render() {
-    const { isAuthorized } = this.props;
+    // const { isAuthorized, match: { params } } = this.props;
+    const { isAuthorized, component: Component, ...rest } = this.props;
 
-    return isAuthorized ? <UserPage /> : <Redirect to="/login" />;
+    console.log("PrivateRoute",rest);
+
+    return (
+      <Route
+        {...rest}
+        render={() => (isAuthorized ? <Component params={rest.computedMatch.params} /> : <Redirect to="/login" />)}
+      />
+    );
   }
 }

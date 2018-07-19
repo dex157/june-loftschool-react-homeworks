@@ -31,3 +31,9 @@
     padding-left: 20px;
     text-align: left;
 }
+
+.buttons {
+    width: 400px;
+    text-align: center;
+    margin: 50px auto 20px;
+}

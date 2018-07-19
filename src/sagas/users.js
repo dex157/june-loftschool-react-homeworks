@@ -1,12 +1,17 @@
 import { takeEvery, put, call } from 'redux-saga/effects'
-import { getTokenOwner } from '../api'
+import { getTokenOwner, getUserInformation } from '../api'
 import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from "../ducks/users";
 import { logout } from '../ducks/auth'
 
-
-function* fetchUserWatchFlow() {
+function* fetchUserWatchFlow(action) {
   try {
-    const response = yield call(getTokenOwner);
+    let response;
+    if (action.payload) {
+      response = yield call(getUserInformation, action.payload);
+    } else {
+      response = yield call(getTokenOwner);
+    }
+
     yield put(fetchUserSuccess(response));
   } catch (e) {
     yield put(fetchUserFailure(e));
@@ -15,5 +20,5 @@ function* fetchUserWatchFlow() {
 }
 
 export function* fetchUserWatch() {
-  yield takeEvery(fetchUserRequest.toString(), fetchUserWatchFlow);
+  yield takeEvery(fetchUserRequest, fetchUserWatchFlow);
 }

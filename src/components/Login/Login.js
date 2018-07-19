@@ -39,7 +39,6 @@ export default class Login extends PureComponent {
 
   handleKeyPressEnter = event => {
     if (event.key === 'Enter' && this.state.token) {
-      console.log(this.state.token);
       this.props.authorize(this.state.token);
     }
   };
