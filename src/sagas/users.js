@@ -15,7 +15,7 @@ function* fetchUserWatchFlow(action) {
     yield put(fetchUserSuccess(response));
   } catch (e) {
     yield put(fetchUserFailure(e));
-    yield put(logout());
+    if (!action.payload) yield put(logout());
   }
 }
 

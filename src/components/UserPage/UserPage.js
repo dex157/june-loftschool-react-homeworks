@@ -15,7 +15,8 @@ export default class UserPage extends PureComponent {
   }
 
   render() {
-    const { isFetched, data } = this.props.users;
+    const { users, params } = this.props;
+    const { isFetched, isFetching, data } = users;
 
     if (!isFetched) {
       return (
@@ -23,6 +24,17 @@ export default class UserPage extends PureComponent {
           <Spinner size="64px" color="fuchsia" gap={5} />
         </div>
       );
+    }
+
+    if (!isFetching && data === null) {
+      return (
+        <Fragment>
+          <div className="buttons">
+            <button onClick={this.handleLogout}>Logout</button>
+          </div>
+          <p className="user-error">User {params.name} not founded!</p>
+        </Fragment>
+      )
     }
 
     return (

@@ -23,6 +23,7 @@ export default handleActions(
     [fetchUserFailure.toString()]: (state, action) => ({
       ...state,
       isFetching: false,
+      isFetched: true,
       error: action.error
     })
   },

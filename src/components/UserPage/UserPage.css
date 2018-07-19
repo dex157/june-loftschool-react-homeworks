@@ -37,3 +37,8 @@
     text-align: center;
     margin: 50px auto 20px;
 }
+
+.user-error {
+    text-align: center;
+    color: red;
+}
