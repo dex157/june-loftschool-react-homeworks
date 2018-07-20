@@ -19,7 +19,7 @@ class Login extends Component {
     const { isAuthorized } = this.props;
     const { error } = this.state;
     return isAuthorized ? (
-      <Redirect to="/private" />
+      <Redirect to="/" />
     ) : (
       <div>
         <div>
