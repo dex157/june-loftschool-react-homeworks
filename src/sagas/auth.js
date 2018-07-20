@@ -1,11 +1,11 @@
-import { take, put, call, select } from 'redux-saga/effects'
-import { setTokenApi, clearTokenApi } from '../api'
-import { authorize, logout, getIsAuthorized } from '../ducks/auth'
+import { take, put, call, select } from 'redux-saga/effects';
+import { setTokenApi, clearTokenApi } from '../api';
+import { authorize, logout, getIsAuthorized } from '../ducks/auth';
 import {
   getTokenFromLocalStorage,
   setTokenToLocalStorage,
   removeTokenFromLocalStorage
-} from '../localStorage'
+} from '../localStorage';
 
 export function* authFlow() {
   while (true) {

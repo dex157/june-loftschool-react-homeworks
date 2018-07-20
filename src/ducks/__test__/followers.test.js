@@ -40,8 +40,8 @@ describe('Редьюсер followers', () => {
     });
 
     it('Наполняет данными ids', () => {
-      const state = followers(initState, fetchFollowersSuccess([{},{},{}]));
-      expect(state.ids).toEqual([{},{},{}]);
+      const state = followers(initState, fetchFollowersSuccess([{}, {}, {}]));
+      expect(state.ids).toEqual([{}, {}, {}]);
     });
 
     it('Очищает поле error', () => {

@@ -2,12 +2,17 @@ import React from 'react';
 import Spinner from 'react-svg-spinner';
 import UserPage from './UserPage';
 import { shallow } from 'enzyme';
-import Followers from "../Followers";
+import Followers from '../Followers';
 
 const mockUsers = {
   isFetching: false,
   isFetched: false,
-  data: { avatar_url: '/avatar.png', login: 'avatar', followers: 3, public_repos: 9 },
+  data: {
+    avatar_url: '/avatar.png',
+    login: 'avatar',
+    followers: 3,
+    public_repos: 9
+  },
   error: null
 };
 const mockParams = { name: null };

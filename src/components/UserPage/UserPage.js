@@ -1,16 +1,22 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 import Spinner from 'react-svg-spinner';
 import './UserPage.css';
-import Followers from "../Followers";
+import Followers from '../Followers';
 
 export default class UserPage extends PureComponent {
   componentDidMount() {
-    const { params: { name }, fetchUserRequest } = this.props;
+    const {
+      params: { name },
+      fetchUserRequest
+    } = this.props;
     fetchUserRequest(name);
   }
 
   componentDidUpdate(prevProps) {
-    const { params: { name }, fetchUserRequest } = this.props;
+    const {
+      params: { name },
+      fetchUserRequest
+    } = this.props;
     if (name !== prevProps.params.name) fetchUserRequest(name);
   }
 
@@ -27,7 +33,7 @@ export default class UserPage extends PureComponent {
     }
 
     if (!isFetching && data === null) {
-      return (<p className="error">User {params.name} not founded!</p>);
+      return <p className="error">User {params.name} not founded!</p>;
     }
 
     return (

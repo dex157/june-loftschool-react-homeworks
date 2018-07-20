@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import './Login.css';
-import { Redirect } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 
 export default class Login extends PureComponent {
   state = {
@@ -10,7 +10,9 @@ export default class Login extends PureComponent {
   render() {
     const { isAuthorized } = this.props;
 
-    return isAuthorized ? <Redirect to="/user/me" /> : (
+    return isAuthorized ? (
+      <Redirect to="/user/me" />
+    ) : (
       <div className="login">
         <div className="auth">
           <p>

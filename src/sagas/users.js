@@ -1,8 +1,12 @@
-import { takeEvery, put, call } from 'redux-saga/effects'
-import { getTokenOwner, getUserInformation } from '../api'
-import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from "../ducks/users";
-import { logout } from '../ducks/auth'
-import requestFlow from "./request";
+import { takeEvery, put, call } from 'redux-saga/effects';
+import { getTokenOwner, getUserInformation } from '../api';
+import {
+  fetchUserRequest,
+  fetchUserSuccess,
+  fetchUserFailure
+} from '../ducks/users';
+import { logout } from '../ducks/auth';
+import requestFlow from './request';
 
 function* fetchUserWatchFlow(action) {
   try {

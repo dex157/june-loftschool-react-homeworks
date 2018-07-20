@@ -9,7 +9,13 @@ export default class PrivateRoute extends PureComponent {
     return (
       <Route
         {...rest}
-        render={() => (isAuthorized ? <Component params={rest.computedMatch.params} /> : <Redirect to="/login" />)}
+        render={() =>
+          isAuthorized ? (
+            <Component params={rest.computedMatch.params} />
+          ) : (
+            <Redirect to="/login" />
+          )
+        }
       />
     );
   }

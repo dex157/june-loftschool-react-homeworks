@@ -8,10 +8,12 @@ export const { networkError, clearNetworkErrors } = createActions(
 
 export default handleActions(
   {
-    [networkError.toString()]: (state, action) => {console.log(action);return ({
-      error: action.payload,
-      message: action.payload.response.statusText
-    })},
+    [networkError.toString()]: (state, action) => {
+      return {
+        error: action.payload,
+        message: action.payload.response.statusText
+      };
+    },
     [clearNetworkErrors.toString()]: () => ({ error: null, message: null })
   },
   { error: null, message: null }
