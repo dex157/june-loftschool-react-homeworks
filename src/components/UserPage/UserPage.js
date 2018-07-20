@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from "react";
+import React, { PureComponent } from "react";
 import Spinner from 'react-svg-spinner';
 import './UserPage.css';
 import Followers from "../Followers";
@@ -27,39 +27,23 @@ export default class UserPage extends PureComponent {
     }
 
     if (!isFetching && data === null) {
-      return (
-        <Fragment>
-          <div className="buttons">
-            <button onClick={this.handleLogout}>Logout</button>
-          </div>
-          <p className="user-error">User {params.name} not founded!</p>
-        </Fragment>
-      )
+      return (<p className="error">User {params.name} not founded!</p>);
     }
 
     return (
-      <Fragment>
-        <div className="buttons">
-          <button onClick={this.handleLogout}>Logout</button>
-        </div>
-        <div className="user">
-          <div className="profile">
-            <div className="image">
-              <img src={data.avatar_url} alt={data.login} />
-            </div>
-            <div className="info">
-              <h3>{data.login}</h3>
-              <p>Followers: {data.followers}</p>
-              <p>Public repos: {data.public_repos}</p>
-            </div>
+      <div className="user">
+        <div className="profile">
+          <div className="image">
+            <img src={data.avatar_url} alt={data.login} />
           </div>
-          <Followers login={data.login} />
+          <div className="info">
+            <h3>{data.login}</h3>
+            <p>Followers: {data.followers}</p>
+            <p>Public repos: {data.public_repos}</p>
+          </div>
         </div>
-      </Fragment>
+        <Followers login={data.login} />
+      </div>
     );
-  }
-
-  handleLogout = () => {
-    this.props.logout();
   }
 }

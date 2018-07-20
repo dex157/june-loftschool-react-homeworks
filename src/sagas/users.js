@@ -2,14 +2,15 @@ import { takeEvery, put, call } from 'redux-saga/effects'
 import { getTokenOwner, getUserInformation } from '../api'
 import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from "../ducks/users";
 import { logout } from '../ducks/auth'
+import requestFlow from "./request";
 
 function* fetchUserWatchFlow(action) {
   try {
     let response;
     if (action.payload) {
-      response = yield call(getUserInformation, action.payload);
+      response = yield call(requestFlow, getUserInformation, action.payload);
     } else {
-      response = yield call(getTokenOwner);
+      response = yield call(requestFlow, getTokenOwner);
     }
 
     yield put(fetchUserSuccess(response));

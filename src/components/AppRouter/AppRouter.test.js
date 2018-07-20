@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { shallow } from 'enzyme';
-import { AppRouter } from './AppRouter';
+import AppRouter from './AppRouter';
 import PrivateRoute from '../PrivateRoute';
 import UserPage from '../UserPage';
 import Login from '../Login';

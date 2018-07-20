@@ -5,10 +5,18 @@ import Login from "../Login";
 import PrivateRoute from "../PrivateRoute";
 import UserPage from "../UserPage";
 
-export class AppRouter extends PureComponent {
+export default class AppRouter extends PureComponent {
   render() {
+    const { error, isAuthorized } = this.props;
+
     return (
       <main>
+        {!isAuthorized ? null : (
+          <div className="buttons">
+            <button onClick={this.handleLogout}>Logout</button>
+          </div>
+        )}
+        {!error ? null : (<p className="error">{error}</p>)}
         <Switch>
           <PrivateRoute path="/user/me" component={UserPage} />
           <PrivateRoute path="/user/:name" component={UserPage} />
@@ -18,6 +26,9 @@ export class AppRouter extends PureComponent {
       </main>
     );
   }
-}
 
-export default withRouter(AppRouter);
+
+  handleLogout = () => {
+    this.props.logout();
+  }
+}
