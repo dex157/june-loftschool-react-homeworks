@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
+// initial commit
+
 class App extends Component {
   render() {
     return (
