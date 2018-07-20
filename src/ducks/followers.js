@@ -12,13 +12,16 @@ export default handleActions(
     [fetchFollowersRequest.toString()]: state => ({
       ...state,
       isFetching: true,
-      isFetched: false
+      isFetched: false,
+      ids: [],
+      error: null
     }),
     [fetchFollowersSuccess.toString()]: (state, action) => ({
       ...state,
       isFetching: false,
       isFetched: true,
-      ids: action.payload
+      ids: action.payload,
+      error: null
     }),
     [fetchFollowersFailure.toString()]: (state, action) => ({
       ...state,

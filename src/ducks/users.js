@@ -12,12 +12,15 @@ export default handleActions(
     [fetchUserRequest.toString()]: state => ({
       ...state,
       isFetching: true,
-      isFetched: false
+      isFetched: false,
+      data: null,
+      error: null
     }),
     [fetchUserSuccess.toString()]: (state, action) => ({
       ...state,
       isFetching: false,
       isFetched: true,
+      error: null,
       data: action.payload.data
     }),
     [fetchUserFailure.toString()]: (state, action) => ({

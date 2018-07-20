@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
+import Spinner from 'react-svg-spinner';
 import './Followers.css';
 import Follower from '../Follower';
 
 export default class Followers extends PureComponent {
-  componentWillMount() {
+  componentDidMount() {
     const { fetchFollowersRequest, login } = this.props;
     fetchFollowersRequest(login);
   }
@@ -12,7 +13,11 @@ export default class Followers extends PureComponent {
     const { isFetched, ids } = this.props.followers;
 
     if (!isFetched) {
-      return null;
+      return (
+        <div className="user">
+          <Spinner size="64px" color="fuchsia" gap={5} />
+        </div>
+      );
     }
 
     return (

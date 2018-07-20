@@ -5,7 +5,7 @@ import Login from "../Login";
 import PrivateRoute from "../PrivateRoute";
 import UserPage from "../UserPage";
 
-class AppRouter extends PureComponent {
+export class AppRouter extends PureComponent {
   render() {
     return (
       <main>
