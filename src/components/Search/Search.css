@@ -1,0 +1,9 @@
+.search_results {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.search_bar {
+    padding-bottom: 20px;
+}

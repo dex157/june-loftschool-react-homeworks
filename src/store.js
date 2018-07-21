@@ -9,6 +9,6 @@ export default initialState =>
     initialState,
     compose(
       applyMiddleware(searchMiddleware, showMiddleware),
-      window.devToolsExtension ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f,
-    ),
+      window.devToolsExtension ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+    )
   );
