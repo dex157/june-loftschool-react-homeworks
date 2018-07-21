@@ -25,7 +25,7 @@ describe('Написать тесты для компоненты Followers', ()
             login: '2'
          }]
       });
-      expect(wrapper.find('.sc-item')).toHaveLength(2);
+      expect(wrapper.find('.sc-follower')).toHaveLength(2);
    })
 
 });
