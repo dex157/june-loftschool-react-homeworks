@@ -13,7 +13,7 @@ export const
    getIsFetched = state => state.users.isFetched,
    getIsFetching = state => state.users.isFetching;
 
-const data = handleActions(
+export const data = handleActions(
    {
       [userRequest]: () => null,
       [userSuccess]: (state, action) => action.payload.data,
@@ -22,7 +22,7 @@ const data = handleActions(
    null
 );
 
-const error = handleActions(
+export const error = handleActions(
    {
       [userRequest]: () => null,
       [userSuccess]: () => null,
@@ -31,7 +31,7 @@ const error = handleActions(
    null
 );
 
-const isFetched = handleActions(
+export const isFetched = handleActions(
    {
       [userSuccess]: () => true,
       [userFailure]: () => false
@@ -39,7 +39,7 @@ const isFetched = handleActions(
    false
 );
 
-const isFetching = handleActions(
+export const isFetching = handleActions(
    {
       [userRequest]: () => true,
       [userSuccess]: () => false,
