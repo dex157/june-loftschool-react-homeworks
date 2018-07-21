@@ -1,1 +1,11 @@
-import { CREATE_ORDER, MOVE_ORDER_TO_FARM } from './marketTypes';
+import {CREATE_ORDER, MOVE_ORDER_TO_FARM} from 'actions/marketTypes';
+
+export const createOrder = payload => ({
+   type: CREATE_ORDER,
+   payload
+});
+
+export const moveOrderToFarm = payload => ({
+   type: MOVE_ORDER_TO_FARM,
+   payload
+});

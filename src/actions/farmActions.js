@@ -1,1 +1,6 @@
-import { MOVE_ORDER_TO_CUSTOMER } from './farmTypes';
+import {MOVE_ORDER_TO_CUSTOMER} from 'actions/farmTypes';
+
+export const moveOrderToCustomer = payload => ({
+   type: MOVE_ORDER_TO_CUSTOMER,
+   payload
+});
