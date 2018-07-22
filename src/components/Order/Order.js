@@ -1,8 +1,19 @@
 import React from 'react';
 import './Order.css';
+import { convTime } from '../../helpers';
 
 const Order = ({ name, price, createdAt }) => (
-  <div className="order" />
+  <div className="order">
+    <div className="order__upper">
+      <p className="p--order">Название: {name}</p>
+      <p className="p--order">
+        Цена: <span className="order-price">{price}</span>
+      </p>
+    </div>
+    <div className="order__lower">
+      <p className="p--order">Создан: {convTime(createdAt)}</p>
+    </div>
+  </div>
 );
 
 export default Order;
