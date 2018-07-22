@@ -1,46 +1,36 @@
 import { handleActions } from "redux-actions";
 import { combineReducers } from "redux";
-import { getFollowersRequest, getFollowersSuccess, getFollowersFailure } from "./follower-actions";
+import { fetchFollowersRequest, fetchFollowersSuccess, fetchFollowersFailure } from "./follower-actions";
 
-const followers = handleActions(
+export const ids = handleActions(
   {
-    [getFollowersSuccess]: (_state, action) => action.payload.data
+    [fetchFollowersSuccess]: (_state, action) => action.payload.data
   },
   []
 );
 
 const followersError = handleActions(
   {
-    [getFollowersFailure]: (_state, action) => action.payload
+    [fetchFollowersFailure]: (_state, action) => action.payload
   },
   null
 );
 
-export const LOADING_STATE = {
-  idle: 'IDLE',
-  loading: 'LOADING',
-  success: 'SUCCESS',
-  failure: 'FAILURE',
-};
-
-const loadingState = handleActions(
+export const isFetched = handleActions(
   {
-    [getFollowersRequest.toString()]: () => LOADING_STATE.loading,
-    [getFollowersSuccess.toString()]: () => LOADING_STATE.success,
-    [getFollowersFailure.toString()]: () => LOADING_STATE.failure,
+    [fetchFollowersRequest]: () => false,
+    [fetchFollowersSuccess]: () => true,
+    [fetchFollowersFailure]: () => true
   },
-  LOADING_STATE.idle,
+  false
 );
 
-
 export const isFetching = state => {
-  let currentState = state.login.loadingState;
-  return currentState === LOADING_STATE.idle
-    || currentState === LOADING_STATE.loading;
+  return !state.followers.isFetched;
 };
 
 export default combineReducers({
-  followers,
-  loadingState,
+  ids,
+  isFetched,
   followersError
 });

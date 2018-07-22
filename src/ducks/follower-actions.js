@@ -2,9 +2,9 @@ import { createActions } from "redux-actions";
 
 const {
   followers: {
-    getRequest: getFollowersRequest,
-    getSuccess: getFollowersSuccess,
-    getFailure: getFollowersFailure
+    getRequest: fetchFollowersRequest,
+    getSuccess: fetchFollowersSuccess,
+    getFailure: fetchFollowersFailure
   }
 } = createActions({
   FOLLOWERS: {
@@ -14,4 +14,4 @@ const {
   }
 });
 
-export { getFollowersRequest, getFollowersSuccess, getFollowersFailure};
+export { fetchFollowersRequest, fetchFollowersSuccess, fetchFollowersFailure};

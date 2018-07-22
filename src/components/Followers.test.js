@@ -9,7 +9,7 @@ describe('Компонент Followers', () => {
   it('Компонента имеет метод componentDidMount', () => {
 
     const wrapper = shallow(
-      <Followers isFetching={false} followers={{followers : []}} getFollowersRequest={getFollowersMock}/>
+      <Followers isFetching={false} followers={{ids : []}} fetchFollowersRequest={getFollowersMock}/>
     );
 
     expect(wrapper.instance().componentDidMount).toBeDefined();
@@ -18,7 +18,7 @@ describe('Компонент Followers', () => {
   it('Компонента имеет Spinner при соответствующем флаге', () => {
 
     const wrapper = shallow(
-      <Followers isFetching={true} getFollowersRequest={getFollowersMock}/>
+      <Followers isFetching={true} fetchFollowersRequest={getFollowersMock}/>
     );
 
     expect(wrapper.find('i')).toHaveLength(1);
@@ -26,10 +26,10 @@ describe('Компонент Followers', () => {
 
   it('Возвращаются компоненты Followers в том количестве, в котором передаются в props.followers', () => {
 
-    const followerData = {followers : [{id : 1, login: 'a', avatar_url: ''}, {id : 2, login: 'b', avatar_url: ''}]};
+    const followerData = {ids : [{id : 1, login: 'a', avatar_url: ''}, {id : 2, login: 'b', avatar_url: ''}]};
 
     const wrapper = shallow(
-      <Followers isFetching={false} followers={followerData} getFollowersRequest={getFollowersMock}/>
+      <Followers isFetching={false} followers={followerData} fetchFollowersRequest={getFollowersMock}/>
     );
 
     expect(wrapper.find('Follower')).toHaveLength(2);

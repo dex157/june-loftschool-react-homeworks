@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { getFollowersRequest } from "../ducks/follower-actions";
+import { fetchFollowersRequest } from "../ducks/follower-actions";
 import { isFetching } from "../ducks/follower-reducers";
 import Spinner from 'react-svg-spinner';
 import Follower from "./Follower";
@@ -10,7 +10,7 @@ export class Followers extends Component {
 
   componentDidMount = () => {
     const requestedUser = this.props.followersFor;
-    this.props.getFollowersRequest(requestedUser);
+    this.props.fetchFollowersRequest(requestedUser);
   };
 
   render() {
@@ -22,7 +22,7 @@ export class Followers extends Component {
     }
 
     return <div className="follower_list">
-        {followers.followers.map(this.renderFollower)}
+        {followers.ids.map(this.renderFollower)}
       </div>
   }
 
@@ -32,14 +32,13 @@ export class Followers extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('followers : ', state);
   return ({
     followers: state.followers,
     isFetching: isFetching(state)
   });
 };
 
-const mapDispatchToProps = { getFollowersRequest };
+const mapDispatchToProps = { fetchFollowersRequest };
 
 export default connect(
   mapStateToProps,

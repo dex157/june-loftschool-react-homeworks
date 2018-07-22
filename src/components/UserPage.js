@@ -17,11 +17,11 @@ class UserPage extends Component {
 
     const { login, isFetching } = this.props;
 
-    if(isFetching) {
-      return <Spinner size="64px" color="fuchsia" gap={5} />;;
+    if (isFetching) {
+      return <Spinner size="64px" color="fuchsia" gap={5}/>;
     }
 
-    const userInfo = login.userInfo;
+    const userInfo = login.data;
     return (
       <div className="user-container_w">
           <div className="user-container">
@@ -42,7 +42,6 @@ class UserPage extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return ({
     login: state.login,
     isFetching: isFetching(state)

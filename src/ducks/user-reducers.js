@@ -15,7 +15,7 @@ const login = handleActions(
   ''
 );
 
-const userInfo = handleActions(
+export const data = handleActions(
   {
     [getUserInfoSuccess]: (_state, action) => {
       return action.payload.data;
@@ -45,32 +45,23 @@ const userInfoError = handleActions(
   null
 );
 
-export const LOADING_STATE = {
-  idle: 'IDLE',
-  loading: 'LOADING',
-  success: 'SUCCESS',
-  failure: 'FAILURE',
-};
-
-const loadingState = handleActions(
+export const isFetched = handleActions(
   {
-    [getUserInfoRequest.toString()]: () => LOADING_STATE.loading,
-    [getUserInfoSuccess.toString()]: () => LOADING_STATE.success,
-    [getUserInfoFailure.toString()]: () => LOADING_STATE.failure,
+    [getUserInfoRequest]: () => false,
+    [getUserInfoSuccess]: () => true,
+    [getUserInfoFailure]: () => true
   },
-  LOADING_STATE.idle,
+  false
 );
 
 export const isFetching = state => {
-  let currentState = state.login.loadingState;
-  return currentState === LOADING_STATE.idle
-    || currentState === LOADING_STATE.loading;
+  return !state.login.isFetched;
 };
 
 export default combineReducers({
   login,
-  userInfo,
-  loadingState,
+  data,
+  isFetched,
   loginError,
   userInfoError
 });
