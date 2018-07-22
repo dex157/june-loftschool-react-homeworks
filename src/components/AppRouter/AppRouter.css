@@ -1,0 +1,9 @@
+.login-notes {
+    width: 400px;
+    text-align: center;
+    margin: 50px auto 20px;
+}
+
+.error {
+    color: red;
+}
