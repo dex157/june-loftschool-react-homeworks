@@ -7,7 +7,27 @@ import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 
-const store = createStore();
+const store = createStore({
+  auth: {
+    isAuthorized: false
+  },
+  network: {
+    error: null,
+    message: null
+  },
+  users: {
+    data: null,
+    error: null,
+    isFetched: false,
+    isFetching: false
+  },
+  followers: {
+    ids: [],
+    error: null,
+    isFetched: false,
+    isFetching: false
+  }
+});
 
 ReactDOM.render(
   <BrowserRouter>
@@ -15,5 +35,5 @@ ReactDOM.render(
       <AppRouter />
     </Provider>
   </BrowserRouter>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
