@@ -1,9 +1,31 @@
 import React, { Component } from 'react';
 import './ModalButton.css';
+import Modal from './Modal';
 
 class ModalButton extends Component {
+  state = {
+    isModalShow: false
+  };
+
+  hideModal = () => {
+    this.setState(state => ({
+      isModalShow: false
+    }));
+  };
+
+  showModal = () => {
+    this.setState(state => ({
+      isModalShow: true
+    }));
+  };
+
   render() {
-    return null;
+    const isModalShow = this.state.isModalShow;
+
+    return <div>
+        <button onClick={this.showModal}>Show modal!</button>
+        {isModalShow && <Modal closeModal={this.hideModal} />}
+      </div>;
   }
 }
 

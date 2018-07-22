@@ -1,5 +1,7 @@
 .video-player {
   background: url('./bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100%;
   display: flex;
   align-items: center;
