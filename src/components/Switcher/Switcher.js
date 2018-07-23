@@ -9,7 +9,7 @@ class Switcher extends Component {
     selectedChild: 0
   };
 
-  handleChildChange = event => {
+  handleChangeChild = event => {
     const id = event.target.dataset.id;
     this.setState({
       selectedChild: id
@@ -29,7 +29,7 @@ class Switcher extends Component {
               className="component-list__name"
               key={index}
               data-id={index}
-              onClick={this.handleChildChange}
+              onClick={this.handleChangeChild}
             >
               {child.type.displayName || child.type.name}
             </li>

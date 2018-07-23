@@ -6,9 +6,9 @@ class CardNumberHolder extends Component {
     cardNumber: ''
   };
 
-  static displayName = 'Card number formatting';
+  static displayName = 'Card number formating';
 
-  handlChange = value => {
+  handleChange = value => {
     this.setState({ cardNumber: value });
   };
 
@@ -16,7 +16,7 @@ class CardNumberHolder extends Component {
     const { cardNumber } = this.state;
 
     return (
-      <CardNumberInput cardNumber={cardNumber} onChange={this.handlChange} />
+      <CardNumberInput cardNumber={cardNumber} onChange={this.handleChange} />
     );
   }
 }
