@@ -16,9 +16,17 @@ class ModalButton extends Component {
   render() {
     return (
       <Fragment>
-        <button onClick={this.showModal}>Show Me</button>
+        <button onClick={this.showModal}>Show modal!</button>
         <Modal visible={this.state.isModalShow}>
-          <button onClick={this.hideModal}>Hide Me</button>
+          <div className="modal">
+            <div className="modal__fog">
+              <div className="modal__body">
+                <h1>Hello world!</h1>
+                <button onClick={this.hideModal}>Close</button>
+                <div />
+              </div>
+            </div>
+          </div>
         </Modal>
       </Fragment>
     );
