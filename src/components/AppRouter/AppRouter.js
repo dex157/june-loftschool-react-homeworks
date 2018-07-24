@@ -6,7 +6,6 @@ import PrivateRoute from 'components/PrivateRoute';
 import UserPage from 'components/UserPage/UserPage';
 import { logout } from 'ducks/auth';
 import { isAuthorized } from 'ducks/auth/index';
-import { isNetworkError, getNetworkErrorText } from 'ducks/network';
 import './AppRouter.css';
 
 export class AppRouter extends PureComponent {
@@ -15,7 +14,7 @@ export class AppRouter extends PureComponent {
   };
 
   render() {
-    const { isAuthorized, isNetworkError, networkErrorText } = this.props;
+    const { isAuthorized } = this.props;
 
     return (
       <div className="app">
@@ -48,9 +47,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = state => ({
-  isAuthorized: isAuthorized(state),
-  isNetworkError: isNetworkError(state),
-  networkErrorText: getNetworkErrorText(state)
+  isAuthorized: isAuthorized(state)
 });
 
 export default withRouter(

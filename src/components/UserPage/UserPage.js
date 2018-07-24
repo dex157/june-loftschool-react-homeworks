@@ -55,14 +55,14 @@ export class UserPage extends PureComponent {
     return (
       <Fragment>
         <div className="user__info">
-          <div className="card" style={{ width: 18 + 'rem' }}>
+          <div style={{ width: 18 + 'rem' }}>
             <img className="user__avatar" src={user.avatar_url} alt="User" />
-            <div className="card-body">
-              <p className="card-title">
-                <strong>{user.login}</strong>
+            <div>
+              <p>
+                <strong className="test-user-login">{user.login}</strong>
               </p>
-              <p className="card-text">
-                <span data-test-followers-count>
+              <p>
+                <span className="test-followers-count">
                   Followers: {user.followers}
                 </span>
                 <br />
@@ -72,7 +72,7 @@ export class UserPage extends PureComponent {
           </div>
         </div>
 
-        <div className="row justify-content-md-center">
+        <div>
           <Followers login={user.login} />
         </div>
       </Fragment>
@@ -83,9 +83,7 @@ export class UserPage extends PureComponent {
     const { isFetched, user } = this.props;
 
     return (
-      <div className="container p-5">
-        {!isFetched ? this.renderSpinner() : this.renderUserCard(user)}
-      </div>
+      <div>{!isFetched ? this.renderSpinner() : this.renderUserCard(user)}</div>
     );
   }
 }

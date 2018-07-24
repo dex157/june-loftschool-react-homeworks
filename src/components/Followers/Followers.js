@@ -24,6 +24,7 @@ export class Followers extends PureComponent {
     if (!isFetching && !data) {
       return <div>Подписчики отсутствуют</div>;
     }
+    console.log('ZXAXAX');
 
     return (
       <div className="followers-wrap">

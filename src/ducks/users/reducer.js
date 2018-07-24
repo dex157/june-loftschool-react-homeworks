@@ -4,10 +4,10 @@ import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './action';
 
 const data = handleActions(
   {
-    [fetchUserRequest]: () => [],
+    [fetchUserRequest]: () => null,
     [fetchUserSuccess]: (_state, action) => action.payload
   },
-  []
+  null
 );
 
 const error = handleActions(
