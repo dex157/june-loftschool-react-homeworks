@@ -1,11 +1,6 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
-import {
-  fetchTokenOwnerRequest,
-  fetchUserRequest,
-  fetchUserSuccess,
-  fetchUserFailure
-} from './action';
+import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './action';
 
 const data = handleActions(
   {
@@ -26,7 +21,6 @@ const error = handleActions(
 
 const isFetching = handleActions(
   {
-    [fetchTokenOwnerRequest]: () => true,
     [fetchUserRequest]: () => true,
     [fetchUserSuccess]: () => false,
     [fetchUserFailure]: () => false

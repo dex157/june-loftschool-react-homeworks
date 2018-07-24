@@ -5,7 +5,7 @@ import { networkError, clearNetworkErrors } from './action';
 const message = handleActions(
   {
     [networkError]: (_state, action) => action.payload.response.data.message,
-    [clearNetworkError]: () => null
+    [clearNetworkErrors]: () => null
   },
   null
 );
@@ -13,7 +13,7 @@ const message = handleActions(
 const error = handleActions(
   {
     [networkError]: (_state, action) => action.payload,
-    [clearNetworkError]: () => null
+    [clearNetworkErrors]: () => null
   },
   null
 );

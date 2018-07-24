@@ -1,0 +1,25 @@
+.followers-wrap {
+  text-align: center;
+}
+.followers-list {
+  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+.followers-item {
+  padding-left: 20px;
+  text-align: left;
+}
+.followers-avatar {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  border: 1px solid rgb(238, 238, 238);
+}
+
+.follower__link {
+  text-align: left;
+}

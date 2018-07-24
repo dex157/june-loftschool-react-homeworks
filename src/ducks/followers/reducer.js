@@ -18,7 +18,8 @@ const isFetching = handleActions(
 
 const data = handleActions(
   {
-    [fetchFollowersSuccess]: (_state, action) => action.payload
+    [fetchFollowersSuccess]: (_state, action) => action.payload,
+    [logout]: (_, __) => null
   },
   []
 );
