@@ -9,10 +9,9 @@ class App extends Component {
   render() {
     return (
       <Switcher>
-        <CardNumberHolder />
-
-        <ModalButton />
         <VideoPlayer />
+        <CardNumberHolder />
+        <ModalButton />
       </Switcher>
     );
   }
