@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Spinner from 'react-svg-spinner';
+import MySpinner from 'components/MySpinner';
+import styled from 'styled-components';
 import {
   fetchFollowersRequest,
   getData,
@@ -9,66 +10,71 @@ import {
   getError
 } from 'ducks/followers';
 
-export class Followers extends Component {
+const StyledFollowers = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 5fr);
+  grid-gap: 10px;
+  margin-top: 20px;
+`;
+
+const StyledFollower = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledFollowerImg = styled.img`
+  width: 100%;
+  margin-bottom: 10px;
+`;
+
+class Followers extends React.PureComponent {
   componentDidMount = () => {
-    const { login, fetchFollowersRequest } = this.props
-    fetchFollowersRequest(login)
-  }
+    const { login, fetchFollowersRequest } = this.props;
+    fetchFollowersRequest(login);
+  };
 
   componentDidUpdate = prevProps => {
-    const { login, fetchFollowersRequest } = this.props
+    const { login, fetchFollowersRequest } = this.props;
 
     if (login === prevProps.login) {
-      return
+      return;
     }
 
-    fetchFollowersRequest(login)
-  }
-
-  renderSpinner() {
-    return (
-      <div className="container p-5">
-        <div className="row justify-content-md-center">
-          <Spinner size="64px" color="#6EB1DE" gap={5} />
-        </div>
-      </div>
-    )
-  }
+    fetchFollowersRequest(login);
+  };
 
   renderFollower(follower) {
     return (
-      <Link to={`/users/${follower.name}`} key={follower.id}>
-        <figure className="figure p-2 text-center">
-          <img
-            src={follower.avatar}
-            className="figure-img img-thumbnail img-fluid rounded"
-            alt="Avatar"
-            style={{ width: 80 + 'px', height: 80 + 'px' }}
-          />
-          <figcaption className="figure-caption text-center">
-            {follower.name}
-          </figcaption>
-        </figure>
-      </Link>
-    )
+      <StyledFollower key={follower.id}>
+        <StyledFollowerImg src={follower.avatar} alt="Avatar" />
+        <Link to={`/users/${follower.name}`}>
+          {follower.name}
+        </Link>
+      </StyledFollower>
+    );
   }
 
   renderFollowers(followers) {
-    if (followers == null) {
-      return <div />
+    if (!followers || !followers.length) {
+      return null;
     }
 
-    return <div>{followers.map(follower => this.renderFollower(follower))}</div>
+    return (
+      <StyledFollowers>
+        {followers.map(follower => this.renderFollower(follower))}
+      </StyledFollowers>
+    );
   }
 
   render() {
-    const { followers, isFetching } = this.props
+    const { followers, isFetching } = this.props;
 
-    return (
-      <div className="p-5">
-        {isFetching ? this.renderSpinner() : this.renderFollowers(followers)}
-      </div>
-    )
+    if (isFetching) {
+      return <MySpinner />;
+    } else {
+      return this.renderFollowers(followers);
+    }
   }
 }
 
@@ -76,13 +82,13 @@ const mapStateToProps = state => ({
   followers: getData(state),
   isFetching: getIsFetching(state),
   error: getError(state)
-})
+});
 
 const mapDispatchToProps = {
   fetchFollowersRequest
-}
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Followers)
+)(Followers);

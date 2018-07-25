@@ -1,105 +1,95 @@
-import React, { PureComponent, Fragment } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
-import Followers from 'components/Followers'
-import Spinner from 'react-svg-spinner'
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import Followers from 'components/Followers';
+import MySpinner from 'components/MySpinner';
+import styled from 'styled-components';
 import {
   fetchSelfRequest,
   fetchUserRequest,
   getUserData,
   getIsFetched
-} from 'ducks/users'
+} from 'ducks/users';
 
-export class UserPage extends PureComponent {
+const StyledUserPage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+const StyledUserName = styled.div`
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+class UserPage extends React.PureComponent {
   componentDidMount = () => {
-    this.fetchUser()
-  }
+    this.fetchUser();
+  };
 
   componentDidUpdate = prevProps => {
-    const prevUser = prevProps.match.params.name
-    const nextUser = this.props.match.params.name
+    const prevUser = prevProps.match.params.name;
+    const nextUser = this.props.match.params.name;
 
     if (nextUser !== prevUser) {
-      this.fetchUser()
+      this.fetchUser();
     }
-  }
+  };
 
   fetchUser = () => {
-    const { match, fetchSelfRequest, fetchUserRequest } = this.props
+    const { match, fetchSelfRequest, fetchUserRequest } = this.props;
 
-    if (match.params.name == null) {
-      fetchSelfRequest()
+    if (!match.params.name) {
+      fetchSelfRequest();
     } else {
-      fetchUserRequest(match.params.name)
+      fetchUserRequest(match.params.name);
     }
-  }
-
-  renderSpinner() {
-    return (
-      <div className="row justify-content-md-center">
-        <Spinner size="64px" color="#6EB1DE" gap={5} />
-      </div>
-    )
-  }
+  };
 
   renderUserCard(user) {
-    const { isFetched } = this.props
+    const { isFetched } = this.props;
 
     if (!user && isFetched) {
-      return <div className="text-center">Пользователь не найден!</div>
+      return <div>User Not Found!</div>;
     }
 
     return (
-      <Fragment>
-        <div className="row justify-content-md-center">
-          <div className="card" style={{ width: 18 + 'rem' }}>
-            <img className="card-img-top" src={user.avatar} alt="User" />
-            <div className="card-body">
-              <p className="card-title">
-                <strong>{user.name}</strong>
-              </p>
-              <p className="card-text">
-                <span data-test-followers-count>
-                  Following: {user.following}
-                </span>
-                <br />
-                <span>Repos: {user.repos}</span>
-              </p>
-            </div>
-          </div>
-        </div>
+      <StyledUserPage>
+        <img src={user.avatar} alt="User" />
+        <StyledUserName>{user.name}</StyledUserName>
+        <div>Following: {user.following}</div>
+        <div>Repos: {user.repos}</div>
 
-        <div className="row justify-content-md-center">
-          <Followers login={user.name} />
-        </div>
-      </Fragment>
-    )
+        <Followers login={user.name} />
+      </StyledUserPage>
+    );
   }
 
   render() {
-    const { isFetched, user } = this.props
+    const { isFetched, user } = this.props;
 
-    return (
-      <div className="container p-5">
-        {!isFetched ? this.renderSpinner() : this.renderUserCard(user)}
-      </div>
-    )
+    if (isFetched) {
+      return this.renderUserCard(user);
+    } else {
+      return <MySpinner />
+    }
   }
 }
 
 const mapStateToProps = state => ({
   isFetched: getIsFetched(state),
   user: getUserData(state)
-})
+});
 
 const mapDispatchToProps = {
   fetchSelfRequest,
   fetchUserRequest
-}
+};
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
   )(UserPage)
-)
+);

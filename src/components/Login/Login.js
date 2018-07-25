@@ -1,98 +1,109 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { authorize, getIsAuthorized } from 'ducks/auth'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { authorize, getIsAuthorized } from 'ducks/auth';
+import styled from 'styled-components';
 
-const ENTER_KEYKODE = 13
+const LoginWrapper = styled.div`
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-export class Login extends Component {
-  state = { token: '' }
+const LoginText = styled.p`
+  padding: 0;
+  margin: 0 0 20px;
+  text-align: center;
+`;
+
+const LoginInput = styled.input`
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: transparent;
+  box-shadow: none;
+  border: 1px solid #ccc;
+`;
+
+class Login extends React.PureComponent {
+  state = { token: '' };
 
   handleInputChange = e => {
-    this.setState({ token: e.target.value })
-  }
+    this.setState({ token: e.target.value });
+  };
 
   handleFormSubmit = e => {
-    e.preventDefault()
-    this.sendLoginRequest()
-  }
+    e.preventDefault();
+    this.sendLoginRequest();
+  };
 
   handleKeyPress = e => {
-    if (e.keyCode !== ENTER_KEYKODE) {
-      return
+    if (e.keyCode !== 13) {
+      return;
     }
 
-    this.sendLoginRequest()
-  }
+    this.sendLoginRequest();
+  };
 
   sendLoginRequest() {
-    const { token } = this.state
-    const { authorize } = this.props
+    const { token } = this.state;
+    const { authorize } = this.props;
 
     if (token.trim() === '') {
-      return
+      return;
     }
 
-    authorize(token)
+    authorize(token);
   }
 
   render() {
-    const { token } = this.state
-    const { isAuthorized } = this.props
+    const { token } = this.state;
+    const { isAuthorized } = this.props;
 
     if (isAuthorized) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
 
     return (
-      <div className="container">
-        <div className="row justify-content-md-center">
-          <form
-            className="col-4"
-            onKeyPress={this.handleKeyPress}
-            onSubmit={this.handleFormSubmit}
-          >
-            <div className="form-group">
-              <p>
-                Получить токен нужно на своей странице github, перейдите
-                по&nbsp;
-                <a href="https://github.com/settings/tokens">адресу</a> и
-                создайте себе токен. Запишите куда нибудь токен, так как после
-                создания доступ к нему будет только один раз.
-              </p>
+      <LoginWrapper>
+        <form onKeyPress={this.handleKeyPress} onSubmit={this.handleFormSubmit}>
+          <LoginText>
+            Получить токен нужно на своей странице github, перейдите по&nbsp;
+            <a href="https://github.com/settings/tokens">адресу</a> и создайте
+            себе токен. Запишите куда нибудь токен, так как после создания
+            доступ к нему будет только один раз.
+          </LoginText>
 
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Введите токен"
-                value={token}
-                onChange={this.handleInputChange}
-              />
+          <LoginInput
+            type="text"
+            placeholder="Введите токен"
+            value={token}
+            onChange={this.handleInputChange}
+          />
 
-              <small className="form-text text-muted">
-                После ввода нажать Enter.
-              </small>
-            </div>
-
-            <button type="submit" className="btn btn-primary">
-              Войти
-            </button>
-          </form>
-        </div>
-      </div>
-    )
+          <LoginText>
+            После ввода нажать Enter.
+          </LoginText>
+        </form>
+      </LoginWrapper>
+    );
   }
 }
 
 const mapStateToProps = state => ({
   isAuthorized: getIsAuthorized(state)
-})
+});
 
 const mapDispatchToProps = {
   authorize
-}
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login)
+)(Login);
