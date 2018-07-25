@@ -1,7 +1,7 @@
 printWidth: 80
 proseWrap: always
 singleQuote: true
-semi: false
+semi: true
 bracketSpacing: true
 parser: babylon
 trailingComma: none
