@@ -1,0 +1,27 @@
+.dMOMPs {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 30px;
+}
+.loiIMT {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+.hGggQw {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.eznsMN {
+  padding-left: 20px;
+  text-align: left;
+}
