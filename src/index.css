@@ -1,5 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #ccc;
+}
+
+.app {
+  background-color: #fff;
+  width: 600px;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 20px;
 }
