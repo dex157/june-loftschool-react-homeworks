@@ -1,20 +1,21 @@
 import {
-  fetchFollowersRequest,
-  fetchFollowersSuccess,
-  fetchFollowersFailure,
-} from 'ducks/followers';
+  getFollowersRequest,
+  getFollowersSuccess,
+  getFollowersFailure
+} from '../ducks/followers';
 import { takeLatest, call, put } from 'redux-saga/effects';
-import { getUserFollowers } from 'api';
+import { getUserFollowers } from '../api';
+import requestFlow from './request';
 
 function* fetchFollowersSaga(action) {
   try {
-    const response = yield call(getUserFollowers, action.payload);
-    yield put(fetchFollowersSuccess(response.data));
+    const response = yield call(requestFlow, getUserFollowers, action.payload);
+    yield put(getFollowersSuccess(response.data));
   } catch (error) {
-    yield put(fetchFollowersFailure(error));
+    yield put(getFollowersFailure(error.message));
   }
 }
 
 export function* fetchFollowersWatch() {
-  yield takeLatest(fetchFollowersRequest, fetchFollowersSaga);
+  yield takeLatest(getFollowersRequest, fetchFollowersSaga);
 }

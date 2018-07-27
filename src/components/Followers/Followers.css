@@ -1,0 +1,12 @@
+.followers__block {
+  display: flex;
+}
+
+.followers__list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}

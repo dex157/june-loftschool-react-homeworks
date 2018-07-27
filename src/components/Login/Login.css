@@ -1,0 +1,14 @@
+.login-form {
+  display: flex;
+  padding: 20px 0 0 0;
+  align-items: center;
+  flex-direction: column;
+}
+
+.token-input {
+  border-radius: 5px;
+  border: 1px solid #ba564f;
+  padding: 3px 3px;
+  text-align: center;
+  margin-bottom: 10px;
+}
