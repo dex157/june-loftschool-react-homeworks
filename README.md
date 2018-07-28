@@ -74,37 +74,37 @@ localstorage и отражения инфромации текущего пол�
     авторизации:
 
     ```javascript
-    import { take, put, call, select } from 'redux-saga/effects'
-    import { setTokenApi, clearTokenApi } from 'api'
-    import { authorize, logout, getIsAuthorized } from 'ducks/auth'
+    import { take, put, call, select } from 'redux-saga/effects';
+    import { setTokenApi, clearTokenApi } from 'api';
+    import { authorize, logout, getIsAuthorized } from 'ducks/auth';
     import {
       getTokenFromLocalStorage,
       setTokenToLocalStorage,
       removeTokenFromLocalStorage
-    } from 'localStorage'
+    } from 'localStorage';
 
     function* authFlow() {
       while (true) {
-        const isAuthorized = yield select(getIsAuthorized) /* boolean */
-        const localStorageToken = yield call(getTokenFromLocalStorage)
+        const isAuthorized = yield select(getIsAuthorized); /* boolean */
+        const localStorageToken = yield call(getTokenFromLocalStorage);
 
-        let token
+        let token;
 
         if (!isAuthorized && localStorageToken) {
-          token = localStorageToken
-          yield put(authorize())
+          token = localStorageToken;
+          yield put(authorize());
         } else {
-          const action = yield take(authorize)
-          token = action.payload
+          const action = yield take(authorize);
+          token = action.payload;
         }
 
-        yield call(setTokenApi, token)
-        yield call(setTokenToLocalStorage, token)
+        yield call(setTokenApi, token);
+        yield call(setTokenToLocalStorage, token);
 
-        yield take(logout)
+        yield take(logout);
 
-        yield call(removeTokenFromLocalStorage)
-        yield call(clearTokenApi)
+        yield call(removeTokenFromLocalStorage);
+        yield call(clearTokenApi);
       }
     }
     ```

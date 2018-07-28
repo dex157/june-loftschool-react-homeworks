@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Follower.css';
 
-class Follower extends React.PureComponent {
+export class Follower extends React.PureComponent {
   render() {
     const { id, login, avatar_url } = this.props;
 

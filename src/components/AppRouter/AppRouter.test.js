@@ -13,16 +13,13 @@ describe('Компонента AppRouter', () => {
 
     it('Cодержит <Route path="/login" />', () => {
         expect(wrapper.containsMatchingElement(<Route path="/login" />)).toBeTruthy();
-        
-      });
+    });
 
     it('Cодержит <PrivateRoute path="/user/me" />', () => {
-        console.log(wrapper.debug());
-        expect(wrapper.containsMatchingElement(<PrivateRoute path="/user/me"/> )).toBeTruthy();
+        expect(wrapper.containsMatchingElement(<PrivateRoute path="/users/me"/> )).toBeTruthy();
     });
 
     it('Cодержит <PrivateRoute path="/user/:name" />', () => {
-        expect(wrapper.containsMatchingElement(<PrivateRoute path="/user/:name" />)).toBeTruthy();
-        
+        expect(wrapper.containsMatchingElement(<PrivateRoute path="/users/:name" />)).toBeTruthy();  
     });
 });

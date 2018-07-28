@@ -9,7 +9,7 @@ export default handleActions(
   {
     [getFollowersRequest]: _state => ({
       isFetching: true,
-      followers: [],
+      followers: null,
       error: null
     }),
     [getFollowersSuccess]: (_state, action) => ({
@@ -20,12 +20,12 @@ export default handleActions(
     [getFollowersFailure]: (_state, action) => ({
       isFetching: false,
       error: action.payload,
-      followers: []
+      followers: null
     })
   },
   {
     isFetching: false,
     error: null,
-    followers: []
+    followers: null
   }
 );

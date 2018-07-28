@@ -40,7 +40,7 @@ export class UserPage extends React.PureComponent {
     const { isFetching, user } = this.props;
 
     if (isFetching) return <Loader />;
-
+    if (!user) return <div className="not-found">Отсутствует пользователь</div>;
     return (
       <div className="user-page">
         <div className="user-block">

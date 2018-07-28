@@ -8,12 +8,20 @@ import {
 
 export default handleActions(
   {
-    [getUserRequest]: state => ({ ...state, isFetching: true }),
-    [getUserOwnerRequest]: state => ({ ...state, isFetching: true }),
-    [getUserSuccess]: (state, action) => ({
-      ...state,
+    [getUserRequest]: _state => ({
+      isFetching: true,
+      data: null,
+      error: null
+    }),
+    [getUserOwnerRequest]: _state => ({
+      isFetching: true,
+      data: null,
+      error: null
+    }),
+    [getUserSuccess]: (_state, action) => ({
       isFetching: false,
-      data: action.payload
+      data: action.payload,
+      error: null
     }),
     [getUserFailure]: (state, action) => ({
       ...state,
@@ -24,6 +32,6 @@ export default handleActions(
   {
     isFetching: false,
     error: null,
-    data: {}
+    data: null
   }
 );

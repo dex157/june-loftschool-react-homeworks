@@ -31,16 +31,8 @@ export class AppRouter extends React.PureComponent {
 
         <Switch>
           <Route path="/login" component={Login} />
-          <PrivateRoute
-            path="/users/me"
-            isAuthorized={isAuthorized}
-            component={UserPage}
-          />
-          <PrivateRoute
-            path="/users/:name"
-            isAuthorized={isAuthorized}
-            component={UserPage}
-          />
+          <PrivateRoute path="/users/me" component={UserPage} />
+          <PrivateRoute path="/users/:name" component={UserPage} />
           <Redirect from="/" to="/users/me" />
         </Switch>
       </main>

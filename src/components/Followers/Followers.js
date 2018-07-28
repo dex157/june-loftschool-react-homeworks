@@ -5,7 +5,7 @@ import { getFollowersRequest } from '../../ducks/followers';
 import Loader from '../Loader';
 import './Followers.css';
 
-class Followers extends React.PureComponent {
+export class Followers extends React.PureComponent {
   componentDidMount() {
     this.props.getFollowersRequest(this.props.login);
   }
@@ -17,14 +17,15 @@ class Followers extends React.PureComponent {
     return (
       <div className="followers__block">
         <ul className="followers__list">
-          {followers.map((follower, index) => (
-            <Follower
-              id={index}
-              key={index}
-              login={follower.login}
-              avatar_url={follower.avatar_url}
-            />
-          ))}
+          {followers &&
+            followers.map((follower, index) => (
+              <Follower
+                id={index}
+                key={index}
+                login={follower.login}
+                avatar_url={follower.avatar_url}
+              />
+            ))}
         </ul>
       </div>
     );
