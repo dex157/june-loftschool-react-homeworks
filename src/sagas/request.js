@@ -6,9 +6,9 @@ import {
 } from 'ducks/network';
 import { logout } from 'ducks/auth';
 
-export default function*(fn, args) {
+export default function*(fn, ...args) {
   try {
-    const response = yield call(fn, args);
+    const response = yield call(fn, ...args);
     if (yield select(getIsNetworkErrorPresent)) yield put(clearNetworkErrors());
     return response;
   } catch (error) {
