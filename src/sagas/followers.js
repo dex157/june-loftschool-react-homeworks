@@ -5,11 +5,12 @@ import {
   fetchFollowersSuccess,
   fetchFollowersFailure
 } from "../ducks/follower-actions";
+import requestFlow from './request';
 
 function* fetchFollowersWatch(action) {
     try {
       const userLogin = action.payload;
-      const userInfo = yield call(() => getUserFollowers(userLogin));
+      const userInfo = yield call(requestFlow, () => getUserFollowers(userLogin), action.payload);
       yield put(fetchFollowersSuccess(userInfo));
     } catch (error) {
       yield put(fetchFollowersFailure(error));

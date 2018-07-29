@@ -7,21 +7,20 @@ import {
   getUserInfoSuccess,
   getUserInfoFailure
 } from "../ducks/user-actions";
+import requestFlow from './request';
 
 function* fetchUserWatch(action) {
     try {
-      let userLogin;
+      let userLogin, response;
       if (!action.payload) {
-        const response = yield call(getTokenOwner);
+        response = yield call(requestFlow, getTokenOwner);
         yield put(getLoginSuccess(response));
         userLogin = response.data.login;
       } else {
         userLogin = action.payload;
       }
-
       try {
-
-        const userInfo = yield call(() => getUserInformation(userLogin));
+        const userInfo = yield call(requestFlow, () => getUserInformation(userLogin), action.payload);
         yield put(getUserInfoSuccess(userInfo));
       } catch (error) {
         yield put(getUserInfoFailure(error));

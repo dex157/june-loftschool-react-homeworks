@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from 'styled-components';
+import { logout } from '../ducks/auth-actions'
 
 class PrivateRoute extends React.PureComponent {
   render() {
@@ -10,7 +12,12 @@ class PrivateRoute extends React.PureComponent {
         {...rest}
         render={props =>
           rest.isAuthorized ? (
-            <Component {...props} />
+            <div>
+              <LogoutButtonContainer>
+                <button onClick={this.performLogout}>Logout</button>
+              </LogoutButtonContainer>
+              <Component {...props} />
+            </div>
           ) : (
             <Redirect to="/login"/>
           )
@@ -18,7 +25,17 @@ class PrivateRoute extends React.PureComponent {
       />
     );
   }
+
+  performLogout = () => {
+    this.props.logout();
+  }
 }
+
+const LogoutButtonContainer = styled.div`
+    width: 400px;
+    text-align: center;
+    margin: 50px auto 20px;
+`;
 
 const mapStateToProps = state => {
   return ({
@@ -26,7 +43,9 @@ const mapStateToProps = state => {
   });
 };
 
-const mapDispatchToProps = {  };
+const mapDispatchToProps = {
+  logout
+};
 
 export default connect(
   mapStateToProps,
