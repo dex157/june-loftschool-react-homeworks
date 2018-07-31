@@ -1,0 +1,26 @@
+.follower__block {
+  display: flex;
+  margin-right: 50px;
+}
+
+.follower__avatar {
+  width: 150px;
+  height: 150px;
+}
+
+.follower__avatar-img {
+  width: 100%;
+}
+
+.follower__desc {
+  margin-left: 10px;
+}
+
+.follower__desc a {
+  text-decoration: none;
+  color: #0645ad;
+  cursor: pointer;
+}
+.follower__desc a:hover {
+  text-decoration: underline;
+}

@@ -10,10 +10,10 @@ import './index.css';
 const store = createStore();
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/github-followers">
     <Provider store={store}>
       <AppRouter />
     </Provider>
   </BrowserRouter>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );

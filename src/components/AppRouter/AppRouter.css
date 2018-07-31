@@ -1,0 +1,33 @@
+.logout {
+  position: absolute;
+  padding: 5px 10px;
+  width: 100px;
+  text-transform: uppercase;
+  top: 20px;
+  left: 20px;
+  border: 2px solid #ba564f;
+  background-color: transparent;
+  color: #111111;
+  font-weight: 700;
+  border-radius: 5px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: #ba564f;
+  border-color: transparent;
+  color: #ffffff;
+}
+
+main {
+  position: relative;
+}
+
+html,
+body,
+#root,
+main {
+  width: 100%;
+  height: 100%;
+}
