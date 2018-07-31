@@ -1,0 +1,10 @@
+.show-page ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  list-style: none;
+}
+
+.show-page {
+  width: 100%;
+}
