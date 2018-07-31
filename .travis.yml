@@ -1,20 +1,27 @@
 language: node_js
 
 node_js:
-  - 9
+- 9
 
 cache:
   directories:
-    - ~/.npm
-    - ~/.cache
+  - ~/.npm
+  - ~/.cache
 
 install:
-  - yarn install
+- yarn install
 
 before_script:
-  - yarn start -- --silent &
+- yarn start -- --silent &
 
 script:
-  - yarn build
-  - yarn run cypress:run
-  - yarn test
+- yarn build
+- yarn run cypress:run
+- yarn test
+
+after_script:
+- NOW_ALIAS=myalias.com node_modules/.bin/now-travis
+
+env:
+  global:
+    secure: ORFuOu5xk487mb9dkbhgtEOKZsE1PPCCS9EdRxrGdyBfVGAXiBYbxq6uHaPytB5ecf85qoR5gCS+r/I4UjYBCK1bJo7k0o8xdQGO3q7jfzqqVxmzrATPXa2+jPa3Ynkk7Xgxj08yE4nZdWXxOW84+8WuSRXAS7RqJJDhHTu0cm1vB3Ur3L0wFUOHlLlXoMUPKfC5Ky8w6iRDt2BlTjTTskNBCQ9k81H/rH+pqoTLbezkmq9/dCB2VyZ1czQNlV7lpIpJqVEcdG2u+NRekJBRbCy//cqw2cKan5nneFPWmc3Gmfs+rRYfXBXtFFJBsTIOz3Rk9L3yqw2l7zxgDzjCfsL+uaZwgnv55WPheJBxCj1QmF+kXSp2/35uqdOoW2FL9X76YK4zNQiXoyScCgR5c7czSR7DVjbzQkVjT1q74JRParBLraAjbqXuoncu2FbK6/jXuRzOf9ASWS6+113RG0Xkc5vvq/4BQPWyb8jzBjFAmjKBJZFx1nqCqCqIQFYPq+IFdThniFYdew/S5DvLpEJYIvSr194ERvO73rOXQJ7I9x447H4I1H5XyT/CWmGmmQ5HwfN5e+boXks8EWGrgkojExLU7w0FH9awSg6JPbuQraar1gzUeCgkDClQSdQ7640W4jyAMvWtyT8aD2rm8t+RJhRUYHCdukFWPg/TUxU=
