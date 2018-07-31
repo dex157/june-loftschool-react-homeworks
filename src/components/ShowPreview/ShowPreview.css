@@ -1,0 +1,22 @@
+.preview {
+  width: 300px;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.preview__link {
+  display: inline-block;
+  font-size: 1.4em;
+  margin-bottom: 20px;
+}
+
+.preview__image {
+  display: block;
+  max-width: 210px;
+  height: auto;
+  margin: 0 auto 20px;
+}
+
+.preview__descr {
+  margin-bottom: 40px;
+}
