@@ -16,11 +16,9 @@ before_script:
 
 script:
 - yarn build
-- yarn run cypress:run
-- yarn test
 
 after_script:
-- NOW_ALIAS=myalias.com node_modules/.bin/now-travis
+- NOW_ALIAS=loftschool.homeworks node_modules/.bin/now-travis
 
 env:
   global:
