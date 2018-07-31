@@ -1,9 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Switcher from '../Switcher/Switcher';
+import CardNumberHolder from '../CardNumberHolder';
+import ModalButton from '../ModalButton';
+import VideoPlayer from '../VideoPlayer';
 import './App.css';
 
-class App extends Component {
+
+class App extends React.Component {
   render() {
-    return null;
+    return (
+      <Switcher>
+        <VideoPlayer />
+        <CardNumberHolder />
+        <ModalButton />
+      </Switcher>
+    );
   }
 }
 
