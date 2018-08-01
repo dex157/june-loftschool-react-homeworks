@@ -1,0 +1,38 @@
+.user-container_w {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    margin: 40px 20px;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.ava-container {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(238, 238, 238);
+    border-image: initial;
+}
+
+.ava-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.user-stat {
+    padding-left: 20px;
+    text-align: left;
+}
+
+
+

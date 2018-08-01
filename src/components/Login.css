@@ -1,0 +1,14 @@
+.login-container {
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.login-form {
+    width: 300px;
+}

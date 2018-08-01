@@ -13,7 +13,9 @@
     "react-svg-spinner": "1.0.1",
     "react": "16.4.1",
     "redux-actions": "^2.4.0",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "redux-saga": "^0.14.6",
+    "styled-components": "3.3.3"
   },
 
   "scripts": {
