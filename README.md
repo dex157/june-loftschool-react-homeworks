@@ -28,13 +28,13 @@ localstorage и отражения инфромации текущего пол�
 ├── index.css
 ├── index.js
 ├── ducks
-│   ├── auth-actions.js
+│   ├── actions.js
 │   ├── index.js
-│   └── user-actions.js
+│   └── actions.js
 ├── sagas
-│   ├── auth-actions.js
+│   ├── actions.js
 │   ├── index.js
-│   └── user-actions.js
+│   └── actions.js
 ├── setupTests.js
 ├── localstorage.js
 └── store.js

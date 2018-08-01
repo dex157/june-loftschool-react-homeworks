@@ -5,7 +5,7 @@ import {
   clearNetworkErrors,
   networkError
 } from '.'
-import { logout } from '../auth-actions'
+import { logout } from '../auth/actions'
 
 describe('Тест редьюсера request', () => {
 

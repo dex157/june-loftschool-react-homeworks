@@ -1,6 +1,6 @@
 import { handleActions } from "redux-actions";
 import { combineReducers } from "redux";
-import { fetchFollowersRequest, fetchFollowersSuccess, fetchFollowersFailure } from "./follower-actions";
+import { fetchFollowersRequest, fetchFollowersSuccess, fetchFollowersFailure } from "./actions";
 
 export const ids = handleActions(
   {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css";
 import { Redirect } from "react-router-dom/";
-import {authorize} from "../ducks/auth-actions";
+import {authorize} from "../ducks/auth/actions";
 import { connect } from "react-redux";
 
 class Login extends Component {
@@ -35,7 +35,7 @@ class Login extends Component {
           </p>
           <input
             onChange={this.handleChange}
-            onKeyPress={(e) => this.handleKeyPress(e)}
+            onKeyPress={this.handleKeyPress}
             className="sc-gzVnrw lfdfns"
             placeholder="auth_token"
             name="authToken"

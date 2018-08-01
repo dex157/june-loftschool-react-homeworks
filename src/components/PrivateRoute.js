@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from 'styled-components';
-import { logout } from '../ducks/auth-actions'
+import { logout } from '../ducks/auth/actions'
 
 class PrivateRoute extends React.PureComponent {
   render() {

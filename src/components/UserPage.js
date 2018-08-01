@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { getLoginRequest, getUserInfoRequest } from "../ducks/user-actions";
-import { isFetching } from "../ducks/user-reducers";
+import { getLoginRequest, getUserInfoRequest } from "../ducks/user/actions";
+import { isFetching } from "../ducks/user/reducer";
 import { connect } from "react-redux";
 import Spinner from 'react-svg-spinner';
 import './UserPage.css'

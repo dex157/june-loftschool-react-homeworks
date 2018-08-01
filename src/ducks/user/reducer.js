@@ -6,7 +6,7 @@ import {
   getUserInfoRequest,
   getUserInfoSuccess,
   getUserInfoFailure
-} from "./user-actions";
+} from "./actions";
 
 const login = handleActions(
   {

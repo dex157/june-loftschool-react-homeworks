@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { fetchFollowersRequest } from "../ducks/follower-actions";
-import { isFetching } from "../ducks/follower-reducers";
+import { fetchFollowersRequest } from "../ducks/followers/actions";
+import { isFetching } from "../ducks/followers/reducer";
 import Spinner from 'react-svg-spinner';
 import Follower from "./Follower";
 import './Followers.css'

@@ -1,12 +1,11 @@
 import React from 'react';
-import { fetchFollowersSuccess } from "./follower-actions";
-import { isFetched, isFetching, ids } from "./follower-reducers";
+import { getUserInfoSuccess } from "./actions";
+import {isFetched, isFetching, data} from './reducer'
 
-
-describe("Экшен fetchFollowersSuccess", () => {
+describe("Экшен getUserInfoSuccess", () => {
 
   const success = {
-    type: fetchFollowersSuccess.toString()
+    type: getUserInfoSuccess.toString()
   };
 
   const payload = [
@@ -17,7 +16,7 @@ describe("Экшен fetchFollowersSuccess", () => {
   ];
 
   it("Изменяeт флаг isFetching", () => {
-    const next = isFetching({followers: {isFetched: true}});
+    const next = isFetching({login: {isFetched: true}});
     expect(next).toEqual(false);
   });
   it("Изменяeт флаг isFetched", () => {
@@ -25,8 +24,8 @@ describe("Экшен fetchFollowersSuccess", () => {
     expect(next).toEqual(true);
   });
   it("Наполняет данными ids", () => {
-    const next = ids([], {
-      type: fetchFollowersSuccess.toString(),
+    const next = data([], {
+      type: getUserInfoSuccess.toString(),
       payload: payload
     });
     expect(next).toEqual(payload.data);

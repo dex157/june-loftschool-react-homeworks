@@ -4,7 +4,7 @@ import {
   fetchFollowersRequest,
   fetchFollowersSuccess,
   fetchFollowersFailure
-} from "../ducks/follower-actions";
+} from "../ducks/followers/actions";
 import requestFlow from './request';
 
 function* fetchFollowersWatch(action) {

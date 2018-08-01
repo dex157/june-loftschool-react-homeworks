@@ -6,7 +6,7 @@ import {
   getUserInfoRequest,
   getUserInfoSuccess,
   getUserInfoFailure
-} from "../ducks/user-actions";
+} from "../ducks/user/actions";
 import requestFlow from './request';
 
 function* fetchUserWatch(action) {
