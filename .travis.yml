@@ -13,6 +13,8 @@ install:
   - yarn install
 
 script:
+  - echo $TRAVIS_BRANCH
+  - echo $TRAVIS_BRANCH | sed -r 's/([^\/]+)\/(.*$)/\2.\1-react-sep.surge.sh/g'
   - echo $TRAVIS_BRANCH | sed -E 's/([^\/]+)\/(.*$)/\2.\1-react-sep.surge.sh/g'
   - yarn build
 
