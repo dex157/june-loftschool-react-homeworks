@@ -16,3 +16,6 @@ script:
   - yarn build
   - yarn run cypress:run
   - yarn test
+
+after_success:
+  - surge --project ./build --domain test-homework.surge.sh
