@@ -10,19 +10,14 @@ cache:
 install:
   - yarn install
 
-before_script:
-  - yarn start -- --silent &
-
 script:
-  - yarn build
-  - echo TRAVIS_BUILD_ID
   - echo $TRAVIS_BUILD_ID
-  - echo TRAVIS_PULL_REQUEST_BRANCH
+  - echo $TRAVIS_BRANCH
   - echo $TRAVIS_PULL_REQUEST_BRANCH
-  - echo TRAVIS_PULL_REQUEST_SLUG
+  - echo $TRAVIS_COMMIT_RANGE
   - echo $TRAVIS_PULL_REQUEST_SLUG
-  - echo TRAVIS_REPO_SLUG
   - echo $TRAVIS_REPO_SLUG
+  - yarn build
 
 after_success:
   - surge --project ./build --domain test-homework.surge.sh
