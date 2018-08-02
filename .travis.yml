@@ -2,19 +2,19 @@ language: node_js
 
 node_js:
   - 9
-
 cache:
+  yarn: true
   directories:
     - ~/.npm
     - ~/.cache
+    - node_modules
 
 install:
   - yarn install
 
-before_script:
-  - yarn start -- --silent &
-
 script:
   - yarn build
-  - yarn run cypress:run
-  - yarn test
+
+after_script:
+  - cp build/index.html build/200.html
+  - surge --project ./build --domain ls-react-sep-pr-$TRAVIS_PULL_REQUEST.surge.sh
