@@ -13,12 +13,7 @@ install:
   - yarn install
 
 script:
-  - echo $TRAVIS_BUILD_ID
-  - echo $TRAVIS_BRANCH
-  - echo $TRAVIS_PULL_REQUEST_BRANCH
-  - echo $TRAVIS_COMMIT_RANGE
-  - echo $TRAVIS_PULL_REQUEST_SLUG
-  - echo $TRAVIS_REPO_SLUG
+  - echo $TRAVIS_BRANCH | sed -E 's/([^\/]+)\/(.*$)/\2.\1-react-sep.surge.sh/g'
   - yarn build
 
 after_success:
