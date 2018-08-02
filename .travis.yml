@@ -15,8 +15,14 @@ before_script:
 
 script:
   - yarn build
-  - yarn run cypress:run
-  - yarn test
+  - echo TRAVIS_BUILD_ID
+  - echo $TRAVIS_BUILD_ID
+  - echo TRAVIS_PULL_REQUEST_BRANCH
+  - echo $TRAVIS_PULL_REQUEST_BRANCH
+  - echo TRAVIS_PULL_REQUEST_SLUG
+  - echo $TRAVIS_PULL_REQUEST_SLUG
+  - echo TRAVIS_REPO_SLUG
+  - echo $TRAVIS_REPO_SLUG
 
 after_success:
   - surge --project ./build --domain test-homework.surge.sh
